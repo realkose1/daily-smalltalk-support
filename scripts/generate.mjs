@@ -10,7 +10,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { writeFileSync, mkdirSync } from 'node:fs';
 
 const RESEARCH_MODEL = 'claude-sonnet-5'; // supports web search; cheaper than Opus
-const GEN_MODEL = 'claude-haiku-4-5'; // long JSON output is the cost driver → keep it cheap
+const GEN_MODEL = 'claude-sonnet-5'; // reliable at 'exactly 5, concise' where Haiku over-generated
 const client = new Anthropic();
 
 const now = new Date();
