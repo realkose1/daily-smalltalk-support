@@ -66,7 +66,7 @@ const schema = {
 
 const res = await client.messages.create({
   model: MODEL,
-  max_tokens: 6000,
+  max_tokens: 12000,
   output_config: { format: { type: 'json_schema', schema } },
   messages: [
     {
