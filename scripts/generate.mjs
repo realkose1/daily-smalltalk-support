@@ -109,7 +109,7 @@ const topic = {
     label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
     questions: { type: 'array', items: { type: 'string' } },
     tips: { type: 'object', additionalProperties: false, properties: { work: moodTip, friend: moodTip, date: moodTip }, required: ['work', 'friend', 'date'] },
-    imageQuery: { type: 'string', description: '2-4 generic English words for a stock-photo search, e.g. "chicken soup bowl", "rainy street umbrella", "summer beach vacation". No Korean, no brand/proper nouns.' },
+    imageQuery: { type: 'string', description: 'A CONCRETE, PHOTOGRAPHABLE scene in 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket", "friends laughing cafe", "night city lights summer". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling", "nostalgic mood". No Korean, no brand/proper nouns.' },
   },
   required: ['id', 'cat', 'label', 'color', 'title', 'desc', 'reason', 'questions', 'tips', 'imageQuery'],
 };
@@ -129,7 +129,7 @@ const gen = await client.messages.create({
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지.\n` +
-      `- imageQuery: 이 주제의 커버 사진을 찾기 위한 2~4개의 일반적인 영어 단어(스톡사진 검색어). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지.\n` +
+      `- imageQuery: 이 주제의 커버 사진을 찾기 위한 검색어. 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket rain window"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지.\n` +
       `- reason은 오늘 날짜·날씨·맥락 반영. JSON만 출력.`,
   }],
 });
@@ -148,15 +148,27 @@ const CAT_FALLBACK_QUERY = {
   '문화': 'korean culture city',
 };
 
+const STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
+
 async function searchOpenverse(query) {
   try {
-    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0&page_size=6`;
+    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0&page_size=10`;
     const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
     if (!r.ok) return null;
     const j = await r.json();
-    const results = j.results || [];
-    const decent = results.find((it) => (it.width ?? 0) >= 600 && (it.height ?? 0) >= 400 && it.url);
-    return decent?.url ?? results[0]?.url ?? null;
+    const results = (j.results || []).filter((it) => (it.width ?? 0) >= 600 && (it.height ?? 0) >= 400 && it.url);
+    if (!results.length) return null;
+
+    // Soft relevance: score by how many query keywords appear in the result's
+    // title/tags. Openverse titles are often sparse, so this only re-ranks —
+    // it never rejects down to zero candidates.
+    const keywords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w));
+    const score = (it) => {
+      const hay = `${it.title || ''} ${(it.tags || []).map((t) => t.name || t).join(' ')}`.toLowerCase();
+      return keywords.reduce((n, k) => n + (hay.includes(k) ? 1 : 0), 0);
+    };
+    results.sort((a, b) => score(b) - score(a));
+    return results[0].url;
   } catch (e) {
     console.log(`openverse search failed for "${query}":`, e.message);
     return null;
