@@ -79,13 +79,13 @@ const schema = { type: 'object', additionalProperties: false, properties: { topi
 
 const gen = await client.messages.create({
   model: GEN_MODEL,
-  max_tokens: 12000,
+  max_tokens: 16000,
   output_config: { format: { type: 'json_schema', schema } },
   messages: [{
     role: 'user',
     content:
       `너는 "데일리 스몰토크" 앱의 오늘의 주제 5개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 맥락]\n${brief}\n\n[요구사항]\n` +
-      `- 주제 5개, 카테고리 겹치지 않게. 첫 번째는 위 맥락에서 가장 시의성 있는 것(실시간 날씨/화제 반영).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드(reason·desc·팁)는 1~2문장으로 간결하게. 첫 번째는 위 맥락에서 가장 시의성 있는 것(실시간 날씨/화제 반영).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
       `- 모든 문장 존댓말 ~요체. 친근하고 구체적, 살짝 위트. 정치·사건사고·민감 주제 금지.\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
