@@ -1,0 +1,12 @@
+{
+  "name": "daily-smalltalk-content",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0"
+  }
+}

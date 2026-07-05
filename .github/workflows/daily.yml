@@ -1,0 +1,43 @@
+name: Daily topic
+
+on:
+  schedule:
+    # 00:00 UTC == 09:00 KST, every day
+    - cron: '0 0 * * *'
+  workflow_dispatch: {}   # allow manual "Run workflow" for testing
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-topic
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: npm install
+
+      - name: Generate today's topics
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run generate
+
+      - name: Commit if changed
+        run: |
+          git config user.name "daily-smalltalk-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add today.json content/archive
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "content: $(date -u +%Y-%m-%d) topics"
+            git push
+          fi
