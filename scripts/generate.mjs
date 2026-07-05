@@ -1,16 +1,17 @@
-// Daily Small Talk — content generator (real-time, cost-optimized).
+// Daily Small Talk — content generator (real-time from FREE sources, cheap).
 // Runs daily at 09:00 KST (00:00 UTC) via GitHub Actions.
-// Split roles to keep cost low while keeping live weather/trends:
-//   1) RESEARCH_MODEL (Sonnet) + web search  → concise brief  (capped searches)
-//   2) GEN_MODEL (Haiku)     + structured out → 5 topics       (cheap long output)
+// Real-time signals come from free APIs (no Anthropic web search — that injects
+// ~100k tokens of page content and costs ~$10/mo). One Sonnet call turns the
+// compact brief into 5 topics. Cost ≈ $1/month.
+//   - Weather: Open-Meteo (free, keyless)
+//   - Culture trends: Google News search RSS (free, light-topic query)
 // Writes today.json (served via GitHub Pages) + an archive copy.
 //
 // Requires env: ANTHROPIC_API_KEY
 import Anthropic from '@anthropic-ai/sdk';
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-const RESEARCH_MODEL = 'claude-sonnet-5'; // supports web search; cheaper than Opus
-const GEN_MODEL = 'claude-sonnet-5'; // reliable at 'exactly 5, concise' where Haiku over-generated
+const MODEL = 'claude-sonnet-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
 const client = new Anthropic();
 
 const now = new Date();
@@ -32,38 +33,54 @@ const SEASON = {
   11: '늦가을~초겨울, 김장, 수능, 첫추위', 12: '한겨울, 연말·크리스마스, 송년회, 눈·귤',
 };
 
-function textOf(msg) {
-  return msg.content.filter((b) => b.type === 'text').map((b) => b.text).join('\n').trim();
-}
-async function createWithTools(params) {
-  let messages = params.messages;
-  for (let i = 0; i < 5; i++) {
-    const res = await client.messages.create({ ...params, messages });
-    if (res.stop_reason === 'pause_turn') { messages = [...messages, { role: 'assistant', content: res.content }]; continue; }
-    return res;
+const WMO = {
+  0: '맑음', 1: '대체로 맑음', 2: '구름 조금', 3: '흐림', 45: '안개', 48: '안개',
+  51: '이슬비', 53: '이슬비', 55: '이슬비', 61: '비', 63: '비', 65: '강한 비',
+  71: '눈', 73: '눈', 75: '많은 눈', 80: '소나기', 81: '소나기', 82: '강한 소나기',
+  95: '뇌우', 96: '뇌우', 99: '뇌우',
+};
+
+async function getWeather() {
+  try {
+    const r = await fetch(
+      'https://api.open-meteo.com/v1/forecast?latitude=37.5665&longitude=126.978' +
+      '&current=temperature_2m,precipitation,weather_code' +
+      '&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul',
+      { signal: AbortSignal.timeout(8000) }
+    );
+    const j = await r.json();
+    const c = j.current, d = j.daily;
+    const desc = WMO[c.weather_code] ?? '';
+    return `서울 오늘: ${desc}, 현재 ${Math.round(c.temperature_2m)}°C (최고 ${Math.round(d.temperature_2m_max[0])}° / 최저 ${Math.round(d.temperature_2m_min[0])}°), 강수확률 ${d.precipitation_probability_max[0]}%`;
+  } catch (e) {
+    console.log('weather fetch failed:', e.message);
+    return null;
   }
-  throw new Error('web search did not settle');
 }
 
-// --- 1) research (Sonnet + web search, capped) ---
-const research = await createWithTools({
-  model: RESEARCH_MODEL,
-  max_tokens: 1500,
-  tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 3 }],
-  messages: [{
-    role: 'user',
-    content:
-      `오늘은 ${dateLabel} (${isoDate}), 대한민국. 스몰토크 소재를 위해 오늘의 실시간 맥락을 빠르게 조사해줘:\n` +
-      `- 오늘/이번 주 서울·한국 날씨(기온, 비/눈, 미세먼지, 장마·폭염 등)\n` +
-      `- 요즘 한국에서 가볍게 화제인 것(신작 드라마/영화/음악, 스포츠, 축제 등 — 정치·사건사고 제외)\n` +
-      `계절 참고: ${SEASON[month]}\n` +
-      `한국어 5~7줄 간결한 브리핑만. 구체적 사실 위주.`,
-  }],
-});
-const brief = textOf(research);
-console.log('--- brief ---\n' + brief + '\n');
+async function getTrends() {
+  try {
+    const q = encodeURIComponent('(드라마 OR 예능 OR 영화 OR 축제 OR 콘서트 OR 전시) when:2d');
+    const r = await fetch(`https://news.google.com/rss/search?q=${q}&hl=ko&gl=KR&ceid=KR:ko`, { signal: AbortSignal.timeout(8000) });
+    const xml = await r.text();
+    const titles = [...xml.matchAll(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/g)]
+      .map((m) => m[1]).slice(1) // drop feed title
+      .map((t) => t.replace(/\s*-\s*[^-]+$/, '').trim()) // strip trailing " - 매체명"
+      .filter((t) => t.length > 4).slice(0, 6);
+    return titles.length ? titles : null;
+  } catch (e) {
+    console.log('trends fetch failed:', e.message);
+    return null;
+  }
+}
 
-// --- 2) generate topics (Haiku + structured output) ---
+const [weather, trends] = await Promise.all([getWeather(), getTrends()]);
+const brief =
+  `날씨: ${weather ?? '정보 없음'}\n` +
+  `계절: ${SEASON[month]}\n` +
+  (trends ? `요즘 화제(참고용, 가벼운 문화 소재만 골라 쓰고 정치·사건사고는 무시):\n- ${trends.join('\n- ')}\n` : '');
+console.log('--- brief ---\n' + brief);
+
 const moodTip = { type: 'object', additionalProperties: false, properties: { opener: { type: 'string' }, follow: { type: 'string' }, caution: { type: 'string' } }, required: ['opener', 'follow', 'caution'] };
 const topic = {
   type: 'object', additionalProperties: false,
@@ -78,23 +95,24 @@ const topic = {
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
 const gen = await client.messages.create({
-  model: GEN_MODEL,
-  max_tokens: 16000,
+  model: MODEL,
+  max_tokens: 12000,
   output_config: { format: { type: 'json_schema', schema } },
   messages: [{
     role: 'user',
     content:
-      `너는 "데일리 스몰토크" 앱의 오늘의 주제 5개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 맥락]\n${brief}\n\n[요구사항]\n` +
-      `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드(reason·desc·팁)는 1~2문장으로 간결하게. 첫 번째는 위 맥락에서 가장 시의성 있는 것(실시간 날씨/화제 반영).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      `너는 "데일리 스몰토크" 앱의 오늘의 주제 5개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 실시간 맥락]\n${brief}\n[요구사항]\n` +
+      `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게. 첫 번째는 위 날씨를 반영한 시의성 있는 것.` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
       `- 모든 문장 존댓말 ~요체. 친근하고 구체적, 살짝 위트. 정치·사건사고·민감 주제 금지.\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지.\n` +
-      `- reason은 오늘 날짜·맥락 반영. JSON만 출력.`,
+      `- reason은 오늘 날짜·날씨·맥락 반영. JSON만 출력.`,
   }],
 });
 
-const data = JSON.parse(textOf(gen));
+const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+const data = JSON.parse(raw);
 data.topics = (data.topics || []).filter((t) => Array.isArray(t.questions) && t.questions.length === 3).slice(0, 5);
 if (data.topics.length < 3) throw new Error('not enough valid topics');
 
@@ -103,5 +121,4 @@ mkdirSync('content/archive', { recursive: true });
 writeFileSync('today.json', JSON.stringify(out, null, 2));
 writeFileSync(`content/archive/${isoDate}.json`, JSON.stringify(out, null, 2));
 console.log(`Wrote today.json (${out.topics.length} topics) for ${isoDate}`);
-console.log(`research tokens: in=${research.usage.input_tokens} out=${research.usage.output_tokens} (${RESEARCH_MODEL})`);
-console.log(`gen tokens: in=${gen.usage.input_tokens} out=${gen.usage.output_tokens} (${GEN_MODEL})`);
+console.log(`gen tokens: in=${gen.usage.input_tokens} out=${gen.usage.output_tokens} (${MODEL})`);
