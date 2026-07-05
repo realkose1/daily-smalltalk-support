@@ -62,6 +62,9 @@ async function getWeather() {
   }
 }
 
+// Drop politically-charged / crime / disaster headlines so small-talk stays light.
+const BLOCK = /대통령|정부|여당|야당|국민의힘|민주당|조국|이재명|이준석|한동훈|윤석열|트럼프|바이든|국회|의원|장관|청와대|대선|총선|선거|정치|탄핵|특검|검찰|경찰|법원|기소|구속|체포|사망|숨진|숨져|살해|피살|성범죄|성폭|마약|음주운전|사기|참사|화재|폭발|지진|실종|자살|극단적|전쟁|미사일/;
+
 async function fetchTitles(query, take) {
   try {
     const q = encodeURIComponent(`${query} when:2d`);
@@ -70,7 +73,8 @@ async function fetchTitles(query, take) {
     return [...xml.matchAll(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/g)]
       .map((m) => m[1]).slice(1) // drop feed title
       .map((t) => t.replace(/\s*-\s*[^-]+$/, '').trim()) // strip trailing " - 매체명"
-      .filter((t) => t.length > 4).slice(0, take);
+      .filter((t) => t.length > 4 && !BLOCK.test(t)) // drop sensitive/political
+      .slice(0, take);
   } catch { return []; }
 }
 
