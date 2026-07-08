@@ -149,7 +149,9 @@ const CAT_FALLBACK_QUERY = {
   '날씨': 'weather sky city',
   '음식': 'food dish table',
   '일상': 'daily life lifestyle',
-  '문화': 'korean culture city',
+  // NOTE: keep these phrases CC0-rich on Openverse — 'korean culture city'
+  // returned ~0 usable results and silently killed the fallback (2026-07-08).
+  '문화': 'city street people walking',
   '경제': 'money coins savings finance',
 };
 
@@ -183,6 +185,9 @@ async function searchOpenverse(query) {
 for (const t of data.topics) {
   let image = t.imageQuery ? await searchOpenverse(t.imageQuery) : null;
   if (!image) image = await searchOpenverse(CAT_FALLBACK_QUERY[t.cat] || 'lifestyle');
+  // Last-resort generic query so a dead category fallback can't leave a card
+  // without a photo ('lifestyle' reliably returns full pages on Openverse).
+  if (!image) image = await searchOpenverse('lifestyle');
   if (image) t.image = image;
   delete t.imageQuery; // internal only — not part of the app's Topic shape
   console.log(`${t.id}: image=${image ? 'found' : 'none (color gradient fallback)'}`);
