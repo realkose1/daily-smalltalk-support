@@ -13,7 +13,7 @@
 //
 // Requires env: ANTHROPIC_API_KEY
 import Anthropic from '@anthropic-ai/sdk';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 
 const MODEL = 'claude-sonnet-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
 const client = new Anthropic();
@@ -95,10 +95,31 @@ async function getTrends() {
 }
 
 const [weather, trends] = await Promise.all([getWeather(), getTrends()]);
+
+// Last few days' topics — fed to the model so it stops repeating the same
+// picks (3 straight days of 장마+우산/삼계탕/물가 with near-identical copy).
+function getRecentTopics(days = 5) {
+  try {
+    const files = readdirSync('content/archive').filter((f) => f.endsWith('.json')).sort().slice(-days);
+    const lines = [];
+    for (const f of files) {
+      try {
+        const j = JSON.parse(readFileSync(`content/archive/${f}`, 'utf8'));
+        for (const t of j.topics || []) lines.push(`- [${f.replace('.json', '')}] ${t.label}: ${String(t.title).replace(/\n/g, ' ')}`);
+      } catch {}
+    }
+    return lines;
+  } catch {
+    return [];
+  }
+}
+const recent = getRecentTopics();
+
 const brief =
   `날씨: ${weather ?? '정보 없음'}\n` +
   `계절: ${SEASON[month]}\n` +
-  (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시):\n- ${trends.join('\n- ')}\n` : '');
+  (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시):\n- ${trends.join('\n- ')}\n` : '') +
+  (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 console.log('--- brief ---\n' + brief);
 
 const moodTip = { type: 'object', additionalProperties: false, properties: { opener: { type: 'string' }, follow: { type: 'string' }, caution: { type: 'string' } }, required: ['opener', 'follow', 'caution'] };
@@ -123,7 +144,9 @@ const gen = await client.messages.create({
     role: 'user',
     content:
       `너는 "데일리 스몰토크" 앱의 오늘의 주제 5개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 실시간 맥락]\n${brief}\n[요구사항]\n` +
-      `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게. 첫 번째는 위 날씨를 반영한 시의성 있는 것.` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게. 날씨 주제는 최대 1개까지만, 순서는 자유롭게(날씨가 꼭 첫 번째일 필요 없음).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      `- ★위 [최근 며칠간 이미 나간 주제]와 겹치지 마세요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(예: 장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수). 제목·질문 문구가 비슷해도 안 됩니다.\n` +
+      `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 누구나 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로 쓰세요(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
       `- 모든 문장 존댓말 ~요체(단 친구 팁은 반말도 자연스러우면 허용). 친근하고 구체적, 살짝 위트.\n` +
       `- ★스몰토크 적합성이 최우선: 좋은 주제는 "누구나 자기 경험으로 바로 대답할 수 있는 것"이에요. 날씨, 음식/식사, 주말·퇴근 후 시간, 요즘 보는 드라마·영상, 물가·생활비 체감, 계절 변화, 여행·휴가처럼 대다수가 공감하는 일상 소재로 대부분 채우세요.\n` +
       `- 개별 스포츠 선수 부상, 지역 축제, 특정 연예인 가십처럼 "관심 있는 소수만 아는 뉴스"는 대화가 안 이어지니 주제로 쓰지 마세요.\n` +
@@ -142,6 +165,14 @@ const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join
 const data = JSON.parse(raw);
 data.topics = (data.topics || []).filter((t) => Array.isArray(t.questions) && t.questions.length === 3).slice(0, 5);
 if (data.topics.length < 3) throw new Error('not enough valid topics');
+
+// Shuffle so the deck order varies day to day — the model tends to emit the
+// same category sequence (날씨→음식→일상→문화→경제), which made every morning
+// open on the weather card.
+for (let i = data.topics.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [data.topics[i], data.topics[j]] = [data.topics[j], data.topics[i]];
+}
 
 // --- cover photos: Openverse, CC0 only (no attribution required), keyless ---
 const CAT_FALLBACK_QUERY = {
