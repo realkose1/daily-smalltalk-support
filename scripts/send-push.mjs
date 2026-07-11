@@ -16,8 +16,9 @@ import { readFileSync } from 'node:fs';
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!SUPABASE_URL || !SERVICE_KEY) {
-  console.error('Missing SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY');
-  process.exit(1);
+  // Not configured yet — exit cleanly so the scheduled run isn't a red failure.
+  console.log('Supabase secrets not set; push sender is inactive (no-op).');
+  process.exit(0);
 }
 
 // Weekend rule mirrors the app: KST day-of-week decides whether weekend-off
