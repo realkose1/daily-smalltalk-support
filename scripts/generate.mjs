@@ -6,7 +6,7 @@
 //   - Weather: Open-Meteo (free, keyless)
 //   - Culture trends: Google News search RSS (free, light-topic query)
 //   - Cover photos: Openverse (free, keyless, CC0-only so no attribution is
-//     required) — the model also writes a generic English `imageQuery` per
+//     required) — the model also writes 3 generic English `imageQueries` per
 //     topic, which we search after generation. No image found → the app
 //     falls back to a solid color-gradient cover (never a broken image).
 // Writes today.json (served via GitHub Pages) + an archive copy.
@@ -130,9 +130,9 @@ const topic = {
     label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
     questions: { type: 'array', items: { type: 'string' } },
     tips: { type: 'object', additionalProperties: false, properties: { work: moodTip, friend: moodTip, date: moodTip }, required: ['work', 'friend', 'date'] },
-    imageQuery: { type: 'string', description: 'A CONCRETE, PHOTOGRAPHABLE scene in 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket", "friends laughing cafe", "night city lights summer". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling", "nostalgic mood". No Korean, no brand/proper nouns.' },
+    imageQueries: { type: 'array', minItems: 3, maxItems: 3, items: { type: 'string' }, description: '3 DIFFERENT concrete, photographable scenes for this topic, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns.' },
   },
-  required: ['id', 'cat', 'label', 'color', 'title', 'desc', 'reason', 'questions', 'tips', 'imageQuery'],
+  required: ['id', 'cat', 'label', 'color', 'title', 'desc', 'reason', 'questions', 'tips', 'imageQueries'],
 };
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
@@ -156,7 +156,7 @@ const gen = await client.messages.create({
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지.\n` +
-      `- imageQuery: 이 주제의 커버 사진을 찾기 위한 검색어. 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket rain window"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지.\n` +
+      `- imageQueries: 이 주제의 커버 사진을 찾기 위한 검색어 3개(서로 다른 피사체/장면으로). 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket" / "rain drops window" / "umbrella wet street"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지.\n` +
       `- reason은 오늘 날짜·날씨·맥락 반영. JSON만 출력.`,
   }],
 });
@@ -188,27 +188,32 @@ const CAT_FALLBACK_QUERY = {
 
 const STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
 
+// STRICT relevance: at least one query keyword must appear (word-prefix
+// match) in the candidate's text, or it's rejected. Accepting zero-overlap
+// hits shipped a sushi photo on a 늦잠 card (2026-07-11) — an unrelated
+// photo is worse than the gradient fallback.
+function relevanceScorer(query) {
+  const keywords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w));
+  return (text) => {
+    const hay = text.toLowerCase();
+    return keywords.reduce((n, k) => n + (new RegExp(`\\b${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hay) ? 1 : 0), 0);
+  };
+}
+
 async function searchOpenverse(query) {
   try {
-    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0&page_size=10`;
+    // cc0 + pdm (public domain mark): both attribution-free.
+    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0,pdm&page_size=10`;
     const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
     if (!r.ok) return null;
     const j = await r.json();
     const results = (j.results || []).filter((it) => (it.width ?? 0) >= 600 && (it.height ?? 0) >= 400 && it.url);
     if (!results.length) return null;
-
-    // STRICT relevance: at least one query keyword must appear (word-prefix
-    // match) in the result's title/tags, or the result is rejected. Accepting
-    // zero-overlap hits shipped a sushi photo on a 늦잠 card (2026-07-11) —
-    // an unrelated photo is worse than the designed gradient fallback.
-    const keywords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w));
-    const score = (it) => {
-      const hay = `${it.title || ''} ${(it.tags || []).map((t) => t.name || t).join(' ')}`.toLowerCase();
-      return keywords.reduce((n, k) => n + (new RegExp(`\\b${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hay) ? 1 : 0), 0);
-    };
-    const matched = results.filter((it) => score(it) > 0);
+    const score = relevanceScorer(query);
+    const hay = (it) => `${it.title || ''} ${(it.tags || []).map((t) => t.name || t).join(' ')}`;
+    const matched = results.filter((it) => score(hay(it)) > 0);
     if (!matched.length) return null;
-    matched.sort((a, b) => score(b) - score(a));
+    matched.sort((a, b) => score(hay(b)) - score(hay(a)));
     return matched[0].url;
   } catch (e) {
     console.log(`openverse search failed for "${query}":`, e.message);
@@ -216,14 +221,56 @@ async function searchOpenverse(query) {
   }
 }
 
+// Wikimedia Commons, keyless. Only CC0/public-domain files (attribution-free),
+// same strict keyword rule (Commons full-text search alone returns loose
+// matches like paintings for "sleeping bed").
+async function searchCommons(query) {
+  try {
+    const params = new URLSearchParams({
+      action: 'query', format: 'json', origin: '*',
+      generator: 'search', gsrsearch: `filetype:bitmap ${query}`, gsrnamespace: '6', gsrlimit: '10',
+      prop: 'imageinfo', iiprop: 'url|size|extmetadata', iiurlwidth: '1280',
+    });
+    const r = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+      headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!r.ok) return null;
+    const j = await r.json();
+    const score = relevanceScorer(query);
+    const candidates = Object.values(j.query?.pages || {})
+      .map((p) => {
+        const ii = p.imageinfo?.[0];
+        if (!ii) return null;
+        const lic = ii.extmetadata?.LicenseShortName?.value || '';
+        if (!/cc0|public domain/i.test(lic)) return null;
+        if ((ii.width ?? 0) < 600 || (ii.height ?? 0) < 400) return null;
+        const desc = String(ii.extmetadata?.ImageDescription?.value || '').replace(/<[^>]+>/g, ' ');
+        const s = score(`${p.title} ${desc}`);
+        if (s <= 0) return null;
+        return { url: ii.thumburl || ii.url, s, cc0: /cc0/i.test(lic) };
+      })
+      .filter(Boolean)
+      // Prefer CC0 (modern Unsplash-donated photos) over PD (often dated scans).
+      .sort((a, b) => (b.cc0 - a.cc0) || (b.s - a.s));
+    return candidates.length ? candidates[0].url : null;
+  } catch (e) {
+    console.log(`commons search failed for "${query}":`, e.message);
+    return null;
+  }
+}
+
 for (const t of data.topics) {
-  let image = t.imageQuery ? await searchOpenverse(t.imageQuery) : null;
-  // Category fallback obeys the same strict-match rule. No generic last
-  // resort on purpose: a topic-agnostic photo is exactly what produced the
-  // mismatches, and the gradient card is a clean look — relevance wins.
+  const queries = (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
+  let image = null;
+  // Cascade: every query on Openverse, then every query on Commons, then the
+  // category fallback — all strict-matched. Gradient only if the whole
+  // cascade misses, which the 3 varied queries make rare.
+  for (const q of queries) { image = await searchOpenverse(q); if (image) break; }
+  if (!image) for (const q of queries) { image = await searchCommons(q); if (image) break; }
   if (!image) image = await searchOpenverse(CAT_FALLBACK_QUERY[t.cat] || 'lifestyle');
   if (image) t.image = image;
-  delete t.imageQuery; // internal only — not part of the app's Topic shape
+  delete t.imageQueries; // internal only — not part of the app's Topic shape
   console.log(`${t.id}: image=${image ? 'found' : 'none (color gradient fallback)'}`);
 }
 
