@@ -1,0 +1,30 @@
+name: Daily push
+
+on:
+  schedule:
+    # 00:00 UTC == 09:00 KST, every day. Content is generated at 06:00 KST
+    # (see daily.yml), so today.json is already fresh by send time.
+    - cron: '0 0 * * *'
+  workflow_dispatch: {} # manual "Run workflow" for testing
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-push
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      # today.json lives at the repo root and is committed by daily.yml.
+      - name: Send push
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/send-push.mjs
