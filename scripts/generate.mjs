@@ -179,7 +179,7 @@ const CAT_FALLBACK_QUERY = {
   '시즌': 'season nature landscape',
   '날씨': 'weather sky city',
   '음식': 'food dish table',
-  '일상': 'daily life lifestyle',
+  '일상': 'coffee cup morning table',
   // NOTE: keep these phrases CC0-rich on Openverse — 'korean culture city'
   // returned ~0 usable results and silently killed the fallback (2026-07-08).
   '문화': 'city street people walking',
@@ -197,16 +197,19 @@ async function searchOpenverse(query) {
     const results = (j.results || []).filter((it) => (it.width ?? 0) >= 600 && (it.height ?? 0) >= 400 && it.url);
     if (!results.length) return null;
 
-    // Soft relevance: score by how many query keywords appear in the result's
-    // title/tags. Openverse titles are often sparse, so this only re-ranks —
-    // it never rejects down to zero candidates.
+    // STRICT relevance: at least one query keyword must appear (word-prefix
+    // match) in the result's title/tags, or the result is rejected. Accepting
+    // zero-overlap hits shipped a sushi photo on a 늦잠 card (2026-07-11) —
+    // an unrelated photo is worse than the designed gradient fallback.
     const keywords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w));
     const score = (it) => {
       const hay = `${it.title || ''} ${(it.tags || []).map((t) => t.name || t).join(' ')}`.toLowerCase();
-      return keywords.reduce((n, k) => n + (hay.includes(k) ? 1 : 0), 0);
+      return keywords.reduce((n, k) => n + (new RegExp(`\\b${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hay) ? 1 : 0), 0);
     };
-    results.sort((a, b) => score(b) - score(a));
-    return results[0].url;
+    const matched = results.filter((it) => score(it) > 0);
+    if (!matched.length) return null;
+    matched.sort((a, b) => score(b) - score(a));
+    return matched[0].url;
   } catch (e) {
     console.log(`openverse search failed for "${query}":`, e.message);
     return null;
@@ -215,10 +218,10 @@ async function searchOpenverse(query) {
 
 for (const t of data.topics) {
   let image = t.imageQuery ? await searchOpenverse(t.imageQuery) : null;
+  // Category fallback obeys the same strict-match rule. No generic last
+  // resort on purpose: a topic-agnostic photo is exactly what produced the
+  // mismatches, and the gradient card is a clean look — relevance wins.
   if (!image) image = await searchOpenverse(CAT_FALLBACK_QUERY[t.cat] || 'lifestyle');
-  // Last-resort generic query so a dead category fallback can't leave a card
-  // without a photo ('lifestyle' reliably returns full pages on Openverse).
-  if (!image) image = await searchOpenverse('lifestyle');
   if (image) t.image = image;
   delete t.imageQuery; // internal only — not part of the app's Topic shape
   console.log(`${t.id}: image=${image ? 'found' : 'none (color gradient fallback)'}`);
