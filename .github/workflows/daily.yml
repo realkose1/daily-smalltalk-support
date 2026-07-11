@@ -2,8 +2,10 @@ name: Daily topic
 
 on:
   schedule:
-    # 00:00 UTC == 09:00 KST, every day
-    - cron: '0 0 * * *'
+    # 21:00 UTC == 06:00 KST next day. Generate at 6am so the new topics are
+    # deployed well before the 9am notification (avoids the app briefly showing
+    # yesterday's cached content when opened right at 9:00).
+    - cron: '0 21 * * *'
   workflow_dispatch: {}   # allow manual "Run workflow" for testing
 
 permissions:
