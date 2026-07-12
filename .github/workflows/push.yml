@@ -2,9 +2,11 @@ name: Daily push
 
 on:
   schedule:
-    # 00:00 UTC == 09:00 KST, every day. Content is generated at 06:00 KST
+    # 00:05 UTC == 09:05 KST, every day. Content is generated at 06:00 KST
     # (see daily.yml), so today.json is already fresh by send time.
-    - cron: '0 0 * * *'
+    # Five past the hour on purpose: GitHub's 00:00 UTC slot is its most
+    # congested and cron runs there get delayed or skipped outright.
+    - cron: '5 0 * * *'
   workflow_dispatch: {} # manual "Run workflow" for testing
 
 permissions:
