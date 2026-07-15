@@ -1,13 +1,11 @@
 name: Daily push
 
 on:
-  schedule:
-    # 00:05 UTC == 09:05 KST, every day. Content is generated at 06:00 KST
-    # (see daily.yml), so today.json is already fresh by send time.
-    # Five past the hour on purpose: GitHub's 00:00 UTC slot is its most
-    # congested and cron runs there get delayed or skipped outright.
-    - cron: '5 0 * * *'
-  workflow_dispatch: {} # manual "Run workflow" for testing
+  # No schedule: GitHub cron fired 3+ hours late every day (observed 12:21,
+  # 12:21, 12:48 KST for a 09:05 slot). The daily 09:00 send now runs on
+  # Supabase pg_cron (see backend/schema.sql, send_daily_push()). This
+  # workflow remains as a manual backup sender only.
+  workflow_dispatch: {} # manual "Run workflow" for testing/backup
 
 permissions:
   contents: read

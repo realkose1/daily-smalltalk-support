@@ -282,4 +282,27 @@ mkdirSync('content/archive', { recursive: true });
 writeFileSync('today.json', JSON.stringify(out, null, 2));
 writeFileSync(`content/archive/${isoDate}.json`, JSON.stringify(out, null, 2));
 console.log(`Wrote today.json (${out.topics.length} topics) for ${isoDate}`);
+
+// Sync today's headline to Supabase so the 09:00 push (sent by Supabase
+// pg_cron — GitHub's cron runs hours late, see push.yml) has the topic title.
+const SB_URL = process.env.SUPABASE_URL;
+const SB_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+if (SB_URL && SB_KEY) {
+  try {
+    const headline = String(out.topics[0].title).replace(/\n/g, ' ');
+    const r = await fetch(`${SB_URL}/rest/v1/daily_content?on_conflict=id`, {
+      method: 'POST',
+      headers: {
+        apikey: SB_KEY,
+        Authorization: `Bearer ${SB_KEY}`,
+        'content-type': 'application/json',
+        Prefer: 'resolution=merge-duplicates',
+      },
+      body: JSON.stringify({ id: 1, date_label: out.dateLabel, headline, updated_at: new Date().toISOString() }),
+    });
+    console.log(`headline sync: ${r.status} "${headline}"`);
+  } catch (e) {
+    console.log('headline sync failed (push falls back to generic title):', e.message);
+  }
+}
 console.log(`gen tokens: in=${gen.usage.input_tokens} out=${gen.usage.output_tokens} (${MODEL})`);
