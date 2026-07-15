@@ -115,9 +115,58 @@ function getRecentTopics(days = 5) {
 }
 const recent = getRecentTopics();
 
+// Curated Korean special days — the model does NOT know these dates reliably
+// (it once called 7/8 "초복" and then missed the real 초복 on 7/15). Verified
+// manually; refresh this table around every New Year.
+const SPECIAL_DAYS = {
+  '2026-07-15': '초복 — 삼계탕 등 보양식 챙겨 먹는 날',
+  '2026-07-23': '대서 — 1년 중 가장 덥다는 절기',
+  '2026-07-25': '중복',
+  '2026-08-07': '입추 — 가을의 문턱이라는 절기',
+  '2026-08-14': '말복',
+  '2026-08-15': '광복절(공휴일)',
+  '2026-08-23': '처서 — 더위가 꺾인다는 절기',
+  '2026-09-23': '추분 — 밤이 길어지기 시작',
+  '2026-09-24': '추석 연휴 시작',
+  '2026-09-25': '추석',
+  '2026-10-03': '개천절(공휴일)',
+  '2026-10-09': '한글날(공휴일)',
+  '2026-10-31': '핼러윈',
+  '2026-11-07': '입동 — 겨울의 시작이라는 절기',
+  '2026-11-11': '빼빼로데이',
+  '2026-11-19': '수능일',
+  '2026-12-22': '동지 — 팥죽 먹는 가장 긴 밤',
+  '2026-12-24': '크리스마스 이브',
+  '2026-12-25': '크리스마스(공휴일)',
+  '2026-12-31': '한 해의 마지막 날',
+  '2027-01-01': '새해 첫날(공휴일)',
+  '2027-02-04': '입춘',
+  '2027-02-06': '설날(공휴일)',
+  '2027-02-14': '밸런타인데이',
+  '2027-03-01': '삼일절(공휴일)',
+  '2027-03-03': '삼겹살데이',
+  '2027-03-14': '화이트데이',
+  '2027-05-05': '어린이날(공휴일)',
+  '2027-05-08': '어버이날',
+};
+
+function specialDayLines() {
+  const lines = [];
+  for (let offset = 0; offset <= 3; offset++) {
+    const d = new Date(kst.getTime() + offset * 86400000);
+    const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+    if (SPECIAL_DAYS[key]) lines.push(offset === 0 ? `오늘: ${SPECIAL_DAYS[key]}` : `${offset}일 뒤: ${SPECIAL_DAYS[key]}`);
+  }
+  return lines;
+}
+const specials = specialDayLines();
+
 const brief =
   `날씨: ${weather ?? '정보 없음'}\n` +
   `계절: ${SEASON[month]}\n` +
+  (specials.length
+    ? `\n[한국의 특별한 날 — 확정 정보]\n${specials.join('\n')}\n★오늘이 특별한 날이면 반드시 그 소재로 주제 1개를 만드세요(예: 초복 → 보양식). 1~3일 뒤라면 "다가온다"는 앵글로 써도 좋아요.\n`
+    : '\n[한국의 특별한 날] 오늘~3일 내 없음. ★주의: 이 목록에 없는 날을 초복·명절·절기라고 지어내지 마세요(과거에 아닌 날을 초복이라고 쓴 사고 있음).\n') +
   (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시):\n- ${trends.join('\n- ')}\n` : '') +
   (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 console.log('--- brief ---\n' + brief);
