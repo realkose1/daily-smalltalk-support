@@ -94,7 +94,44 @@ async function getTrends() {
   }
 }
 
-const [weather, trends] = await Promise.all([getWeather(), getTrends()]);
+// Concrete market signals (keyless Yahoo Finance) so the 경제 topic can talk
+// specifics on big-move days — e.g. "삼성전자가 어제 5% 올랐다던데" — instead of
+// permanently generic 물가 talk. Numbers come from HERE, never from the model.
+const MARKET_SYMBOLS = [
+  ['005930.KS', '삼성전자'],
+  ['000660.KS', 'SK하이닉스'],
+  ['^KS11', '코스피'],
+  ['KRW=X', '원/달러 환율'],
+  ['BTC-USD', '비트코인(달러)'],
+];
+
+async function getMarkets() {
+  const lines = [];
+  for (const [sym, name] of MARKET_SYMBOLS) {
+    try {
+      const r = await fetch(
+        `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=5d&interval=1d`,
+        { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(8000) },
+      );
+      if (!r.ok) continue;
+      const j = await r.json();
+      const closes = (j.chart?.result?.[0]?.indicators?.quote?.[0]?.close || []).filter((c) => c != null);
+      if (closes.length < 2) continue;
+      const prev = closes[closes.length - 2];
+      const last = closes[closes.length - 1];
+      const pct = ((last - prev) / prev) * 100;
+      const big = Math.abs(pct) >= (sym === '^KS11' ? 1.5 : sym === 'KRW=X' ? 1 : 3);
+      lines.push(
+        `${name}: ${Math.round(last).toLocaleString()} (전일 대비 ${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)${big ? ' ★큰 변동' : ''}`,
+      );
+    } catch {
+      // skip symbol on failure
+    }
+  }
+  return lines.length ? lines : null;
+}
+
+const [weather, trends, markets] = await Promise.all([getWeather(), getTrends(), getMarkets()]);
 
 // Last few days' topics — fed to the model so it stops repeating the same
 // picks (3 straight days of 장마+우산/삼계탕/물가 with near-identical copy).
@@ -167,6 +204,7 @@ const brief =
   (specials.length
     ? `\n[한국의 특별한 날 — 확정 정보]\n${specials.join('\n')}\n★오늘이 특별한 날이면 반드시 그 소재로 주제 1개를 만드세요(예: 초복 → 보양식). 1~3일 뒤라면 "다가온다"는 앵글로 써도 좋아요.\n`
     : '\n[한국의 특별한 날] 오늘~3일 내 없음. ★주의: 이 목록에 없는 날을 초복·명절·절기라고 지어내지 마세요(과거에 아닌 날을 초복이라고 쓴 사고 있음).\n') +
+  (markets ? `\n[시장 시그널 — 어제 종가 기준 실제 수치]\n- ${markets.join('\n- ')}\n` : '') +
   (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시):\n- ${trends.join('\n- ')}\n` : '') +
   (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 console.log('--- brief ---\n' + brief);
@@ -204,7 +242,8 @@ const gen = await client.messages.create({
       `- 개별 스포츠 선수 부상, 지역 축제, 특정 연예인 가십처럼 "관심 있는 소수만 아는 뉴스"는 대화가 안 이어지니 주제로 쓰지 마세요.\n` +
       `- '요즘 화제'는 주제가 아니라 관점의 힌트일 뿐이에요. 정말 대다수가 알 수준(전 국민이 보는 인기 드라마/예능, 폭염·한파, 물가 급등 등)일 때만 최대 1개 넣되, 뉴스 사건이 아니라 누구나 대답할 수 있는 보편적 질문으로 바꾸세요(예: 물가 뉴스 → "요즘 장 보기 좀 부담되지 않으세요?"). 애매하면 트렌드 없이 일상·계절 소재로만 구성하세요.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
-      `- 예외: 특정 종목·코인·공모주가 위 '요즘 화제'에서 전 국민이 다 아는 수준으로 크게 화제라면(예: 대형 공모주 청약 열풍, 삼성전자·엔비디아·비트코인 급등 등 다들 한 번쯤 들어본 것) 그걸 '경제' 주제로 삼아도 좋아요(예: "요즘 다들 ○○ 얘기하던데 관심 있으세요?"). 이때도 매수/매도 추천·목표가·시황분석이 아니라 '화제로 가볍게 나누는' 톤을 유지하고, 소수만 아는 종목은 피하세요.\n` +
+      `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 '요즘 화제'에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 어제 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
+      `- 이때도 매수/매도 추천·목표가·시황분석·전망은 절대 금지 — "다들 얘기하더라"며 화제로 가볍게 나누는 톤만. 삼성전자·SK하이닉스·코스피·환율·비트코인처럼 다들 아는 것만 다루고, 소수만 아는 종목은 피하세요.\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지.\n` +
