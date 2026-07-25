@@ -197,6 +197,9 @@ function specialDayLines() {
   return lines;
 }
 const specials = specialDayLines();
+// Today's once-a-year special day, if any (exact-date match only — the
+// "다가온다" angle for +1~3일 stays as-is and is NOT pinned to the front).
+const todaySpecial = SPECIAL_DAYS[isoDate] || null;
 
 const brief =
   `날씨: ${weather ?? '정보 없음'}\n` +
@@ -215,6 +218,7 @@ const topic = {
   properties: {
     id: { type: 'string' }, cat: { type: 'string', enum: ['시즌', '날씨', '음식', '일상', '문화', '경제'] },
     label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
+    special: { type: 'boolean', description: '오늘이 [한국의 특별한 날](초복·중복·말복·명절·기념일 등)이고 이 주제가 바로 그 날을 소재로 만든 주제일 때만 true. 그런 주제는 정확히 1개. 오늘이 특별한 날이 아니거나 이 주제가 그 소재가 아니면 false.' },
     questions: { type: 'array', items: { type: 'string' } },
     tips: { type: 'object', additionalProperties: false, properties: { work: moodTip, friend: moodTip, date: moodTip }, required: ['work', 'friend', 'date'] },
     // NOTE: structured outputs only support minItems 0/1 — don't add
@@ -222,7 +226,7 @@ const topic = {
     // 2026-07-12). "Exactly 3" lives in the description + slice(0,3) below.
     imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns.' },
   },
-  required: ['id', 'cat', 'label', 'color', 'title', 'desc', 'reason', 'questions', 'tips', 'imageQueries'],
+  required: ['id', 'cat', 'label', 'color', 'title', 'desc', 'reason', 'special', 'questions', 'tips', 'imageQueries'],
 };
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
@@ -235,11 +239,15 @@ const gen = await client.messages.create({
     content:
       `너는 "데일리 스몰토크" 앱의 오늘의 주제 5개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 실시간 맥락]\n${brief}\n[요구사항]\n` +
       `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게. 날씨 주제는 최대 1개까지만, 순서는 자유롭게(날씨가 꼭 첫 번째일 필요 없음).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      (todaySpecial
+        ? `- ★오늘은 "${todaySpecial}" — 1년에 한 번뿐인 날이에요. 이 날을 소재로 한 주제를 정확히 1개 만들고 그 주제에만 special:true를 설정하세요(나머지 주제는 모두 false). 그 주제가 덱 맨 앞(첫 카드)에 놓입니다.\n`
+        : `- 오늘은 [한국의 특별한 날] 목록에 있는 날이 아니에요. 모든 주제의 special은 false로 두세요.\n`) +
       `- ★위 [최근 며칠간 이미 나간 주제]와 겹치지 마세요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(예: 장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수). 제목·질문 문구가 비슷해도 안 됩니다.\n` +
       `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 누구나 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로 쓰세요(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
       `- 모든 문장 존댓말 ~요체(단 친구 팁은 반말도 자연스러우면 허용). 친근하고 구체적, 살짝 위트.\n` +
       `- ★스몰토크 적합성이 최우선: 좋은 주제는 "누구나 자기 경험으로 바로 대답할 수 있는 것"이에요. 날씨, 음식/식사, 주말·퇴근 후 시간, 요즘 보는 드라마·영상, 물가·생활비 체감, 계절 변화, 여행·휴가처럼 대다수가 공감하는 일상 소재로 대부분 채우세요.\n` +
       `- 개별 스포츠 선수 부상, 지역 축제, 특정 연예인 가십처럼 "관심 있는 소수만 아는 뉴스"는 대화가 안 이어지니 주제로 쓰지 마세요.\n` +
+      `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. 위 '요즘 화제'에 구체적 제목이 없어 무엇인지 특정할 수 없으면, 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
       `- '요즘 화제'는 주제가 아니라 관점의 힌트일 뿐이에요. 정말 대다수가 알 수준(전 국민이 보는 인기 드라마/예능, 폭염·한파, 물가 급등 등)일 때만 최대 1개 넣되, 뉴스 사건이 아니라 누구나 대답할 수 있는 보편적 질문으로 바꾸세요(예: 물가 뉴스 → "요즘 장 보기 좀 부담되지 않으세요?"). 애매하면 트렌드 없이 일상·계절 소재로만 구성하세요.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
       `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 '요즘 화제'에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 어제 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
@@ -264,6 +272,17 @@ for (let i = data.topics.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1));
   [data.topics[i], data.topics[j]] = [data.topics[j], data.topics[i]];
 }
+
+// A once-a-year special day (초복/중복/말복/명절 등) should always OPEN the deck:
+// the shuffle above can otherwise bury it (today's 중복 topic landed last), and
+// the 09:00 push uses topics[0] as the headline. Pin the model-flagged special
+// topic to the front, then drop the internal flag (not part of the app's Topic
+// shape).
+if (todaySpecial) {
+  const si = data.topics.findIndex((t) => t.special);
+  if (si > 0) data.topics.unshift(data.topics.splice(si, 1)[0]);
+}
+for (const t of data.topics) delete t.special;
 
 // --- cover photos: Openverse, CC0 only (no attribution required), keyless ---
 const CAT_FALLBACK_QUERY = {
