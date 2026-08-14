@@ -310,10 +310,44 @@ function relevanceScorer(query) {
   };
 }
 
+// Cover images used in the last few days — so a recurring category (경제/주식,
+// 날씨 등) doesn't keep showing the exact same photo. We skip these when a fresh
+// alternative exists.
+function getRecentImages(days = 7) {
+  try {
+    const files = readdirSync('content/archive').filter((f) => f.endsWith('.json')).sort().slice(-days);
+    const urls = new Set();
+    for (const f of files) {
+      try {
+        const j = JSON.parse(readFileSync(`content/archive/${f}`, 'utf8'));
+        for (const t of j.topics || []) if (t.image) urls.add(t.image);
+      } catch {}
+    }
+    return urls;
+  } catch {
+    return new Set();
+  }
+}
+const recentImages = getRecentImages();
+
+// Pick with variety: drop images shown in the last few days, then choose
+// RANDOMLY among the top-scored candidates instead of always the single best —
+// so the same query/category stops returning an identical cover every day.
+// All candidates already passed the strict keyword-relevance filter, so a
+// random top pick stays on-topic. `sorted` is [{ url, ... }] best-first.
+function pickVaried(sorted) {
+  if (!sorted.length) return null;
+  const fresh = sorted.filter((c) => !recentImages.has(c.url));
+  const pool = fresh.length ? fresh : sorted; // all seen recently → allow reuse
+  const top = pool.slice(0, Math.min(6, pool.length));
+  return top[Math.floor(Math.random() * top.length)].url;
+}
+
 async function searchOpenverse(query) {
   try {
-    // cc0 + pdm (public domain mark): both attribution-free.
-    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0,pdm&page_size=10`;
+    // cc0 + pdm (public domain mark): both attribution-free. Pull a wider page
+    // (20) so pickVaried has more distinct candidates to rotate through.
+    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0,pdm&page_size=20`;
     const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
     if (!r.ok) return null;
     const j = await r.json();
@@ -321,10 +355,11 @@ async function searchOpenverse(query) {
     if (!results.length) return null;
     const score = relevanceScorer(query);
     const hay = (it) => `${it.title || ''} ${(it.tags || []).map((t) => t.name || t).join(' ')}`;
-    const matched = results.filter((it) => score(hay(it)) > 0);
-    if (!matched.length) return null;
-    matched.sort((a, b) => score(hay(b)) - score(hay(a)));
-    return matched[0].url;
+    const scored = results
+      .map((it) => ({ url: it.url, s: score(hay(it)) }))
+      .filter((c) => c.s > 0)
+      .sort((a, b) => b.s - a.s);
+    return pickVaried(scored);
   } catch (e) {
     console.log(`openverse search failed for "${query}":`, e.message);
     return null;
@@ -338,7 +373,7 @@ async function searchCommons(query) {
   try {
     const params = new URLSearchParams({
       action: 'query', format: 'json', origin: '*',
-      generator: 'search', gsrsearch: `filetype:bitmap ${query}`, gsrnamespace: '6', gsrlimit: '10',
+      generator: 'search', gsrsearch: `filetype:bitmap ${query}`, gsrnamespace: '6', gsrlimit: '20',
       prop: 'imageinfo', iiprop: 'url|size|extmetadata', iiurlwidth: '1280',
     });
     const r = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
@@ -363,7 +398,7 @@ async function searchCommons(query) {
       .filter(Boolean)
       // Prefer CC0 (modern Unsplash-donated photos) over PD (often dated scans).
       .sort((a, b) => (b.cc0 - a.cc0) || (b.s - a.s));
-    return candidates.length ? candidates[0].url : null;
+    return pickVaried(candidates);
   } catch (e) {
     console.log(`commons search failed for "${query}":`, e.message);
     return null;
@@ -379,7 +414,8 @@ for (const t of data.topics) {
   for (const q of queries) { image = await searchOpenverse(q); if (image) break; }
   if (!image) for (const q of queries) { image = await searchCommons(q); if (image) break; }
   if (!image) image = await searchOpenverse(CAT_FALLBACK_QUERY[t.cat] || 'lifestyle');
-  if (image) t.image = image;
+  // Reserve this image within today's run too, so two topics don't share a cover.
+  if (image) { t.image = image; recentImages.add(image); }
   delete t.imageQueries; // internal only — not part of the app's Topic shape
   console.log(`${t.id}: image=${image ? 'found' : 'none (color gradient fallback)'}`);
 }
