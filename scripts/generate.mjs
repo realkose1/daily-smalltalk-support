@@ -216,7 +216,10 @@ const moodTip = { type: 'object', additionalProperties: false, properties: { ope
 const topic = {
   type: 'object', additionalProperties: false,
   properties: {
-    id: { type: 'string' }, cat: { type: 'string', enum: ['시즌', '날씨', '음식', '일상', '문화', '경제'] },
+    // Categories double as the app's "관심 주제" picker, so keep them short
+    // (they render as a chip on the cover) and broad enough that any of them
+    // can carry a universally relatable small-talk question.
+    id: { type: 'string' }, cat: { type: 'string', enum: ['시즌', '날씨', '음식', '일상', '여행', '문화', '건강', '취미', '쇼핑', '경제', '커리어', '관계'] },
     label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
     special: { type: 'boolean', description: '오늘이 [한국의 특별한 날](초복·중복·말복·명절·기념일 등)이고 이 주제가 바로 그 날을 소재로 만든 주제일 때만 true. 그런 주제는 정확히 1개. 오늘이 특별한 날이 아니거나 이 주제가 그 소재가 아니면 false.' },
     questions: { type: 'array', items: { type: 'string' } },
@@ -242,6 +245,8 @@ const gen = await client.messages.create({
       (todaySpecial
         ? `- ★오늘은 "${todaySpecial}" — 1년에 한 번뿐인 날이에요. 이 날을 소재로 한 주제를 정확히 1개 만들고 그 주제에만 special:true를 설정하세요(나머지 주제는 모두 false). 그 주제가 덱 맨 앞(첫 카드)에 놓입니다.\n`
         : `- 오늘은 [한국의 특별한 날] 목록에 있는 날이 아니에요. 모든 주제의 special은 false로 두세요.\n`) +
+      `- 카테고리는 시즌/날씨/음식/일상/여행/문화/건강/취미/쇼핑/경제/커리어/관계 중에서 고르고, 5개가 서로 달라야 해요. 앱에서 사용자가 '관심 주제'로 고르는 값이라 매일 같은 조합만 나오면 안 됩니다 — 최근에 안 나온 카테고리도 적극적으로 섞어 주세요(단, 아래 '스몰토크 적합성' 기준은 그대로 지키세요).\n` +
+      `- 카테고리 감: 여행=휴가·나들이·가보고 싶은 곳 / 문화=드라마·영화·음악·공연 / 건강=운동·수면·컨디션 / 취미=게임·독서·수집·배우는 것 / 쇼핑=요즘 산 것·패션·생활용품 / 커리어=일하는 방식·출퇴근·이직 고민(가볍게) / 관계=친구·가족·주변 사람 이야기(사생활 캐묻기 금지).\n` +
       `- ★위 [최근 며칠간 이미 나간 주제]와 겹치지 마세요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(예: 장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수). 제목·질문 문구가 비슷해도 안 됩니다.\n` +
       `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 누구나 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로 쓰세요(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
       `- 모든 문장 존댓말 ~요체(단 친구 팁은 반말도 자연스러우면 허용). 친근하고 구체적, 살짝 위트.\n` +
@@ -282,7 +287,10 @@ if (todaySpecial) {
   const si = data.topics.findIndex((t) => t.special);
   if (si > 0) data.topics.unshift(data.topics.splice(si, 1)[0]);
 }
-for (const t of data.topics) delete t.special;
+// Keep `special: true` on the pinned topic (the app re-orders the deck by the
+// user's 관심 주제 and must know which card stays first); drop the noisy
+// `special: false` from the rest.
+for (const t of data.topics) if (!t.special) delete t.special;
 
 // --- cover photos: Openverse, CC0 only (no attribution required), keyless ---
 const CAT_FALLBACK_QUERY = {
@@ -294,6 +302,12 @@ const CAT_FALLBACK_QUERY = {
   // returned ~0 usable results and silently killed the fallback (2026-07-08).
   '문화': 'city street people walking',
   '경제': 'money coins savings finance',
+  '여행': 'travel suitcase airport train',
+  '건강': 'running shoes park exercise',
+  '취미': 'guitar books camera desk',
+  '쇼핑': 'shopping bags store clothes',
+  '커리어': 'office desk laptop notebook',
+  '관계': 'friends talking cafe table',
 };
 
 const STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
