@@ -2,7 +2,9 @@
 // Runs daily at 09:00 KST (00:00 UTC) via GitHub Actions.
 // Real-time signals come from free APIs (no Anthropic web search — that injects
 // ~100k tokens of page content and costs ~$10/mo). One Sonnet call turns the
-// compact brief into 5 topics. Cost ≈ $1/month.
+// compact brief into 8 topics — the deck went 5 → 8 so that the app's 관심 주제
+// picker has enough categories present each day to actually re-order anything.
+// Cost ≈ $1.5/month.
 //   - Weather: Open-Meteo (free, keyless)
 //   - Culture trends: Google News search RSS (free, light-topic query)
 //   - Cover photos: Openverse (free, keyless, CC0-only so no attribution is
@@ -235,13 +237,15 @@ const schema = { type: 'object', additionalProperties: false, properties: { topi
 
 const gen = await client.messages.create({
   model: MODEL,
-  max_tokens: 12000,
+  // 8 topics × (3 questions + 3 moods × 3 tips + imageQueries) — 12k truncated
+  // the JSON mid-object once the deck grew from 5 to 8.
+  max_tokens: 20000,
   output_config: { format: { type: 'json_schema', schema } },
   messages: [{
     role: 'user',
     content:
       `너는 "데일리 스몰토크" 앱의 오늘의 주제 5개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 실시간 맥락]\n${brief}\n[요구사항]\n` +
-      `- 정확히 5개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게. 날씨 주제는 최대 1개까지만, 순서는 자유롭게(날씨가 꼭 첫 번째일 필요 없음).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      `- 정확히 8개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게. 날씨 주제는 최대 1개까지만, 순서는 자유롭게(날씨가 꼭 첫 번째일 필요 없음).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
       (todaySpecial
         ? `- ★오늘은 "${todaySpecial}" — 1년에 한 번뿐인 날이에요. 이 날을 소재로 한 주제를 정확히 1개 만들고 그 주제에만 special:true를 설정하세요(나머지 주제는 모두 false). 그 주제가 덱 맨 앞(첫 카드)에 놓입니다.\n`
         : `- 오늘은 [한국의 특별한 날] 목록에 있는 날이 아니에요. 모든 주제의 special은 false로 두세요.\n`) +
@@ -267,7 +271,7 @@ const gen = await client.messages.create({
 
 const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
 const data = JSON.parse(raw);
-data.topics = (data.topics || []).filter((t) => Array.isArray(t.questions) && t.questions.length === 3).slice(0, 5);
+data.topics = (data.topics || []).filter((t) => Array.isArray(t.questions) && t.questions.length === 3).slice(0, 8);
 if (data.topics.length < 3) throw new Error('not enough valid topics');
 
 // Shuffle so the deck order varies day to day — the model tends to emit the
