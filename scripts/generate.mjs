@@ -236,6 +236,29 @@ const brief =
   (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 console.log('--- brief ---\n' + brief);
 
+// Sub-topics: what "비슷한 주제를 덜 보기" actually keys off. The category alone
+// is too blunt — disliking one 주식 card shouldn't bury 물가·환율·부동산 too.
+// Fixed vocabulary (not free text) so the same subject gets the same tag every
+// day; free-form Korean drifts (주식/증시/코스피) and stops matching.
+const SUBTOPICS = {
+  '시즌': ['명절', '절기', '기념일', '연말연시'],
+  '날씨': ['더위', '추위', '비·장마', '눈', '미세먼지', '일교차'],
+  '음식': ['맛집', '배달·외식', '집밥·요리', '커피·음료', '디저트', '제철음식'],
+  '일상': ['집안일', '잠·수면', '주말계획', '정리·미니멀', '아침루틴'],
+  '여행': ['국내여행', '해외여행', '당일치기', '숙소', '여행준비'],
+  '문화': ['드라마', '영화', '음악', '예능', '공연·전시', '웹툰·책'],
+  '건강': ['운동', '다이어트', '수면', '컨디션·피로', '건강검진'],
+  '취미': ['게임', '독서', '사진', '배우기', '수집', '반려식물'],
+  '쇼핑': ['온라인쇼핑', '패션', '생활용품', '중고거래', '세일·할인'],
+  '경제': ['주식·투자', '물가', '환율', '부동산', '월급·저축', '소비습관'],
+  '커리어': ['출퇴근', '업무방식', '이직', '회사생활', '자기계발'],
+  '관계': ['친구', '가족', '연애', '반려동물', '이웃·동료'],
+};
+const ALL_SUBTOPICS = Object.values(SUBTOPICS).flat();
+const SUBTOPIC_GUIDE = Object.entries(SUBTOPICS)
+  .map(([c, subs]) => `${c}: ${subs.join(' / ')}`)
+  .join('\n');
+
 const moodTip = { type: 'object', additionalProperties: false, properties: { opener: { type: 'string' }, follow: { type: 'string' }, caution: { type: 'string' } }, required: ['opener', 'follow', 'caution'] };
 const topic = {
   type: 'object', additionalProperties: false,
@@ -244,6 +267,8 @@ const topic = {
     // (they render as a chip on the cover) and broad enough that any of them
     // can carry a universally relatable small-talk question.
     id: { type: 'string' }, cat: { type: 'string', enum: ['시즌', '날씨', '음식', '일상', '여행', '문화', '건강', '취미', '쇼핑', '경제', '커리어', '관계'] },
+    // Must belong to the chosen cat — see SUBTOPIC_GUIDE in the prompt.
+    subtopic: { type: 'string', enum: ALL_SUBTOPICS },
     label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
     special: { type: 'boolean', description: '오늘이 [한국의 특별한 날](초복·중복·말복·명절·기념일 등)이고 이 주제가 바로 그 날을 소재로 만든 주제일 때만 true. 그런 주제는 정확히 1개. 오늘이 특별한 날이 아니거나 이 주제가 그 소재가 아니면 false.' },
     questions: { type: 'array', items: { type: 'string' } },
@@ -253,7 +278,7 @@ const topic = {
     // 2026-07-12). "Exactly 3" lives in the description + slice(0,3) below.
     imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns.' },
   },
-  required: ['id', 'cat', 'label', 'color', 'title', 'desc', 'reason', 'special', 'questions', 'tips', 'imageQueries'],
+  required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'questions', 'tips', 'imageQueries'],
 };
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
@@ -272,6 +297,8 @@ const gen = await client.messages.create({
         ? `- ★오늘은 "${todaySpecial}" — 1년에 한 번뿐인 날이에요. 이 날을 소재로 한 주제를 정확히 1개 만들고 그 주제에만 special:true를 설정하세요(나머지 주제는 모두 false). 그 주제가 덱 맨 앞(첫 카드)에 놓입니다.\n`
         : `- 오늘은 [한국의 특별한 날] 목록에 있는 날이 아니에요. 모든 주제의 special은 false로 두세요.\n`) +
       `- 카테고리는 시즌/날씨/음식/일상/여행/문화/건강/취미/쇼핑/경제/커리어/관계 중에서 고르고, 5개가 서로 달라야 해요. 앱에서 사용자가 '관심 주제'로 고르는 값이라 매일 같은 조합만 나오면 안 됩니다 — 최근에 안 나온 카테고리도 적극적으로 섞어 주세요(단, 아래 '스몰토크 적합성' 기준은 그대로 지키세요).\n` +
+      `- subtopic은 반드시 그 카테고리에 속한 것으로 고르세요:\n${SUBTOPIC_GUIDE}\n` +
+      `- 같은 subtopic이 하루에 두 번 나오면 안 되고, [최근 며칠간 이미 나간 주제]에서 자주 보인 subtopic은 피하세요.\n` +
       `- 카테고리 감: 여행=휴가·나들이·가보고 싶은 곳 / 문화=드라마·영화·음악·공연 / 건강=운동·수면·컨디션 / 취미=게임·독서·수집·배우는 것 / 쇼핑=요즘 산 것·패션·생활용품 / 커리어=일하는 방식·출퇴근·이직 고민(가볍게) / 관계=친구·가족·주변 사람 이야기(사생활 캐묻기 금지).\n` +
       `- ★위 [최근 며칠간 이미 나간 주제]와 겹치지 마세요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(예: 장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수). 제목·질문 문구가 비슷해도 안 됩니다.\n` +
       `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 누구나 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로 쓰세요(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
