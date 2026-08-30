@@ -1,282 +1,282 @@
 {
   "date": "2026-08-30",
   "dateLabel": "8월 30일 일요일",
-  "generatedAt": "2026-08-30T12:34:14.988Z",
+  "generatedAt": "2026-08-30T14:36:26.273Z",
   "topics": [
     {
-      "id": "health-sleep-latesummer-0830",
-      "cat": "건강",
-      "label": "숙면",
-      "color": "#3A6EA5",
-      "title": "열대야 마지막 고비, 요즘 잠은 잘 오세요?",
-      "desc": "처서가 지나도 아직 남아있는 열대야, 요즘 밤에 잠들기 어떤지 나누는 이야기예요.",
-      "reason": "처서 지나 선선해진다지만 아직 열대야가 남아있어 수면 이야기를 나누기 좋은 시점이에요.",
-      "questions": [
-        "요즘 밤에 잠은 잘 주무세요?",
-        "더위 때문에 못 잔 밤, 다음날 어떻게 버티세요?",
-        "숙면을 위해 특별히 하는 게 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 밤에 잠 잘 오세요? 저는 아직도 열대야 때문에 뒤척여요.",
-          "follow": "혹시 숙면 위해서 하는 특별한 거 있으세요?",
-          "caution": "너무 피곤함을 강조하며 우울한 톤 주의"
-        },
-        "friend": {
-          "opener": "야 너 요즘 잠 잘 자? 나 아직도 열대야에 못 자겠어",
-          "follow": "잠 안 올 때 너는 뭐 해?",
-          "caution": "수면 부족 얘기로 걱정 끼치지 않게"
-        },
-        "date": {
-          "opener": "요즘도 밤에 더워서 잠 설치시나요?",
-          "follow": "잠 잘 자려고 따로 하는 루틴 있으세요?",
-          "caution": "상대방 건강 걱정하듯 배려 있게 말하기"
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Frances_%28Appleton%29_Longfellow_to_Anne_Longfellow_Pierce%2C_11_February_1848_%287179e995-805b-4810-a9c3-53df42dbf766%29.jpg/1280px-Frances_%28Appleton%29_Longfellow_to_Anne_Longfellow_Pierce%2C_11_February_1848_%287179e995-805b-4810-a9c3-53df42dbf766%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "travel-summer-memory-0830",
-      "cat": "여행",
-      "label": "여행추억",
-      "color": "#2E8B77",
-      "title": "올여름 가장 기억에 남는 여행, 어디였어요",
-      "desc": "여름이 저물어가는 지금, 이번 여름 다녀온 곳 중 가장 기억에 남는 순간을 나눠보는 주제예요.",
-      "reason": "처서 지나 여름이 저물어가는 시점이라 지난 여름 여행을 돌아보기 좋은 타이밍이에요.",
-      "questions": [
-        "이번 여름 다녀온 곳 중 가장 기억에 남는 곳 있으세요?",
-        "올여름 여행에서 제일 맛있게 먹은 게 뭐였어요?",
-        "못 가서 아쉬운 여행지 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "여름 다 가기 전에 어디 다녀오셨어요?",
-          "follow": "그중에 제일 좋았던 곳은 어디였어요?",
-          "caution": "휴가 못 쓴 사람 배려해서 눈치 있게 말하기"
-        },
-        "friend": {
-          "opener": "너 이번 여름에 어디 갔었어? 제일 좋았던 데 어디야",
-          "follow": "다음엔 어디 가고 싶어?",
-          "caution": "자랑처럼 들리지 않게 톤 조절하기"
-        },
-        "date": {
-          "opener": "이번 여름에 여행 다녀오신 곳 있으세요?",
-          "follow": "여행 스타일이 어떠세요, 계획파세요 즉흥파세요?",
-          "caution": "예산이나 지출 얘기는 피하기"
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Beach-holiday-vacation-caribbean_%2823696591474%29.jpg/1280px-Beach-holiday-vacation-caribbean_%2823696591474%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "relationship-pet-cpr-0830",
-      "cat": "관계",
-      "label": "반려동물",
-      "color": "#B5533C",
-      "title": "심폐소생술 흉내내는 반려견 영상, 보셨어요?",
-      "desc": "소방관 아빠를 보고 배운 듯 심폐소생술을 흉내내는 반려견 영상이 화제인데, 반려동물과의 특별한 순간을 나눠보는 이야기예요.",
-      "reason": "최근 소방관 아빠처럼 심폐소생술을 흉내내는 반려견 '신디' 영상이 화제라 반려동물 이야기로 풀어보기 좋아요.",
-      "questions": [
-        "반려동물 키우세요? 있다면 제일 똑똑하다고 느낀 순간 있으세요?",
-        "반려동물이 사람 흉내내는 거 보신 적 있으세요?",
-        "반려동물이랑 있으면서 제일 웃겼던 에피소드 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 소방관 아빠 따라 심폐소생술 흉내내는 강아지 영상 보셨어요? 너무 신기하더라고요.",
-          "follow": "혹시 반려동물 키우세요?",
-          "caution": "반려동물 없는 사람에게 부담 주지 않게"
-        },
-        "friend": {
-          "opener": "야 그 심폐소생술 하는 강아지 영상 봤어? 완전 신기하더라",
-          "follow": "너네 집 강아지(고양이)는 뭐 잘해?",
-          "caution": "동물 안 좋아하는 친구면 화제 빨리 전환하기"
-        },
-        "date": {
-          "opener": "혹시 그 심폐소생술 흉내내는 강아지 영상 보셨어요? 너무 귀엽던데.",
-          "follow": "반려동물 키우세요, 아니면 좋아하는 동물 있으세요?",
-          "caution": "상대가 무서워하는 동물 얘기는 조심하기"
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Greyhound_walking_and_looking_at_the_camera.jpg/1280px-Greyhound_walking_and_looking_at_the_camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Dog_looking_at_camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageCredit": {
-        "author": "Nicole Qowens",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dog_looking_at_camera.jpg"
-      }
-    },
-    {
-      "id": "weather-drizzle-0830",
-      "cat": "날씨",
-      "label": "이슬비",
-      "color": "#5B7C99",
-      "title": "이슬비 내리는 일요일, 처서 지나니 다르네요",
-      "desc": "처서 지나며 아침저녁 공기가 선선해졌다는데 오늘은 이슬비까지 내리는 날, 계절이 바뀌는 걸 체감하는 이야기예요.",
-      "reason": "오늘 서울은 이슬비, 최고 27도 최저 22도에 강수확률 55%, 말복·처서가 지나가는 시기라 계절감을 나누기 좋은 타이밍이에요.",
-      "questions": [
-        "처서 지나니 아침저녁 공기가 확실히 달라진 것 같지 않으세요?",
-        "이슬비 내리는 오늘 같은 날엔 뭐 하면서 시간 보내세요?",
-        "여름 내내 힘들었던 열대야, 요즘은 좀 나아지셨어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오늘 이슬비 내리더라고요, 그래도 아침엔 좀 선선했죠?",
-          "follow": "처서 지나서 그런가 확실히 낮밤 공기가 다른 것 같아요.",
-          "caution": "출근길 불편 얘기로만 흐르지 않게 가볍게 넘기기"
-        },
-        "friend": {
-          "opener": "야 오늘 이슬비 오는거 봤어? 처서 지나서 그런가 좀 다르더라",
-          "follow": "너는 이런 날 집에서 뭐하고 놀아?",
-          "caution": "날씨 투정만 계속하면 지루해지니 활동 얘기로 넘어가기"
-        },
-        "date": {
-          "opener": "오늘 비가 살짝 오길래 우산 쓰고 나왔는데, 이런 날씨 좋아하세요?",
-          "follow": "비 오는 날 데이트하면 어디 가는 거 좋아하세요?",
-          "caution": "비 때문에 약속이 꼬였다는 부정적 얘기로 시작하지 않기"
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Thomas_Butler_Gunn_Diaries-_Volume_6%2C_page_31%2C_July_25-30%2C_1853_-_DPLA_-_37b7abb690f933715fccbfd378e145bc.jpg/1280px-Thomas_Butler_Gunn_Diaries-_Volume_6%2C_page_31%2C_July_25-30%2C_1853_-_DPLA_-_37b7abb690f933715fccbfd378e145bc.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "shopping-secondhand-0830",
-      "cat": "쇼핑",
-      "label": "중고거래",
-      "color": "#D4A017",
-      "title": "요즘 중고거래 하시나요?",
-      "desc": "당근마켓 같은 중고거래 앱으로 물건 사고파는 게 익숙해진 요즘, 경험을 나누는 이야기예요.",
-      "reason": "환절기 앞두고 안 쓰는 물건을 정리하며 중고거래를 많이 하는 시기라 공감대 있는 소재예요.",
-      "questions": [
-        "중고거래로 팔거나 산 물건 중에 기억나는 거 있으세요?",
-        "중고거래하면서 재밌었던 경험 있으세요?",
-        "요즘 정리하면서 내놓을까 고민되는 물건 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 중고거래 앱 자주 보세요? 저 얼마전에 물건 하나 팔았어요.",
-          "follow": "혹시 재밌었던 중고거래 경험 있으세요?",
-          "caution": "가격 흥정 스트레스 얘기만 반복하지 않기"
-        },
-        "friend": {
-          "opener": "야 너 중고거래 해봤어? 나 요즘 재미붙였어",
-          "follow": "너는 뭐 팔아봤어?",
-          "caution": "사기 당한 경험담으로 분위기 무겁게 하지 않기"
-        },
-        "date": {
-          "opener": "혹시 중고거래 앱 쓰세요? 저는 요즘 재미붙였거든요.",
-          "follow": "사고파는 거 중에 뭐가 제일 기억나세요?",
-          "caution": "돈 얘기로만 흐르지 않게"
-        }
-      },
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Library_Economy_-_Heavy_Items_Delivery_or_Collections.png/1280px-Library_Economy_-_Heavy_Items_Delivery_or_Collections.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Jacob coffin",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Library_Economy_-_Heavy_Items_Delivery_or_Collections.png"
-      }
-    },
-    {
-      "id": "food-sunday-dinner-0830",
-      "cat": "음식",
-      "label": "저녁메뉴",
-      "color": "#C97B4A",
-      "title": "일요일 저녁, 집밥이냐 배달이냐",
-      "desc": "주말을 마무리하는 일요일 저녁 메뉴 고민, 집밥과 배달 사이에서의 선택 이야기예요.",
-      "reason": "일요일 저녁, 다음날 출근을 앞두고 간단히 먹거나 든든히 먹는 취향이 다양해 대화 소재로 좋아요.",
-      "questions": [
-        "오늘 저녁은 집밥이세요, 배달이세요?",
-        "일요일 저녁엔 보통 뭘 챙겨 드세요?",
-        "월요일 앞두고 든든하게 드시는 편이세요, 가볍게 드시는 편이세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오늘 저녁 뭐 드실 거예요? 저는 아직 못 정했어요.",
-          "follow": "일요일 저녁엔 보통 뭐 드세요?",
-          "caution": "다이어트 얘기로 너무 깊이 들어가지 않기"
-        },
-        "friend": {
-          "opener": "야 오늘 저녁 뭐 먹을 거야? 나 배달 시킬까 고민중",
-          "follow": "너 일요일 저녁엔 보통 뭐 먹어?",
-          "caution": "음식 취향 강요하지 않기"
-        },
-        "date": {
-          "opener": "저녁 메뉴 뭐 좋아하세요? 저는 고민될 때마다 못 정해서요.",
-          "follow": "집밥파세요 아니면 밖에서 먹는 거 좋아하세요?",
-          "caution": "너무 사적인 식습관 캐묻지 않기"
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Normandy_families_nourish_connections_with_U_S_service_members_around_the_table_%289729672%29.jpg/1280px-Normandy_families_nourish_connections_with_U_S_service_members_around_the_table_%289729672%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "culture-shortform-0830",
+      "id": "rainy-playlist",
       "cat": "문화",
-      "label": "숏폼",
-      "color": "#8E44AD",
-      "title": "요즘 자꾸 보게 되는 숏폼 영상 있으세요?",
-      "desc": "유튜브 쇼츠나 릴스처럼 짧은 영상에 빠지기 쉬운 요즘, 즐겨보는 채널이나 영상 이야기예요.",
-      "reason": "일요일 오후 늘어지게 쉬면서 숏폼 콘텐츠 소비가 많아지는 시기라 공감대 형성이 좋아요.",
+      "subtopic": "음악",
+      "label": "플레이리스트",
+      "color": "#6A5ACD",
+      "title": "비 오는 일요일엔 이런 노래",
+      "desc": "이슬비 내리는 날, 저도 모르게 찾게 되는 플레이리스트 있잖아요.",
+      "reason": "강수확률 80%인 오늘, 창밖 빗소리에 어울리는 음악 얘기 나누기 좋은 날이에요.",
       "questions": [
-        "요즘 알고리즘이 자꾸 추천해주는 영상 있으세요?",
-        "숏폼 보다가 시간 훌쩍 가버린 적 있으세요?",
-        "요즘 재밌게 보는 유튜브 채널 있으세요?"
+        "비 오는 날 특히 찾게 되는 노래 있으세요?",
+        "요즘 플레이리스트에 자주 도는 곡 있으세요?",
+        "노래 들을 때 보통 어떤 앱이나 방법 쓰세요?"
       ],
       "tips": {
         "work": {
-          "opener": "저 요즘 숏폼 보다가 시간 가는 줄 모르겠어요.",
-          "follow": "혹시 요즘 자주 보는 채널 있으세요?",
-          "caution": "업무시간에 본다는 얘기는 조심하기"
+          "opener": "비 오니까 잔잔한 노래만 듣게 되네요",
+          "follow": "요즘 플레이리스트에 뭐 있으세요?",
+          "caution": "업무 얘기로 새지 않게"
         },
         "friend": {
-          "opener": "야 요즘 숏폼 뭐 보냐, 나 알고리즘한테 완전 낚였어",
-          "follow": "너는 뭐 보다가 시간 가는 줄 몰랐어?",
-          "caution": "자극적인 콘텐츠 얘기로 흐르지 않게"
+          "opener": "야 이 노래 완전 비 오는 날 감성이야",
+          "follow": "너 요즘 뭐 듣냐",
+          "caution": "취향 무시하지 않기"
         },
         "date": {
-          "opener": "저 요즘 숏폼에 빠져서 시간 순삭이더라고요, 그런 거 있으세요?",
-          "follow": "어떤 영상 보면 시간 가는 줄 모르세요?",
-          "caution": "스마트폰만 본다는 인상 주지 않게 가볍게"
+          "opener": "저는 비 오면 항상 듣는 플레이리스트가 있어요",
+          "follow": "어떤 장르 좋아하세요?",
+          "caution": "너무 마니아처럼 길게 설명하지 않기"
         }
       },
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Clonown_Community_-_Athlone_10KM_and_5KM_Road_Races_2014_%2814037685974%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Portable_Philips_LP-_record_player.jpg/1280px-Portable_Philips_LP-_record_player.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "stock-market-drop",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "증시",
+      "color": "#B22222",
+      "title": "삼성전자 -3.4%, 다들 놀라셨죠",
+      "desc": "지난 금요일 삼성전자, SK하이닉스, 코스피까지 동반 하락했다는데 다들 화제더라고요.",
+      "reason": "8월 28일(금) 종가 기준 삼성전자 -3.4%, SK하이닉스 -4.5%, 코스피 -1.8%로 큰 변동이 있었어요.",
+      "questions": [
+        "지난 금요일 증시 소식, 들으셨어요?",
+        "주식이나 투자 하시는 거 있으세요?",
+        "이렇게 출렁일 때 마음은 어떻게 다스리세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "지난 금요일 삼성전자 3%나 빠졌다던데 보셨어요?",
+          "follow": "혹시 투자하시는 거 있으세요?",
+          "caution": "매수매도 조언하듯 말하지 않기"
+        },
+        "friend": {
+          "opener": "야 삼성전자 금요일에 완전 빠졌던데",
+          "follow": "너도 뭐 투자하는 거 있어?",
+          "caution": "손실 자세히 캐묻지 않기"
+        },
+        "date": {
+          "opener": "요즘 증시 얘기 화제던데 관심 있으세요?",
+          "follow": "투자 스타일이 안전 추구파세요, 아니면 과감한 편이세요?",
+          "caution": "돈 얘기 너무 깊게 파고들지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "summer-diet-check",
+      "cat": "건강",
+      "subtopic": "다이어트",
+      "label": "다이어트",
+      "color": "#DC143C",
+      "title": "여름 끝, 다이어트는 어떻게 되고 있나요",
+      "desc": "여름 내내 다짐했던 다이어트, 선선해지기 전에 한번 점검해봐요.",
+      "reason": "말복도 지나고 무더위 끝물인 시기라 여름 다이어트 성적표를 돌아보기 좋은 때예요.",
+      "questions": [
+        "여름 다이어트 목표, 어떻게 되셨어요?",
+        "요즘 식단 관리는 어떻게 하고 계세요?",
+        "다이어트할 때 제일 힘든 순간이 언제예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "저 여름 다이어트 완전 실패했어요",
+          "follow": "혹시 따로 관리하시는 거 있으세요?",
+          "caution": "외모 평가하듯 말하지 않기"
+        },
+        "friend": {
+          "opener": "야 나 여름 다이어트 망한 것 같아",
+          "follow": "너는 올해 다이어트 성공했어?",
+          "caution": "몸무게 숫자 캐묻지 않기"
+        },
+        "date": {
+          "opener": "저는 요즘 운동으로 관리하고 있어요",
+          "follow": "혹시 건강 관리 어떻게 하세요?",
+          "caution": "다이어트 강요하듯 말하지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Tuna_Salad_with_sweet_corn.jpg/1280px-Tuna_Salad_with_sweet_corn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "hobby-collecting",
+      "cat": "취미",
+      "subtopic": "수집",
+      "label": "수집",
+      "color": "#B8860B",
+      "title": "혹시 뭔가 모으는 취미 있으세요?",
+      "desc": "피규어든 굿즈든 우표든, 소소하게 모으는 게 있으면 이야기가 술술 풀려요.",
+      "reason": "집에 있는 날 자신의 물건을 둘러보게 되는 일요일, 수집 취향 얘기하기 좋은 타이밍이에요.",
+      "questions": [
+        "혹시 뭔가 꾸준히 모으는 거 있으세요?",
+        "최근에 새로 산 소장품 있으세요?",
+        "어릴 때 모았던 것 중 기억나는 거 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "저 사실 피규어 모으는 취미가 있어요",
+          "follow": "혹시 따로 모으시는 거 있으세요?",
+          "caution": "덕질을 이상하게 보는 반응 조심"
+        },
+        "friend": {
+          "opener": "야 나 요즘 이거 모으는데 봐봐",
+          "follow": "너도 뭐 모으는 거 있지 않아?",
+          "caution": "돈 많이 쓴다고 타박하지 않기"
+        },
+        "date": {
+          "opener": "저 소소하게 엽서 모으는 취미가 있어요",
+          "follow": "혹시 수집하는 거 있으세요?",
+          "caution": "너무 오타쿠스럽게 몰아붙이지 않기"
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Dinastia_tang%2C_shanxi%2C_straniero_dal_volto_velato%2C_600-750_ca.JPG/1280px-Dinastia_tang%2C_shanxi%2C_straniero_dal_volto_velato%2C_600-750_ca.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Peter Mooney",
-        "license": "CC BY-SA 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clonown_Community_-_Athlone_10KM_and_5KM_Road_Races_2014_(14037685974).jpg"
+        "author": "sailko",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dinastia_tang,_shanxi,_straniero_dal_volto_velato,_600-750_ca.JPG"
       }
     },
     {
-      "id": "econ-exchangerate-0830",
-      "cat": "경제",
-      "label": "환율",
-      "color": "#1F6F54",
-      "title": "환율 1,372원, 요즘 해외직구 부담되지 않으세요",
-      "desc": "원/달러 환율이 1,372원대를 오가고 비트코인은 오히려 오르는 요즘, 다들 얘기하는 환율·재테크 화제를 나눠보는 이야기예요.",
-      "reason": "오늘 원/달러 환율은 종가 기준 직전 거래일 대비 0.6% 내린 1,372원, 비트코인은 1.1% 오른 78,664달러로 환율과 가상자산이 화제예요.",
+      "id": "dating-talk",
+      "cat": "관계",
+      "subtopic": "연애",
+      "label": "연애",
+      "color": "#FF69B4",
+      "title": "요즘 주변에 연애하는 사람 많나요?",
+      "desc": "친구든 동료든, 주변 연애 소식 들으면 괜히 궁금해지고 대화도 술술 풀리죠.",
+      "reason": "일요일 여유로운 시간, 가벼운 연애 이야기로 대화 물꼬 트기 좋은 소재예요.",
       "questions": [
-        "요즘 환율 때문에 해외직구나 여행 계획에 영향 있으세요?",
-        "비트코인 오르내리는 거 보면서 관심 가져보신 적 있으세요?",
-        "요즘 재테크나 투자, 어떤 식으로 하고 계세요?"
+        "요즘 주변에 연애 시작한 사람 있어요?",
+        "연애할 때 제일 중요하게 생각하는 게 뭐예요?",
+        "소개팅이나 앱으로 만남, 어떻게 생각하세요?"
       ],
       "tips": {
         "work": {
-          "opener": "환율이 1,372원이라던데, 해외 출장이나 직구하실 때 부담되지 않으세요?",
-          "follow": "요즘 다들 재테크 얘기 많이 하던데 어떻게 하고 계세요?",
-          "caution": "구체적인 매수·매도 조언은 하지 않기"
+          "opener": "요즘 주변에 연애 소식 많던데 들으셨어요?",
+          "follow": "따로 만남 스타일 선호하시는 거 있으세요?",
+          "caution": "사생활 너무 깊게 캐묻지 않기"
         },
         "friend": {
-          "opener": "야 환율 봤어? 1,372원이더라, 비트코인은 오히려 오르고",
-          "follow": "너는 요즘 뭐 투자하고 있어?",
-          "caution": "돈 자랑이나 손해 얘기로 부담 주지 않기"
+          "opener": "야 누구누구 연애 시작했대",
+          "follow": "너는 요즘 연애 어때?",
+          "caution": "이전 연애 아프게 들쑤시지 않기"
         },
         "date": {
-          "opener": "요즘 환율 얘기 많이 나오던데 관심 있으세요?",
-          "follow": "혹시 재테크 같은 거 관심 있으세요?",
-          "caution": "돈 얘기는 가볍게, 너무 깊게 들어가지 않기"
+          "opener": "저는 연애할 때 대화가 잘 통하는 게 제일 중요한 것 같아요",
+          "follow": "그쪽은 어떤 걸 중요하게 생각하세요?",
+          "caution": "전 연애사 캐묻지 않기"
         }
       },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Receipt_to_George_Rogers_Clark_for_bills_of_exchange_in_Pennsylvania_currency_for_goods_delivered_for_western_expedition%2C_signed_John_Gibson%2C_July_27%2C_1781_-_DPLA_-_5ab31e3773374caf71c09b08d6f275ce_%28page_2%29.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Iew_of_a_couple_and_a_child_in_front_of_their_home_%28NYPL_b11528957-G90F452_026B%29.tiff/lossy-page1-1280px-Iew_of_a_couple_and_a_child_in_front_of_their_home_%28NYPL_b11528957-G90F452_026B%29.tiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "recent-household-items",
+      "cat": "쇼핑",
+      "subtopic": "생활용품",
+      "label": "생활용품",
+      "color": "#20B2AA",
+      "title": "요즘 산 생활용품 중 뭐가 좋았어요?",
+      "desc": "장마철 제습제부터 주방용품까지, 써보고 만족한 생활용품 있으면 추천 나눠요.",
+      "reason": "습한 날씨가 이어지는 요즘, 생활용품 하나로 삶의 질이 달라지는 걸 느끼기 좋은 타이밍이에요.",
+      "questions": [
+        "최근에 산 생활용품 중에 만족스러운 거 있으세요?",
+        "꼭 필요한데 아직 안 산 생활용품 있으세요?",
+        "생활용품 살 때 보통 어디서 사세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "저 요즘 제습기 하나 샀는데 완전 신세계예요",
+          "follow": "혹시 요즘 산 생활용품 있으세요?",
+          "caution": "너무 광고처럼 늘어놓지 않기"
+        },
+        "friend": {
+          "opener": "야 이거 완전 꿀템이야",
+          "follow": "너도 요즘 산 생활용품 있어?",
+          "caution": "과소비한다고 놀리지 않기"
+        },
+        "date": {
+          "opener": "저는 요즘 생활용품 정리하는 재미에 빠졌어요",
+          "follow": "생활용품 고를 때 뭘 중요하게 보세요?",
+          "caution": "너무 살림꾼 자랑처럼 들리지 않게"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/EFTA00000578_-_Neatly_organized_shoe_closet_with_shelves_holding_boxes_clear_bins_and_storage_containers.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "sunday-selfdev",
+      "cat": "커리어",
+      "subtopic": "자기계발",
+      "label": "자기계발",
+      "color": "#2E8B57",
+      "title": "일요일 저녁, 왠지 자기계발 욕구가",
+      "desc": "월요일이 코앞이라 오히려 뭔가 배우고 싶어지는 밤, 다들 그런 적 있으시죠.",
+      "reason": "주말이 끝나가는 일요일 저녁, 새로운 마음으로 한 주를 준비하고 싶어지는 타이밍이에요.",
+      "questions": [
+        "요즘 따로 자기계발로 하고 있는 거 있으세요?",
+        "자격증이나 강의, 시작해볼까 고민중인 거 있나요?",
+        "동기부여 되는 유튜브나 채널 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 퇴근하고 뭐 배우시는 거 있으세요?",
+          "follow": "어떤 계기로 시작하셨어요?",
+          "caution": "성과 압박처럼 들리지 않게 가볍게"
+        },
+        "friend": {
+          "opener": "나 이번엔 진짜 뭐 하나 배워보려고",
+          "follow": "너는 요즘 뭐 자기계발 하는 거 있어?",
+          "caution": "안 한다고 눈치 주지 않기"
+        },
+        "date": {
+          "opener": "저는 요즘 새로운 취미 배워보고 있어요",
+          "follow": "혹시 배우고 싶은 거 있으세요?",
+          "caution": "너무 자기 자랑처럼 늘어놓지 않기"
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Young_woman_taking_notes_and_studying_at_desk_with_snacks_nearby_in_a_bright_workspace_setting.jpg/1280px-Young_woman_taking_notes_and_studying_at_desk_with_snacks_nearby_in_a_bright_workspace_setting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Young_woman_taking_notes_and_studying_at_desk_with_snacks_nearby_in_a_bright_workspace_setting.jpg"
+      }
+    },
+    {
+      "id": "sunday-housework",
+      "cat": "일상",
+      "subtopic": "집안일",
+      "label": "집안일",
+      "color": "#4A7043",
+      "title": "일요일, 밀린 집안일 해치우는 날",
+      "desc": "비도 오고 나가기 귀찮은 일요일, 미뤄둔 빨래나 청소부터 해볼까요.",
+      "reason": "이슬비 내리는 일요일 오후엔 밖보다 집안일이 당기는 날씨죠.",
+      "questions": [
+        "오늘 미뤄둔 집안일 있으세요?",
+        "집안일 중에 제일 하기 싫은 건 뭐예요?",
+        "청소나 빨래, 보통 언제 몰아서 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "저는 오늘 밀린 빨래 다 돌렸어요, 주말엔 집안일 좀 하셨어요?",
+          "follow": "쌓아두면 더 힘들어지는 것 같아요, 어떻게 관리하세요?",
+          "caution": "너무 사생활 깊이 묻지 않기"
+        },
+        "friend": {
+          "opener": "야 나 오늘 집 청소만 세 시간 했어",
+          "follow": "너는 집안일 미루는 편이야 몰아하는 편이야?",
+          "caution": "게으르다고 놀리지 않기"
+        },
+        "date": {
+          "opener": "저는 주말마다 집 정리하는 게 소소한 힐링이에요",
+          "follow": "정리 잘하는 편이세요, 아니면 저처럼 미루는 편이세요?",
+          "caution": "상대방 집 상태 지적하지 않기"
+        }
+      }
     }
   ]
 }
