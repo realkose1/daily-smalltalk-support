@@ -107,6 +107,22 @@ const MARKET_SYMBOLS = [
   ['BTC-USD', '비트코인(달러)'],
 ];
 
+// "어제 종가"라고 뭉뚱그리면 안 된다. 주식·코스피는 주말·공휴일에 쉬어서 일요일
+// 아침의 마지막 종가는 금요일 것이고, 비트코인·환율은 주말에도 움직여 항목마다
+// 기준일이 다르다. (일요일 주제에 "어제 떨어졌다"고 나간 사고: 2026-08-17)
+// → 각 줄에 실제 기준일을 한국어로 박아 넣고, 모델은 그 표현만 쓰게 한다.
+function kstDayLabel(epochSec) {
+  const d = new Date((epochSec + 9 * 3600) * 1000); // KST 기준 날짜
+  const y = d.getUTCFullYear(), m = d.getUTCMonth() + 1, day = d.getUTCDate();
+  const wd = ['일', '월', '화', '수', '목', '금', '토'][d.getUTCDay()];
+  const todayKey = `${kst.getUTCFullYear()}-${kst.getUTCMonth() + 1}-${kst.getUTCDate()}`;
+  const key = `${y}-${m}-${day}`;
+  if (key === todayKey) return '오늘';
+  const yest = new Date(kst.getTime() - 86400000);
+  if (key === `${yest.getUTCFullYear()}-${yest.getUTCMonth() + 1}-${yest.getUTCDate()}`) return '어제';
+  return `${m}월 ${day}일(${wd})`;
+}
+
 async function getMarkets() {
   const lines = [];
   for (const [sym, name] of MARKET_SYMBOLS) {
@@ -117,14 +133,20 @@ async function getMarkets() {
       );
       if (!r.ok) continue;
       const j = await r.json();
-      const closes = (j.chart?.result?.[0]?.indicators?.quote?.[0]?.close || []).filter((c) => c != null);
-      if (closes.length < 2) continue;
-      const prev = closes[closes.length - 2];
-      const last = closes[closes.length - 1];
-      const pct = ((last - prev) / prev) * 100;
+      const res = j.chart?.result?.[0];
+      const ts = res?.timestamp || [];
+      // Pair each close with its own timestamp BEFORE dropping nulls, so the
+      // date we report belongs to the close we report.
+      const pts = (res?.indicators?.quote?.[0]?.close || [])
+        .map((c, i) => ({ c, t: ts[i] }))
+        .filter((p) => p.c != null && p.t != null);
+      if (pts.length < 2) continue;
+      const prev = pts[pts.length - 2];
+      const last = pts[pts.length - 1];
+      const pct = ((last.c - prev.c) / prev.c) * 100;
       const big = Math.abs(pct) >= (sym === '^KS11' ? 1.5 : sym === 'KRW=X' ? 1 : 3);
       lines.push(
-        `${name}: ${Math.round(last).toLocaleString()} (전일 대비 ${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%)${big ? ' ★큰 변동' : ''}`,
+        `${name}: ${Math.round(last.c).toLocaleString()} — ${kstDayLabel(last.t)} 종가 기준, 직전 거래일(${kstDayLabel(prev.t)}) 대비 ${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%${big ? ' ★큰 변동' : ''}`,
       );
     } catch {
       // skip symbol on failure
@@ -209,7 +231,7 @@ const brief =
   (specials.length
     ? `\n[한국의 특별한 날 — 확정 정보]\n${specials.join('\n')}\n★오늘이 특별한 날이면 반드시 그 소재로 주제 1개를 만드세요(예: 초복 → 보양식). 1~3일 뒤라면 "다가온다"는 앵글로 써도 좋아요.\n`
     : '\n[한국의 특별한 날] 오늘~3일 내 없음. ★주의: 이 목록에 없는 날을 초복·명절·절기라고 지어내지 마세요(과거에 아닌 날을 초복이라고 쓴 사고 있음).\n') +
-  (markets ? `\n[시장 시그널 — 어제 종가 기준 실제 수치]\n- ${markets.join('\n- ')}\n` : '') +
+  (markets ? `\n[시장 시그널 — 실제 수치. ★각 줄에 적힌 기준일을 그대로 쓰세요]\n- ${markets.join('\n- ')}\n` : '') +
   (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시):\n- ${trends.join('\n- ')}\n` : '') +
   (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 console.log('--- brief ---\n' + brief);
@@ -259,7 +281,8 @@ const gen = await client.messages.create({
       `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. 위 '요즘 화제'에 구체적 제목이 없어 무엇인지 특정할 수 없으면, 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
       `- '요즘 화제'는 주제가 아니라 관점의 힌트일 뿐이에요. 정말 대다수가 알 수준(전 국민이 보는 인기 드라마/예능, 폭염·한파, 물가 급등 등)일 때만 최대 1개 넣되, 뉴스 사건이 아니라 누구나 대답할 수 있는 보편적 질문으로 바꾸세요(예: 물가 뉴스 → "요즘 장 보기 좀 부담되지 않으세요?"). 애매하면 트렌드 없이 일상·계절 소재로만 구성하세요.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
-      `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 '요즘 화제'에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 어제 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
+      `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 '요즘 화제'에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 금요일에 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
+      `- ★★시장 수치를 언급할 땐 [시장 시그널] 각 줄에 적힌 기준일 표현을 그대로 쓰세요. 주식·코스피는 주말·공휴일에 쉬기 때문에, 기준일이 "8월 15일(금)"인데 "어제"라고 쓰면 날짜가 틀립니다(일요일 주제에 금요일 등락을 "어제"라고 쓴 사고 있음). 기준일이 '어제'라고 적혀 있을 때만 "어제"라고 쓰고, 아니면 "지난 금요일" 같은 실제 요일이나 "최근"으로 쓰세요.\n` +
       `- 이때도 매수/매도 추천·목표가·시황분석·전망은 절대 금지 — "다들 얘기하더라"며 화제로 가볍게 나누는 톤만. 삼성전자·SK하이닉스·코스피·환율·비트코인처럼 다들 아는 것만 다루고, 소수만 아는 종목은 피하세요.\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
