@@ -403,35 +403,56 @@ function pickVaried(sorted) {
   const fresh = sorted.filter((c) => !recentImages.has(c.url));
   const pool = fresh.length ? fresh : sorted; // all seen recently → allow reuse
   const top = pool.slice(0, Math.min(6, pool.length));
-  return top[Math.floor(Math.random() * top.length)].url;
+  return top[Math.floor(Math.random() * top.length)];
 }
 
+// Strip the HTML Commons wraps author/license fields in.
+function plain(html) {
+  return String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// Both searches return an ARRAY of candidates:
+//   { url, s, free, credit }
+// `free` = attribution-free (CC0 / public domain) → safe for every app version.
+// Anything else carries `credit` and may only be shown by app builds that
+// render a credit line (see `imageAttributed` below).
 async function searchOpenverse(query) {
   try {
-    // cc0 + pdm (public domain mark): both attribution-free. Pull a wider page
-    // (20) so pickVaried has more distinct candidates to rotate through.
-    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0,pdm&page_size=20`;
+    // Pull a wider page (30) so pickVaried has more distinct candidates.
+    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(query)}&license=cc0,pdm,by,by-sa&page_size=30`;
     const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
-    if (!r.ok) return null;
+    if (!r.ok) return [];
     const j = await r.json();
     const results = (j.results || []).filter((it) => (it.width ?? 0) >= 600 && (it.height ?? 0) >= 400 && it.url);
-    if (!results.length) return null;
     const score = relevanceScorer(query);
     const hay = (it) => `${it.title || ''} ${(it.tags || []).map((t) => t.name || t).join(' ')}`;
-    const scored = results
-      .map((it) => ({ url: it.url, s: score(hay(it)) }))
+    return results
+      .map((it) => {
+        const lic = String(it.license || '').toLowerCase();
+        const free = lic === 'cc0' || lic === 'pdm';
+        return {
+          url: it.url,
+          s: score(hay(it)),
+          free,
+          credit: free ? null : {
+            author: it.creator || '(unknown)',
+            license: `CC ${lic.toUpperCase()}${it.license_version ? ' ' + it.license_version : ''}`,
+            licenseUrl: it.license_url || '',
+            sourceUrl: it.foreign_landing_url || it.url,
+          },
+        };
+      })
       .filter((c) => c.s > 0)
-      .sort((a, b) => b.s - a.s);
-    return pickVaried(scored);
+      .sort((a, b) => (b.free - a.free) || (b.s - a.s));
   } catch (e) {
     console.log(`openverse search failed for "${query}":`, e.message);
-    return null;
+    return [];
   }
 }
 
-// Wikimedia Commons, keyless. Only CC0/public-domain files (attribution-free),
-// same strict keyword rule (Commons full-text search alone returns loose
-// matches like paintings for "sleeping bed").
+// Wikimedia Commons, keyless. Same strict keyword rule (Commons full-text
+// search alone returns loose matches like paintings for "sleeping bed").
+// CC0/PD are attribution-free; CC BY / BY-SA come back with credit metadata.
 async function searchCommons(query) {
   try {
     const params = new URLSearchParams({
@@ -443,52 +464,84 @@ async function searchCommons(query) {
       headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
       signal: AbortSignal.timeout(10000),
     });
-    if (!r.ok) return null;
+    if (!r.ok) return [];
     const j = await r.json();
     const score = relevanceScorer(query);
-    const candidates = Object.values(j.query?.pages || {})
+    return Object.values(j.query?.pages || {})
       .map((p) => {
         const ii = p.imageinfo?.[0];
         if (!ii) return null;
-        const lic = ii.extmetadata?.LicenseShortName?.value || '';
-        if (!/cc0|public domain/i.test(lic)) return null;
+        const lic = plain(ii.extmetadata?.LicenseShortName?.value);
+        const free = /cc0|public domain/i.test(lic);
+        // Only CC BY / CC BY-SA beyond that — no NC/ND, which we can't use.
+        if (!free && !/^cc by(-sa)? /i.test(lic)) return null;
         if ((ii.width ?? 0) < 600 || (ii.height ?? 0) < 400) return null;
-        const desc = String(ii.extmetadata?.ImageDescription?.value || '').replace(/<[^>]+>/g, ' ');
+        const desc = plain(ii.extmetadata?.ImageDescription?.value);
         const s = score(`${p.title} ${desc}`);
         if (s <= 0) return null;
-        return { url: ii.thumburl || ii.url, s, cc0: /cc0/i.test(lic) };
+        const author = plain(ii.extmetadata?.Artist?.value);
+        // An attributed file with no usable author line can't be credited
+        // properly, so treat it as unusable rather than crediting "unknown".
+        if (!free && !author) return null;
+        return {
+          url: ii.thumburl || ii.url,
+          s,
+          free,
+          cc0: /cc0/i.test(lic),
+          credit: free ? null : {
+            author: author.slice(0, 60),
+            license: lic,
+            licenseUrl: plain(ii.extmetadata?.LicenseUrl?.value),
+            sourceUrl: ii.descriptionurl || ii.url,
+          },
+        };
       })
       .filter(Boolean)
-      // Prefer CC0 (modern Unsplash-donated photos) over PD (often dated scans).
-      .sort((a, b) => (b.cc0 - a.cc0) || (b.s - a.s));
-    return pickVaried(candidates);
+      // Attribution-free first (usable by every app version), then CC0 over PD
+      // (modern Unsplash donations rather than dated scans), then relevance.
+      .sort((a, b) => (b.free - a.free) || (b.cc0 - a.cc0) || (b.s - a.s));
   } catch (e) {
     console.log(`commons search failed for "${query}":`, e.message);
-    return null;
+    return [];
   }
 }
 
 for (const t of data.topics) {
   const queries = (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
-  let image = null;
-  // Cascade: every query on Openverse, then every query on Commons, then the
-  // category fallback — all strict-matched. Gradient only if the whole
-  // cascade misses, which the 3 varied queries make rare.
-  for (const q of queries) { image = await searchOpenverse(q); if (image) break; }
-  if (!image) for (const q of queries) { image = await searchCommons(q); if (image) break; }
-  // Category fallback: shuffled so a category that always lands here doesn't
-  // always land on the same photo, and tried on BOTH sources (Openverse alone
-  // left 경제 recycling one stock-conference shot).
-  if (!image) {
+  // Cascade: the model's own queries on Openverse, then on Commons, then the
+  // shuffled category fallback on both. Stop at the first query that yields
+  // candidates. Gradient only if the whole cascade misses.
+  let cands = [];
+  for (const q of queries) { cands = await searchOpenverse(q); if (cands.length) break; }
+  if (!cands.length) for (const q of queries) { cands = await searchCommons(q); if (cands.length) break; }
+  if (!cands.length) {
     for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle'])) {
-      image = (await searchOpenverse(q)) || (await searchCommons(q));
-      if (image) break;
+      cands = await searchOpenverse(q);
+      if (!cands.length) cands = await searchCommons(q);
+      if (cands.length) break;
     }
   }
-  // Reserve this image within today's run too, so two topics don't share a cover.
-  if (image) { t.image = image; recentImages.add(image); }
+
+  // Two picks from the SAME candidate list (no extra API calls):
+  //   image            — attribution-free only. Every app version renders this,
+  //                      including builds shipped before the credit line existed.
+  //   imageAttributed  — best pick regardless of licence, shown only by builds
+  //                      that display `imageCredit`. This is what unlocks the
+  //                      big CC BY-SA pool (e.g. 삼성 사진은 전부 BY-SA).
+  const best = pickVaried(cands);
+  const free = pickVaried(cands.filter((c) => c.free));
+
+  if (free) { t.image = free.url; recentImages.add(free.url); }
+  if (best && !best.free) {
+    t.imageAttributed = best.url;
+    t.imageCredit = best.credit;
+    recentImages.add(best.url);
+  }
+
   delete t.imageQueries; // internal only — not part of the app's Topic shape
-  console.log(`${t.id}: image=${image ? 'found' : 'none (color gradient fallback)'}`);
+  console.log(
+    `${t.id}: image=${t.image ? 'cc0' : 'none'}${t.imageAttributed ? ` +attributed(${t.imageCredit.license})` : ''}`,
+  );
 }
 
 const out = { date: isoDate, dateLabel, generatedAt: now.toISOString(), topics: data.topics };
