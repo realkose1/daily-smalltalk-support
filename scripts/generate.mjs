@@ -320,22 +320,44 @@ if (todaySpecial) {
 for (const t of data.topics) if (!t.special) delete t.special;
 
 // --- cover photos: Openverse, CC0 only (no attribution required), keyless ---
-const CAT_FALLBACK_QUERY = {
-  '시즌': 'season nature landscape',
-  '날씨': 'weather sky city',
-  '음식': 'food dish table',
-  '일상': 'coffee cup morning table',
-  // NOTE: keep these phrases CC0-rich on Openverse — 'korean culture city'
-  // returned ~0 usable results and silently killed the fallback (2026-07-08).
-  '문화': 'city street people walking',
-  '경제': 'money coins savings finance',
-  '여행': 'travel suitcase airport train',
-  '건강': 'running shoes park exercise',
-  '취미': 'guitar books camera desk',
-  '쇼핑': 'shopping bags store clothes',
-  '커리어': 'office desk laptop notebook',
-  '관계': 'friends talking cafe table',
+// SEVERAL fallbacks per category, tried in random order. One fixed phrase per
+// category meant the same photo every time the model's own queries missed —
+// 경제 shipped the identical stock-conference photo on 8 of 13 days (2026-08).
+//
+// Keep each phrase SHORT (1-2 words). These are matched against Commons file
+// titles, where "stock market" hits plenty of CC0 files but a descriptive
+// phrase like "stock market chart screen" hits nothing.
+// NOTE: 'korean culture city' returned ~0 usable results and silently killed
+// the fallback (2026-07-08) — verify a phrase before adding it here.
+const CAT_FALLBACK_QUERIES = {
+  '시즌': ['landscape season', 'nature field', 'sky clouds'],
+  '날씨': ['weather sky', 'clouds rain', 'city street'],
+  '음식': ['food dish', 'noodles bowl', 'fruit table', 'restaurant meal'],
+  '일상': ['coffee cup', 'living room', 'morning table', 'sofa blanket'],
+  '문화': ['cinema theatre', 'concert stage', 'music guitar', 'city street'],
+  // 경제: 삼성·하이닉스 사진은 Commons에 CC BY-SA뿐이라 (저작자 표시 필요) 못 쓴다.
+  // 대신 반도체·증시·지폐처럼 같은 이야기를 하는 CC0 소재로 돌린다.
+  // Verified against Commons on 2026-08-30 (CC0/PD + ≥600x400 + keyword match):
+  // stock market 8 / semiconductor 6 / banknote 16 / financial chart 8 /
+  // stock exchange 8 / currency 5 — about 50 distinct photos to rotate through.
+  // ('coins' and 'bank building' both returned 0 — don't put them back.)
+  '경제': ['stock market', 'semiconductor', 'banknote', 'financial chart', 'stock exchange', 'currency'],
+  '여행': ['airport terminal', 'train station', 'suitcase travel', 'beach sea'],
+  '건강': ['running', 'gym', 'vegetables healthy', 'sleeping bed'],
+  '취미': ['guitar music', 'books reading', 'camera photography', 'board game'],
+  '쇼핑': ['supermarket', 'shopping', 'clothes shop', 'market stall'],
+  '커리어': ['office desk', 'laptop computer', 'subway commuters', 'notebook pen'],
+  '관계': ['friends talking', 'cafe table', 'family dinner', 'people walking'],
 };
+
+function shuffled(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 const STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
 
@@ -454,7 +476,15 @@ for (const t of data.topics) {
   // cascade misses, which the 3 varied queries make rare.
   for (const q of queries) { image = await searchOpenverse(q); if (image) break; }
   if (!image) for (const q of queries) { image = await searchCommons(q); if (image) break; }
-  if (!image) image = await searchOpenverse(CAT_FALLBACK_QUERY[t.cat] || 'lifestyle');
+  // Category fallback: shuffled so a category that always lands here doesn't
+  // always land on the same photo, and tried on BOTH sources (Openverse alone
+  // left 경제 recycling one stock-conference shot).
+  if (!image) {
+    for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle'])) {
+      image = (await searchOpenverse(q)) || (await searchCommons(q));
+      if (image) break;
+    }
+  }
   // Reserve this image within today's run too, so two topics don't share a cover.
   if (image) { t.image = image; recentImages.add(image); }
   delete t.imageQueries; // internal only — not part of the app's Topic shape
