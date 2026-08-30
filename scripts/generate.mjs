@@ -406,9 +406,34 @@ function pickVaried(sorted) {
   return top[Math.floor(Math.random() * top.length)];
 }
 
-// Strip the HTML Commons wraps author/license fields in.
+// Strip the HTML Commons wraps author/licence fields in, and decode the few
+// entities that survive it (an author literally rendered as
+// "Aussie Clotheslines &amp; Letterboxes" on 2026-08-30).
 function plain(html) {
-  return String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return String(html || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;|&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Commons Artist fields are often boilerplate rather than a name, e.g.
+// "The original uploader was Foo at English Wikipedia." Pull the actual name
+// out so the credit line reads like a credit and not a sentence.
+function creditName(raw) {
+  let a = plain(raw);
+  const uploader = a.match(/original uploader was\s+(.+?)\s+at\s+\S/i);
+  if (uploader) a = uploader[1];
+  a = a.replace(/\s*\(talk\|contribs\)\s*/gi, ' ')
+       .replace(/\s*\bat (English |German |French )?Wikipedia\b\.?/i, '')
+       .replace(/\s*[.,;]\s*$/, '')
+       .trim();
+  return a.slice(0, 50);
 }
 
 // Both searches return an ARRAY of candidates:
@@ -479,7 +504,7 @@ async function searchCommons(query) {
         const desc = plain(ii.extmetadata?.ImageDescription?.value);
         const s = score(`${p.title} ${desc}`);
         if (s <= 0) return null;
-        const author = plain(ii.extmetadata?.Artist?.value);
+        const author = creditName(ii.extmetadata?.Artist?.value);
         // An attributed file with no usable author line can't be credited
         // properly, so treat it as unusable rather than crediting "unknown".
         if (!free && !author) return null;
@@ -489,7 +514,7 @@ async function searchCommons(query) {
           free,
           cc0: /cc0/i.test(lic),
           credit: free ? null : {
-            author: author.slice(0, 60),
+            author,
             license: lic,
             licenseUrl: plain(ii.extmetadata?.LicenseUrl?.value),
             sourceUrl: ii.descriptionurl || ii.url,
