@@ -300,7 +300,9 @@ const gen = await client.messages.create({
   model: MODEL,
   // 8 topics × (3 questions + 3 moods × 3 tips + imageQueries) — 12k truncated
   // the JSON mid-object once the deck grew from 5 to 8.
-  max_tokens: 20000,
+  // 8 topics × (3 questions + 3 moods × 3 tips + imageQueries + subtopic).
+  // 20k truncated the JSON mid-object on 2026-09-03; leave real headroom.
+  max_tokens: 32000,
   output_config: { format: { type: 'json_schema', schema } },
   messages: [{
     role: 'user',
@@ -335,6 +337,13 @@ const gen = await client.messages.create({
 });
 
 const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+// A truncated response surfaces as a confusing JSON syntax error several
+// hundred lines into the log — say what actually happened instead.
+if (gen.stop_reason === 'max_tokens') {
+  throw new Error(
+    `model hit max_tokens (${gen.usage.output_tokens} out) and the JSON is cut off — raise max_tokens`,
+  );
+}
 const data = JSON.parse(raw);
 data.topics = (data.topics || []).filter((t) => Array.isArray(t.questions) && t.questions.length === 3).slice(0, 8);
 if (data.topics.length < 3) throw new Error('not enough valid topics');
