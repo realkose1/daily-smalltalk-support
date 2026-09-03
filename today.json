@@ -1,291 +1,290 @@
 {
   "date": "2026-09-03",
   "dateLabel": "9월 3일 목요일",
-  "generatedAt": "2026-09-02T22:54:56.301Z",
+  "generatedAt": "2026-09-03T13:54:12.962Z",
   "topics": [
     {
-      "id": "t4",
-      "cat": "여행",
-      "subtopic": "국내여행",
-      "label": "국내여행",
-      "color": "#2F855A",
-      "title": "선선할 때 국내로 훌쩍",
-      "desc": "딱 여행하기 좋은 날씨인 요즘, 가까운 국내 여행지 얘기 나눠봐요.",
-      "reason": "맑고 선선한 초가을 날씨라 국내 여행 계획 세우기 딱 좋은 시기예요.",
+      "id": "t6",
+      "cat": "취미",
+      "subtopic": "게임",
+      "label": "게임",
+      "color": "#34495e",
+      "title": "요즘 하시는 게임 있으세요?",
+      "desc": "퇴근하고 잠깐 짬 내서 게임 한 판, 스트레스 풀기 딱 좋죠.",
+      "reason": "선선한 저녁 시간, 집에서 게임하며 쉬기 좋은 계절이에요.",
       "questions": [
-        "요즘 같은 날씨에 가고 싶은 국내 여행지 있으세요?",
-        "국내 여행 중 가장 기억에 남는 곳은 어디세요?",
-        "당일치기와 1박2일, 어느 쪽을 더 선호하세요?"
+        "요즘 즐겨 하는 게임 있으세요?",
+        "모바일 게임파세요, PC·콘솔파세요?",
+        "게임하다가 밤새운 적 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "이 날씨에 어디든 훌쩍 떠나고 싶지 않으세요?",
-          "follow": "가보고 싶은 국내 여행지 있으세요?",
-          "caution": "연차 쓰는 얘기로 눈치 주지 않기."
+          "opener": "점심시간에 짬 내서 모바일 게임 하시는 분 있으세요?",
+          "follow": "요즘 유행하는 게임 뭐 있어요?",
+          "caution": "과금·현질 얘기로 부담 주지 않기"
         },
         "friend": {
-          "opener": "우리 조만간 국내로 여행 한번 갈까?",
-          "follow": "가본 곳 중에 제일 좋았던 데 어디야?",
-          "caution": "바로 일정 확정 압박하지 않기."
+          "opener": "야 너 요즘도 그 게임 해?",
+          "follow": "같이 할 만한 게임 있으면 추천해줘",
+          "caution": "게임 실력 놀리지 않기"
         },
         "date": {
-          "opener": "이 날씨에 여행 가면 딱 좋을 것 같아요.",
-          "follow": "국내에서 가장 좋았던 여행지 있으세요?",
-          "caution": "과거 연애 여행 얘기 꺼내지 않기."
+          "opener": "혹시 게임 좋아하세요? 저는 요즘 하나에 빠져있어요.",
+          "follow": "어떤 장르 게임 좋아하세요?",
+          "caution": "게임 모른다고 무시하지 않기"
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Hiking_%28308087e751b647718b7e6a1e0bc42409%29.JPG/1280px-Hiking_%28308087e751b647718b7e6a1e0bc42409%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/N64-Controller-in-Hand.jpg/1280px-N64-Controller-in-Hand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Hands_holding_video_game_controller_%2850811892858%29.jpg/1280px-Hands_holding_video_game_controller_%2850811892858%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Vu Hoang",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hands_holding_video_game_controller_(50811892858).jpg"
+      }
     },
     {
       "id": "t3",
       "cat": "일상",
-      "subtopic": "주말계획",
-      "label": "주말",
-      "color": "#4B5563",
-      "title": "이번 주말엔 뭐 하세요",
-      "desc": "날씨 좋은 이번 주말, 어디 나가실 계획이신지 아니면 집에서 푹 쉬실 건지 궁금해요.",
-      "reason": "목요일이라 슬슬 주말 계획이 궁금해지는 타이밍, 게다가 날씨까지 화창해요.",
+      "subtopic": "정리·미니멀",
+      "label": "정리",
+      "color": "#16a085",
+      "title": "환절기 맞아 집 안 정리 좀 해보셨어요?",
+      "desc": "계절이 바뀌는 초가을, 괜히 옷장이랑 서랍 정리하고 싶어지는 요즘이에요.",
+      "reason": "선선해진 초가을 날씨에 집 안 정리 욕구가 슬금슬금 올라오는 시기예요.",
       "questions": [
-        "이번 주말엔 어떤 계획 있으세요?",
-        "날씨 좋을 때 꼭 하고 싶은 주말 활동 있으세요?",
-        "집에서 쉬는 주말이랑 밖에서 보내는 주말, 뭐가 더 끌리세요?"
+        "요즘 뭔가 정리하고 싶은 공간 있으세요?",
+        "미니멀리스트 스타일, 어떻게 생각하세요?",
+        "정리하다가 오래된 물건 발견하고 놀랐던 적 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "벌써 목요일이네요, 주말 계획 있으세요?",
-          "follow": "이번 주말엔 좀 쉬실 거예요, 아니면 나들이?",
-          "caution": "업무 마감 얘기로 흐르지 않게."
+          "opener": "책상 서랍 정리하다가 옛날 영수증 나온 거 있어요?",
+          "follow": "사무실 자리 정리는 얼마나 자주 하세요?",
+          "caution": "동료 책상 지저분하다고 지적하지 않기"
         },
         "friend": {
-          "opener": "주말에 뭐해? 나 심심한데.",
-          "follow": "날씨도 좋은데 같이 어디 갈래?",
-          "caution": "약속 강요하듯 몰아붙이지 않기."
+          "opener": "야 나 어제 집 정리하다가 완전 옛날 사진 나왔잖아",
+          "follow": "너는 물건 잘 버리는 편이야, 못 버리는 편이야?",
+          "caution": "미니멀리즘 강요하지 않기"
         },
         "date": {
-          "opener": "이번 주말엔 보통 뭐 하면서 보내세요?",
-          "follow": "평소 주말은 집 vs 밖, 어느 쪽이세요?",
-          "caution": "바로 다음 만남 약속부터 잡지 않기."
+          "opener": "환절기 되니까 괜히 집 정리하고 싶어지지 않으세요?",
+          "follow": "정리 잘하는 편이세요?",
+          "caution": "상대방 집 상태 캐묻지 않기"
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Echo_Lake_Park_NJ_tree_in_early_autumn_in_afternoon_sunlight.JPG/1280px-Echo_Lake_Park_NJ_tree_in_early_autumn_in_afternoon_sunlight.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Autumn_afternoon%2C_New_Meadow%2C_Holywells_Park%2C_Ipswich%2C_2021.jpg/1280px-Autumn_afternoon%2C_New_Meadow%2C_Holywells_Park%2C_Ipswich%2C_2021.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Leutha",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_afternoon,_New_Meadow,_Holywells_Park,_Ipswich,_2021.jpg"
-      }
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Behind_That_Door_-_DPLA_-_8de4f8126583ed9302126003f2986d60_%28page_1%29.jpg/1280px-Behind_That_Door_-_DPLA_-_8de4f8126583ed9302126003f2986d60_%28page_1%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
-      "id": "t7",
-      "cat": "취미",
-      "subtopic": "반려식물",
-      "label": "반려식물",
-      "color": "#2C7A7B",
-      "title": "우리 집 식물 근황",
-      "desc": "계절이 바뀌면서 집 안 식물들도 관리에 신경 쓰이는 시기예요.",
-      "reason": "일교차가 커지는 초가을이라 반려식물 관리 얘기 나누기 좋은 타이밍이에요.",
+      "id": "t4",
+      "cat": "여행",
+      "subtopic": "당일치기",
+      "label": "당일치기",
+      "color": "#2980b9",
+      "title": "날씨 좋을 때 당일치기 어디로 가세요?",
+      "desc": "맑고 선선한 오늘 같은 날엔 멀리 안 가도 훌쩍 다녀올 당일치기가 딱이에요.",
+      "reason": "오늘 서울은 맑고 최고 31도, 최저 20도로 나들이하기 좋은 날씨예요.",
       "questions": [
-        "집에서 키우는 식물 있으세요?",
-        "환절기에 식물 관리, 특별히 신경 쓰는 거 있으세요?",
-        "식물 키우면서 실패담이나 성공담 있으세요?"
+        "최근에 다녀온 당일치기 여행지 있으세요?",
+        "당일치기 하면 어디부터 떠오르세요?",
+        "당일치기 vs 1박2일, 뭘 더 좋아하세요?"
       ],
       "tips": {
         "work": {
-          "opener": "책상에 화분 하나 뒀는데 요즘 시들해서 걱정이에요.",
-          "follow": "식물 키우시는 거 있으세요?",
-          "caution": "업무 스트레스 얘기로 새지 않기."
+          "opener": "이번 주말에 당일치기라도 다녀오실 계획 있으세요?",
+          "follow": "가까운 당일치기 코스 추천해주실 데 있어요?",
+          "caution": "연차 쓰는 걸로 눈치 주지 않기"
         },
         "friend": {
-          "opener": "나 요즘 식물 집사 됐잖아.",
-          "follow": "너네 집엔 식물 있어? 잘 키워?",
-          "caution": "식물 안 키운다고 뭐라 하지 않기."
+          "opener": "야 이번 주말에 당일치기 어디 갈래?",
+          "follow": "너 최근에 갔던 당일치기 코스 어디였어?",
+          "caution": "일정 강요하지 않기"
         },
         "date": {
-          "opener": "집에 식물 키우세요? 저는 요즘 재미 붙였어요.",
-          "follow": "식물 말고 다른 취미도 있으세요?",
-          "caution": "집에 초대하는 뉘앙스로 몰지 않기."
+          "opener": "이런 날씨엔 당일치기로 훌쩍 떠나고 싶지 않으세요?",
+          "follow": "가보고 싶은 당일치기 여행지 있으세요?",
+          "caution": "바로 데이트 약속 잡자고 서두르지 않기"
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Small_potted_pitcher_plant.jpg/1280px-Small_potted_pitcher_plant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/My_Public_Lands_Summer_Road_Trip-_Coeur_d%E2%80%99_Alene_in_Idaho_%2818146467893%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     },
     {
-      "id": "t2",
-      "cat": "음식",
-      "subtopic": "커피·음료",
-      "label": "카페",
-      "color": "#A0522D",
-      "title": "아이스냐 따뜻한 거냐, 그것이 문제로다",
-      "desc": "선선해진 요즘, 아직 아이스 음료 고수 중이신지 슬슬 따뜻한 걸로 바꾸셨는지 궁금해요.",
-      "reason": "초가을로 접어들며 카페에서 음료 선택 취향이 갈리기 좋은 시기예요.",
+      "id": "t1",
+      "cat": "시즌",
+      "subtopic": "명절",
+      "label": "귀성길",
+      "color": "#c0392b",
+      "title": "추석 연휴, 기차표 벌써 예매하셨어요?",
+      "desc": "추석이 성큼 다가오면서 고향 갈 기차표며 고속도로 정체 걱정이 스멀스멀 올라오는 요즘이에요.",
+      "reason": "추석 연휴가 얼마 남지 않아 귀성 준비 이야기가 자연스럽게 나올 시기예요.",
       "questions": [
-        "요즘도 아이스 음료 드세요, 아니면 따뜻한 걸로 바꾸셨어요?",
-        "본인만의 '인생 음료' 있으세요?",
-        "카페 가면 항상 시키는 메뉴, 정해져 있으세요?"
+        "이번 추석엔 고향에 내려가세요, 아니면 서울에 계세요?",
+        "기차표 예매 전쟁, 성공하셨어요?",
+        "귀성길 하면 떠오르는 웃픈 추억 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "커피 한 잔 하실래요? 저는 아직 아이스파예요.",
-          "follow": "팀 사람들은 다들 뭐 시켜요?",
-          "caution": "카페인 과다 자랑처럼 안 들리게."
+          "opener": "추석 연휴 계획 세우셨어요? 저는 기차표 때문에 벌써 스트레스받네요.",
+          "follow": "고향 가시는 길, 기차 타세요 차 타세요?",
+          "caution": "휴가·연차 사용 눈치 주는 얘기는 피해요."
         },
         "friend": {
-          "opener": "너 요즘도 얼죽아냐?",
-          "follow": "단골 카페 있어? 거기 뭐가 맛있어?",
-          "caution": "메뉴 취향 갖고 놀리지 않기."
+          "opener": "야 너 추석에 내려가? 기차표 구했어?",
+          "follow": "귀성길 정체 겪어본 썰 있으면 풀어봐",
+          "caution": "귀성 스트레스 너무 깊게 파고들지 않기"
         },
         "date": {
-          "opener": "이 카페 오면 뭐 드세요? 저는 늘 같은 거 시켜요.",
-          "follow": "평소 즐겨 마시는 음료 있으세요?",
-          "caution": "다이어트나 칼로리 얘기로 새지 않기."
+          "opener": "혹시 추석에 고향 내려가세요? 저는 기차표 전쟁 중이에요",
+          "follow": "명절에 즐겨 하는 특별한 게 있으세요?",
+          "caution": "가족 얘기 너무 깊게 캐묻지 않기"
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Occupy_Boston_-_logistics.jpg/1280px-Occupy_Boston_-_logistics.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Tim Pierce",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Occupy_Boston_-_logistics.jpg"
-      }
-    },
-    {
-      "id": "t6",
-      "cat": "건강",
-      "subtopic": "운동",
-      "label": "운동",
-      "color": "#C05621",
-      "title": "선선해지니 운동하기 딱",
-      "desc": "더위가 한풀 꺾이면서 야외 운동 시작하기 좋은 계절이 됐어요.",
-      "reason": "낮 최고 31도지만 아침저녁 선선해져 야외 운동하기 좋은 날씨예요.",
-      "questions": [
-        "요즘 하시는 운동 있으세요?",
-        "날씨 좋아지면 운동량 늘리시는 편이세요?",
-        "혼자 운동 vs 같이 운동, 뭐가 더 잘 맞으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 운동 좀 하세요? 저는 다시 시작하려고요.",
-          "follow": "퇴근 후에 운동할 시간 어떻게 내세요?",
-          "caution": "몸매 지적처럼 들리지 않게."
-        },
-        "friend": {
-          "opener": "야 우리 같이 운동 시작할래?",
-          "follow": "요즘 뭐 하고 있어, 헬스야 러닝이야?",
-          "caution": "운동 안 한다고 놀리지 않기."
-        },
-        "date": {
-          "opener": "선선해지니까 운동하기 딱 좋더라고요.",
-          "follow": "평소에 즐기시는 운동 있으세요?",
-          "caution": "체형이나 몸무게 언급하지 않기."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Daddy_baby_trike_Park_Av_30_jeh.jpg/1280px-Daddy_baby_trike_Park_Av_30_jeh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "t8",
-      "cat": "경제",
-      "subtopic": "주식·투자",
-      "label": "급락",
-      "color": "#1A365D",
-      "title": "삼성전자·하이닉스 동반 급락",
-      "desc": "어제 종가 기준 삼성전자가 -4.0%, SK하이닉스가 -4.7% 빠지고 환율도 1,359원으로 출렁였어요.",
-      "reason": "어제 삼성전자와 SK하이닉스가 나란히 4%대 급락하고 원/달러 환율도 1% 넘게 떨어지며 시장이 술렁인 하루예요.",
-      "questions": [
-        "삼성전자, 하이닉스가 어제 나란히 4%대 빠졌다는데 들으셨어요?",
-        "이런 큰 변동 있을 때 마음이 좀 흔들리시나요?",
-        "요즘 주식이나 재테크, 어떻게 하고 계세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "어제 반도체 주식들 많이 빠졌다던데 보셨어요?",
-          "follow": "이럴 때 마음 어떠세요, 흔들리세요?",
-          "caution": "매수·매도 조언은 하지 않기."
-        },
-        "friend": {
-          "opener": "야 어제 삼성전자 하이닉스 둘 다 4%대로 빠졌대.",
-          "follow": "너 주식 하는 거 있어? 요즘 어때?",
-          "caution": "손실 자랑이나 놀림으로 가지 않기."
-        },
-        "date": {
-          "opener": "어제 주식 시장이 좀 출렁였다는데 관심 있으세요?",
-          "follow": "재테크나 투자, 평소에 관심 있으세요?",
-          "caution": "구체적 자산 규모 묻지 않기."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Adam_Osborne_and_Osborne_1.jpg/1280px-Adam_Osborne_and_Osborne_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/PIIGS_Mk_4_map.png/1280px-PIIGS_Mk_4_map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Snow storm in Eastern Asia",
-        "license": "CC BY 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:PIIGS_Mk_4_map.png"
-      }
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Crowded_Train_Platform_During_9-Euro_Ticket_Period_in_Germany.jpg/1280px-Crowded_Train_Platform_During_9-Euro_Ticket_Period_in_Germany.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
       "id": "t5",
       "cat": "문화",
-      "subtopic": "웹툰·책",
-      "label": "웹툰",
-      "color": "#6B46C1",
-      "title": "요즘 보는 웹툰 있으세요",
-      "desc": "퇴근 후 짬짬이 웹툰이나 책 보면서 하루 마무리하는 분들 많으실 것 같아요.",
-      "reason": "저녁이 선선해지며 실내에서 웹툰이나 책 읽기 좋은 계절이 왔어요.",
+      "subtopic": "예능",
+      "label": "예능",
+      "color": "#8e44ad",
+      "title": "요즘 챙겨보는 예능 있으세요?",
+      "desc": "퇴근 후 편하게 볼 예능 하나쯤 있으면 하루 피로가 싹 풀리죠.",
+      "reason": "선선해진 저녁, 집에서 편하게 예능 보기 좋은 계절이에요.",
       "questions": [
-        "요즘 챙겨보는 웹툰이나 책 있으세요?",
-        "완결까지 정주행한 작품 중 최고로 꼽는 거 있으세요?",
-        "웹툰이랑 종이책, 어느 쪽이 더 편하세요?"
+        "요즘 꾸준히 챙겨보는 예능 프로그램 있으세요?",
+        "예능 보면서 제일 크게 웃었던 순간은요?",
+        "드라마파세요, 예능파세요?"
       ],
       "tips": {
         "work": {
-          "opener": "점심시간에 웹툰 보는 게 낙이에요.",
-          "follow": "요즘 챙겨보는 거 있으세요?",
-          "caution": "스포일러 조심."
+          "opener": "어제 예능 보다가 완전 빵 터진 장면 있었어요.",
+          "follow": "요즘 그 프로그램 챙겨보세요?",
+          "caution": "정치적 성향 드러나는 예능 얘기는 피해요"
         },
         "friend": {
-          "opener": "너 요즘 보는 웹툰 있어?",
-          "follow": "완결난 것 중에 추천할 만한 거 있어?",
-          "caution": "취향 다르다고 무시하지 않기."
+          "opener": "야 너 그 예능 봤어? 완전 웃기더라",
+          "follow": "네가 제일 좋아하는 예능 뭐야?",
+          "caution": "스포일러 미리 던지지 않기"
         },
         "date": {
-          "opener": "저는 요즘 웹툰 정주행 중인데, 그런 취미 있으세요?",
-          "follow": "어떤 장르 좋아하세요?",
-          "caution": "너무 마니아 지식 자랑처럼 안 하기."
+          "opener": "혹시 요즘 즐겨보는 예능 있으세요?",
+          "follow": "예능 취향 비슷한지 궁금하네요, 어떤 스타일 좋아하세요?",
+          "caution": "상대 취향 무시하지 않기"
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Frances_%28Appleton%29_Longfellow_to_Emmeline_%28Austin%29_Wadsworth%2C_20_July_1839_%280c19f4b9-919c-4758-b259-5c623fee4a20%29.jpg/1280px-Frances_%28Appleton%29_Longfellow_to_Emmeline_%28Austin%29_Wadsworth%2C_20_July_1839_%280c19f4b9-919c-4758-b259-5c623fee4a20%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Television_remote_control_-_black_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Dmitry Makeev",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Television_remote_control_-_black_01.jpg"
+      }
     },
     {
-      "id": "t1",
-      "cat": "날씨",
-      "subtopic": "더위",
-      "label": "늦더위",
-      "color": "#1B6CA8",
-      "title": "낮엔 아직 여름이에요",
-      "desc": "오늘 서울 낮 최고 31도, 아침저녁은 선선한 20도 안팎이라 옷차림 고민되는 하루예요.",
-      "reason": "오늘은 맑고 낮엔 31도까지 오르지만 아침저녁은 선선해 초가을 늦더위가 실감나는 날씨예요.",
+      "id": "t7",
+      "cat": "쇼핑",
+      "subtopic": "온라인쇼핑",
+      "label": "온라인샵",
+      "color": "#d35400",
+      "title": "요즘 온라인으로 뭐 많이 사세요?",
+      "desc": "클릭 몇 번이면 문 앞까지 오는 온라인 쇼핑, 요즘 뭘 자주 담으시나요.",
+      "reason": "환절기 맞아 새 옷이며 생활용품 온라인으로 장바구니 채우기 좋은 시기예요.",
       "questions": [
-        "오늘처럼 낮엔 덥고 아침엔 쌀쌀할 때, 옷은 어떻게 맞춰 입으세요?",
-        "늦더위, 언제쯤 완전히 끝날 것 같으세요?",
-        "이 시기에 꼭 챙기는 나만의 온도 조절 아이템 있으세요?"
+        "요즘 온라인으로 가장 많이 사는 게 뭐예요?",
+        "최근에 산 것 중에 제일 만족스러웠던 거 있으세요?",
+        "충동구매한 적 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "오늘 낮엔 또 덥네요, 아침엔 쌀쌀했는데.",
-          "follow": "사무실 냉방은 아직도 세게 트나요?",
-          "caution": "날씨 얘기만 너무 길게 끌지 않기."
+          "opener": "요즘 온라인으로 뭐 자주 사세요? 저는 장바구니가 난리예요.",
+          "follow": "어떤 쇼핑몰 자주 이용하세요?",
+          "caution": "회사 컴퓨터로 쇼핑한다는 티 내지 않기"
         },
         "friend": {
-          "opener": "야 오늘 낮에 또 30도 넘었대.",
-          "follow": "이 정도면 반팔 언제까지 입어야 되냐?",
-          "caution": "진지한 기후 걱정으로 안 빠지기."
+          "opener": "야 나 어제 또 온라인으로 뭐 질렀잖아",
+          "follow": "너는 최근에 뭐 샀어?",
+          "caution": "과소비 지적하지 않기"
         },
         "date": {
-          "opener": "오늘 낮엔 덥고 아침엔 쌀쌀하던데 옷 고르기 어려우셨죠?",
-          "follow": "이런 환절기 날씨에 좋아하는 계절 있으세요?",
-          "caution": "덥다 춥다 불평만 늘어놓지 않기."
+          "opener": "온라인 쇼핑 자주 하시는 편이세요?",
+          "follow": "최근에 산 것 중에 마음에 드는 거 있으세요?",
+          "caution": "소비 습관 평가하지 않기"
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Sunset_sky_silhouette.jpg/1280px-Sunset_sky_silhouette.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Packstation_to_open_%286269673%29.jpg/1280px-Packstation_to_open_%286269673%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t2",
+      "cat": "음식",
+      "subtopic": "디저트",
+      "label": "빙수",
+      "color": "#e67e22",
+      "title": "낮엔 아직 더운데, 시원한 디저트 어때요?",
+      "desc": "낮 기온이 31도까지 오르는 초가을, 아직은 시원한 디저트가 당기는 계절이에요.",
+      "reason": "오늘 서울 낮 최고기온이 31도까지 오르며 늦더위가 이어지고 있어요.",
+      "questions": [
+        "요즘 즐겨 드시는 시원한 디저트 있으세요?",
+        "빙수파세요, 아이스크림파세요?",
+        "최근에 먹은 디저트 중에 제일 맛있었던 거 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "점심 먹고 나면 뭔가 달달한 게 당기지 않으세요?",
+          "follow": "회사 근처에 디저트 맛집 있어요?",
+          "caution": "다이어트 얘기로 흐르지 않게 가볍게"
+        },
+        "friend": {
+          "opener": "야 우리 빙수 먹으러 갈래?",
+          "follow": "너 인생 디저트 뭐야?",
+          "caution": "칼로리 걱정 잔소리 하지 않기"
+        },
+        "date": {
+          "opener": "아직 낮엔 덥던데, 시원한 디저트 드시러 가실래요?",
+          "follow": "달달한 거 좋아하세요, 아니면 안 좋아하세요?",
+          "caution": "먹는 양 지적하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Food-city-theme-summer-ice-cream_%2824325585885%29.jpg/1280px-Food-city-theme-summer-ice-cream_%2824325585885%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t8",
+      "cat": "경제",
+      "subtopic": "환율",
+      "label": "환율",
+      "color": "#27ae60",
+      "title": "원/달러 1,356원, 해외직구 노려볼까요?",
+      "desc": "오늘 원/달러 환율이 1,356원으로 어제보다 1.2% 내리면서 원화가 꽤 강해졌어요.",
+      "reason": "환율이 큰 폭으로 내리며 해외직구나 여행 경비에 유리해진 오늘의 시장 소식이에요.",
+      "questions": [
+        "환율 내렸다는 소식에 해외직구 계획 세워보셨어요?",
+        "환전할 때 타이밍 신경 쓰시는 편이세요?",
+        "여행 갈 때 환율 체크하시나요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "환율이 많이 내렸다던데, 해외 사이트에서 뭐 사실 계획 있으세요?",
+          "follow": "직구 자주 하시는 편이세요?",
+          "caution": "투자 종목 추천하듯 말하지 않기"
+        },
+        "friend": {
+          "opener": "야 환율 많이 내렸다는데 해외직구 지금이 기회 아니야?",
+          "follow": "너 최근에 직구한 거 있어?",
+          "caution": "환테크 조언하듯 굴지 않기"
+        },
+        "date": {
+          "opener": "환율이 많이 내렸다던데, 혹시 해외여행 계획 있으세요?",
+          "follow": "여행 갈 때 환전 어떻게 하세요?",
+          "caution": "돈 얘기 너무 깊이 들어가지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Currency_exchange_counter_at_ZBAA_T3_%2820180719071957%29.jpg/1280px-Currency_exchange_counter_at_ZBAA_T3_%2820180719071957%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "N509FZ",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Currency_exchange_counter_at_ZBAA_T3_(20180719071957).jpg"
+      }
     }
   ]
 }
