@@ -145,8 +145,22 @@ async function getMarkets() {
       const last = pts[pts.length - 1];
       const pct = ((last.c - prev.c) / prev.c) * 100;
       const big = Math.abs(pct) >= (sym === '^KS11' ? 1.5 : sym === 'KRW=X' ? 1 : 3);
+      // Spell the direction out in Korean and quote the size unsigned. Handing
+      // the model a signed number meant it had to infer 올랐/내렸 itself, and it
+      // got 환율 backwards — reported a big DROP as a rise (2026-08-31).
+      const dir = pct > 0.05 ? '올랐어요' : pct < -0.05 ? '내렸어요' : '거의 그대로예요';
+      // 환율 is the one line where the number's direction and the everyday
+      // meaning are opposite, so say what it means as well as which way it went.
+      const note =
+        sym === 'KRW=X'
+          ? pct > 0.05
+            ? ' → 원화 약세(해외여행·직구에 불리)'
+            : pct < -0.05
+              ? ' → 원화 강세(해외여행·직구에 유리)'
+              : ''
+          : '';
       lines.push(
-        `${name}: ${Math.round(last.c).toLocaleString()} — ${kstDayLabel(last.t)} 종가 기준, 직전 거래일(${kstDayLabel(prev.t)}) 대비 ${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%${big ? ' ★큰 변동' : ''}`,
+        `${name}: ${Math.round(last.c).toLocaleString()} — ${kstDayLabel(last.t)} 종가 기준, 직전 거래일(${kstDayLabel(prev.t)}) 대비 ${Math.abs(pct).toFixed(1)}% ${dir}${note}${big ? ' ★큰 변동' : ''}`,
       );
     } catch {
       // skip symbol on failure
@@ -309,6 +323,7 @@ const gen = await client.messages.create({
       `- '요즘 화제'는 주제가 아니라 관점의 힌트일 뿐이에요. 정말 대다수가 알 수준(전 국민이 보는 인기 드라마/예능, 폭염·한파, 물가 급등 등)일 때만 최대 1개 넣되, 뉴스 사건이 아니라 누구나 대답할 수 있는 보편적 질문으로 바꾸세요(예: 물가 뉴스 → "요즘 장 보기 좀 부담되지 않으세요?"). 애매하면 트렌드 없이 일상·계절 소재로만 구성하세요.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
       `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 '요즘 화제'에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 금요일에 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
+      `- ★★오르내림은 [시장 시그널]에 적힌 '올랐어요/내렸어요'를 그대로 쓰세요. 숫자만 보고 방향을 추측하지 마세요 — 환율이 크게 내렸는데 "올랐다"고 쓴 사고가 있었습니다. 환율은 숫자가 내려가면 원화 강세(해외여행·직구에 유리), 올라가면 원화 약세예요. 브리프에 '→ 원화 강세/약세'가 적혀 있으면 그 해석을 따르세요.\n` +
       `- ★★시장 수치를 언급할 땐 [시장 시그널] 각 줄에 적힌 기준일 표현을 그대로 쓰세요. 주식·코스피는 주말·공휴일에 쉬기 때문에, 기준일이 "8월 15일(금)"인데 "어제"라고 쓰면 날짜가 틀립니다(일요일 주제에 금요일 등락을 "어제"라고 쓴 사고 있음). 기준일이 '어제'라고 적혀 있을 때만 "어제"라고 쓰고, 아니면 "지난 금요일" 같은 실제 요일이나 "최근"으로 쓰세요.\n` +
       `- 이때도 매수/매도 추천·목표가·시황분석·전망은 절대 금지 — "다들 얘기하더라"며 화제로 가볍게 나누는 톤만. 삼성전자·SK하이닉스·코스피·환율·비트코인처럼 다들 아는 것만 다루고, 소수만 아는 종목은 피하세요.\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
