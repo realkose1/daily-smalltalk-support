@@ -296,12 +296,14 @@ const topic = {
 };
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
-const gen = await client.messages.create({
+// Streamed, not a plain create(): the SDK refuses a non-streaming request whose
+// max_tokens could take over 10 minutes, and 8 topics need the headroom.
+// finalMessage() hands back the same shape create() would.
+const gen = await client.messages.stream({
   model: MODEL,
-  // 8 topics × (3 questions + 3 moods × 3 tips + imageQueries) — 12k truncated
-  // the JSON mid-object once the deck grew from 5 to 8.
   // 8 topics × (3 questions + 3 moods × 3 tips + imageQueries + subtopic).
-  // 20k truncated the JSON mid-object on 2026-09-03; leave real headroom.
+  // 12k truncated once the deck grew from 5 to 8; 20k truncated again on
+  // 2026-09-03, so leave real headroom.
   max_tokens: 32000,
   output_config: { format: { type: 'json_schema', schema } },
   messages: [{
@@ -334,7 +336,7 @@ const gen = await client.messages.create({
       `- imageQueries: 이 주제의 커버 사진을 찾기 위한 검색어 3개(서로 다른 피사체/장면으로). 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket" / "rain drops window" / "umbrella wet street"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지.\n` +
       `- reason은 오늘 날짜·날씨·맥락 반영. JSON만 출력.`,
   }],
-});
+}).finalMessage();
 
 const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
 // A truncated response surfaces as a confusing JSON syntax error several
