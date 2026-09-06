@@ -67,16 +67,27 @@ async function getWeather() {
 // Drop politically-charged / crime / disaster headlines so small-talk stays light.
 const BLOCK = /대통령|정부|여당|야당|국민의힘|민주당|조국|이재명|이준석|한동훈|윤석열|트럼프|바이든|국회|의원|장관|청와대|대선|총선|선거|정치|탄핵|특검|검찰|경찰|법원|기소|구속|체포|사망|숨진|숨져|살해|피살|성범죄|성폭|성착취|N번방|딥페이크|불법촬영|협박|폭행|고소|피소|마약|도박|음주운전|사기|참사|화재|폭발|지진|실종|자살|극단적|전쟁|미사일/;
 
+// Headlines come back with their publication day attached. Without it the model
+// reads a HEADLINE's "오늘 저녁" as tonight — it announced 여의도 불꽃축제 for
+// "오늘 밤" on the morning after it had already happened (2026-09-06).
 async function fetchTitles(query, take) {
   try {
     const q = encodeURIComponent(`${query} when:2d`);
     const r = await fetch(`https://news.google.com/rss/search?q=${q}&hl=ko&gl=KR&ceid=KR:ko`, { signal: AbortSignal.timeout(8000) });
     const xml = await r.text();
-    return [...xml.matchAll(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/g)]
-      .map((m) => m[1]).slice(1) // drop feed title
-      .map((t) => t.replace(/\s*-\s*[^-]+$/, '').trim()) // strip trailing " - 매체명"
-      .filter((t) => t.length > 4 && !BLOCK.test(t)) // drop sensitive/political
-      .slice(0, take);
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
+    const out = [];
+    for (const item of items) {
+      const title = (item.match(/<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/) || [])[1];
+      if (!title) continue;
+      const clean = title.replace(/\s*-\s*[^-]+$/, '').trim();
+      if (clean.length <= 4 || BLOCK.test(clean)) continue;
+      const pub = (item.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || [])[1];
+      const when = pub ? kstDayLabel(Math.floor(new Date(pub).getTime() / 1000)) : '날짜미상';
+      out.push(`(${when} 기사) ${clean}`);
+      if (out.length >= take) break;
+    }
+    return out;
   } catch { return []; }
 }
 
@@ -246,7 +257,7 @@ const brief =
     ? `\n[한국의 특별한 날 — 확정 정보]\n${specials.join('\n')}\n★오늘이 특별한 날이면 반드시 그 소재로 주제 1개를 만드세요(예: 초복 → 보양식). 1~3일 뒤라면 "다가온다"는 앵글로 써도 좋아요.\n`
     : '\n[한국의 특별한 날] 오늘~3일 내 없음. ★주의: 이 목록에 없는 날을 초복·명절·절기라고 지어내지 마세요(과거에 아닌 날을 초복이라고 쓴 사고 있음).\n') +
   (markets ? `\n[시장 시그널 — 실제 수치. ★각 줄에 적힌 기준일을 그대로 쓰세요]\n- ${markets.join('\n- ')}\n` : '') +
-  (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시):\n- ${trends.join('\n- ')}\n` : '') +
+  (trends ? `요즘 화제(참고용 — 대중적으로 다들 알 만한 연예·문화 화제, 물가·경제 같은 생활 시사를 골라 쓰세요. 무거운 정치·범죄·재난·사망 등은 무시. ★각 줄 앞의 (…기사)는 그 기사가 나온 날이고, 헤드라인 속 '오늘·오늘 밤·내일'은 오늘이 아니라 그 발행일 기준입니다):\n- ${trends.join('\n- ')}\n` : '') +
   (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 console.log('--- brief ---\n' + brief);
 
@@ -324,6 +335,7 @@ const gen = await client.messages.stream({
       `- ★스몰토크 적합성이 최우선: 좋은 주제는 "누구나 자기 경험으로 바로 대답할 수 있는 것"이에요. 날씨, 음식/식사, 주말·퇴근 후 시간, 요즘 보는 드라마·영상, 물가·생활비 체감, 계절 변화, 여행·휴가처럼 대다수가 공감하는 일상 소재로 대부분 채우세요.\n` +
       `- 개별 스포츠 선수 부상, 지역 축제, 특정 연예인 가십처럼 "관심 있는 소수만 아는 뉴스"는 대화가 안 이어지니 주제로 쓰지 마세요.\n` +
       `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. 위 '요즘 화제'에 구체적 제목이 없어 무엇인지 특정할 수 없으면, 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
+      `- ★★행사·공연·경기가 "오늘" 열린다고 절대 단정하지 마세요. 헤드라인의 '오늘 저녁', '오늘 밤', '1시간 뒤'는 그 기사 발행일 기준이라 오늘과 다릅니다 — 어제 끝난 불꽃축제를 오늘 아침에 "오늘 밤 열린다"고 안내한 사고가 있었습니다. 날짜가 확실한 건 위 [한국의 특별한 날] 표뿐이에요. 지난 행사는 "어제 ~했다던데 다녀오셨어요?"처럼 지난 일로 쓰거나, 시점을 빼고 "불꽃축제 좋아하세요?"처럼 취향 질문으로 바꾸세요. 시작 시각·남은 시간을 지어내는 것도 금지.\n` +
       `- '요즘 화제'는 주제가 아니라 관점의 힌트일 뿐이에요. 정말 대다수가 알 수준(전 국민이 보는 인기 드라마/예능, 폭염·한파, 물가 급등 등)일 때만 최대 1개 넣되, 뉴스 사건이 아니라 누구나 대답할 수 있는 보편적 질문으로 바꾸세요(예: 물가 뉴스 → "요즘 장 보기 좀 부담되지 않으세요?"). 애매하면 트렌드 없이 일상·계절 소재로만 구성하세요.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
       `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 '요즘 화제'에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 금요일에 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
