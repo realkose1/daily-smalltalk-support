@@ -452,13 +452,17 @@ const ARTWORK =
 // Museum uploads are catalogue scans of objects, and they name the institution
 // rather than saying "museum" — "Shelf_Clock_MET_202371.jpg" filled a 수집 card.
 const MUSEUM_UPLOAD =
-  /\bMET\b|rijksmuseum|wellcome|smithsonian|getty|louvre|\bNGA\b|\bBnF\b|BAnQ|nypl|library of congress|LC-[A-Z]|ASC Leiden|Tropenmuseum|Bundesarchiv|Nationaal Archief|KITLV|archief|\barchives?\b|collectie/i;
+  /\bMET\b|rijksmuseum|wellcome|smithsonian|getty|louvre|\bNGA\b|\bBnF\b|BAnQ|nypl|library of congress|LC-[A-Z]|ASC Leiden|Tropenmuseum|Bundesarchiv|Nationaal Archief|KITLV|archief|\barchives?\b|collectie|\bDPLA\b|europeana|internet archive|\bLACMA\b|\bYCBA\b|cleveland museum/i;
+// Maps, charts and logos are files, not photographs — a PIIGS eurozone map
+// (.png) fronted an 증시 card. Photos on Commons are overwhelmingly JPEG.
+const NOT_A_PHOTO = /\bmap\b|chart|diagram|graph\b|logo|icon|flag|emblem|coat of arms|infographic|screenshot|\.(png|svg|gif)\b/i;
 const OLD_YEAR = /\b(1[0-8]\d{2}|19[0-5]\d)\b/;
 
 function photoScore(text) {
   let q = 0;
   if (/\(unsplash\)/i.test(text)) q += 3; // Unsplash donations: modern photos
   if (ARTWORK.test(text) || MUSEUM_UPLOAD.test(text)) q -= 5;
+  if (NOT_A_PHOTO.test(text)) q -= 4;
   if (OLD_YEAR.test(text)) q -= 3;
   return q;
 }
