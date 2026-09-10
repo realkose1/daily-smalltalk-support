@@ -456,6 +456,9 @@ const MUSEUM_UPLOAD =
 // Maps, charts and logos are files, not photographs — a PIIGS eurozone map
 // (.png) fronted an 증시 card. Photos on Commons are overwhelmingly JPEG.
 const NOT_A_PHOTO = /\bmap\b|chart|diagram|graph\b|logo|icon|flag|emblem|coat of arms|infographic|screenshot|\.(png|svg|gif)\b/i;
+// Scans of printed matter read as "old" instantly — a 1900s Brimham Rocks
+// postcard fronted 수집 because the query said "postcard collection".
+const PRINTED_SCAN = /postcard|poster|passbook|certificate|ticket|document|book cover|title page|\bpage \d|advertisement|brochure|pamphlet|leaflet|newspaper|magazine cover/i;
 const OLD_YEAR = /\b(1[0-8]\d{2}|19[0-5]\d)\b/;
 
 function photoScore(text) {
@@ -463,6 +466,7 @@ function photoScore(text) {
   if (/\(unsplash\)/i.test(text)) q += 3; // Unsplash donations: modern photos
   if (ARTWORK.test(text) || MUSEUM_UPLOAD.test(text)) q -= 5;
   if (NOT_A_PHOTO.test(text)) q -= 4;
+  if (PRINTED_SCAN.test(text)) q -= 4;
   if (OLD_YEAR.test(text)) q -= 3;
   return q;
 }
