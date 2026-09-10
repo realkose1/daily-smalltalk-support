@@ -462,8 +462,12 @@ const PRINTED_SCAN = /postcard|poster|passbook|certificate|ticket|document|book 
 const OLD_YEAR = /\b(1[0-8]\d{2}|19[0-5]\d)\b/;
 
 // Category names that mark a file as artwork, a scan, or a historical photo.
+// "X in art of Y" and "… in the <Whatever> Museum" are how Commons files any
+// depicted-in-artwork or museum-held object, whatever the medium — a lacquer
+// tsuba filed under "Insects in art of Japan" / "Tsuba in the Walters Art
+// Museum" fronted 가을밤 (2026-09-10). Matching the phrasing beats listing museums.
 const BAD_CATEGORY =
-  /paintings|drawings|watercolou?r|engravings|etchings|lithographs|prints\b|artworks|illustrations|manuscripts|\bmaps\b|postcards|posters|black and white|monochrome|photographs (from|of|taken in) the (18|19[0-6])|\b(18\d\d|19[0-5]\d)s?\b|scans?\b|sculptures|statues|coins|stamps/i;
+  /paintings|drawings|watercolou?r|engravings|etchings|lithographs|prints\b|artworks|illustrations|manuscripts|\bmaps\b|postcards|posters|black and white|monochrome|photographs (from|of|taken in) the (18|19[0-6])|\b(18\d\d|19[0-5]\d)s?\b|scans?\b|sculptures|statues|coins|stamps|\bin art\b|\bart of\b|\bmuseum\b|art gallery|decorative arts|arms and armou?r|antiquities|artifacts?\b/i;
 const GOOD_CATEGORY = /images from unsplash|unsplash|pexels|pixabay|featured pictures|quality images/i;
 
 function photoScore(text, categories = '') {
@@ -711,8 +715,11 @@ for (const t of data.topics) {
   //   imageAttributed  — best pick regardless of licence, shown only by builds
   //                      that display `imageCredit`. This is what unlocks the
   //                      big CC BY-SA pool (e.g. 삼성 사진은 전부 BY-SA).
-  const best = pickVaried(cands);
-  const free = pickVaried(cands.filter((c) => c.free));
+  // Anything the photo scoring has condemned (artwork, museum object, scan) is
+  // worse on a small-talk card than the app's plain gradient — leave it out.
+  const usable = cands.filter((c) => (c.q ?? 0) > -5);
+  const best = pickVaried(usable);
+  const free = pickVaried(usable.filter((c) => c.free));
 
   if (free) { t.image = free.url; recentImages.add(free.url); }
   if (best && !best.free) {
