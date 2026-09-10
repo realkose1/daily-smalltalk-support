@@ -438,6 +438,25 @@ function relevanceScorer(query) {
   };
 }
 
+// Public-domain pools skew hard to museum scans — a 무굴 세밀화 of fireworks
+// beat real festival photos on 2026-09-06. Score how likely a file is to be an
+// ordinary modern photograph so artwork loses to it.
+const ARTWORK =
+  /painting|drawing|engraving|etching|lithograph|woodcut|manuscript|illustration|sketch|fresco|tapestry|miniature|portrait of|still life|watercolou?r|oil on canvas|museum|gallery|sculpture|statue|relief|coin|stamp|map of|folio|codex|scroll|album leaf/i;
+// Museum uploads are catalogue scans of objects, and they name the institution
+// rather than saying "museum" — "Shelf_Clock_MET_202371.jpg" filled a 수집 card.
+const MUSEUM_UPLOAD =
+  /\bMET\b|rijksmuseum|wellcome|smithsonian|getty|louvre|\bNGA\b|\bBnF\b|BAnQ|nypl|library of congress|LC-[A-Z]/;
+const OLD_YEAR = /\b(1[0-8]\d{2}|19[0-5]\d)\b/;
+
+function photoScore(text) {
+  let q = 0;
+  if (/\(unsplash\)/i.test(text)) q += 3; // Unsplash donations: modern photos
+  if (ARTWORK.test(text) || MUSEUM_UPLOAD.test(text)) q -= 5;
+  if (OLD_YEAR.test(text)) q -= 3;
+  return q;
+}
+
 // Cover images used in the last few days — so a recurring category (경제/주식,
 // 날씨 등) doesn't keep showing the exact same photo. We skip these when a fresh
 // alternative exists.
@@ -467,7 +486,13 @@ function pickVaried(sorted) {
   if (!sorted.length) return null;
   const fresh = sorted.filter((c) => !recentImages.has(c.url));
   const pool = fresh.length ? fresh : sorted; // all seen recently → allow reuse
-  const top = pool.slice(0, Math.min(6, pool.length));
+  // Rotate only among candidates as good as the best one. Picking uniformly
+  // across the whole top-6 is what let a painting win over real photos.
+  const best = pool[0];
+  const tier = pool.filter(
+    (c) => (c.q ?? 0) === (best.q ?? 0) && (best.s ?? 0) - (c.s ?? 0) <= 1,
+  );
+  const top = (tier.length ? tier : pool).slice(0, 6);
   return top[Math.floor(Math.random() * top.length)];
 }
 
@@ -523,6 +548,7 @@ async function searchOpenverse(query) {
         return {
           url: it.url,
           s: score(hay(it)),
+          q: photoScore(hay(it)),
           free,
           credit: free ? null : {
             author: it.creator || '(unknown)',
@@ -533,7 +559,9 @@ async function searchOpenverse(query) {
         };
       })
       .filter((c) => c.s > 0)
-      .sort((a, b) => (b.free - a.free) || (b.s - a.s));
+      // Photo-likeness first, then relevance. Attribution-free no longer wins
+      // outright — it was pulling old public-domain scans to the top.
+      .sort((a, b) => b.q - a.q || b.s - a.s);
   } catch (e) {
     console.log(`openverse search failed for "${query}":`, e.message);
     return [];
@@ -567,7 +595,8 @@ async function searchCommons(query) {
         if (!free && !/^cc by(-sa)? /i.test(lic)) return null;
         if ((ii.width ?? 0) < 600 || (ii.height ?? 0) < 400) return null;
         const desc = plain(ii.extmetadata?.ImageDescription?.value);
-        const s = score(`${p.title} ${desc}`);
+        const hay = `${p.title} ${desc}`;
+        const s = score(hay);
         if (s <= 0) return null;
         const author = creditName(ii.extmetadata?.Artist?.value);
         // An attributed file with no usable author line can't be credited
@@ -576,6 +605,7 @@ async function searchCommons(query) {
         return {
           url: ii.thumburl || ii.url,
           s,
+          q: photoScore(hay),
           free,
           cc0: /cc0/i.test(lic),
           credit: free ? null : {
@@ -587,9 +617,11 @@ async function searchCommons(query) {
         };
       })
       .filter(Boolean)
-      // Attribution-free first (usable by every app version), then CC0 over PD
-      // (modern Unsplash donations rather than dated scans), then relevance.
-      .sort((a, b) => (b.free - a.free) || (b.cc0 - a.cc0) || (b.s - a.s));
+      // Photo-likeness first, then CC0 over PD (modern Unsplash donations
+      // rather than dated scans), then relevance. Attribution-free is no longer
+      // the top key — the CC0/PD pool is where the museum scans live, and the
+      // free pick is taken separately anyway.
+      .sort((a, b) => b.q - a.q || (b.cc0 - a.cc0) || (b.s - a.s));
   } catch (e) {
     console.log(`commons search failed for "${query}":`, e.message);
     return [];
