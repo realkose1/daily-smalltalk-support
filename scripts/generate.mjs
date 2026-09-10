@@ -430,13 +430,13 @@ const STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
 // match) in the candidate's text, or it's rejected. Accepting zero-overlap
 // hits shipped a sushi photo on a 늦잠 card (2026-07-11) — an unrelated
 // photo is worse than the gradient fallback.
-function relevanceScorer(query) {
+function relevanceScorer(query, minHits) {
   const keywords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w));
   // One shared word is not a match. "collection shelf items" hit an archive
   // series called "…van Achterberg Collection…" (a mud hut), and a 다이어트
   // query landed on "Rib Room, Somerset Hotel" through "room". Demand two hits
   // whenever the query has two words to offer.
-  const need = Math.min(2, keywords.length);
+  const need = minHits ?? Math.min(2, keywords.length);
   return (text) => {
     const hay = text.toLowerCase();
     const hits = keywords.reduce((n, k) => n + (new RegExp(`\\b${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hay) ? 1 : 0), 0);
@@ -461,8 +461,15 @@ const NOT_A_PHOTO = /\bmap\b|chart|diagram|graph\b|logo|icon|flag|emblem|coat of
 const PRINTED_SCAN = /postcard|poster|passbook|certificate|ticket|document|book cover|title page|\bpage \d|advertisement|brochure|pamphlet|leaflet|newspaper|magazine cover/i;
 const OLD_YEAR = /\b(1[0-8]\d{2}|19[0-5]\d)\b/;
 
-function photoScore(text) {
+// Category names that mark a file as artwork, a scan, or a historical photo.
+const BAD_CATEGORY =
+  /paintings|drawings|watercolou?r|engravings|etchings|lithographs|prints\b|artworks|illustrations|manuscripts|\bmaps\b|postcards|posters|black and white|monochrome|photographs (from|of|taken in) the (18|19[0-6])|\b(18\d\d|19[0-5]\d)s?\b|scans?\b|sculptures|statues|coins|stamps/i;
+const GOOD_CATEGORY = /images from unsplash|unsplash|pexels|pixabay|featured pictures|quality images/i;
+
+function photoScore(text, categories = '') {
   let q = 0;
+  if (BAD_CATEGORY.test(categories)) q -= 6;
+  if (GOOD_CATEGORY.test(categories)) q += 4;
   if (/\(unsplash\)/i.test(text)) q += 3; // Unsplash donations: modern photos
   if (ARTWORK.test(text) || MUSEUM_UPLOAD.test(text)) q -= 5;
   if (NOT_A_PHOTO.test(text)) q -= 4;
@@ -590,7 +597,11 @@ async function searchCommons(query) {
     const params = new URLSearchParams({
       action: 'query', format: 'json', origin: '*',
       generator: 'search', gsrsearch: `filetype:bitmap ${query}`, gsrnamespace: '6', gsrlimit: '20',
-      prop: 'imageinfo', iiprop: 'url|size|extmetadata', iiurlwidth: '1280',
+      // Categories are curated by editors and say "Paintings" / "Black and
+      // white photographs" / "Images from Unsplash" outright — far more
+      // reliable than sniffing the filename.
+      prop: 'imageinfo|categories', cllimit: '30', clshow: '!hidden',
+      iiprop: 'url|size|extmetadata', iiurlwidth: '1280',
     });
     const r = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
       headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
@@ -599,6 +610,7 @@ async function searchCommons(query) {
     if (!r.ok) return [];
     const j = await r.json();
     const score = relevanceScorer(query);
+    const titleHit = relevanceScorer(query, 1);
     return Object.values(j.query?.pages || {})
       .map((p) => {
         const ii = p.imageinfo?.[0];
@@ -612,6 +624,10 @@ async function searchCommons(query) {
         const hay = `${p.title} ${desc}`;
         const s = score(hay);
         if (s <= 0) return null;
+        // Descriptions are long and noisy; "thumbnail.jpeg" got through on its
+        // description alone. The filename itself must carry a keyword.
+        if (titleHit(p.title) <= 0) return null;
+        const cats = (p.categories || []).map((c) => c.title || '').join(' | ');
         const author = creditName(ii.extmetadata?.Artist?.value);
         // An attributed file with no usable author line can't be credited
         // properly, so treat it as unusable rather than crediting "unknown".
@@ -619,7 +635,7 @@ async function searchCommons(query) {
         return {
           url: ii.thumburl || ii.url,
           s,
-          q: photoScore(hay),
+          q: photoScore(hay, cats),
           free,
           cc0: /cc0/i.test(lic),
           credit: free ? null : {
