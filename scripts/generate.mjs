@@ -592,6 +592,34 @@ async function searchOpenverse(query) {
 // Wikimedia Commons, keyless. Same strict keyword rule (Commons full-text
 // search alone returns loose matches like paintings for "sleeping bed").
 // CC0/PD are attribution-free; CC BY / BY-SA come back with credit metadata.
+
+let lastCommonsCall = 0;
+const COMMONS_GAP_MS = 1200;
+async function commonsJson(params) {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const wait = lastCommonsCall + COMMONS_GAP_MS - Date.now();
+    if (wait > 0) await new Promise((res) => setTimeout(res, wait));
+    lastCommonsCall = Date.now();
+    const r = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+      headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
+      signal: AbortSignal.timeout(10000),
+    });
+    const txt = await r.text();
+    try {
+      const j = JSON.parse(txt);
+      if (!j.error) return j;
+      console.log(`commons api error: ${JSON.stringify(j.error).slice(0, 120)}`);
+    } catch {
+      console.log(`commons non-JSON (${r.status}): ${txt.slice(0, 80).replace(/\s+/g, ' ')}`);
+    }
+    if (attempt === 0) {
+      console.log('commons: rate-limited — backing off 8s and retrying once');
+      await new Promise((res) => setTimeout(res, 8000));
+    }
+  }
+  return null;
+}
+
 async function searchCommons(query) {
   try {
     const params = new URLSearchParams({
@@ -603,12 +631,13 @@ async function searchCommons(query) {
       prop: 'imageinfo|categories', cllimit: '30', clshow: '!hidden',
       iiprop: 'url|size|extmetadata', iiurlwidth: '1280',
     });
-    const r = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
-      headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
-      signal: AbortSignal.timeout(10000),
-    });
-    if (!r.ok) return [];
-    const j = await r.json();
+    // Commons rate-limits bursts, and it does so QUIETLY: the body becomes
+    // "You are making too many requests" (non-JSON), which used to be caught
+    // and returned as "no candidates" — the last three topics of a run came
+    // back imageless in 0.3s each (2026-09-10). Space calls out, and when the
+    // limit does hit, wait and retry once.
+    const j = await commonsJson(params);
+    if (!j) return [];
     const score = relevanceScorer(query);
     const titleHit = relevanceScorer(query, 1);
     return Object.values(j.query?.pages || {})
@@ -667,7 +696,9 @@ for (const t of data.topics) {
   for (const q of queries) { cands = await searchOpenverse(q); if (cands.length) break; }
   if (!cands.length) for (const q of queries) { cands = await searchCommons(q); if (cands.length) break; }
   if (!cands.length) {
-    for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle'])) {
+    // At most three fallbacks per topic — a hard topic used to walk every
+    // phrase on both sources and exhaust the rate budget for the topics after it.
+    for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle']).slice(0, 3)) {
       cands = await searchOpenverse(q);
       if (!cands.length) cands = await searchCommons(q);
       if (cands.length) break;
