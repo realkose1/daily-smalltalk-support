@@ -432,9 +432,15 @@ const STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
 // photo is worse than the gradient fallback.
 function relevanceScorer(query) {
   const keywords = query.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOPWORDS.has(w));
+  // One shared word is not a match. "collection shelf items" hit an archive
+  // series called "…van Achterberg Collection…" (a mud hut), and a 다이어트
+  // query landed on "Rib Room, Somerset Hotel" through "room". Demand two hits
+  // whenever the query has two words to offer.
+  const need = Math.min(2, keywords.length);
   return (text) => {
     const hay = text.toLowerCase();
-    return keywords.reduce((n, k) => n + (new RegExp(`\\b${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hay) ? 1 : 0), 0);
+    const hits = keywords.reduce((n, k) => n + (new RegExp(`\\b${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(hay) ? 1 : 0), 0);
+    return hits >= need ? hits : 0;
   };
 }
 
@@ -446,7 +452,7 @@ const ARTWORK =
 // Museum uploads are catalogue scans of objects, and they name the institution
 // rather than saying "museum" — "Shelf_Clock_MET_202371.jpg" filled a 수집 card.
 const MUSEUM_UPLOAD =
-  /\bMET\b|rijksmuseum|wellcome|smithsonian|getty|louvre|\bNGA\b|\bBnF\b|BAnQ|nypl|library of congress|LC-[A-Z]/;
+  /\bMET\b|rijksmuseum|wellcome|smithsonian|getty|louvre|\bNGA\b|\bBnF\b|BAnQ|nypl|library of congress|LC-[A-Z]|ASC Leiden|Tropenmuseum|Bundesarchiv|Nationaal Archief|KITLV|archief|\barchives?\b|collectie/i;
 const OLD_YEAR = /\b(1[0-8]\d{2}|19[0-5]\d)\b/;
 
 function photoScore(text) {
