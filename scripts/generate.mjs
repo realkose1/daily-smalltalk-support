@@ -598,9 +598,11 @@ async function searchOpenverse(query) {
 // CC0/PD are attribution-free; CC BY / BY-SA come back with credit metadata.
 
 let lastCommonsCall = 0;
-const COMMONS_GAP_MS = 1200;
+// 1.2s still drew 429s once the cascade (correctly) kept going past
+// artwork-only results — more Commons calls per run. 2s keeps it under.
+const COMMONS_GAP_MS = 2000;
 async function commonsJson(params) {
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     const wait = lastCommonsCall + COMMONS_GAP_MS - Date.now();
     if (wait > 0) await new Promise((res) => setTimeout(res, wait));
     lastCommonsCall = Date.now();
@@ -616,9 +618,12 @@ async function commonsJson(params) {
     } catch {
       console.log(`commons non-JSON (${r.status}): ${txt.slice(0, 80).replace(/\s+/g, ' ')}`);
     }
-    if (attempt === 0) {
-      console.log('commons: rate-limited — backing off 8s and retrying once');
-      await new Promise((res) => setTimeout(res, 8000));
+    if (attempt < 2) {
+      // One 8s pause wasn't enough on 2026-09-11 — the limit was still up
+      // when it retried. Wait 10s, then 20s.
+      const back = attempt === 0 ? 10000 : 20000;
+      console.log(`commons: rate-limited — backing off ${back / 1000}s (attempt ${attempt + 1}/3)`);
+      await new Promise((res) => setTimeout(res, back));
     }
   }
   return null;
@@ -696,16 +701,22 @@ for (const t of data.topics) {
   // Cascade: the model's own queries on Openverse, then on Commons, then the
   // shuffled category fallback on both. Stop at the first query that yields
   // candidates. Gradient only if the whole cascade misses.
-  let cands = [];
-  for (const q of queries) { cands = await searchOpenverse(q); if (cands.length) break; }
-  if (!cands.length) for (const q of queries) { cands = await searchCommons(q); if (cands.length) break; }
-  if (!cands.length) {
+  // Judge usability INSIDE the cascade. It used to break on the raw candidate
+  // count and only drop artwork/museum scans afterwards, so a query that came
+  // back with 20 condemned files "succeeded", the loop stopped, and the topic
+  // shipped with no cover — 4 gradients on 2026-09-10 and 3 on 09-11, each
+  // decided in ~1.3s without ever reaching the fallbacks.
+  const usableOnly = (list) => list.filter((c) => (c.q ?? 0) > -5);
+  let usable = [];
+  for (const q of queries) { usable = usableOnly(await searchOpenverse(q)); if (usable.length) break; }
+  if (!usable.length) for (const q of queries) { usable = usableOnly(await searchCommons(q)); if (usable.length) break; }
+  if (!usable.length) {
     // At most three fallbacks per topic — a hard topic used to walk every
     // phrase on both sources and exhaust the rate budget for the topics after it.
     for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle']).slice(0, 3)) {
-      cands = await searchOpenverse(q);
-      if (!cands.length) cands = await searchCommons(q);
-      if (cands.length) break;
+      usable = usableOnly(await searchOpenverse(q));
+      if (!usable.length) usable = usableOnly(await searchCommons(q));
+      if (usable.length) break;
     }
   }
 
@@ -716,8 +727,8 @@ for (const t of data.topics) {
   //                      that display `imageCredit`. This is what unlocks the
   //                      big CC BY-SA pool (e.g. 삼성 사진은 전부 BY-SA).
   // Anything the photo scoring has condemned (artwork, museum object, scan) is
-  // worse on a small-talk card than the app's plain gradient — leave it out.
-  const usable = cands.filter((c) => (c.q ?? 0) > -5);
+  // worse on a small-talk card than the app's plain gradient — `usable` above
+  // already excludes it, so the gradient is only ever a true last resort.
   const best = pickVaried(usable);
   const free = pickVaried(usable.filter((c) => c.free));
 
