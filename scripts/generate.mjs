@@ -740,9 +740,14 @@ for (const t of data.topics) {
   }
 
   delete t.imageQueries; // internal only — not part of the app's Topic shape
-  console.log(
-    `${t.id}: image=${t.image ? 'cc0' : 'none'}${t.imageAttributed ? ` +attributed(${t.imageCredit.license})` : ''}`,
-  );
+  // Say what the CARD gets, not just the CC0 slot: "image=none +attributed"
+  // read as "no cover" and sent a whole investigation after a non-problem.
+  const cover = t.imageAttributed
+    ? `attributed(${t.imageCredit.license})`
+    : t.image
+      ? 'cc0'
+      : 'NONE → gradient';
+  console.log(`${t.id}: cover=${cover}; cc0-for-old-builds=${t.image ? 'yes' : 'no'}`);
 }
 
 const out = { date: isoDate, dateLabel, generatedAt: now.toISOString(), topics: data.topics };
