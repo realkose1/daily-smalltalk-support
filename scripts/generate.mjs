@@ -17,7 +17,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { writeFileSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 
-const MODEL = 'claude-sonnet-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
+const MODEL = 'claude-sonnet-5-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
 const client = new Anthropic();
 
 const now = new Date();
@@ -349,6 +349,15 @@ const gen = await client.messages.stream({
       `- reason은 오늘 날짜·날씨·맥락 반영. JSON만 출력.`,
   }],
 }).finalMessage();
+
+// Log usage so cost is visible in the Actions log (claude-sonnet-5-5: $2 in /
+// $10 out per 1M tokens; output includes thinking tokens).
+{
+  const u = gen.usage;
+  const cost = (u.input_tokens * 2 + (u.cache_creation_input_tokens || 0) * 2.5
+    + (u.cache_read_input_tokens || 0) * 0.2 + u.output_tokens * 10) / 1e6;
+  console.log(`tokens: in ${u.input_tokens} / out ${u.output_tokens} (stop=${gen.stop_reason}) → ~$${cost.toFixed(3)}`);
+}
 
 const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
 // A truncated response surfaces as a confusing JSON syntax error several
