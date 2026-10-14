@@ -1,0 +1,317 @@
+{
+  "date": "2026-10-14",
+  "dateLabel": "10월 14일 수요일",
+  "generatedAt": "2026-10-14T00:01:52.425Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "날씨",
+      "subtopic": "일교차",
+      "label": "일교차",
+      "color": "#E07A1F",
+      "title": "아침 9°C, 낮 17°C, 옷 어떻게 입으셨어요?",
+      "desc": "맑지만 아침저녁은 쌀쌀하고 낮엔 포근한 날이에요. 겉옷 하나로 하루를 버티는 나만의 요령을 나눠 봐요.",
+      "reason": "10월 14일 수요일, 서울은 최저 9°C에 최고 17°C로 일교차가 8도나 나요. 오늘 아침 옷차림 고민한 분이 많을 거예요.",
+      "questions": [
+        "일교차 큰 날엔 겉옷 어떻게 챙기세요? 입고 벗기 편한 나만의 조합 있어요?",
+        "오늘 아침 나올 때 '이거 입고 올걸' 싶었던 순간 있었어요?",
+        "가을에 제일 먼저 꺼내 입게 되는 옷은 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 아침엔 쌀쌀했는데 낮엔 따뜻하대요. 겉옷 어떻게 하고 오셨어요?",
+          "follow": "사무실 에어컨이나 난방이 어떤지, 책상 위 담요나 가디건 얘기로 이어가 보세요.",
+          "caution": "상대 옷차림을 평가하는 말은 피하세요."
+        },
+        "friend": {
+          "opener": "야 오늘 아침 진짜 춥지 않았어? 낮엔 또 덥더라 ㅋㅋ",
+          "follow": "가을 옷 꺼내다 발견한 잊고 있던 옷 얘기로 이어가 보세요.",
+          "caution": "옷 사라고 강요하는 느낌은 피하세요."
+        },
+        "date": {
+          "opener": "요즘 아침저녁 온도 차가 크잖아요. 겉옷 하나 들고 다니세요?",
+          "follow": "가을에 좋아하는 계절 풍경이나 산책 코스로 이어가 보세요.",
+          "caution": "외모나 옷차림을 품평하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/A_photo_of_sunny_Amsterdam_city%2C_free_download%3B_view_from_the_Prins_Hendrikkade_in_tree_shadow_over_the_IJ_tunnel_and_Oosterdok_water._Fons_Heijnsbroek%2C_street_photography_of_The_Netherlands_in_high_resolution%3B_free_image_CC0.tif/lossy-page1-1280px-thumbnail.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Field_Maple_%28Acer_campestre%29_autumn_leaves_%288252316444%29.jpg/1280px-Field_Maple_%28Acer_campestre%29_autumn_leaves_%288252316444%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "AnemoneProjectors ( talk )",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Field_Maple_(Acer_campestre)_autumn_leaves_(8252316444).jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "경제",
+      "subtopic": "환율",
+      "label": "환율",
+      "color": "#C0392B",
+      "title": "환율 1,340원, 오늘도 올랐대요",
+      "desc": "원/달러 환율이 오늘 종가 기준 1,340원으로 어제보다 0.5% 올랐어요. 원화 약세라 직구나 해외 결제엔 불리한 쪽이에요.",
+      "reason": "최근 증시가 크게 출렁인 분위기에다 환율까지 올라서 생활경제 체감 얘기가 나올 만한 날이에요. 코스피는 월요일 종가 기준 3.6% 내렸어요.",
+      "questions": [
+        "환율 오른 걸 체감하는 순간 있어요? 해외 직구나 결제할 때요.",
+        "요즘 증시가 많이 출렁였다는데, 주변에서 그 얘기 하는 분 있어요?",
+        "환율이나 증시 뉴스, 평소에 챙겨 보는 편이세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 환율이 또 올랐다던데, 뉴스 보셨어요?",
+          "follow": "해외 직구나 출장, 점심값 같은 생활 체감 얘기로 이어가 보세요.",
+          "caution": "종목 추천이나 시황 전망은 피하세요."
+        },
+        "friend": {
+          "opener": "환율 또 올랐다던데 직구 같은 거 하려면 부담이다 그치?",
+          "follow": "요즘 증시가 뒤숭숭하다는 얘기도 가볍게 나눠 보세요.",
+          "caution": "수익·손실 금액을 캐묻지 마세요."
+        },
+        "date": {
+          "opener": "요즘 뉴스 보면 환율이나 증시 얘기가 많더라고요. 관심 있으세요?",
+          "follow": "해외여행이나 직구 경험 같은 가벼운 얘기로 넘어가 보세요.",
+          "caution": "재산이나 투자 규모, 손익은 묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Hundred_dollar_bill_01.jpg/1280px-Hundred_dollar_bill_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t5",
+      "cat": "취미",
+      "subtopic": "반려식물",
+      "label": "식물",
+      "color": "#3C8D40",
+      "title": "우리 집 식물, 가을 되니 어때요?",
+      "desc": "햇빛이 약해지고 온도가 내려가는 시기라 식물도 달라지죠. 키우는 식물 얘기나 키워 보고 싶은 식물 얘기를 나눠 봐요.",
+      "reason": "맑은 가을날이라 베란다나 창가 식물 상태를 살펴보기 좋아요. 환절기엔 식물 관리 얘기도 자연스럽게 나와요.",
+      "questions": [
+        "지금 키우는 식물 있어요? 없다면 키워 보고 싶은 건 뭐예요?",
+        "식물 키우다 의외로 잘 자란 경험 있어요?",
+        "화분 하나 들인다면 어디에 두고 싶어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "책상에 식물 두시는 분들 많던데, 혹시 키우세요?",
+          "follow": "사무실에서 키우기 쉬운 식물이나 햇빛 좋은 자리 얘기로 이어가 보세요.",
+          "caution": "식물을 죽였다는 얘기로 분위기를 가라앉히지 마세요."
+        },
+        "friend": {
+          "opener": "우리 집 화분이 요즘 갑자기 잎이 노래졌어. 너 식물 키워?",
+          "follow": "식물 이름 붙인 얘기나 분갈이 실패담으로 이어가 보세요.",
+          "caution": "식물 키우는 방식 훈수는 피하세요."
+        },
+        "date": {
+          "opener": "혹시 집에서 식물 키우세요? 키워 보고 싶은 건 있어요?",
+          "follow": "좋아하는 꽃이나 초록 있는 공간 얘기로 이어가 보세요.",
+          "caution": "집 구조나 거주 환경을 캐묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Small_potted_pitcher_plant.jpg/1280px-Small_potted_pitcher_plant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/DFC_2282_Sunlit_curly_cactus_spilling_from_a_small_terracotta_pot_on_a_wooden_windowsill_beside_a_rustic_lantern.jpg/1280px-DFC_2282_Sunlit_curly_cactus_spilling_from_a_small_terracotta_pot_on_a_wooden_windowsill_beside_a_rustic_lantern.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "PattayaPatrol",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DFC_2282_Sunlit_curly_cactus_spilling_from_a_small_terracotta_pot_on_a_wooden_windowsill_beside_a_rustic_lantern.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "커리어",
+      "subtopic": "회사생활",
+      "label": "점심시간",
+      "color": "#2F5D9E",
+      "title": "맑은 수요일, 점심시간에 뭐 하세요?",
+      "desc": "밥만 먹고 들어오는지, 잠깐 걸으러 나가는지 사람마다 점심시간 쓰는 법이 달라요. 나만의 점심 루틴을 이야기해 봐요.",
+      "reason": "오늘은 하루 종일 맑고 낮 기온이 17°C까지 올라 점심시간에 잠깐 밖에 나가기 딱 좋은 날씨예요.",
+      "questions": [
+        "점심시간에 밥 먹고 나서는 보통 뭐 하세요?",
+        "날씨 좋은 날 점심에 가고 싶은 산책 코스 있어요?",
+        "점심시간 20분이 생긴다면 어떻게 쓰고 싶어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 날씨 좋은데 점심 먹고 잠깐 걸으실래요?",
+          "follow": "근처 걷기 좋은 길이나 자주 가는 카페로 이어가 보세요.",
+          "caution": "점심 메뉴나 식사 속도를 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 점심시간에 뭐 해? 나는 밥 먹고 그냥 앉아만 있어 ㅋㅋ",
+          "follow": "각자 점심 루틴과 회사 근처 맛집 얘기로 이어가 보세요.",
+          "caution": "회사 험담으로 흘러가지 않게 해 주세요."
+        },
+        "date": {
+          "opener": "쉬는 시간엔 보통 뭐 하면서 재충전하세요?",
+          "follow": "좋아하는 산책길이나 카페 같은 취향 얘기로 이어가 보세요.",
+          "caution": "회사 업무나 직급, 연봉 얘기는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Grand_Canyon_National_Park_Active_Trails_on_South_Rim_%288136791274%29.jpg/1280px-Grand_Canyon_National_Park_Active_Trails_on_South_Rim_%288136791274%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Grand Canyon National Park",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grand_Canyon_National_Park_Active_Trails_on_South_Rim_(8136791274).jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "웹툰·책",
+      "label": "웹툰",
+      "color": "#6C4AB6",
+      "title": "요즘 챙겨 보는 웹툰이나 책 있으세요?",
+      "desc": "가을엔 괜히 이야기에 빠지고 싶어지죠. 마지막으로 시간 가는 줄 모르고 읽은 만화나 책이 뭔지 나눠 봐요.",
+      "reason": "맑고 선선한 수요일 저녁, 퇴근 후 가볍게 읽을거리 찾는 분이 많을 때예요.",
+      "questions": [
+        "마지막으로 밤새 몰아 본 웹툰이나 책이 뭐였어요?",
+        "웹툰은 매주 기다려서 보는 편이에요, 몰아서 보는 편이에요?",
+        "원작 웹툰이 더 좋았던 적 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 퇴근하고 뭐 읽거나 보세요? 웹툰 같은 거요.",
+          "follow": "출퇴근길에 읽기 좋은 장르나 추천받은 작품 얘기로 이어가 보세요.",
+          "caution": "취향 평가나 '그걸 왜 봐요?' 같은 말은 피하세요."
+        },
+        "friend": {
+          "opener": "요즘 보는 웹툰 있어? 나 볼 거 떨어졌어 ㅠㅠ",
+          "follow": "서로 인생 웹툰이나 최애 캐릭터를 하나씩 꼽아 보세요.",
+          "caution": "결말 스포는 금물이에요."
+        },
+        "date": {
+          "opener": "쉬는 날엔 책이나 웹툰 같은 거 보세요?",
+          "follow": "좋아하는 장르와 그걸 좋아하게 된 계기로 이어가 보세요.",
+          "caution": "취향을 너무 깊게 파고들며 평가하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Man_playing_an_acoustic_brazilian_guitar_%28Viol%C3%A3o%29_on_Marco_Zero_Square%2C_Refice%2C_Pernambuco%2C_Brazil.jpg/1280px-Man_playing_an_acoustic_brazilian_guitar_%28Viol%C3%A3o%29_on_Marco_Zero_Square%2C_Refice%2C_Pernambuco%2C_Brazil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Alex_Wong_playing_guitar_at_Rockwood_Music_Hall.jpg/1280px-Alex_Wong_playing_guitar_at_Rockwood_Music_Hall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Hadarvc",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alex_Wong_playing_guitar_at_Rockwood_Music_Hall.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "환절기 몸",
+      "color": "#2E8B6A",
+      "title": "환절기, 몸이 먼저 알려주는 신호 있으세요?",
+      "desc": "목이 칼칼하거나 아침에 더 안 일어나지는 날이 있죠. 계절 바뀔 때 내 몸의 반응을 이야기해 봐요.",
+      "reason": "오늘 최저 9°C에 최고 17°C로 아침저녁 온도 차가 커서 몸이 피곤하다는 분이 많은 날이에요.",
+      "questions": [
+        "환절기마다 꼭 반응 오는 부위 있어요? 목, 코, 피부 같은 데요.",
+        "이맘때 컨디션 챙기려고 하는 나만의 루틴 있어요?",
+        "요즘 아침에 일어나기 더 힘들지 않으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 아침저녁이 쌀쌀해서 그런지 좀 피곤하지 않으세요?",
+          "follow": "점심 산책이나 따뜻한 차처럼 소소한 관리법으로 이어가 보세요.",
+          "caution": "의학 정보나 약 추천은 하지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 환절기라 그런지 나 목이 좀 칼칼해. 너는 괜찮아?",
+          "follow": "각자 쓰는 생활 꿀팁을 가볍게 주고받아 보세요.",
+          "caution": "진단하듯 말하거나 걱정을 과하게 늘어놓지 마세요."
+        },
+        "date": {
+          "opener": "요즘 환절기라 컨디션 챙기기 은근 어렵지 않아요?",
+          "follow": "좋아하는 따뜻한 음식이나 쉬는 날 휴식 방법으로 이어가 보세요.",
+          "caution": "건강 상태를 자세히 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Morning_Light_on_Rua_das_Carmelitas%2C_Porto%2C_Portugal_%2854834038782%29.jpg/1280px-Morning_Light_on_Rua_das_Carmelitas%2C_Porto%2C_Portugal_%2854834038782%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Dale Cruse - 10M views from San Francisco, CA, USA",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Morning_Light_on_Rua_das_Carmelitas,_Porto,_Portugal_(54834038782).jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "반려동물",
+      "label": "반려동물",
+      "color": "#D4688F",
+      "title": "어릴 때든 지금이든, 함께한 동물 있어요?",
+      "desc": "강아지, 고양이, 햄스터처럼 함께 지낸 동물이 있다면 그 얘기만으로 대화가 길어져요. 없어도 키워 보고 싶은 동물을 나눠 봐요.",
+      "reason": "선선하고 맑은 가을날은 산책하기 좋아서 반려동물 얘기가 자연스럽게 나와요.",
+      "questions": [
+        "지금 키우는 동물이 있다면 소개해 주세요. 없으면 키워 보고 싶은 동물은요?",
+        "어릴 때 함께한 동물 중 기억에 남는 아이 있어요?",
+        "반려동물 때문에 웃었던 사소한 장면 하나만 얘기해 주세요."
+      ],
+      "tips": {
+        "work": {
+          "opener": "혹시 반려동물 키우세요? 요즘 산책하기 좋은 날씨죠.",
+          "follow": "사진 보여 주고받거나 동물 습관 얘기로 이어가 보세요.",
+          "caution": "키우지 않는 사람에게 키우라고 권하거나 비용을 묻지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 너네 집 애는 잘 지내? 산책하기 딱 좋은 날씨다.",
+          "follow": "웃겼던 행동이나 사진을 서로 공유해 보세요.",
+          "caution": "상대 반려동물의 품종이나 외모를 비교하지 마세요."
+        },
+        "date": {
+          "opener": "동물 좋아하세요? 키워 보셨거나 키워 보고 싶은 동물 있어요?",
+          "follow": "좋아하는 동물과 이유로 이어가 보세요.",
+          "caution": "알레르기나 키우는 환경을 너무 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Autumn_Foliage_in_Natirar%2C_New_Jersey_File_6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Siddharth Mallya",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_Foliage_in_Natirar,_New_Jersey_File_6.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "음식",
+      "subtopic": "커피·음료",
+      "label": "따뜻한 한 잔",
+      "color": "#8B5A2B",
+      "title": "아이스에서 따뜻한 걸로, 갈아탄 날이 언제였어요?",
+      "desc": "차가운 음료만 마시다가 슬슬 따뜻한 잔이 당기는 시기예요. 요즘 내 손에 들린 음료는 뭔지 얘기해 봐요.",
+      "reason": "오늘 아침 11°C까지 내려가서 따뜻한 음료 생각나는 분이 많을 것 같아요. 환절기엔 음료 취향이 슬슬 바뀌어요.",
+      "questions": [
+        "요즘 따뜻한 음료로 주로 뭐 드세요?",
+        "'이제 아아는 끝이다' 싶었던 날이 있었어요?",
+        "가을에만 꼭 찾게 되는 음료나 시럽 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘은 확실히 따뜻한 커피가 땡기네요. 요즘 뭐 드세요?",
+          "follow": "근처 카페 신메뉴나 점심 뒤 커피 취향으로 이어가 보세요.",
+          "caution": "카페인 양이나 건강 얘기를 훈수처럼 하지 마세요."
+        },
+        "friend": {
+          "opener": "나 오늘 드디어 아아 말고 따뜻한 거 시켰어. 너는 아직 아아야?",
+          "follow": "가을 신메뉴나 같이 가고 싶은 카페로 이어가 보세요.",
+          "caution": "취향을 놀리는 건 피하세요."
+        },
+        "date": {
+          "opener": "혹시 커피 좋아하세요? 요즘 같은 날씨엔 어떤 음료가 끌리세요?",
+          "follow": "좋아하는 카페 분위기나 즐겨 가는 동네 카페로 이어가 보세요.",
+          "caution": "음료 취향을 평가하거나 고치려 들지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cute_Latte.jpg/1280px-Cute_Latte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Hot_Latte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "روتانا",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hot_Latte.jpg"
+      }
+    }
+  ]
+}
