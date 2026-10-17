@@ -1,296 +1,317 @@
 {
-  "date": "2026-10-17",
-  "dateLabel": "10월 17일 토요일",
-  "generatedAt": "2026-10-16T23:09:41.896Z",
+  "date": "2026-10-18",
+  "dateLabel": "10월 18일 일요일",
+  "generatedAt": "2026-10-17T22:46:47.543Z",
   "topics": [
     {
-      "id": "old-friend",
-      "cat": "관계",
-      "subtopic": "친구",
-      "label": "오랜친구",
-      "color": "#D1495B",
-      "title": "문득 생각나는 오랜 친구 있어요?",
-      "desc": "맑은 토요일엔 연락 뜸했던 친구가 불쑥 떠오르곤 해요.",
-      "reason": "날씨 좋은 가을 토요일은 약속을 잡기 좋고, 오랜만에 연락하고 싶어지는 분위기예요. 누구나 자기 경험으로 답할 수 있어요.",
+      "id": "20261018-drizzle",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "이슬비",
+      "color": "#4A6A8A",
+      "title": "이슬비엔 우산 쓰세요, 그냥 맞으세요?",
+      "desc": "오늘 서울은 하루 종일 이슬비가 내려요. 우산 쓰기엔 애매하고 안 쓰기엔 젖는 딱 그 정도죠.",
+      "reason": "10월 18일 일요일, 서울은 이슬비에 16°C, 강수확률 100%라 우산 취향 이야기로 가볍게 시작하기 좋아요.",
       "questions": [
-        "오래된 친구를 만나면 꼭 가는 코스나 장소가 있으세요?",
-        "오랜만에 만나도 어제 본 것 같은 친구는 어떤 사람이에요?",
-        "친구랑 마지막으로 크게 웃었던 순간은 언제예요?"
+        "이슬비 정도면 우산 쓰는 편이세요, 그냥 맞는 편이세요?",
+        "비 오는 날 나만의 '이것만은 한다' 같은 습관 있으세요?",
+        "우산 때문에 겪은 웃픈 에피소드 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "주말인데 오랜 친구 만날 일 있으세요? 날씨가 정말 좋아서요.",
-          "follow": "친구들과 자주 하는 모임 활동으로 이어가 보세요.",
-          "caution": "사적인 인간관계를 깊이 캐묻지 마세요."
+          "opener": "오늘 이슬비 계속 오네요, 우산 쓰기도 애매하지 않아요?",
+          "follow": "각자의 우산 철학을 물어보세요. 접이식파인지 장우산파인지 의외로 갈려요.",
+          "caution": "출퇴근 고생이나 날씨 불평만 길게 하면 분위기가 처져요."
         },
         "friend": {
-          "opener": "우리 이렇게 날씨 좋은데 오랜만에 한번 볼까? 요즘 어떻게 지내?",
-          "follow": "예전에 같이 가던 장소나 추억 얘기로 이어가면 좋아요.",
-          "caution": "'왜 연락 안 했어?' 같은 추궁은 분위기를 깨요."
+          "opener": "야 오늘 이슬비 오는데 우산 쓰냐 맞냐? 난 맞는 파거든",
+          "follow": "비 맞고 다닌 웃긴 기억이나 우산 잃어버린 썰로 이어가 보세요.",
+          "caution": "상대 취향을 지적하는 말투는 피하세요."
         },
         "date": {
-          "opener": "오랫동안 친하게 지내는 친구가 있으세요? 어떻게 친해졌는지 궁금해요.",
-          "follow": "친구들과의 에피소드를 들으며 상대의 성격을 자연스럽게 알아가 보세요.",
-          "caution": "과거 연애나 친구 사이의 갈등 이야기는 피하세요."
+          "opener": "오늘 이슬비 오는데, 이 정도면 우산 쓰시는 편이에요?",
+          "follow": "좋아하는 비 오는 날 풍경이나 비 오면 가고 싶은 곳으로 넘어가 보세요.",
+          "caution": "젖은 옷이나 머리 상태 같은 외모 얘기는 피하세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Kids_walking_on_park_path_%28Unsplash%29.jpg/1280px-Kids_walking_on_park_path_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/2026-09-02_17_40_12_Drizzle_drops_on_a_car_windshield_along_Aquetong_Lane_in_the_Mountainview_section_of_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg/1280px-2026-09-02_17_40_12_Drizzle_drops_on_a_car_windshield_along_Aquetong_Lane_in_the_Mountainview_section_of_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Famartin",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026-09-02_17_40_12_Drizzle_drops_on_a_car_windshield_along_Aquetong_Lane_in_the_Mountainview_section_of_Ewing_Township,_Mercer_County,_New_Jersey.jpg"
+      }
     },
     {
-      "id": "small-buy",
-      "cat": "쇼핑",
-      "subtopic": "생활용품",
-      "label": "소확템",
-      "color": "#6B5B95",
-      "title": "요즘 산 것 중 삶의 질 올려준 물건",
-      "desc": "가격은 작아도 매일 쓰며 만족하는 물건이 하나쯤 있죠.",
-      "reason": "환절기에 집 안 물건을 바꾸거나 새로 장만하는 분들이 많아요. 맑은 토요일이라 쇼핑 얘기도 가볍게 나올 수 있어요.",
+      "id": "20261018-sundayhome",
+      "cat": "일상",
+      "subtopic": "주말계획",
+      "label": "집콕",
+      "color": "#7A5C46",
+      "title": "비 오는 일요일, 집에서 제일 먼저 하는 일",
+      "desc": "밖은 촉촉하고 일요일은 아직 남았어요. 집콕하는 사람마다 루틴이 다 달라요.",
+      "reason": "일요일에 이슬비까지 와서 많은 분이 집에서 보내기 좋은 날이에요.",
       "questions": [
-        "최근에 산 물건 중 '진작 살걸' 싶었던 게 있어요?",
-        "가을이라 새로 들인 생활용품이 있으세요?",
-        "한 번 쓰고 서랍에 들어간 물건 중 가장 아까웠던 건요?"
+        "비 오는 일요일엔 집에서 제일 먼저 뭐부터 하세요?",
+        "집콕하는 날 '이것만은 꼭 한다' 하는 게 있으세요?",
+        "오늘 같은 날 하루를 어떻게 보내면 잘 보냈다는 느낌이 드세요?"
       ],
       "tips": {
         "work": {
-          "opener": "요즘 사신 것 중에 의외로 만족하는 물건 있어요?",
-          "follow": "쓰는 방법이나 구매처 정보를 물으며 서로 아이템을 공유하세요.",
-          "caution": "가격을 따지거나 '비싸네요' 같은 반응은 피하세요."
+          "opener": "오늘 비 와서 다들 집에 계시겠죠? 일요일엔 보통 뭐 하세요?",
+          "follow": "집콕 루틴을 비교해 보세요. 낮잠파, 정리파, 영상파로 갈려서 재밌어요.",
+          "caution": "월요일 출근 걱정이나 일 얘기로 새지 않게 하세요."
         },
         "friend": {
-          "opener": "요즘 산 것 중에 진짜 잘 샀다 싶은 거 있어? 나는 하나 있거든.",
-          "follow": "각자 '후회템'과 '만족템'을 비교하면 대화가 길어져요.",
-          "caution": "소비 습관을 지적하는 말투는 조심하세요."
+          "opener": "오늘 비 오는데 집에서 뭐 해? 난 이불 속에서 안 나오는 중ㅋㅋ",
+          "follow": "요즘 집에서 자주 하는 걸 서로 추천해 보세요.",
+          "caution": "'넌 맨날 집에만 있냐' 같은 말은 피하세요."
         },
         "date": {
-          "opener": "요즘 소소하게 기분 좋아진 소비가 있으세요?",
-          "follow": "취향이 드러나는 물건 이야기로 이어가면 자연스러워요.",
-          "caution": "소득이나 가격대를 묻는 건 피하세요."
+          "opener": "비 오는 일요일엔 집에서 쉬는 편이세요, 아니면 나가는 편이세요?",
+          "follow": "좋아하는 집콕 메뉴나 영상, 음악으로 취향을 나눠 보세요.",
+          "caution": "집 구조나 혼자 사는지 같은 사생활 질문은 피하세요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Cute_white_puppy_sits_on_a_cozy_blanket_in_a_warm_living_room_surrounded_by_furniture.jpg/1280px-Cute_white_puppy_sits_on_a_cozy_blanket_in_a_warm_living_room_surrounded_by_furniture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Project_365_-202_210723_The_Rainy_City_%2853061937253%29.jpg/1280px-Project_365_-202_210723_The_Rainy_City_%2853061937253%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Woman_sits_by_window_holding_cup_while_watching_rain_fall_outside.jpg/1280px-Woman_sits_by_window_holding_cup_while_watching_rain_fall_outside.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
         "author": "Shixart1985",
         "license": "CC BY 2.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cute_white_puppy_sits_on_a_cozy_blanket_in_a_warm_living_room_surrounded_by_furniture.jpg"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman_sits_by_window_holding_cup_while_watching_rain_fall_outside.jpg"
       }
     },
     {
-      "id": "laundry-sat",
-      "cat": "일상",
-      "subtopic": "집안일",
-      "label": "빨래",
-      "color": "#2E7D9A",
-      "title": "맑은 토요일, 빨래 널기 딱 좋은 날",
-      "desc": "비 한 방울 없는 맑은 토요일이에요. 미뤄둔 집안일 하기 좋은 날이죠.",
-      "reason": "오늘 서울은 맑고 강수확률 0%, 낮 최고 24°C라 빨래와 이불 말리기 좋아요. 토요일이라 집안일 얘기에 공감이 쉬워요.",
+      "id": "20261018-commute",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "출근길",
+      "color": "#3D5A80",
+      "title": "출퇴근길, 이동 시간에 뭐 하세요?",
+      "desc": "지하철에서 음악을 듣든, 영상을 보든, 멍 때리든 이동 시간 활용법은 사람마다 달라요.",
+      "reason": "일요일 저녁이면 내일 출근길이 슬슬 떠오르는데, 비 오는 날 출근길은 더 기억에 남아요.",
       "questions": [
-        "토요일 오전엔 집안일부터 해치우는 편이세요, 아니면 최대한 미루는 편이세요?",
-        "이렇게 맑은 날엔 꼭 널어 말리고 싶은 빨래나 이불 있으세요?",
-        "집안일 중에 제일 하기 싫은 건 뭐예요? 해방시켜 주는 요령도 있나요?"
+        "출퇴근길에 꼭 하는 나만의 루틴이 있으세요?",
+        "비 오는 날 출근길에서 제일 힘든 건 뭐예요?",
+        "이동 시간이 30분 더 생긴다면 뭘 하고 싶으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "오늘 날씨 진짜 좋던데, 주말에 빨래라도 널기 좋겠어요.",
-          "follow": "집안일 요령이나 자주 쓰는 살림 아이템 얘기로 이어가 보세요.",
-          "caution": "누가 집안일을 얼마나 하는지 가정 사정을 캐묻진 마세요."
+          "opener": "출근길에 보통 뭐 하세요? 저는 요즘 팟캐스트 들어요.",
+          "follow": "서로의 이동 시간 활용법을 공유하면 새로운 추천을 얻을 수 있어요.",
+          "caution": "긴 통근 시간에 대한 불평이 길어지지 않게 하세요."
         },
         "friend": {
-          "opener": "오늘 날씨 미쳤다, 이런 날 빨래 안 하면 손해 아니냐?",
-          "follow": "각자 제일 싫은 집안일 순위를 매겨 보면 웃음이 터져요.",
-          "caution": "서로의 집이 지저분하다는 식의 농담은 선을 넘을 수 있어요."
+          "opener": "너 출퇴근할 때 뭐 해? 나 지하철에서 할 게 없어서 추천 좀",
+          "follow": "듣는 음악이나 팟캐스트, 영상을 서로 추천해 보세요.",
+          "caution": "서로의 직장이나 출근 거리를 비교하지 마세요."
         },
         "date": {
-          "opener": "오늘처럼 맑은 토요일엔 보통 뭐 하면서 시작하세요?",
-          "follow": "집안일 vs 외출 취향으로 자연스럽게 주말 스타일을 나눠 보세요.",
-          "caution": "동거·가사 분담 같은 무거운 주제로 넘어가지 마세요."
+          "opener": "평일에 이동할 때는 주로 뭐 하세요? 음악 들으세요?",
+          "follow": "좋아하는 음악이나 팟캐스트 취향으로 자연스럽게 이어가세요.",
+          "caution": "직장 불만이나 업무 얘기는 꺼내지 마세요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Image_of_outdoor_cloth_drying.jpg/1280px-Image_of_outdoor_cloth_drying.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/LONG_ISLAND_COMMUTER_TRAIN_ARRIVES_TO_INTERCONNECT_WITH_NEW_YORK_TRANSIT_AUTHORITY_SUBWAYS_TO_MANHATTAN._THE_SUBWAY..._-_NARA_-_556693.tif/lossy-page1-1280px-LONG_ISLAND_COMMUTER_TRAIN_ARRIVES_TO_INTERCONNECT_WITH_NEW_YORK_TRANSIT_AUTHORITY_SUBWAYS_TO_MANHATTAN._THE_SUBWAY..._-_NARA_-_556693.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Court_Square_NYC_Subway_Complex_-_013.jpg/1280px-Court_Square_NYC_Subway_Complex_-_013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Yemi festus",
+        "author": "DanTD",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Image_of_outdoor_cloth_drying.jpg"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Court_Square_NYC_Subway_Complex_-_013.jpg"
       }
     },
     {
-      "id": "kospi-oct17",
+      "id": "20261018-monday",
+      "cat": "관계",
+      "subtopic": "이웃·동료",
+      "label": "안부",
+      "color": "#8A5A2B",
+      "title": "월요일 아침 '주말 잘 보냈어요?'에 뭐라고 답하세요?",
+      "desc": "한마디로 끝내기도, 길게 풀기도 애매한 월요일 아침 안부 질문이에요. 사람마다 답하는 스타일이 달라요.",
+      "reason": "일요일 저녁이라 내일 아침 동료와 나눌 인사가 떠오르는 시점이에요.",
+      "questions": [
+        "월요일 아침에 '주말 잘 보냈어요?' 하면 보통 뭐라고 답하세요?",
+        "주말 얘기를 어디까지 하는 편이세요?",
+        "동료의 주말 이야기 중에 재밌게 들었던 게 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "주말 잘 보내셨어요? 비 와서 집에 계셨어요?",
+          "follow": "상대가 말한 부분에서 한 가지만 더 물어보면 대화가 자연스러워요.",
+          "caution": "사생활을 너무 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "월요일 아침마다 '주말 잘 보냈냐'는 질문에 뭐라고 답해? 난 늘 똑같이 답하게 돼",
+          "follow": "각자의 대답 스타일이나 웃긴 월요일 에피소드를 나눠 보세요.",
+          "caution": "서로의 직장 동료 험담으로 흐르지 않게 하세요."
+        },
+        "date": {
+          "opener": "월요일 아침 인사 같은 거 어떻게 하세요? 저는 은근히 어려워서요.",
+          "follow": "사람들과 가볍게 대화하는 방식 얘기로 이어가 보세요.",
+          "caution": "직장 내부 사정이나 상사 얘기는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/I_finally_got_the_pieces_of_my_office_desk_up_here%2C_and_with_some_cussing%2C_drilling%2C_glue_managed_to_re-assemble_it_%28a_few_of_those_cam-post_things_got_mangled_in_my_hast_of_packing_up%29._%282373867187%29.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Woman_in_professional_attire_typing_on_laptop_with_handcuffs_on_desk_near_coffee_cup_in_modern_office_setting.jpg/1280px-Woman_in_professional_attire_typing_on_laptop_with_handcuffs_on_desk_near_coffee_cup_in_modern_office_setting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Woman_in_professional_attire_typing_on_laptop_with_handcuffs_on_desk_near_coffee_cup_in_modern_office_setting.jpg"
+      }
+    },
+    {
+      "id": "20261018-variety",
+      "cat": "문화",
+      "subtopic": "예능",
+      "label": "예능",
+      "color": "#B03A6B",
+      "title": "요즘 챙겨 보는 예능 있으세요?",
+      "desc": "TV든 유튜브든 일요일엔 가볍게 웃고 싶을 때가 있죠. 요즘 뭘 보는지 이야기해 봐요.",
+      "reason": "비 오는 일요일엔 집에서 영상 보는 분이 많아서 누구나 쉽게 답할 수 있는 주제예요.",
+      "questions": [
+        "요즘 챙겨 보는 예능이나 유튜브 채널 있으세요?",
+        "보다가 소리 내서 웃었던 장면 있으세요?",
+        "예능 보면서 같이 먹는 간식이 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 점심시간에 뭐 보세요? 재밌는 예능 있으면 추천해 주세요.",
+          "follow": "웃겼던 장면을 하나씩 나누면 분위기가 가벼워져요.",
+          "caution": "정치색이 있거나 특정 출연자 호불호가 갈리는 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "너 요즘 뭐 보면서 웃어? 나 볼 거 없어서 추천 좀!",
+          "follow": "서로 추천하고 같이 보는 약속으로 이어가 보세요.",
+          "caution": "스포일러는 조심하세요."
+        },
+        "date": {
+          "opener": "쉬는 날엔 영상 보는 편이세요? 요즘 재밌게 보는 게 있어요?",
+          "follow": "좋아하는 장르나 웃음 코드를 물어보면 취향이 잘 보여요.",
+          "caution": "취향을 평가하거나 반박하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Boys_playing_video_games_on_a_couch_while_eating_popcorn_in_a_cozy_living_room_setting.jpg/1280px-Boys_playing_video_games_on_a_couch_while_eating_popcorn_in_a_cozy_living_room_setting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boys_playing_video_games_on_a_couch_while_eating_popcorn_in_a_cozy_living_room_setting.jpg"
+      }
+    },
+    {
+      "id": "20261018-delivery",
+      "cat": "음식",
+      "subtopic": "배달·외식",
+      "label": "배달",
+      "color": "#C0562B",
+      "title": "비 오는 날 배달 시킨다면 뭐 드실래요?",
+      "desc": "나가기 귀찮은 날엔 배달 앱을 열게 되죠. 이런 날 먹는 메뉴엔 그 사람 취향이 담겨요.",
+      "reason": "일요일 종일 이슬비가 와서 배달이나 부침개, 치킨 같은 메뉴 이야기가 잘 어울려요.",
+      "questions": [
+        "비 오는 날 배달로 꼭 시키는 메뉴가 있으세요?",
+        "비 오는 날엔 전이랑 막걸리처럼 생각나는 조합이 있으세요?",
+        "배달 시킬 때 메뉴 고르는 데 제일 오래 걸린 기록은요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "비 오는 날엔 점심으로 뭐 드시고 싶으세요? 저는 전이 당기네요.",
+          "follow": "맛집 후보를 서로 공유하면 월요일 점심 메뉴 고민이 해결돼요.",
+          "caution": "식성이나 체중 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "비 오는 날 시켜 먹는 거 중에 최고는 뭐라고 생각해?",
+          "follow": "자주 시키는 가게나 조합을 공유해 보세요. 메뉴 고르기 게임도 재밌어요.",
+          "caution": "음식 취향을 놀리는 건 적당히만 하세요."
+        },
+        "date": {
+          "opener": "비 오는 날엔 어떤 음식이 제일 생각나세요?",
+          "follow": "좋아하는 맛집이나 같이 가고 싶은 메뉴로 이어가 보세요.",
+          "caution": "못 먹는 음식을 캐묻거나 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/DFC_0815_Sizzling_plate_of_savory_pancakes_topped_with_bean_sprouts_and_a_drizzle_of_sauce_a_spoon_lifting_a_bite_toward_the_camera.jpg/1280px-DFC_0815_Sizzling_plate_of_savory_pancakes_topped_with_bean_sprouts_and_a_drizzle_of_sauce_a_spoon_lifting_a_bite_toward_the_camera.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "PattayaPatrol",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DFC_0815_Sizzling_plate_of_savory_pancakes_topped_with_bean_sprouts_and_a_drizzle_of_sauce_a_spoon_lifting_a_bite_toward_the_camera.jpg"
+      }
+    },
+    {
+      "id": "20261018-game",
+      "cat": "취미",
+      "subtopic": "게임",
+      "label": "게임",
+      "color": "#5B4BB0",
+      "title": "요즘 빠져 있는 게임 있으세요?",
+      "desc": "모바일 게임, 콘솔, 보드게임까지 뭐든 좋아요. 가볍게 즐기는 게임 얘기는 의외로 말이 길어져요.",
+      "reason": "비 오는 일요일엔 집에서 게임하며 보내는 분이 많아서 취향 얘기로 이어가기 좋아요.",
+      "questions": [
+        "요즘 틈날 때 켜는 게임 있으세요?",
+        "어릴 때 푹 빠졌던 게임은 뭐였어요?",
+        "친구들이랑 같이 하는 보드게임이나 파티게임 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "쉴 때 가볍게 하는 게임 있으세요? 저는 요즘 퍼즐 게임 하고 있어요.",
+          "follow": "추억의 게임이나 모바일 게임 얘기로 가볍게 넓혀 보세요.",
+          "caution": "과금이나 시간 소모를 따지는 평가는 피하세요."
+        },
+        "friend": {
+          "opener": "너 요즘 무슨 게임 해? 나 심심한데 같이 할 거 추천해 줘",
+          "follow": "같이 할 수 있는 게임으로 약속을 잡아 보세요.",
+          "caution": "실력을 비꼬거나 훈수 두지 마세요."
+        },
+        "date": {
+          "opener": "쉬는 날엔 게임 하는 편이세요? 어릴 때 좋아했던 게임 있어요?",
+          "follow": "추억의 게임이나 보드게임 카페 같은 가벼운 데이트 얘기로 이어가세요.",
+          "caution": "게임 시간이나 취향을 평가하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Double_gameboard_-_Game_of_Twenty_and_Senet_Game%2C_wood_-_Museo_Egizio_%28Turin%29_S_8451_01_p02.jpg/1280px-Double_gameboard_-_Game_of_Twenty_and_Senet_Game%2C_wood_-_Museo_Egizio_%28Turin%29_S_8451_01_p02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/8/88/Table_Taft_Board_Game_Caf%C3%A9_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Crumpylicious Blog",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Table_Taft_Board_Game_Caf%C3%A9_interior.jpg"
+      }
+    },
+    {
+      "id": "20261018-kospi",
       "cat": "경제",
       "subtopic": "주식·투자",
       "label": "코스피",
-      "color": "#1E3A5F",
-      "title": "지난 목요일 코스피 7.6% 내렸대요",
-      "desc": "10월 15일(목) 종가 기준 코스피가 5,554로 직전 거래일보다 7.6% 내렸어요. 삼성전자는 어제 종가 기준 2.6% 올랐어요.",
-      "reason": "토요일이라 장은 쉬지만, 지난 목요일의 큰 변동 얘기가 주말 대화에서 이어지기 좋아요. 맑은 가을 주말에 가볍게 꺼내기 좋은 화제예요.",
+      "color": "#1F5F4A",
+      "title": "지난 금요일 코스피가 2.0% 올랐대요",
+      "desc": "10월 16일(금) 종가 기준 코스피는 5,668로, 직전 거래일(10월 15일(목))보다 2.0% 올랐어요. 삼성전자도 2.6% 올라 215,500원이었대요.",
+      "reason": "일요일이라 증시는 쉬는 날이고, 지난 금요일 종가 기준으로 코스피가 큰 폭으로 오른 걸 화제로 가볍게 꺼낼 수 있어요.",
       "questions": [
-        "지난 목요일에 코스피가 7.6% 내렸다던데, 그 소식 들었을 때 어떠셨어요?",
-        "요즘 주식 앱은 하루에 몇 번쯤 열어보세요?",
-        "어제는 삼성전자가 2.6% 올랐다던데, 주변에 주식 얘기 하는 분 많아요?"
+        "지난 금요일 코스피가 2.0% 올랐다던데, 주변에서 얘기 나오던가요?",
+        "요즘 주식이나 재테크 얘기 주변에서 많이 하세요?",
+        "투자 처음 시작했을 때 기억나세요?"
       ],
       "tips": {
         "work": {
-          "opener": "지난 목요일에 코스피가 7.6% 내렸다던데, 주변에서 얘기 좀 나왔어요?",
-          "follow": "그 얘기 듣고 어떤 느낌이었는지 가볍게 물어보고, 주말엔 주식 앱 좀 덜 보게 되는지 이어가 보세요.",
-          "caution": "종목 추천이나 전망 얘기, 누가 얼마 잃었는지 캐묻는 건 피하세요."
+          "opener": "지난 금요일 코스피가 2.0% 올랐다던데, 뉴스 보셨어요?",
+          "follow": "주식 얘기보다 '요즘 재테크 얘기가 많아졌다' 정도로 분위기를 물어보세요.",
+          "caution": "종목 추천이나 수익률 자랑, 전망 얘기는 피하세요."
         },
         "friend": {
-          "opener": "야, 지난 목요일에 코스피 7.6% 빠졌다던데 너 그날 뉴스 봤어?",
-          "follow": "그날 뉴스 보고 든 느낌이나 주식 앱 열어보는 습관 같은 소소한 얘기로 이어가 보세요.",
-          "caution": "수익률 자랑이나 훈수, 매수·매도 조언은 분위기를 무겁게 만들어요."
+          "opener": "금요일에 코스피 2.0% 올랐다던데 너 그거 봤어?",
+          "follow": "처음 투자했던 경험이나 용돈 불리기 도전기를 가볍게 나눠 보세요.",
+          "caution": "'사라, 팔아라' 같은 조언은 하지 마세요."
         },
         "date": {
-          "opener": "요즘 뉴스에서 주식 얘기가 많이 나오던데, 혹시 관심 있으세요?",
-          "follow": "관심이 있으면 재테크 습관 중 가벼운 것(용돈 관리 방식 등)으로, 없으면 다른 취미 얘기로 넘어가세요.",
-          "caution": "투자 금액이나 자산 규모를 묻는 건 절대 금물이에요."
+          "opener": "요즘 재테크나 저축 같은 거 관심 있으세요?",
+          "follow": "좋아하는 소비 습관이나 모으는 방식 같은 가벼운 얘기로 이어가세요.",
+          "caution": "자산 규모나 수익, 손실을 캐묻지 마세요."
         }
       },
       "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "id": "checkup-fast",
-      "cat": "건강",
-      "subtopic": "건강검진",
-      "label": "검진",
-      "color": "#2A9D8F",
-      "title": "건강검진 날 아침, 제일 먼저 먹은 건?",
-      "desc": "가을은 건강검진 시즌이죠. 금식 끝나고 먹은 첫 끼를 떠올려 보세요.",
-      "reason": "환절기 가을에 건강을 챙기는 분이 많아 검진 이야기가 자연스러워요. 결과가 아니라 검진 후 첫 끼 같은 가벼운 소재라 부담이 없어요.",
-      "questions": [
-        "건강검진 끝나고 제일 먼저 먹은 음식이 뭐였어요?",
-        "검진 전날 금식이 제일 힘든 순간은 언제예요?",
-        "건강 챙기려고 올해 새로 시작한 습관이 있다면요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 건강검진 시즌이잖아요. 받고 나면 뭐부터 드세요?",
-          "follow": "검진 후 맛집이나 점심 메뉴로 이어가 보세요.",
-          "caution": "검진 결과나 질병, 체중 같은 구체적 수치를 묻지 마세요."
-        },
-        "friend": {
-          "opener": "검진 받는 날은 금식하고 나서 꼭 뭐 먹으러 가지 않아?",
-          "follow": "각자의 '검진 후 보상 메뉴'를 얘기하다 보면 웃음이 나와요.",
-          "caution": "결과 비교나 건강 상태 지적은 하지 마세요."
-        },
-        "date": {
-          "opener": "요즘 건강 챙기려고 하는 소소한 습관 있으세요?",
-          "follow": "가벼운 운동이나 음식 취향으로 이어가 보세요.",
-          "caution": "병력이나 몸 상태를 직접 묻는 건 실례예요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/A_Red_Necked_Falcon_after_finishing_a_catch_%2850848960517%29.jpg/1280px-A_Red_Necked_Falcon_after_finishing_a_catch_%2850848960517%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Hari K Patibanda",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_Red_Necked_Falcon_after_finishing_a_catch_(50848960517).jpg"
-      }
-    },
-    {
-      "id": "autumn-snack",
-      "cat": "음식",
-      "subtopic": "디저트",
-      "label": "간식",
-      "color": "#B5651D",
-      "title": "가을 간식 중 나의 최애는?",
-      "desc": "군고구마, 군밤, 호빵, 따뜻한 한 입 간식이 생각나는 계절이에요.",
-      "reason": "아침 13°C로 선선하고 완연한 가을이라 따끈한 간식이 어울려요. 맑은 토요일 오후 간식 얘기는 누구나 바로 대답할 수 있어요.",
-      "questions": [
-        "가을만 되면 생각나는 간식 하나만 꼽는다면요?",
-        "군고구마, 군밤, 호빵 중에 하나만 평생 먹어야 한다면요?",
-        "어릴 때 겨울 문턱에 먹던 간식 중에 아직도 그리운 게 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 날씨 선선해지니까 군고구마 같은 게 땡기지 않으세요?",
-          "follow": "각자 최애 간식을 말하다 보면 다음 간식 나눔 아이디어로 이어져요.",
-          "caution": "다이어트나 체중 얘기는 꺼내지 마세요."
-        },
-        "friend": {
-          "opener": "야 요즘 같은 날씨엔 붕어빵이나 호빵 땡기지 않냐?",
-          "follow": "예전에 자주 사 먹던 동네 간식집 추억으로 이어가 보세요.",
-          "caution": "먹는 양이나 칼로리 농담은 상처가 될 수 있어요."
-        },
-        "date": {
-          "opener": "가을이면 생각나는 간식 있으세요? 저는 따뜻한 걸 자꾸 찾게 되더라고요.",
-          "follow": "간식 취향이 겹치면 같이 가보고 싶은 가게 얘기로 연결해 보세요.",
-          "caution": "알레르기나 식성을 지적하는 말은 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Roasted_sweet_potato.jpg/1280px-Roasted_sweet_potato.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "autumn-playlist",
-      "cat": "문화",
-      "subtopic": "음악",
-      "label": "가을곡",
-      "color": "#8E4A7B",
-      "title": "가을이면 꺼내 듣는 노래 있어요?",
-      "desc": "선선한 바람 불면 자동으로 재생하게 되는 노래가 있죠.",
-      "reason": "완연한 가을에 단풍과 맑은 하늘이라 음악 얘기가 잘 어울려요. 장르 상관없이 누구나 자기 취향으로 답할 수 있어요.",
-      "questions": [
-        "가을만 되면 플레이리스트에 꼭 넣는 노래가 있으세요?",
-        "산책하면서 들으면 딱 좋은 노래는 뭐예요?",
-        "이어폰 끼고 가장 오래 반복해서 들었던 노래는요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 출퇴근길에 어떤 노래 들으세요? 날씨 좋으니 음악이 땡기더라고요.",
-          "follow": "추천 노래를 서로 교환하고, 상대 취향에 맞는 장르를 이어서 물어보세요.",
-          "caution": "취향을 평가하거나 '그걸 왜 들어요?' 같은 반응은 피하세요."
-        },
-        "friend": {
-          "opener": "요즘 가을 타서 그런지 계속 듣는 노래 있어. 너는 뭐 들어?",
-          "follow": "서로 플레이리스트를 공유하며 추억의 노래 얘기로 이어가 보세요.",
-          "caution": "음악 취향 우열을 가리는 농담은 상대를 서운하게 해요."
-        },
-        "date": {
-          "opener": "가을엔 어떤 분위기의 노래가 끌리세요?",
-          "follow": "좋아하는 가수나 콘서트 경험을 가볍게 이야기하다 보면 취향이 드러나요.",
-          "caution": "본인의 취향만 길게 늘어놓지 말고 상대에게도 질문하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Portable_HMV_LP_-_gramophone-_phonograph-_record_player_encased_in_wooden_box.jpg/1280px-Portable_HMV_LP_-_gramophone-_phonograph-_record_player_encased_in_wooden_box.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "overseas-trip",
-      "cat": "여행",
-      "subtopic": "해외여행",
-      "label": "해외",
-      "color": "#0F7B6C",
-      "title": "올해 안에 해외 한 번 간다면?",
-      "desc": "원/달러 환율은 오늘 종가 기준 1,334원으로 직전 거래일(어제)보다 0.5% 내렸어요. 원화 강세라 해외여행 생각이 솔솔 나요.",
-      "reason": "토요일이라 여행 계획을 꿈꾸기 좋고, 환율이 내려 해외여행 얘기가 자연스러워요. 선선한 가을이 여행 계절이기도 해요.",
-      "questions": [
-        "올해가 가기 전에 해외 한 군데만 갈 수 있다면 어디로 가고 싶어요?",
-        "환율이 내렸다니 괜히 해외여행 검색해 보게 되지 않아요?",
-        "여행 가서 제일 기억에 남는 한 끼가 뭐였어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 환율이 좀 내려갔다던데, 연말에 해외여행 계획 있으세요?",
-          "follow": "가보고 싶은 나라와 이유를 묻고, 여행 가서 먹은 음식 얘기로 이어가세요.",
-          "caution": "휴가 일정이나 연차 사용 문제는 민감할 수 있어요."
-        },
-        "friend": {
-          "opener": "환율 좀 내렸다는데 우리 어디 한번 나가볼까?",
-          "follow": "각자 버킷리스트 여행지를 하나씩 말하며 계획으로 번져 보세요.",
-          "caution": "예산을 서로 비교하며 부담을 주지 마세요."
-        },
-        "date": {
-          "opener": "해외여행 중에 가장 기억에 남는 곳이 어디예요?",
-          "follow": "여행 스타일(계획형 vs 즉흥형) 얘기로 이어가면 서로를 알기 좋아요.",
-          "caution": "함께 여행 가자는 식의 성급한 제안은 부담스러워요."
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Sunset_view_from_an_airplane_window_above_the_clouds.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/3/34/Airplane_window_capture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageCredit": {
-        "author": "Marcelomenezes96",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Airplane_window_capture.jpg"
-      }
     }
   ]
 }
