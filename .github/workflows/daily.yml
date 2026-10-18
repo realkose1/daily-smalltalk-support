@@ -2,15 +2,31 @@ name: Daily topic
 
 on:
   schedule:
-    # 21:00 UTC == 06:00 KST next day. Generate at 6am so the new topics are
-    # deployed well before the 9am notification (avoids the app briefly showing
-    # yesterday's cached content when opened right at 9:00).
-    - cron: '0 21 * * *'
-  workflow_dispatch: {}   # allow manual "Run workflow" for testing
+    # GitHub's cron runs late: over 8 days in 2026-10 a single 06:00 KST
+    # schedule completed anywhere from 07:49 to 11:20 KST — often after the
+    # 09:00 push. So schedule three tries, off the hour (the top of the hour is
+    # when GitHub's queue is most congested):
+    #   19:47 / 20:47 / 21:47 UTC == 04:47 / 05:47 / 06:47 KST (next day)
+    # Only the first run that actually starts calls the API. generate.mjs
+    # exits 0 before any fetch or API call when the committed today.json was
+    # already generated today (KST, from its generatedAt), or when it's before
+    # 04:00 KST. A run that fails leaves yesterday's file, so the next schedule
+    # is a free retry.
+    - cron: '47 19 * * *'
+    - cron: '47 20 * * *'
+    - cron: '47 21 * * *'
+  workflow_dispatch:   # manual "Run workflow"
+    inputs:
+      force:
+        description: "Regenerate even if today's deck already exists"
+        type: boolean
+        default: true
 
 permissions:
   contents: write
 
+# Runs queue here instead of overlapping, so a later schedule only starts once
+# the earlier run has pushed its today.json.
 concurrency:
   group: daily-topic
   cancel-in-progress: false
@@ -20,6 +36,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Check out the branch TIP, not the commit the run was queued at.
+          # A schedule queued behind the concurrency group keeps the SHA from
+          # when it was triggered; without this it would read the pre-push
+          # today.json, miss the guard and generate a second time.
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-node@v4
         with:
@@ -32,6 +54,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          # Manual runs skip the "already generated today" / before-04:00 guard
+          # (untick "force" to test the guard itself). Scheduled runs never force.
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '1' || '0' }}
         run: npm run generate
 
       - name: Commit if changed
@@ -42,7 +67,8 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "content: $(date -u +%Y-%m-%d) topics"
+            # KST date: the 04:47–06:47 KST runs are still "yesterday" in UTC.
+            git commit -m "content: $(TZ=Asia/Seoul date +%Y-%m-%d) topics"
             git pull --rebase --autostash origin main || true
             git push
           fi
