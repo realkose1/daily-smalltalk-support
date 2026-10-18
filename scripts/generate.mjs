@@ -17,9 +17,13 @@
 //     required) — the model also writes 3 generic English `imageQueries` per
 //     topic, which we search after generation. No image found → the app
 //     falls back to a solid color-gradient cover (never a broken image).
+//   - Posters: TMDB (free API key) — a 오늘의 화제 card about one specific
+//     film or TV programme gets its official poster as the cover, credited to
+//     TMDB. Optional: without TMDB_READ_TOKEN every card keeps its photo.
 // Writes today.json (served via GitHub Pages) + an archive copy.
 //
 // Requires env: ANTHROPIC_API_KEY (not needed for --brief-only)
+// Optional env: TMDB_READ_TOKEN (TMDB v4 read access token, for posters)
 // Flags / env:
 //   --brief-only  gather weather/markets/news, print the brief the model would
 //                 get, and exit — no API call, no files written.
@@ -551,6 +555,18 @@ const topic = {
     // news cards, so the code can put the strongest one first (it becomes the
     // 09:00 push headline) — the deck is shuffled after generation.
     news: { type: 'string', enum: ['none', 'first', 'second'], description: "[오늘의 화제 뉴스 후보]의 헤드라인으로 만든 '오늘의 화제' 카드면 가장 강한 것은 'first', 두 번째는 'second'. 그 밖의 모든 카드(시장 시그널·[경제] 줄로 만든 경제 카드 포함)는 'none'. 'first'와 'second'는 각각 최대 1개." },
+    // Internal (dropped before writing): the film / TV programme a 화제 card is
+    // about, so the code can look up its official poster on TMDB.
+    media: {
+      type: 'object', additionalProperties: false,
+      description: "화제 카드(news가 'first'/'second')가 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다룰 때만 채우세요. 그 밖의 모든 카드는 kind 'none', title \"\", year 0.",
+      properties: {
+        kind: { type: 'string', enum: ['movie', 'tv', 'none'], description: "영화면 'movie', 드라마·예능 등 TV 프로그램이면 'tv', 그 밖에는 'none'." },
+        title: { type: 'string', description: '헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호만 빼고). none이면 "".' },
+        year: { type: 'integer', description: '헤드라인에서 드러나는 개봉·방영 연도, 드러나지 않으면 올해. none이면 0.' },
+      },
+      required: ['kind', 'title', 'year'],
+    },
     questions: { type: 'array', items: { type: 'string' } },
     tips: { type: 'object', additionalProperties: false, properties: { work: moodTip, friend: moodTip, date: moodTip }, required: ['work', 'friend', 'date'] },
     // NOTE: structured outputs only support minItems 0/1 — don't add
@@ -558,7 +574,7 @@ const topic = {
     // 2026-07-12). "Exactly 3" lives in the description + slice(0,3) below.
     imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns. For a news card, shoot the generic thing the story is about — a car launch → "red electric sports car road", "electric car charging station"; avoid showrooms, shops, expos and signage — they usually show another company logo; a drama → "tv remote sofa living room"; baseball → "baseball stadium night crowd" — never a celebrity, athlete or any real person.' },
   },
-  required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'news', 'questions', 'tips', 'imageQueries'],
+  required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'news', 'media', 'questions', 'tips', 'imageQueries'],
 };
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
@@ -604,6 +620,7 @@ const gen = await client.messages.stream({
       `- 화제 카드의 카테고리: 연예·작품 → 문화(드라마/영화/음악/예능/공연·전시/웹툰·책 중 맞는 것), 신제품·가젯·자동차 공개 → 쇼핑 '신제품·테크', 스포츠 → 취미 '스포츠', 그 밖의 가벼운 시사 → 가장 잘 맞는 카테고리.\n` +
       `- 지역 축제, 선수 부상, 업계 내부 소식처럼 관심 있는 소수만 아는 뉴스와 정치·범죄·사고·재난·사망 소식은 후보에 있어도 화제 카드로 쓰지 마세요.\n` +
       `- news 필드: 가장 강한 화제 카드에 "first", 두 번째에 "second", 나머지(경제 카드 포함)는 모두 "none". 덱 순서는 코드가 정해요 — 특별한 날 카드가 있으면 그게 맨 앞, 없으면 "first" 카드가 맨 앞에 놓이고 그 제목이 아침 9시 알림 문구가 되니, 알림으로 받았을 때 가장 눌러 보고 싶을 소식을 "first"로 고르세요.\n` +
+      `- media 필드: 화제 카드("first"/"second") 중 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다루는 카드만 채우세요 — 공식 포스터를 커버로 찾는 데 씁니다. 영화면 kind "movie", 드라마·예능이면 "tv". title은 헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호 ' ' " " 「 」 < > 만 빼고, 철자를 바꾸거나 번역하지 말고), year는 헤드라인에서 개봉·방영 연도가 드러나면 그 연도, 아니면 올해(${kst.getUTCFullYear()}). 신제품·스포츠·음악(앨범·컴백·공연)·인물 소식, 여러 작품을 묶은 소식, 화제 카드가 아닌 모든 카드는 kind "none", title "", year 0.\n` +
       `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. [오늘의 화제 뉴스 후보]에 구체적 제목이 없어 무엇인지 특정할 수 없으면, 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
       `- ★★행사·공연·경기가 "오늘" 열린다고 절대 단정하지 마세요. 헤드라인의 '오늘 저녁', '오늘 밤', '1시간 뒤'는 그 기사 발행일 기준이라 오늘과 다릅니다 — 어제 끝난 불꽃축제를 오늘 아침에 "오늘 밤 열린다"고 안내한 사고가 있었습니다. 날짜가 확실한 건 위 [한국의 특별한 날] 표뿐이에요. 지난 행사는 "어제 ~했다던데 다녀오셨어요?"처럼 지난 일로 쓰거나, 시점을 빼고 "불꽃축제 좋아하세요?"처럼 취향 질문으로 바꾸세요. 시작 시각·남은 시간을 지어내는 것도 금지.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
@@ -716,6 +733,8 @@ for (const t of data.topics) if (!t.special) delete t.special;
     (econ.length ? `; 경제 card from a headline: ${econ.join(', ')}` : ''),
   );
 }
+// Remembered past the delete below: only these cards may take a TMDB poster.
+const newsCards = new Set(data.topics.filter((t) => t.news === 'first' || t.news === 'second'));
 for (const t of data.topics) delete t.news; // internal only — not part of the app's Topic shape
 
 // --- cover photos: Openverse, CC0 only (no attribution required), keyless ---
@@ -1082,6 +1101,195 @@ for (const t of data.topics) {
       ? 'cc0'
       : 'NONE → gradient';
   console.log(`${t.id}: cover=${cover}; cc0-for-old-builds=${t.image ? 'yes' : 'no'}`);
+}
+
+// --- posters: TMDB, for 오늘의 화제 cards about one film or TV programme ---
+// A stock photo can't say WHICH film a news card is about — a cinema-seats
+// photo under "연상호 감독의 '실낙원'" is anyone's film. The official poster can.
+// The app is free (no ads, no IAP), which TMDB's API terms allow with credit.
+// This runs AFTER the photo cascade on purpose: `image` stays the generic CC0
+// photo for builds that predate credit lines, and the poster goes only into
+// `imageAttributed` + `imageCredit`, which the app shows strictly as a pair.
+// A missing token or any TMDB failure leaves the card's photo as it was.
+const TMDB_API = 'https://api.themoviedb.org/3';
+const TMDB_IMG = 'https://image.tmdb.org/t/p/';
+// `original` posters run ~0.1–1.5 MB; the rare huge one drops to w780.
+const TMDB_POSTER_MAX_BYTES = 2.5 * 1024 * 1024;
+
+// "'100일의 거짓말'" / "100일의 거짓말!" / "암살자(들)" → letters and digits only,
+// so quote marks, brackets, spacing and punctuation never decide a match.
+function normTitle(s) {
+  return String(s ?? '').normalize('NFC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+}
+
+// v3 endpoint with a v4 read token as Bearer. 8 s timeout; one retry on 429,
+// 5xx or a network error/timeout.
+async function tmdbGet(path, params, token) {
+  const url = `${TMDB_API}${path}?${new URLSearchParams(params)}`;
+  for (let attempt = 0; ; attempt++) {
+    let r;
+    try {
+      r = await fetch(url, {
+        headers: { Authorization: `Bearer ${token}`, accept: 'application/json' },
+        signal: AbortSignal.timeout(8000),
+      });
+    } catch (e) {
+      if (attempt === 0) continue;
+      throw new Error(`TMDB ${path} failed: ${e.message}`);
+    }
+    if ((r.status === 429 || r.status >= 500) && attempt === 0) {
+      const after = Number(r.headers.get('retry-after'));
+      await new Promise((res) => setTimeout(res, Math.min(Number.isFinite(after) && after > 0 ? after : 2, 10) * 1000));
+      continue;
+    }
+    if (!r.ok) throw new Error(`TMDB ${path}: HTTP ${r.status}`);
+    return r.json();
+  }
+}
+
+// 200 + image/* or it isn't a cover. HEAD first; GET (body discarded) only if
+// HEAD itself isn't supported or errors.
+async function probeImage(url) {
+  for (const method of ['HEAD', 'GET']) {
+    try {
+      const r = await fetch(url, { method, signal: AbortSignal.timeout(8000) });
+      if (method === 'GET') r.body?.cancel().catch(() => {});
+      if (method === 'HEAD' && (r.status === 405 || r.status === 501)) continue;
+      const type = r.headers.get('content-type') || '';
+      const len = Number(r.headers.get('content-length'));
+      if (r.status === 200 && type.startsWith('image/')) return { ok: true, bytes: len > 0 ? len : null };
+      return { ok: false, why: `HTTP ${r.status} ${type || '(no content-type)'}` };
+    } catch (e) {
+      if (method === 'GET') return { ok: false, why: e.message };
+    }
+  }
+}
+
+// Matching rules (TMDB search returns everything that merely CONTAINS the
+// words — "실낙원" also brings back three "Paradise Lost" documentaries):
+//  1. Exact title only: the normalised Korean `title`/`name` or the original
+//     title must equal the headline's title. With a poster.
+//  2. Prefer works dated within [today − 2 y, today + 1 y] — the news is
+//     almost always about something new — closest year to `media.year` first,
+//     then popularity. "실낙원" has TWO exact matches in that window: 연상호's
+//     2026 film and a 2025 English-language film whose Korean title is also
+//     실낙원 (which is MORE popular), so year beats popularity.
+//     A stub — released over 60 days ago and still without a single vote —
+//     gets no window preference: "올드보이" has an unrated 68-minute 2026
+//     entry that would otherwise beat 박찬욱's 2003 film. (Unreleased films
+//     legitimately have 0 votes; 실낙원 had none three days before release.)
+//  3. Nothing usable in the window → an older work is fine when it is the
+//     only exact match ('기생충' 2019, '나 혼자 산다' 2013), or ≥10× as popular
+//     as the next one ('런닝맨': the 2010 variety show vs a 2017 cartoon of the
+//     same name). Failing that, the same test among works whose ORIGINAL title
+//     is the headline's — a Korean headline's '올드보이' is the 2003 film, not
+//     the 2013 US remake that is merely translated that way. Otherwise no
+//     poster — a wrong poster is worse than a stock photo.
+async function findPoster(media, { token, today }) {
+  const kind = media?.kind;
+  if (kind !== 'movie' && kind !== 'tv') return { why: 'not about one film/TV programme' };
+  const want = normTitle(media.title);
+  if (!want) return { why: `${kind} with an empty title` };
+  const name = (it) => (kind === 'movie' ? it.title : it.name) || '';
+  const orig = (it) => (kind === 'movie' ? it.original_title : it.original_name) || '';
+  const date = (it) => (kind === 'movie' ? it.release_date : it.first_air_date) || '';
+
+  const params = { query: String(media.title).trim(), language: 'ko-KR', include_adult: 'false' };
+  if (kind === 'movie') params.region = 'KR';
+  const results = (await tmdbGet(`/search/${kind}`, params, token)).results || [];
+  const exact = results.filter((it) => normTitle(name(it)) === want || normTitle(orig(it)) === want);
+  if (!exact.length) {
+    const near = results.slice(0, 3).map((it) => `"${name(it)}"`).join(', ');
+    return { why: `no exact ${kind} title match for "${media.title}" among ${results.length} result(s)${near ? ` (${near})` : ''}` };
+  }
+  const usable = exact.filter((it) => it.poster_path);
+  if (!usable.length) return { why: `${exact.length} exact match(es) for "${media.title}", none with a poster` };
+
+  const Y = Number(today.slice(0, 4));
+  const lo = `${Y - 2}${today.slice(4)}`;
+  const hi = `${Y + 1}${today.slice(4)}`;
+  const year = Number.isInteger(media.year) && media.year > 1900 ? media.year : Y;
+  const yearGap = (it) => (date(it) ? Math.abs(Number(date(it).slice(0, 4)) - year) : Infinity);
+  const pop = (it) => it.popularity || 0;
+  const stub = (it) => !it.vote_count && date(it) && (Date.parse(today) - Date.parse(date(it))) / 86400e3 > 60;
+  const inWindow = usable.filter((it) => date(it) >= lo && date(it) <= hi && !stub(it));
+  let pick;
+  let note = '';
+  if (inWindow.length) {
+    pick = inWindow.sort((a, b) => yearGap(a) - yearGap(b) || pop(b) - pop(a))[0];
+    if (inWindow.length > 1) note = ` [${inWindow.length} exact matches in window, closest to ${year}]`;
+  } else {
+    const clearly = (list) => {
+      const byPop = [...list].sort((a, b) => pop(b) - pop(a));
+      if (byPop.length === 1) return { it: byPop[0], why: 'the only exact match' };
+      if (pop(byPop[0]) > 0 && pop(byPop[0]) >= 10 * pop(byPop[1])) {
+        return { it: byPop[0], why: `${Math.round(pop(byPop[0]) / Math.max(pop(byPop[1]), 0.01))}× as popular as the other ${byPop.length - 1}` };
+      }
+      return null;
+    };
+    const own = usable.filter((it) => normTitle(orig(it)) === want);
+    let c = clearly(usable);
+    if (!c && own.length && own.length < usable.length) {
+      c = clearly(own);
+      if (c) c.why += ` of ${own.length} originally titled "${media.title}"`;
+    }
+    if (!c) {
+      const list = [...usable].sort((a, b) => pop(b) - pop(a)).slice(0, 4).map((it) => `${it.id} ${date(it) || 'undated'}`).join(', ');
+      return { why: `${usable.length} exact matches for "${media.title}", none usable in ${lo}…${hi} and none clearly the one (${list})` };
+    }
+    pick = c.it;
+    note = ` [nothing recent and rated in ${lo}…${hi}; ${c.why}]`;
+  }
+
+  // `original` unless it is oversized or its size is unknown; then w780.
+  let url = `${TMDB_IMG}original${pick.poster_path}`;
+  let probe = await probeImage(url);
+  if (!probe.ok || probe.bytes == null || probe.bytes > TMDB_POSTER_MAX_BYTES) {
+    const small = `${TMDB_IMG}w780${pick.poster_path}`;
+    const p2 = await probeImage(small);
+    if (p2.ok) {
+      note += ` [w780: original ${probe.ok ? `${probe.bytes == null ? 'size unknown' : `${(probe.bytes / 1048576).toFixed(1)} MB`}` : probe.why}]`;
+      url = small;
+      probe = p2;
+    } else if (!probe.ok) {
+      return { why: `poster for ${kind} ${pick.id} not reachable (${probe.why}; w780 ${p2.why})` };
+    }
+  }
+  return {
+    kind, id: pick.id, title: name(pick), date: date(pick), url, bytes: probe.bytes, note,
+    sourceUrl: `https://www.themoviedb.org/${kind}/${pick.id}`,
+  };
+}
+
+{
+  const token = (process.env.TMDB_READ_TOKEN || '').trim();
+  if (!token) {
+    console.log('poster: skipped (TMDB_READ_TOKEN not set)');
+  } else {
+    for (const t of data.topics) {
+      const m = t.media;
+      const isMedia = m && (m.kind === 'movie' || m.kind === 'tv');
+      let res;
+      if (!newsCards.has(t)) {
+        res = { why: isMedia ? `not a news card — ignoring media ${m.kind} "${m.title}"` : 'not a news card' };
+      } else {
+        try {
+          res = await findPoster(m, { token, today: isoDate });
+        } catch (e) {
+          res = { why: e.message };
+        }
+      }
+      if (res.url) {
+        t.imageAttributed = res.url;
+        t.imageCredit = { author: 'TMDB', license: '포스터', text: '포스터: TMDB', sourceUrl: res.sourceUrl };
+        t.imageKind = 'poster';
+        console.log(`poster: '${t.id}' ← TMDB ${res.kind} ${res.id} "${res.title}" (${res.date || 'undated'})${res.note}`);
+      } else {
+        console.log(`poster: '${t.id}' none — ${res.why}`);
+      }
+    }
+  }
+  for (const t of data.topics) delete t.media; // internal only — not part of the app's Topic shape
 }
 
 const out = { date: isoDate, dateLabel, generatedAt: now.toISOString(), topics: data.topics };
