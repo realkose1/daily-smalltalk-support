@@ -1,0 +1,302 @@
+{
+  "date": "2026-10-21",
+  "dateLabel": "10월 21일 수요일",
+  "generatedAt": "2026-10-20T22:41:25.225Z",
+  "topics": [
+    {
+      "id": "galaxy-buds-on",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "이어폰",
+      "color": "#1F4E79",
+      "title": "'갤럭시 버즈 온' 나왔다던데, 이어폰 뭐 쓰세요?",
+      "desc": "삼성전자가 러너를 위한 클립형 이어폰 '갤럭시 버즈 온'을 출시했다는 소식이 어제 나왔어요. 소식을 몰라도 요즘 쓰는 이어폰으로 얘기할 수 있어요.",
+      "reason": "쌀쌀해진 가을은 달리기·산책하기 좋은 철이라 운동할 때 쓰는 이어폰 얘기가 자연스러워요.",
+      "questions": [
+        "요즘 가장 자주 쓰는 이어폰이나 헤드폰은 뭐예요?",
+        "걷거나 뛸 때 꼭 듣는 노래나 팟캐스트 있으세요?",
+        "이어폰 고를 때 가장 따지는 건 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성전자에서 러너용 클립형 이어폰이 나왔다던데 보셨어요?",
+          "follow": "출퇴근길에 쓰는 이어폰이나 점심시간 산책 얘기로 이어가 보세요.",
+          "caution": "특정 브랜드 장단점을 단정하며 논쟁하지 마세요."
+        },
+        "friend": {
+          "opener": "야, 삼성에서 러너용 클립형 이어폰 나왔다는데 봤어?",
+          "follow": "지금 쓰는 이어폰 불만이나 만족한 점을 서로 털어놔 보세요.",
+          "caution": "가격이나 구매를 강요하는 분위기는 피하세요."
+        },
+        "date": {
+          "opener": "운동하거나 걸을 때 음악 듣는 편이세요? 어떤 이어폰 쓰세요?",
+          "follow": "좋아하는 플레이리스트나 산책 코스 얘기로 넘어가 보세요.",
+          "caution": "상대의 기기나 소비 수준을 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "autumn-book",
+      "cat": "취미",
+      "subtopic": "독서",
+      "label": "독서",
+      "color": "#8B5E3C",
+      "title": "가을밤에 읽기 좋은 책, 요즘 뭐 읽으세요?",
+      "desc": "비 오고 쌀쌀한 저녁엔 집에서 책 한 권 펼치기 좋아요. 읽고 있는 책, 읽다 만 책 모두 환영이에요.",
+      "reason": "오늘은 비가 오다 그치고 바람이 차가워져 밖보다 집이 끌리는 가을 저녁이에요.",
+      "questions": [
+        "요즘 읽고 있거나 읽다 만 책이 있으세요?",
+        "올해 읽은 책 중 가장 오래 남은 한 권은요?",
+        "책 읽기 좋은 나만의 장소나 시간대가 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 점심시간이나 퇴근 후에 읽는 책 있으세요?",
+          "follow": "가볍게 읽기 좋은 책이나 전자책 활용법을 나눠 보세요.",
+          "caution": "자기계발서 위주로 훈계하듯 추천하지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 읽는 책 있어? 아님 읽다 만 책이라도 말해 봐 ㅋㅋ",
+          "follow": "서로 책 한 권씩 추천하거나 빌려주기로 이어가 보세요.",
+          "caution": "독서량이나 취향을 비교·평가하지 마세요."
+        },
+        "date": {
+          "opener": "책 좋아하세요? 요즘 기억에 남는 책 있으세요?",
+          "follow": "좋아하는 책방이나 카페 얘기로 자연스럽게 넘어가 보세요.",
+          "caution": "책 취향을 깊게 캐묻거나 지적하지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Camera_photography.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Camera%2C_photography%2C_squatting_Fortepan_85016.jpg/1280px-Camera%2C_photography%2C_squatting_Fortepan_85016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "FOTO:Fortepan — ID 85016 : Adományozó/Donor: Erdei",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camera,_photography,_squatting_Fortepan_85016.jpg"
+      }
+    },
+    {
+      "id": "focus-way",
+      "cat": "커리어",
+      "subtopic": "업무방식",
+      "label": "집중",
+      "color": "#5A4E9B",
+      "title": "일할 때 집중 잘 되는 나만의 방법 있으세요?",
+      "desc": "흐린 날씨에 비까지 오면 집중이 흐트러지기도 해요. 각자 몰입하는 비결을 가볍게 나눠 봐요.",
+      "reason": "오늘처럼 비가 오다 그치는 흐린 수요일엔 주중 한가운데 집중력 챙기기 얘기가 공감돼요.",
+      "questions": [
+        "집중이 안 될 때 기분 전환하는 나만의 방법은 뭐예요?",
+        "일할 때 들으면 좋은 음악이나 소리 있으세요?",
+        "하루 중 가장 집중 잘 되는 시간은 언제예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 날씨 때문에 집중이 좀 안 되는데, 비결 있으세요?",
+          "follow": "자리 정리나 짧은 산책 같은 방법을 서로 공유해 보세요.",
+          "caution": "상대의 업무 속도나 성과를 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "너 일하거나 공부할 때 집중 잘 되는 방법 있어?",
+          "follow": "서로의 작업 환경이나 좋아하는 카페 얘기로 이어가 보세요.",
+          "caution": "푸념만 길게 늘어놓지 마세요."
+        },
+        "date": {
+          "opener": "뭔가에 푹 빠져 집중할 때 제일 좋아하는 게 뭐예요?",
+          "follow": "취미나 쉬는 날 몰입하는 활동을 물어보세요.",
+          "caution": "직장 일이나 상사 얘기는 꺼내지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Laptop_and_coffee_on_a_desk.jpg/1280px-Laptop_and_coffee_on_a_desk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "cabbage-price",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "배추값",
+      "color": "#4C8C4A",
+      "title": "배추가 42.9% 올랐다던데, 김장은 어떻게 하세요?",
+      "desc": "9월 생산자물가가 두 달째 올랐고, 배추는 42.9%, 쇠고기는 10.4% 올랐다는 소식이에요. 생산자물가 기준이라 장바구니 체감은 사람마다 다를 수 있어요.",
+      "reason": "완연한 가을이라 김치와 집밥 얘기가 나오는 때인데, 오늘 나온 물가 소식이 장 보는 얘기로 이어지기 좋아요.",
+      "questions": [
+        "요즘 장 볼 때 가격이 확 달라졌다고 느낀 재료 있으세요?",
+        "김치는 담그세요, 사 드세요, 얻어 드세요?",
+        "비싸도 포기 못 하는 우리 집 필수 식재료는 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "9월 생산자물가에서 배추가 42.9% 올랐다던데, 점심 메뉴 고르실 때 체감되세요?",
+          "follow": "각자 집밥이나 도시락 챙기는 요령을 가볍게 나눠 보세요.",
+          "caution": "물가 얘기가 정치 탓 논쟁으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "배추가 42.9% 올랐다는데, 너희 집은 김치 어떻게 해?",
+          "follow": "엄마표 김치나 요즘 자주 해 먹는 집밥 메뉴 얘기로 이어가 보세요.",
+          "caution": "가계 형편을 비교하는 말은 피하세요."
+        },
+        "date": {
+          "opener": "김치찌개 좋아하세요? 요즘 집에서 자주 해 드시는 음식 있어요?",
+          "follow": "좋아하는 가을 음식이나 같이 해 먹고 싶은 메뉴를 물어보세요.",
+          "caution": "요리 실력이나 생활비를 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Rich_Toledo_Market_Vegetable_Display.jpg/1280px-Rich_Toledo_Market_Vegetable_Display.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "QueenCityCebu",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rich_Toledo_Market_Vegetable_Display.jpg"
+      }
+    },
+    {
+      "id": "hynix-drop",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "주가",
+      "color": "#B23A48",
+      "title": "어제 하이닉스 4.2% 내렸대요, 주식 얘기 들으세요?",
+      "desc": "SK하이닉스는 어제 종가 기준으로 직전 거래일(10월 19일 월) 대비 4.2% 내렸고, 삼성전자도 3.0% 내렸어요. 코스피는 10월 19일(월) 종가 기준 5,768로 1.8% 올랐고요. 어디까지나 가벼운 화제로만 나눠요.",
+      "reason": "반도체 대표주가 어제 크게 움직여서 주변에서 한마디씩 하는 분위기예요.",
+      "questions": [
+        "요즘 주변에서 주식이나 재테크 얘기 자주 들으세요?",
+        "주가가 크게 움직인 날, 나는 어떻게 지내는 편이세요?",
+        "재테크 시작하게 된 계기가 있다면 뭐였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "어제 하이닉스가 4.2% 내렸다던데, 요즘 주식 얘기 들으세요?",
+          "follow": "각자 재테크에 관심 갖게 된 계기를 가볍게 나눠 보세요.",
+          "caution": "종목 추천이나 전망 얘기, 수익·손실 금액 캐묻기는 피하세요."
+        },
+        "friend": {
+          "opener": "야, 어제 하이닉스 4.2% 내렸다는데 너 주변은 좀 어때?",
+          "follow": "주식 말고도 요즘 눈에 들어오는 재테크 습관을 서로 얘기해 보세요.",
+          "caution": "누가 얼마 벌었는지 비교하는 분위기는 피하세요."
+        },
+        "date": {
+          "opener": "요즘 뉴스에서 주가 얘기 많이 나오던데, 관심 있으세요?",
+          "follow": "돈 모으는 나만의 소소한 방법이나 소비 취향으로 넘어가 보세요.",
+          "caution": "수익률·자산 규모 같은 민감한 얘기는 묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "condition-habit",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "컨디션",
+      "color": "#2E8B7A",
+      "title": "요즘 컨디션 챙기려고 하는 나만의 습관 있어요?",
+      "desc": "비 오고 바람 불며 기온이 뚝 떨어지는 환절기라, 몸이 먼저 신호를 보내는 때예요. 각자 챙기는 작은 습관을 나눠 봐요.",
+      "reason": "낮 15°에 내일 아침 4도라 컨디션 관리 얘기가 공감되는 날이에요.",
+      "questions": [
+        "환절기에 꼭 챙겨 먹거나 마시는 게 있으세요?",
+        "피곤한 날 나를 회복시켜 주는 루틴은 뭐예요?",
+        "요즘 몸이 보내는 신호 중 제일 먼저 느껴지는 건요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 날씨 때문에 좀 피곤하지 않으세요? 챙기시는 습관 있어요?",
+          "follow": "점심 산책이나 스트레칭 같은 소소한 방법을 나눠 보세요.",
+          "caution": "상대 건강 상태를 걱정하며 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 환절기라 몸이 좀 무거운데, 넌 뭐 챙겨 먹어?",
+          "follow": "좋아하는 따뜻한 차나 잠들기 전 습관을 서로 얘기해 보세요.",
+          "caution": "의학적 조언을 단정적으로 하지 마세요."
+        },
+        "date": {
+          "opener": "환절기에 컨디션 챙기는 나만의 습관 있으세요?",
+          "follow": "좋아하는 휴식 방법이나 주말에 충전하는 방법을 물어보세요.",
+          "caution": "병력이나 몸 상태를 구체적으로 묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Strength_Metrics_Gym_Dunedin%2C_5_Aug2026.jpg/1280px-Strength_Metrics_Gym_Dunedin%2C_5_Aug2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "street-animals",
+      "cat": "관계",
+      "subtopic": "반려동물",
+      "label": "동물친구",
+      "color": "#C2703D",
+      "title": "길에서 마주친 동물 중 기억에 남는 친구 있어요?",
+      "desc": "쌀쌀한 가을엔 산책길에서 만나는 강아지, 고양이, 새가 눈에 더 들어와요. 키우든 안 키우든 대답할 수 있어요.",
+      "reason": "비 그친 뒤 산책하기 좋은 시간이라, 길에서 만난 동물이나 반려동물 얘기가 가볍게 이어져요.",
+      "questions": [
+        "산책하다 마주친 동물 중 제일 기억에 남는 친구는요?",
+        "키우는 동물이나 키워 보고 싶은 동물이 있으세요?",
+        "동네에서 자주 보는 단골 고양이나 강아지 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "혹시 반려동물 키우세요? 아님 동네 길고양이 단골 있으세요?",
+          "follow": "사진 한두 장 보여 달라고 하며 분위기를 풀어 보세요.",
+          "caution": "키우지 않는 이유나 사정은 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "야, 너 산책하다 만난 동물 중에 제일 귀여웠던 애 누구야?",
+          "follow": "서로 동물 사진이나 에피소드를 공유해 보세요.",
+          "caution": "동물 키우는 방식을 훈계하지 마세요."
+        },
+        "date": {
+          "opener": "동물 좋아하세요? 길에서 마주친 동물 중 기억나는 친구 있어요?",
+          "follow": "좋아하는 동물이나 가 보고 싶은 동물 카페·공원을 물어보세요.",
+          "caution": "알레르기나 키우는 환경을 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Autumn_Cat_%2850539661798%29.jpg/1280px-Autumn_Cat_%2850539661798%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Spike Summers",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_Cat_(50539661798).jpg"
+      }
+    },
+    {
+      "id": "cold-wind-coat",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "찬바람",
+      "color": "#3B5B8C",
+      "title": "내일 아침 서울 4도래요, 제일 먼저 꺼낼 옷은요?",
+      "desc": "오늘은 비가 그치면 낮부터 강한 바람이 불고 추워진다고 해요. 내일 아침 서울은 4도예요.",
+      "reason": "오늘 서울은 최고 15°에 강수확률 59%인데, 내일 아침엔 4도까지 떨어진다는 소식이라 월동 준비 얘기가 딱이에요.",
+      "questions": [
+        "추워지면 제일 먼저 꺼내는 옷이나 소품이 뭐예요?",
+        "바람 센 날 출근길 버티는 나만의 방법 있으세요?",
+        "올가을 처음 입은 두꺼운 겉옷은 언제였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일 아침 4도라는데 벌써 목도리 생각나지 않으세요?",
+          "follow": "출근할 때 겉옷은 어떻게 챙기시는지 가볍게 물어보세요.",
+          "caution": "날씨 불평만 길게 늘어놓는 건 피하세요."
+        },
+        "friend": {
+          "opener": "야, 내일 아침 4도래. 너 제일 먼저 꺼낼 옷 뭐야?",
+          "follow": "올해 새로 산 아우터나 아끼는 겨울템 얘기로 넘어가 보세요.",
+          "caution": "옷 취향을 평가하거나 품평하는 말은 피하세요."
+        },
+        "date": {
+          "opener": "갑자기 쌀쌀해졌는데 추워지면 제일 먼저 꺼내는 옷이 뭐예요?",
+          "follow": "좋아하는 계절이나 가을·겨울에 하고 싶은 걸 물어보세요.",
+          "caution": "상대 옷차림을 콕 집어 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/6/61/Peoria_-_Eileen_in_Back_Yard_%28Cold%21%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Roger Wollstadt",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peoria_-_Eileen_in_Back_Yard_(Cold!).jpg"
+      }
+    }
+  ]
+}

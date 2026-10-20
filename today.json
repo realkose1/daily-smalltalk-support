@@ -1,310 +1,301 @@
 {
-  "date": "2026-10-20",
-  "dateLabel": "10월 20일 화요일",
-  "generatedAt": "2026-10-19T23:06:18.100Z",
+  "date": "2026-10-21",
+  "dateLabel": "10월 21일 수요일",
+  "generatedAt": "2026-10-20T22:41:25.225Z",
   "topics": [
     {
-      "id": "avante-n-monochrome",
+      "id": "galaxy-buds-on",
       "cat": "쇼핑",
       "subtopic": "신제품·테크",
-      "label": "아반떼N",
-      "color": "#1F2937",
-      "title": "현대차가 '아반떼 N 모노크롬'을 공개했다던데, 차 색깔 고를 때 어떤 편이세요?",
-      "desc": "현대차가 '아반떼 N 모노크롬'을 공개했다는 소식이 많이 보도됐어요. 차를 안 몰아도 좋아하는 색이나 드림카 얘기로 편하게 이어갈 수 있어요.",
-      "reason": "오늘 가장 많이 보도된 소식이고, 맑은 가을 날씨에 드라이브 얘기를 꺼내기 좋아요.",
+      "label": "이어폰",
+      "color": "#1F4E79",
+      "title": "'갤럭시 버즈 온' 나왔다던데, 이어폰 뭐 쓰세요?",
+      "desc": "삼성전자가 러너를 위한 클립형 이어폰 '갤럭시 버즈 온'을 출시했다는 소식이 어제 나왔어요. 소식을 몰라도 요즘 쓰는 이어폰으로 얘기할 수 있어요.",
+      "reason": "쌀쌀해진 가을은 달리기·산책하기 좋은 철이라 운동할 때 쓰는 이어폰 얘기가 자연스러워요.",
       "questions": [
-        "현대차가 '아반떼 N 모노크롬'을 공개했다던데, 혹시 보셨어요?",
-        "드림카가 있다면 어떤 색으로 뽑고 싶으세요?",
-        "차 고를 때 색, 디자인, 성능 중에 뭘 제일 먼저 보세요?"
+        "요즘 가장 자주 쓰는 이어폰이나 헤드폰은 뭐예요?",
+        "걷거나 뛸 때 꼭 듣는 노래나 팟캐스트 있으세요?",
+        "이어폰 고를 때 가장 따지는 건 뭐예요?"
       ],
       "tips": {
         "work": {
-          "opener": "현대차가 '아반떼 N 모노크롬'을 공개했다던데, 보셨어요?",
-          "follow": "차 고를 때 색이나 디자인 중에 뭘 먼저 보는지 물어보면 의견이 자연스럽게 나와요.",
-          "caution": "차 가격이나 연봉이 드러나는 질문, 특정 브랜드 비교는 피하세요."
+          "opener": "삼성전자에서 러너용 클립형 이어폰이 나왔다던데 보셨어요?",
+          "follow": "출퇴근길에 쓰는 이어폰이나 점심시간 산책 얘기로 이어가 보세요.",
+          "caution": "특정 브랜드 장단점을 단정하며 논쟁하지 마세요."
         },
         "friend": {
-          "opener": "야 현대차에서 '아반떼 N 모노크롬' 공개했대, 봤어?",
-          "follow": "드림카 색깔이나 면허 따던 때 얘기로 넘어가 봐.",
-          "caution": "차 자랑이나 스펙 싸움으로 흐르지 않게 조심해."
+          "opener": "야, 삼성에서 러너용 클립형 이어폰 나왔다는데 봤어?",
+          "follow": "지금 쓰는 이어폰 불만이나 만족한 점을 서로 털어놔 보세요.",
+          "caution": "가격이나 구매를 강요하는 분위기는 피하세요."
         },
         "date": {
-          "opener": "현대차가 '아반떼 N 모노크롬'을 공개했다던데, 차 좋아하세요?",
-          "follow": "드라이브 가고 싶은 곳이나 좋아하는 차 색깔로 가볍게 이어가 보세요.",
-          "caution": "차 가격이나 자가용 유무를 캐묻는 건 피하세요."
+          "opener": "운동하거나 걸을 때 음악 듣는 편이세요? 어떤 이어폰 쓰세요?",
+          "follow": "좋아하는 플레이리스트나 산책 코스 얘기로 넘어가 보세요.",
+          "caution": "상대의 기기나 소비 수준을 평가하지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/1977_AMC_Hornet_AMX_at_2021_PA_show_finished_in_6P_Firecracker_Red_5of8.jpg/1280px-1977_AMC_Hornet_AMX_at_2021_PA_show_finished_in_6P_Firecracker_Red_5of8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/f/fd/DP77_Brian_Frisselle_Henri_Richard_2011_Road_America.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Royalbroil",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DP77_Brian_Frisselle_Henri_Richard_2011_Road_America.jpg"
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
       }
     },
     {
-      "id": "musk-spacex-kids",
-      "cat": "경제",
-      "subtopic": "소비습관",
-      "label": "용돈",
-      "color": "#7C2D12",
-      "title": "머스크가 내년 美 모든 어린이에게 스페이스X 1주씩 선물한다던데, 어릴 때 받은 용돈은 어디에 쓰셨어요?",
-      "desc": "머스크가 내년 미국 모든 어린이에게 스페이스X를 1주씩 주겠다는 소식이 있었어요. 어릴 적 용돈과 첫 저축 기억으로 편하게 이야기해 보세요.",
-      "reason": "어제 나온 화제 소식이라, 돈과 얽힌 어릴 적 추억을 꺼내기 좋아요.",
-      "questions": [
-        "머스크가 미국 어린이들에게 스페이스X를 1주씩 준다고 했다던데, 들어 보셨어요?",
-        "어릴 때 용돈이나 세뱃돈은 주로 어디에 쓰셨어요?",
-        "어릴 때 받은 선물 중 아직 기억나는 건 뭐예요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "머스크가 내년 美 모든 어린이에게 스페이스X 1주씩 준다고 했다던데, 보셨어요?",
-          "follow": "어릴 때 세뱃돈 쓰던 추억 얘기로 넘어가면 부담이 없어요.",
-          "caution": "투자 종목 추천이나 수익 얘기로 흐르지 않게 하세요."
-        },
-        "friend": {
-          "opener": "머스크가 미국 애들한테 스페이스X 1주씩 준대, 들었어?",
-          "follow": "우리 어릴 때 용돈 어디 썼는지 얘기해 보자.",
-          "caution": "누가 돈 얼마 벌었다는 식의 비교는 피해."
-        },
-        "date": {
-          "opener": "머스크가 내년 美 어린이들에게 스페이스X 1주씩 선물한다던데, 들어 보셨어요?",
-          "follow": "어릴 때 세뱃돈이나 용돈을 어디에 썼는지 물어보면 재밌어요.",
-          "caution": "월급이나 자산 규모 같은 질문은 피하세요."
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/8/87/Austrian_stock_market_index.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "id": "autumn-exhibit",
-      "cat": "문화",
-      "subtopic": "공연·전시",
-      "label": "전시",
-      "color": "#6D28D9",
-      "title": "가을엔 전시나 공연 한 편쯤 보고 싶어지는데, 최근에 다녀온 곳 있으세요?",
-      "desc": "선선한 날씨엔 실내 문화생활도 가볍게 즐기기 좋아요. 미술관, 콘서트, 연극 중 취향을 나눠 보세요.",
-      "reason": "맑고 선선한 가을 날씨라 문화생활 나들이 얘기를 꺼내기 좋아요.",
-      "questions": [
-        "최근에 다녀온 전시나 공연 중 기억에 남는 게 있어요?",
-        "혼자 가는 게 편해요, 같이 가는 게 좋아요?",
-        "올가을에 꼭 보고 싶은 공연이나 전시 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 날씨 좋은데, 주말에 전시나 공연 보러 가신 적 있어요?",
-          "follow": "좋았던 장소나 분위기를 물어보면 자연스럽게 이어져요.",
-          "caution": "티켓 가격이나 취향을 평가하지 마세요."
-        },
-        "friend": {
-          "opener": "요즘 볼 만한 전시나 공연 뭐 있어? 가을이니까 한 번 가자.",
-          "follow": "가고 싶은 곳을 서로 하나씩 말해 보고 날짜를 잡아 봐.",
-          "caution": "어려운 작품이라고 아는 척하지 마."
-        },
-        "date": {
-          "opener": "가을엔 전시나 공연 보러 가는 거 좋아하세요?",
-          "follow": "좋아하는 장르나 최근에 본 것 위주로 이어가 보세요.",
-          "caution": "취향을 평가하거나 가르치려는 말투는 피하세요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Arlene_Schnitzer_Concert_Hall%2C_seats.JPG/1280px-Arlene_Schnitzer_Concert_Hall%2C_seats.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Another Believer",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arlene_Schnitzer_Concert_Hall,_seats.JPG"
-      }
-    },
-    {
-      "id": "autumn-stay",
-      "cat": "여행",
-      "subtopic": "숙소",
-      "label": "숙소",
-      "color": "#2F5D50",
-      "title": "가을 여행을 간다면 어떤 숙소가 끌리세요? 감성 한옥, 깔끔한 호텔, 숲속 독채?",
-      "desc": "어디로 가느냐만큼 어디서 자느냐도 여행의 큰 부분이에요. 숙소 취향으로 여행 스타일을 나눠 보세요.",
-      "reason": "완연한 가을이라 단풍철 여행이 떠오르는 시기예요. 목적지 말고 숙소 취향으로 다른 각도를 잡았어요.",
-      "questions": [
-        "여행 갈 때 숙소 고르는 기준 1순위가 뭐예요?",
-        "가장 기억에 남는 숙소는 어디였어요?",
-        "숙소에서 하고 싶은 것 중 꼭 하는 한 가지가 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "가을에 여행 간다면 숙소는 어떤 스타일 좋아하세요?",
-          "follow": "기억에 남는 숙소나 휴가 계획으로 이어가 보세요.",
-          "caution": "휴가 일정이나 비용을 캐묻지 마세요."
-        },
-        "friend": {
-          "opener": "올가을에 어디 놀러 간다면 숙소는 어떤 데가 좋아?",
-          "follow": "같이 가고 싶은 스타일을 정해 보면서 후보지를 골라 봐.",
-          "caution": "예산 얘기로 분위기가 무거워지지 않게 해."
-        },
-        "date": {
-          "opener": "가을 여행 간다면 어떤 숙소가 끌리세요?",
-          "follow": "좋아하는 여행 스타일이나 가보고 싶은 곳으로 이어가 보세요.",
-          "caution": "같이 숙박하자는 뉘앙스로 들리는 말은 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Frozen_Cabin_%28Unsplash%29.jpg/1280px-Frozen_Cabin_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "learn-something-new",
+      "id": "autumn-book",
       "cat": "취미",
-      "subtopic": "배우기",
-      "label": "배우기",
-      "color": "#BE185D",
-      "title": "선선한 가을, 새로 배워 보고 싶은 거 있으세요? 악기, 그림, 요리 같은 거요.",
-      "desc": "날씨가 좋아지면 새 취미에 도전하고 싶어져요. 배우고 싶었던 걸 서로 털어놓아 보세요.",
-      "reason": "가을 환절기에 하던 일에 새로움을 더해 보고 싶은 마음이 드는 시기예요.",
+      "subtopic": "독서",
+      "label": "독서",
+      "color": "#8B5E3C",
+      "title": "가을밤에 읽기 좋은 책, 요즘 뭐 읽으세요?",
+      "desc": "비 오고 쌀쌀한 저녁엔 집에서 책 한 권 펼치기 좋아요. 읽고 있는 책, 읽다 만 책 모두 환영이에요.",
+      "reason": "오늘은 비가 오다 그치고 바람이 차가워져 밖보다 집이 끌리는 가을 저녁이에요.",
       "questions": [
-        "요즘 배워 보고 싶은 게 하나 있다면 뭐예요?",
-        "어릴 때 배우다 그만둔 것 중 다시 해 보고 싶은 거 있어요?",
-        "새로운 걸 시작할 때 혼자가 편해요, 같이 하는 게 좋아요?"
+        "요즘 읽고 있거나 읽다 만 책이 있으세요?",
+        "올해 읽은 책 중 가장 오래 남은 한 권은요?",
+        "책 읽기 좋은 나만의 장소나 시간대가 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "요즘 퇴근 후에 배워 보고 싶은 거 있으세요?",
-          "follow": "관심 가는 분야나 도전해 본 경험을 이어서 물어보세요.",
-          "caution": "자기계발을 강요하는 말은 피하세요."
+          "opener": "요즘 점심시간이나 퇴근 후에 읽는 책 있으세요?",
+          "follow": "가볍게 읽기 좋은 책이나 전자책 활용법을 나눠 보세요.",
+          "caution": "자기계발서 위주로 훈계하듯 추천하지 마세요."
         },
         "friend": {
-          "opener": "요즘 새로 배워 보고 싶은 거 없어? 나 뭐라도 하나 시작해 볼까 싶어.",
-          "follow": "같이 원데이 클래스 가 보자고 제안해 봐.",
-          "caution": "작심삼일이라고 놀리지 마."
+          "opener": "요즘 읽는 책 있어? 아님 읽다 만 책이라도 말해 봐 ㅋㅋ",
+          "follow": "서로 책 한 권씩 추천하거나 빌려주기로 이어가 보세요.",
+          "caution": "독서량이나 취향을 비교·평가하지 마세요."
         },
         "date": {
-          "opener": "요즘 새로 배워 보고 싶은 게 있으세요? 저는 요즘 이것저것 눈에 들어와요.",
-          "follow": "해 본 취미나 어릴 때 배운 것으로 이어가 보세요.",
-          "caution": "능력이나 실력을 평가하는 말은 피하세요."
+          "opener": "책 좋아하세요? 요즘 기억에 남는 책 있으세요?",
+          "follow": "좋아하는 책방이나 카페 얘기로 자연스럽게 넘어가 보세요.",
+          "caution": "책 취향을 깊게 캐묻거나 지적하지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/EFMP_Families_Enjoy_German_Cooking_Class_%286861313%29.jpg/1280px-EFMP_Families_Enjoy_German_Cooking_Class_%286861313%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Cooking_class_%285104746791%29.jpg/1280px-Cooking_class_%285104746791%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Camera_photography.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Camera%2C_photography%2C_squatting_Fortepan_85016.jpg/1280px-Camera%2C_photography%2C_squatting_Fortepan_85016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "krebsmaus07",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cooking_class_(5104746791).jpg"
-      }
-    },
-    {
-      "id": "temp-gap-jacket",
-      "cat": "날씨",
-      "subtopic": "일교차",
-      "label": "일교차",
-      "color": "#B45309",
-      "title": "아침 11°C, 낮엔 20°C까지 오른다는데, 오늘 겉옷 어떻게 입고 나오셨어요?",
-      "desc": "오늘 서울은 대체로 맑고 최저 10°, 최고 20°로 일교차가 커요. 옷차림 고민을 가볍게 나눠 보세요.",
-      "reason": "완연한 가을, 서울 현재 11°C에 낮 최고 20°라 겉옷 고민이 많은 날이에요.",
-      "questions": [
-        "오늘 같은 일교차엔 어떤 옷을 겹쳐 입는 편이세요?",
-        "가을에 제일 먼저 꺼내 입는 겉옷은 뭐예요?",
-        "일교차 큰 날 옷 잘못 입고 후회한 적 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "아침엔 쌀쌀한데 낮엔 꽤 따뜻하다는데, 오늘 겉옷 어떻게 하셨어요?",
-          "follow": "사무실 온도나 점심 산책 얘기로 이어가 보세요.",
-          "caution": "상대 옷차림을 평가하는 말은 피하세요."
-        },
-        "friend": {
-          "opener": "오늘 아침 11도래, 너 뭐 입고 나왔어?",
-          "follow": "가을 첫 겉옷이나 요즘 꺼낸 옷 얘기로 이어가 봐.",
-          "caution": "옷 취향 가지고 놀리는 건 조심해."
-        },
-        "date": {
-          "opener": "오늘 아침엔 쌀쌀한데 낮엔 따뜻하대요. 이런 날 옷 고르기 어렵지 않으세요?",
-          "follow": "가을에 좋아하는 옷차림이나 가고 싶은 산책 코스로 넘어가 보세요.",
-          "caution": "상대 외모나 스타일을 평가하는 건 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_young_man_is_walking_in_front_of_the_facade_of_the_Planetarium_building_of_Artis_Zoo_at_the_Plantage_Kerklaan_street_in_Amsterdam%3B_free_photo%2C_Fons_Heijnsbroek%2C_Autumn_2008.tif/lossy-page1-1280px-thumbnail.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/End_Of_Fall_%2853096168%29.jpeg/1280px-End_Of_Fall_%2853096168%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Arun Agrawal",
+        "author": "FOTO:Fortepan — ID 85016 : Adományozó/Donor: Erdei",
         "license": "CC BY-SA 3.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:End_Of_Fall_(53096168).jpeg"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camera,_photography,_squatting_Fortepan_85016.jpg"
       }
     },
     {
-      "id": "duvet-switch",
-      "cat": "일상",
-      "subtopic": "집안일",
-      "label": "이불",
-      "color": "#4B5D67",
-      "title": "여름 이불에서 가을 이불로 갈아타셨어요? 이불 바꾸는 나만의 타이밍 있으세요?",
-      "desc": "밤 기온이 내려가면서 이불을 바꿀 때가 왔어요. 집안일 중에서도 은근히 큰 일이라 이야기할 거리가 많아요.",
-      "reason": "오늘 최저 10°로 밤공기가 차가워 침구 교체를 고민하기 좋은 날이에요.",
+      "id": "focus-way",
+      "cat": "커리어",
+      "subtopic": "업무방식",
+      "label": "집중",
+      "color": "#5A4E9B",
+      "title": "일할 때 집중 잘 되는 나만의 방법 있으세요?",
+      "desc": "흐린 날씨에 비까지 오면 집중이 흐트러지기도 해요. 각자 몰입하는 비결을 가볍게 나눠 봐요.",
+      "reason": "오늘처럼 비가 오다 그치는 흐린 수요일엔 주중 한가운데 집중력 챙기기 얘기가 공감돼요.",
       "questions": [
-        "침구는 보통 어떤 신호가 오면 바꾸세요?",
-        "가을 이불은 도톰한 게 좋으세요, 가벼운 게 좋으세요?",
-        "이불 정리나 빨래할 때 나만의 요령 있으세요?"
+        "집중이 안 될 때 기분 전환하는 나만의 방법은 뭐예요?",
+        "일할 때 들으면 좋은 음악이나 소리 있으세요?",
+        "하루 중 가장 집중 잘 되는 시간은 언제예요?"
       ],
       "tips": {
         "work": {
-          "opener": "밤에 좀 쌀쌀해서 이불 바꿨는데, 다들 언제쯤 바꾸세요?",
-          "follow": "집에서 하는 가을 준비 얘기로 자연스럽게 이어가 보세요.",
-          "caution": "집안일 분담이나 가정사를 캐묻지 마세요."
+          "opener": "요즘 날씨 때문에 집중이 좀 안 되는데, 비결 있으세요?",
+          "follow": "자리 정리나 짧은 산책 같은 방법을 서로 공유해 보세요.",
+          "caution": "상대의 업무 속도나 성과를 평가하지 마세요."
         },
         "friend": {
-          "opener": "야 나 어제 추워서 이불 바꿨어, 넌 언제 바꿔?",
-          "follow": "침구 취향이나 잠들기 전 습관으로 넘어가 봐.",
-          "caution": "집 상태를 깎아내리는 농담은 조심해."
+          "opener": "너 일하거나 공부할 때 집중 잘 되는 방법 있어?",
+          "follow": "서로의 작업 환경이나 좋아하는 카페 얘기로 이어가 보세요.",
+          "caution": "푸념만 길게 늘어놓지 마세요."
         },
         "date": {
-          "opener": "요즘 밤엔 쌀쌀해서 이불 바꿨는데, 이불 취향 있으세요?",
-          "follow": "푹 잔 날의 컨디션이나 좋아하는 휴식 방법으로 넘어가 보세요.",
-          "caution": "집이나 잠자리를 연상시키는 사적인 질문은 피하세요."
+          "opener": "뭔가에 푹 빠져 집중할 때 제일 좋아하는 게 뭐예요?",
+          "follow": "취미나 쉬는 날 몰입하는 활동을 물어보세요.",
+          "caution": "직장 일이나 상사 얘기는 꺼내지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Living_room_in_apartment_of_Condom%C3%ADnio_do_Edif%C3%ADcio_Zaher%2C_Le_Blond%2C_Rio_de_Janeiro%2C_Brazil.jpg/1280px-Living_room_in_apartment_of_Condom%C3%ADnio_do_Edif%C3%ADcio_Zaher%2C_Le_Blond%2C_Rio_de_Janeiro%2C_Brazil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Living_room_at_35_Yowani_Rd_Rosedale_NSW_all_burnt_in_2019-12-19_bushfire.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Laptop_and_coffee_on_a_desk.jpg/1280px-Laptop_and_coffee_on_a_desk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "cabbage-price",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "배추값",
+      "color": "#4C8C4A",
+      "title": "배추가 42.9% 올랐다던데, 김장은 어떻게 하세요?",
+      "desc": "9월 생산자물가가 두 달째 올랐고, 배추는 42.9%, 쇠고기는 10.4% 올랐다는 소식이에요. 생산자물가 기준이라 장바구니 체감은 사람마다 다를 수 있어요.",
+      "reason": "완연한 가을이라 김치와 집밥 얘기가 나오는 때인데, 오늘 나온 물가 소식이 장 보는 얘기로 이어지기 좋아요.",
+      "questions": [
+        "요즘 장 볼 때 가격이 확 달라졌다고 느낀 재료 있으세요?",
+        "김치는 담그세요, 사 드세요, 얻어 드세요?",
+        "비싸도 포기 못 하는 우리 집 필수 식재료는 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "9월 생산자물가에서 배추가 42.9% 올랐다던데, 점심 메뉴 고르실 때 체감되세요?",
+          "follow": "각자 집밥이나 도시락 챙기는 요령을 가볍게 나눠 보세요.",
+          "caution": "물가 얘기가 정치 탓 논쟁으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "배추가 42.9% 올랐다는데, 너희 집은 김치 어떻게 해?",
+          "follow": "엄마표 김치나 요즘 자주 해 먹는 집밥 메뉴 얘기로 이어가 보세요.",
+          "caution": "가계 형편을 비교하는 말은 피하세요."
+        },
+        "date": {
+          "opener": "김치찌개 좋아하세요? 요즘 집에서 자주 해 드시는 음식 있어요?",
+          "follow": "좋아하는 가을 음식이나 같이 해 먹고 싶은 메뉴를 물어보세요.",
+          "caution": "요리 실력이나 생활비를 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Rich_Toledo_Market_Vegetable_Display.jpg/1280px-Rich_Toledo_Market_Vegetable_Display.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Meika Loofs Samorzewski",
+        "author": "QueenCityCebu",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Living_room_at_35_Yowani_Rd_Rosedale_NSW_all_burnt_in_2019-12-19_bushfire.jpg"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rich_Toledo_Market_Vegetable_Display.jpg"
       }
     },
     {
-      "id": "warm-drink-pick",
-      "cat": "음식",
-      "subtopic": "커피·음료",
-      "label": "따뜻한잔",
-      "color": "#6B3F1D",
-      "title": "쌀쌀한 아침엔 따뜻한 음료가 당기는데, 요즘 단골 메뉴 있으세요?",
-      "desc": "선선해지면 마시는 음료도 달라져요. 아메리카노, 라떼, 차 중에 요즘 최애를 나눠 보세요.",
-      "reason": "오늘 아침 11°C로 쌀쌀해서 따뜻한 한 잔 생각이 나는 날이에요.",
+      "id": "hynix-drop",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "주가",
+      "color": "#B23A48",
+      "title": "어제 하이닉스 4.2% 내렸대요, 주식 얘기 들으세요?",
+      "desc": "SK하이닉스는 어제 종가 기준으로 직전 거래일(10월 19일 월) 대비 4.2% 내렸고, 삼성전자도 3.0% 내렸어요. 코스피는 10월 19일(월) 종가 기준 5,768로 1.8% 올랐고요. 어디까지나 가벼운 화제로만 나눠요.",
+      "reason": "반도체 대표주가 어제 크게 움직여서 주변에서 한마디씩 하는 분위기예요.",
       "questions": [
-        "요즘 아침마다 마시는 음료는 뭐예요?",
-        "가을에만 찾게 되는 음료나 시즌 메뉴 있으세요?",
-        "커피 말고 따뜻하게 마시는 걸 고른다면 뭐예요?"
+        "요즘 주변에서 주식이나 재테크 얘기 자주 들으세요?",
+        "주가가 크게 움직인 날, 나는 어떻게 지내는 편이세요?",
+        "재테크 시작하게 된 계기가 있다면 뭐였어요?"
       ],
       "tips": {
         "work": {
-          "opener": "요즘 쌀쌀해서 따뜻한 음료가 당기는데, 오늘 뭐 드셨어요?",
-          "follow": "자주 가는 카페나 사무실 간식 얘기로 이어가 보세요.",
-          "caution": "커피를 안 마시는 사람에게 권하지 마세요."
+          "opener": "어제 하이닉스가 4.2% 내렸다던데, 요즘 주식 얘기 들으세요?",
+          "follow": "각자 재테크에 관심 갖게 된 계기를 가볍게 나눠 보세요.",
+          "caution": "종목 추천이나 전망 얘기, 수익·손실 금액 캐묻기는 피하세요."
         },
         "friend": {
-          "opener": "요즘 아침에 뭐 마셔? 나 따뜻한 거만 찾게 되더라.",
-          "follow": "서로 최애 메뉴를 추천해 주고 같이 마시러 가자고 해 봐.",
-          "caution": "취향 강요나 카페인 훈수는 피해."
+          "opener": "야, 어제 하이닉스 4.2% 내렸다는데 너 주변은 좀 어때?",
+          "follow": "주식 말고도 요즘 눈에 들어오는 재테크 습관을 서로 얘기해 보세요.",
+          "caution": "누가 얼마 벌었는지 비교하는 분위기는 피하세요."
         },
         "date": {
-          "opener": "요즘 날씨에 따뜻한 음료가 당기는데, 평소 즐겨 드시는 메뉴 있으세요?",
-          "follow": "좋아하는 카페 분위기나 디저트 취향으로 넘어가 보세요.",
-          "caution": "음료 취향을 평가하거나 놀리는 건 피하세요."
+          "opener": "요즘 뉴스에서 주가 얘기 많이 나오던데, 관심 있으세요?",
+          "follow": "돈 모으는 나만의 소소한 방법이나 소비 취향으로 넘어가 보세요.",
+          "caution": "수익률·자산 규모 같은 민감한 얘기는 묻지 마세요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/A_coffee_cup_featuring_intricate_latte_art_sits_on_a_wooden_table_next_to_an_open_laptop.jpg/1280px-A_coffee_cup_featuring_intricate_latte_art_sits_on_a_wooden_table_next_to_an_open_laptop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "condition-habit",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "컨디션",
+      "color": "#2E8B7A",
+      "title": "요즘 컨디션 챙기려고 하는 나만의 습관 있어요?",
+      "desc": "비 오고 바람 불며 기온이 뚝 떨어지는 환절기라, 몸이 먼저 신호를 보내는 때예요. 각자 챙기는 작은 습관을 나눠 봐요.",
+      "reason": "낮 15°에 내일 아침 4도라 컨디션 관리 얘기가 공감되는 날이에요.",
+      "questions": [
+        "환절기에 꼭 챙겨 먹거나 마시는 게 있으세요?",
+        "피곤한 날 나를 회복시켜 주는 루틴은 뭐예요?",
+        "요즘 몸이 보내는 신호 중 제일 먼저 느껴지는 건요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 날씨 때문에 좀 피곤하지 않으세요? 챙기시는 습관 있어요?",
+          "follow": "점심 산책이나 스트레칭 같은 소소한 방법을 나눠 보세요.",
+          "caution": "상대 건강 상태를 걱정하며 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 환절기라 몸이 좀 무거운데, 넌 뭐 챙겨 먹어?",
+          "follow": "좋아하는 따뜻한 차나 잠들기 전 습관을 서로 얘기해 보세요.",
+          "caution": "의학적 조언을 단정적으로 하지 마세요."
+        },
+        "date": {
+          "opener": "환절기에 컨디션 챙기는 나만의 습관 있으세요?",
+          "follow": "좋아하는 휴식 방법이나 주말에 충전하는 방법을 물어보세요.",
+          "caution": "병력이나 몸 상태를 구체적으로 묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Strength_Metrics_Gym_Dunedin%2C_5_Aug2026.jpg/1280px-Strength_Metrics_Gym_Dunedin%2C_5_Aug2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "street-animals",
+      "cat": "관계",
+      "subtopic": "반려동물",
+      "label": "동물친구",
+      "color": "#C2703D",
+      "title": "길에서 마주친 동물 중 기억에 남는 친구 있어요?",
+      "desc": "쌀쌀한 가을엔 산책길에서 만나는 강아지, 고양이, 새가 눈에 더 들어와요. 키우든 안 키우든 대답할 수 있어요.",
+      "reason": "비 그친 뒤 산책하기 좋은 시간이라, 길에서 만난 동물이나 반려동물 얘기가 가볍게 이어져요.",
+      "questions": [
+        "산책하다 마주친 동물 중 제일 기억에 남는 친구는요?",
+        "키우는 동물이나 키워 보고 싶은 동물이 있으세요?",
+        "동네에서 자주 보는 단골 고양이나 강아지 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "혹시 반려동물 키우세요? 아님 동네 길고양이 단골 있으세요?",
+          "follow": "사진 한두 장 보여 달라고 하며 분위기를 풀어 보세요.",
+          "caution": "키우지 않는 이유나 사정은 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "야, 너 산책하다 만난 동물 중에 제일 귀여웠던 애 누구야?",
+          "follow": "서로 동물 사진이나 에피소드를 공유해 보세요.",
+          "caution": "동물 키우는 방식을 훈계하지 마세요."
+        },
+        "date": {
+          "opener": "동물 좋아하세요? 길에서 마주친 동물 중 기억나는 친구 있어요?",
+          "follow": "좋아하는 동물이나 가 보고 싶은 동물 카페·공원을 물어보세요.",
+          "caution": "알레르기나 키우는 환경을 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Autumn_Cat_%2850539661798%29.jpg/1280px-Autumn_Cat_%2850539661798%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Shixart1985",
+        "author": "Spike Summers",
         "license": "CC BY 2.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_coffee_cup_featuring_intricate_latte_art_sits_on_a_wooden_table_next_to_an_open_laptop.jpg"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_Cat_(50539661798).jpg"
+      }
+    },
+    {
+      "id": "cold-wind-coat",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "찬바람",
+      "color": "#3B5B8C",
+      "title": "내일 아침 서울 4도래요, 제일 먼저 꺼낼 옷은요?",
+      "desc": "오늘은 비가 그치면 낮부터 강한 바람이 불고 추워진다고 해요. 내일 아침 서울은 4도예요.",
+      "reason": "오늘 서울은 최고 15°에 강수확률 59%인데, 내일 아침엔 4도까지 떨어진다는 소식이라 월동 준비 얘기가 딱이에요.",
+      "questions": [
+        "추워지면 제일 먼저 꺼내는 옷이나 소품이 뭐예요?",
+        "바람 센 날 출근길 버티는 나만의 방법 있으세요?",
+        "올가을 처음 입은 두꺼운 겉옷은 언제였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일 아침 4도라는데 벌써 목도리 생각나지 않으세요?",
+          "follow": "출근할 때 겉옷은 어떻게 챙기시는지 가볍게 물어보세요.",
+          "caution": "날씨 불평만 길게 늘어놓는 건 피하세요."
+        },
+        "friend": {
+          "opener": "야, 내일 아침 4도래. 너 제일 먼저 꺼낼 옷 뭐야?",
+          "follow": "올해 새로 산 아우터나 아끼는 겨울템 얘기로 넘어가 보세요.",
+          "caution": "옷 취향을 평가하거나 품평하는 말은 피하세요."
+        },
+        "date": {
+          "opener": "갑자기 쌀쌀해졌는데 추워지면 제일 먼저 꺼내는 옷이 뭐예요?",
+          "follow": "좋아하는 계절이나 가을·겨울에 하고 싶은 걸 물어보세요.",
+          "caution": "상대 옷차림을 콕 집어 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/6/61/Peoria_-_Eileen_in_Back_Yard_%28Cold%21%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Roger Wollstadt",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peoria_-_Eileen_in_Back_Yard_(Cold!).jpg"
       }
     }
   ]
