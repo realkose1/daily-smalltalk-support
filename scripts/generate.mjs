@@ -7,6 +7,8 @@
 // ~100k tokens of page content and costs ~$10/mo). One Sonnet call turns the
 // compact brief into 8 topics — the deck went 5 → 8 so that the app's 관심 주제
 // picker has enough categories present each day to actually re-order anything.
+// A second, tiny call runs only when a title comes back over 32 chars (the card
+// headline must fit 2–3 lines) and asks for just those titles to be shortened.
 // Cost ≈ $1.5/month.
 //   - Weather: Open-Meteo (free, keyless)
 //   - News: Google News KR RSS (free, keyless) — section feeds (top stories,
@@ -17,6 +19,10 @@
 //     required) — the model also writes 3 generic English `imageQueries` per
 //     topic, which we search after generation. No image found → the app
 //     falls back to a solid color-gradient cover (never a broken image).
+//   - Subject photos: Wikidata → Wikipedia → Commons (free, keyless) — a
+//     오늘의 화제 card about one named person / group / team / brand / product /
+//     place gets a real photo of THAT subject (CC0/PD, or CC BY / BY-SA with a
+//     credit) instead of a generic mood photo. Nothing usable → the cascade above.
 //   - Posters: TMDB (free API key) — a 오늘의 화제 card about one specific
 //     film or TV programme gets its official poster as the cover, credited to
 //     TMDB. Optional: without TMDB_READ_TOKEN every card keeps its photo.
@@ -539,6 +545,94 @@ const SUBTOPIC_GUIDE = Object.entries(SUBTOPICS)
   .map(([c, subs]) => `${c}: ${subs.join(' / ')}`)
   .join('\n');
 
+// Title length. The app shows `title` as the card headline at 28pt (~15–17
+// Korean chars a line); the news-card rule ("<소식 한 문장>던데, <질문>?") pushed
+// titles to 36–58 chars = 4–5 lines (2026-10-20). The prompt asks for ≤ TITLE_MAX
+// (2–3 lines), but models overshoot Korean char limits, so anything over
+// TITLE_LIMIT gets ONE cheap rewrite call (shortenTitles) before the rest of the
+// pipeline reads `title` — news matching, the push headline and Supabase sync
+// all see the final text. Chars are counted with [...str] (a syllable = 1,
+// spaces included).
+const TITLE_MAX = 30;
+const TITLE_LIMIT = 32; // repair only above this; 1–2 over still fits 3 lines
+const charLen = (s) => [...String(s ?? '')].length;
+const TITLE_DESC = `공백 포함 ${TITLE_MAX}자 이내(앱 화면에서 2~3줄). 문장 하나, 질문 하나 — 화제 카드는 "<주인공>이 ~했다던데, <짧은 열린 질문>?" 꼴로 줄이고 소식의 자세한 내용·수치·부연은 desc에 넣는다.`;
+// Shown to the model with their lengths computed here (it counts Korean badly).
+const TITLE_GOOD = [
+  '테슬라가 새 로드스터를 공개했다던데, 타 보실래요?',
+  '삼성전자가 금요일에 9% 빠졌다던데, 뒤숭숭하세요?',
+  '퇴근길에 꼭 들르는 단골 가게 있으세요?',
+];
+const TITLE_BAD = '테슬라가 새 로드스터를 공개했다던데, 전기 스포츠카를 한 번쯤 타 보고 싶으셨던 적 있으세요?';
+const titleFixSchema = {
+  type: 'object', additionalProperties: false,
+  properties: {
+    titles: {
+      type: 'array',
+      items: {
+        type: 'object', additionalProperties: false,
+        properties: { id: { type: 'string' }, title: { type: 'string', description: `공백 포함 ${TITLE_MAX}자 이내` } },
+        required: ['id', 'title'],
+      },
+    },
+  },
+  required: ['titles'],
+};
+
+// Rewrites the titles over TITLE_LIMIT in place, with a single small
+// structured-output call. Never throws: a failed call or a rewrite that is
+// still too long leaves the original title and logs a warning — a long headline
+// is ugly, a failed run means no deck at all.
+async function shortenTitles(client, topics) {
+  const long = topics.filter((t) => charLen(t.title) > TITLE_LIMIT);
+  if (!long.length) return;
+  try {
+    const items = long.map((t) => ({ id: t.id, title: t.title, desc: t.desc }));
+    const res = await client.messages.create({
+      model: MODEL,
+      // A few one-line titles; the headroom is for adaptive thinking, which
+      // can't be switched off on this model — effort 'low' keeps it brief.
+      max_tokens: 4000,
+      output_config: { effort: 'low', format: { type: 'json_schema', schema: titleFixSchema } },
+      messages: [{
+        role: 'user',
+        content:
+          `"데일리 스몰토크" 앱 카드의 제목이 너무 길어요. 제목은 앱 화면에서 큰 글씨라 공백 포함 ${TITLE_MAX}자 이내(2~3줄)여야 해요.\n` +
+          `- 아래 각 제목을 ${TITLE_MAX}자 이내로 다시 쓰세요. 글자 수는 공백까지 세고, 쓴 뒤 다시 세어 ${TITLE_MAX}자를 넘으면 더 줄이세요.\n` +
+          `- 제목의 주인공(작품명·인물·제품명·팀·종목)은 그대로 살리세요. "화제의 신차"처럼 뭉뚱그리면 안 돼요. 소식의 자세한 내용·수치·부연은 빼세요(desc에 이미 있어요).\n` +
+          `- 사실은 원래 제목·desc에 있는 것만 쓰세요. 새 수치·날짜·발언을 지어내지 말고, "~했다던데" 같은 시제와 "금요일"·"어제" 같은 기준일 표현은 그대로 두세요.\n` +
+          `- 원래 제목과 같은 톤(존댓말 ~요체)으로, 듣는 사람의 취향·경험을 묻는 짧은 열린 질문 하나로 끝내세요. 보기·예시는 나열하지 마세요.\n` +
+          `예) "${TITLE_BAD}" → "${TITLE_GOOD[0]}"\n\n` +
+          `[줄일 제목]\n${JSON.stringify(items, null, 1)}\n\nJSON만 출력.`,
+      }],
+    });
+    const u = res.usage;
+    if (u) console.log(`title fix tokens: in ${u.input_tokens} / out ${u.output_tokens} (stop=${res.stop_reason}) → ~$${((u.input_tokens * 2 + u.output_tokens * 10) / 1e6).toFixed(4)}`);
+    if (res.stop_reason === 'max_tokens' || res.stop_reason === 'refusal') throw new Error(`stop_reason ${res.stop_reason}`);
+    const text = res.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+    const fixes = new Map((JSON.parse(text).titles || []).map((x) => [x?.id, x?.title]));
+    const done = [];
+    for (const t of long) {
+      const was = charLen(t.title);
+      const fixed = String(fixes.get(t.id) ?? '').replace(/\s+/g, ' ').trim();
+      const n = charLen(fixed);
+      if (n < 8 || n > TITLE_LIMIT) {
+        console.log(`title: WARN '${t.id}' rewrite is ${n} chars ("${fixed}") — keeping the original ${was}`);
+        continue;
+      }
+      console.log(`title:   '${t.id}' ${was}→${n}: "${t.title}" → "${fixed}"`);
+      t.title = fixed;
+      done.push(`${t.id} ${was}→${n}`);
+    }
+    if (done.length) console.log(`title: shortened ${done.length} (${done.join(', ')})`);
+  } catch (e) {
+    console.log(`title: WARN rewrite failed (${e.message}) — keeping ${long.length} long title(s)`);
+  }
+}
+
+// What a 화제 card can be a photo OF — the keys of SUBJECT_P31 further down.
+const SUBJECT_KINDS = ['person', 'group', 'team', 'brand', 'product', 'place'];
+
 const moodTip = { type: 'object', additionalProperties: false, properties: { opener: { type: 'string' }, follow: { type: 'string' }, caution: { type: 'string' } }, required: ['opener', 'follow', 'caution'] };
 const topic = {
   type: 'object', additionalProperties: false,
@@ -549,7 +643,7 @@ const topic = {
     id: { type: 'string' }, cat: { type: 'string', enum: ['시즌', '날씨', '음식', '일상', '여행', '문화', '건강', '취미', '쇼핑', '경제', '커리어', '관계'] },
     // Must belong to the chosen cat — see SUBTOPIC_GUIDE in the prompt.
     subtopic: { type: 'string', enum: ALL_SUBTOPICS },
-    label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
+    label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string', description: TITLE_DESC }, desc: { type: 'string' }, reason: { type: 'string' },
     special: { type: 'boolean', description: '오늘이 [한국의 특별한 날](초복·중복·말복·명절·기념일 등)이고 이 주제가 바로 그 날을 소재로 만든 주제일 때만 true. 그런 주제는 정확히 1개. 오늘이 특별한 날이 아니거나 이 주제가 그 소재가 아니면 false.' },
     // Internal (dropped before writing): which cards are the day's 오늘의 화제
     // news cards, so the code can put the strongest one first (it becomes the
@@ -567,6 +661,24 @@ const topic = {
       },
       required: ['kind', 'title', 'year'],
     },
+    // Internal (dropped before writing): the real person / group / team /
+    // company / product / place a 화제 card is about, so the code can find a
+    // photo of THAT subject on Wikidata + Commons instead of a generic one.
+    // An array (not one object) so a second named subject can back up the first
+    // when the first has no usable free photo. No maxItems — see the NOTE below.
+    subjects: {
+      type: 'array',
+      description: "화제 카드(news가 'first'/'second')의 헤드라인이 실존하는 구체적 인물·그룹·팀·기업·제품·장소를 다룰 때만 채우세요. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에, 헤드라인에 함께 나온 다른 구체적 대상은 뒤에(전체 최대 2개). 영화·TV 프로그램 한 편이 중심인 카드(media를 채운 카드)와 그 밖의 모든 카드는 빈 배열 [].",
+      items: {
+        type: 'object', additionalProperties: false,
+        properties: {
+          name_ko: { type: 'string', description: '한국어 위키백과 문서 제목처럼 정식 표기 (BTS → "방탄소년단", 삼성 → "삼성전자", 신차는 한정판·색상명을 뺀 모델명 → "현대 아반떼 N").' },
+          name_en: { type: 'string', description: '영어 위키백과 문서 제목처럼 정식 표기 ("BTS", "Samsung Electronics", "Hyundai Elantra N").' },
+          kind: { type: 'string', enum: SUBJECT_KINDS, description: 'person=개인, group=가수·밴드 그룹, team=스포츠 팀·구단, brand=기업·브랜드·서비스, product=제품·차종·기기, place=장소·건물·관광지.' },
+        },
+        required: ['name_ko', 'name_en', 'kind'],
+      },
+    },
     questions: { type: 'array', items: { type: 'string' } },
     tips: { type: 'object', additionalProperties: false, properties: { work: moodTip, friend: moodTip, date: moodTip }, required: ['work', 'friend', 'date'] },
     // NOTE: structured outputs only support minItems 0/1 — don't add
@@ -574,7 +686,7 @@ const topic = {
     // 2026-07-12). "Exactly 3" lives in the description + slice(0,3) below.
     imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns. For a news card, shoot the generic thing the story is about — a car launch → "red electric sports car road", "electric car charging station"; avoid showrooms, shops, expos and signage — they usually show another company logo; a drama → "tv remote sofa living room"; baseball → "baseball stadium night crowd" — never a celebrity, athlete or any real person.' },
   },
-  required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'news', 'media', 'questions', 'tips', 'imageQueries'],
+  required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'news', 'media', 'subjects', 'questions', 'tips', 'imageQueries'],
 };
 const schema = { type: 'object', additionalProperties: false, properties: { topics: { type: 'array', items: topic } }, required: ['topics'] };
 
@@ -611,9 +723,10 @@ const gen = await client.messages.stream({
       `- ★위 [최근 며칠간 이미 나간 주제]와 겹치지 마세요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(예: 장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수). 제목·질문 문구가 비슷해도 안 됩니다.\n` +
       `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 누구나 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로 쓰세요(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
       `- 모든 문장 존댓말 ~요체(단 친구 팁은 반말도 자연스러우면 허용). 친근하고 구체적, 살짝 위트.\n` +
+      `- ★★title은 카드 맨 위에 큰 글씨로 나오고(아침 9시 알림 문구도 돼요) 공백 포함 ${TITLE_MAX}자 이내여야 해요 — 앱 화면에서 2~3줄에 들어가야 해요. 한 줄에 15~17자라 50자가 넘으면 4~5줄을 차지해 답답합니다. 문장 하나에 질문도 하나만 쓰고, 보기·예시 나열은 questions로 보내세요. 화제 카드도 "<주인공>이 ~했다던데, <짧은 열린 질문>?" 한 줄로 줄이고, 소식의 자세한 내용(수치·날짜·배경)은 desc에 담으세요. 그래서 화제 카드의 desc에는 주인공 이름과 헤드라인의 핵심 사실을 빠뜨리지 말고 적으세요. 좋은 예: ${TITLE_GOOD.map((s) => `"${s}"(${charLen(s)}자)`).join(' / ')}. 나쁜 예(${charLen(TITLE_BAD)}자, 너무 김): "${TITLE_BAD}" — 질문에 군더더기가 붙었어요. 쓴 뒤 글자 수를 세어 ${TITLE_MAX}자를 넘으면 줄여 쓰세요.\n` +
       `- ★스몰토크 적합성이 최우선: 좋은 주제는 "누구나 자기 경험으로 바로 대답할 수 있는 것"이에요. 아래 '오늘의 화제' 카드 1~2개를 뺀 나머지는 날씨, 음식/식사, 주말·퇴근 후 시간, 요즘 보는 드라마·영상, 물가·생활비 체감, 계절 변화, 여행·휴가처럼 대다수가 공감하는 일상 소재로 채우세요. 화제 카드의 질문도 그 소식을 몰랐던 사람까지 자기 취향·경험으로 대답할 수 있게 쓰세요.\n` +
       `- ★★오늘의 화제(뉴스 카드) 1~2개: [오늘의 화제 뉴스 후보]에서 오늘 한국 사람 대부분이 들어 봤을 법하거나 이야기하기 재밌는 소식을 1~2개 골라, 각각 따로 주제 카드 1장으로 만드세요. '관련' 숫자가 크고 (오늘 기사)·(어제 기사)인 것을 우선하세요. 후보 중 쓸 만한 게 정말 하나도 없을 때만 0개, 3개 이상은 절대 안 돼요. [시장 시그널]이나 [경제] 줄로 만든 경제 카드는 이 1~2개에 세지 않습니다. 두 화제 카드도 카테고리는 서로 달라야 해요.\n` +
-      `- 화제 카드는 그 소식의 주인공(작품명·인물·제품명·팀)을 제목에 구체적으로 밝히세요. 예: "테슬라가 새 로드스터를 공개했다던데, 전기 스포츠카 한번 타 보고 싶으세요?" — "화제의 신차", "요즘 뜨는 드라마"처럼 뭉뚱그리면 안 돼요.\n` +
+      `- 화제 카드는 그 소식의 주인공(작품명·인물·제품명·팀)을 제목에 구체적으로 밝히세요. 예: "${TITLE_GOOD[0]}" — "화제의 신차", "요즘 뜨는 드라마"처럼 뭉뚱그리면 안 돼요. 다만 제목은 ${TITLE_MAX}자 이내라 주인공만 밝히고 질문은 짧게 쓰세요.\n` +
       `- ★화제 카드의 사실은 헤드라인에 적힌 것만 쓰세요. 헤드라인에 없는 가격·날짜·사양·순위·수치·발언 인용은 지어내지 말고, 헤드라인이 애매하면 확실한 부분까지만 다루세요.\n` +
       `- ★사람이 나오는 소식은 공개 활동(작품, 컴백, 공연, 수상, 경기 결과, 출연)만 다루세요. 사생활·연애·결혼·가족·건강·루머는 금지, 그 사람을 평가하거나 품평하는 것도 금지예요. 질문은 연예인·선수의 사생활이 아니라 듣는 사람의 취향·경험을 물어보세요(예: "'○○' 보세요? 요즘 빠져 있는 드라마 있으세요?").\n` +
       `- 화제 카드의 시제: 어제·오늘 나온 소식이니 "~했다던데", "~공개됐다는데"처럼 이미 일어난 일로 쓰세요. [한국의 특별한 날] 표에 있는 게 아니면 행사·경기·방송이 "오늘/오늘 밤" 있다고 쓰지 마세요(아래 ★★규칙).\n` +
@@ -621,17 +734,18 @@ const gen = await client.messages.stream({
       `- 지역 축제, 선수 부상, 업계 내부 소식처럼 관심 있는 소수만 아는 뉴스와 정치·범죄·사고·재난·사망 소식은 후보에 있어도 화제 카드로 쓰지 마세요.\n` +
       `- news 필드: 가장 강한 화제 카드에 "first", 두 번째에 "second", 나머지(경제 카드 포함)는 모두 "none". 덱 순서는 코드가 정해요 — 특별한 날 카드가 있으면 그게 맨 앞, 없으면 "first" 카드가 맨 앞에 놓이고 그 제목이 아침 9시 알림 문구가 되니, 알림으로 받았을 때 가장 눌러 보고 싶을 소식을 "first"로 고르세요.\n` +
       `- media 필드: 화제 카드("first"/"second") 중 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다루는 카드만 채우세요 — 공식 포스터를 커버로 찾는 데 씁니다. 영화면 kind "movie", 드라마·예능이면 "tv". title은 헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호 ' ' " " 「 」 < > 만 빼고, 철자를 바꾸거나 번역하지 말고), year는 헤드라인에서 개봉·방영 연도가 드러나면 그 연도, 아니면 올해(${kst.getUTCFullYear()}). 신제품·스포츠·음악(앨범·컴백·공연)·인물 소식, 여러 작품을 묶은 소식, 화제 카드가 아닌 모든 카드는 kind "none", title "", year 0.\n` +
+      `- subjects 필드: 화제 카드("first"/"second")의 헤드라인이 실존하는 구체적인 인물·그룹·팀·기업(브랜드)·제품·장소를 다룰 때 채우세요 — 스톡 사진으로는 누구 얘긴지 알 수 없어서, 그 대상의 실제 사진을 커버로 찾는 데 씁니다. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에 쓰고, 헤드라인에 함께 나온 다른 구체적 대상이 있으면 두 번째로(최대 2개). 예: "BTS가 스포티파이 연간 100억 스트리밍을 넘겼다" → [방탄소년단(group), 스포티파이(brand)] / "머스크가 어린이에게 스페이스X 주식을 준다" → [일론 머스크(person), 스페이스X(brand)] / "현대차가 아반떼 N 모노크롬을 공개" → [현대 아반떼 N(product), 현대자동차(brand)] / "손흥민 해트트릭" → [손흥민(person)]. name_ko·name_en은 각 언어 위키백과 문서 제목처럼 정식 표기로 쓰세요(BTS → "방탄소년단"/"BTS", "삼성"이 아니라 "삼성전자"/"Samsung Electronics", 신차는 한정판·색상명을 뺀 모델명). 헤드라인에 없는 대상을 지어내지 말고, 영화·드라마·예능 한 편이 중심인 카드(media를 채운 카드), 여러 대상을 뭉뚱그린 소식, 화제 카드가 아닌 모든 카드는 빈 배열 [].\n` +
       `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. [오늘의 화제 뉴스 후보]에 구체적 제목이 없어 무엇인지 특정할 수 없으면, 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
       `- ★★행사·공연·경기가 "오늘" 열린다고 절대 단정하지 마세요. 헤드라인의 '오늘 저녁', '오늘 밤', '1시간 뒤'는 그 기사 발행일 기준이라 오늘과 다릅니다 — 어제 끝난 불꽃축제를 오늘 아침에 "오늘 밤 열린다"고 안내한 사고가 있었습니다. 날짜가 확실한 건 위 [한국의 특별한 날] 표뿐이에요. 지난 행사는 "어제 ~했다던데 다녀오셨어요?"처럼 지난 일로 쓰거나, 시점을 빼고 "불꽃축제 좋아하세요?"처럼 취향 질문으로 바꾸세요. 시작 시각·남은 시간을 지어내는 것도 금지.\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 모으기 참 어렵죠", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
-      `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 [오늘의 화제 뉴스 후보]의 [경제] 줄에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "삼성전자가 금요일에 9% 가까이 빠졌다던데, 뒤숭숭하지 않으세요?", "기준금리가 0.25%p 올랐다는데 대출 이자 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
+      `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 [오늘의 화제 뉴스 후보]의 [경제] 줄에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "${TITLE_GOOD[1]}", "기준금리가 0.25%p 올랐다는데, 대출 걱정되시죠?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
       `- ★★오르내림은 [시장 시그널]에 적힌 '올랐어요/내렸어요'를 그대로 쓰세요. 숫자만 보고 방향을 추측하지 마세요 — 환율이 크게 내렸는데 "올랐다"고 쓴 사고가 있었습니다. 환율은 숫자가 내려가면 원화 강세(해외여행·직구에 유리), 올라가면 원화 약세예요. 브리프에 '→ 원화 강세/약세'가 적혀 있으면 그 해석을 따르세요.\n` +
       `- ★★시장 수치를 언급할 땐 [시장 시그널] 각 줄에 적힌 기준일 표현을 그대로 쓰세요. 주식·코스피는 주말·공휴일에 쉬기 때문에, 기준일이 "8월 15일(금)"인데 "어제"라고 쓰면 날짜가 틀립니다(일요일 주제에 금요일 등락을 "어제"라고 쓴 사고 있음). 기준일이 '어제'라고 적혀 있을 때만 "어제"라고 쓰고, 아니면 "지난 금요일" 같은 실제 요일이나 "최근"으로 쓰세요.\n` +
       `- 이때도 매수/매도 추천·목표가·시황분석·전망은 절대 금지 — "다들 얘기하더라"며 화제로 가볍게 나누는 톤만. 삼성전자·SK하이닉스·코스피·환율·비트코인처럼 다들 아는 것만 다루고, 소수만 아는 종목은 피하세요.\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개.\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지.\n` +
-      `- imageQueries: 이 주제의 커버 사진을 찾기 위한 검색어 3개(서로 다른 피사체/장면으로). 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket" / "rain drops window" / "umbrella wet street"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지. 화제 카드도 마찬가지로 그 소식의 일반적인 사물·장면으로 쓰세요(예: 신차 공개 → "red electric sports car road", "electric car charging station" / 드라마 → "tv remote sofa living room" / 야구 → "baseball stadium night crowd"). 전시장·매장·박람회·간판처럼 다른 회사 로고가 찍히기 쉬운 장면은 피하세요. 연예인·선수 등 실존 인물 이름은 절대 금지.\n` +
+      `- imageQueries: 이 주제의 커버 사진을 찾기 위한 검색어 3개(서로 다른 피사체/장면으로). 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket" / "rain drops window" / "umbrella wet street"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지. 화제 카드도 마찬가지로 그 소식의 일반적인 사물·장면으로 쓰세요(예: 신차 공개 → "red electric sports car road", "electric car charging station" / 드라마 → "tv remote sofa living room" / 야구 → "baseball stadium night crowd"). 전시장·매장·박람회·간판처럼 다른 회사 로고가 찍히기 쉬운 장면은 피하세요. 연예인·선수 등 실존 인물 이름은 절대 금지. 화제 카드는 subjects의 실제 사진을 못 찾았을 때 이 검색어로 대체 사진을 찾으니, subjects를 채웠어도 imageQueries는 그 소식의 일반적인 사물·장면으로 반드시 채우세요(예: BTS 스트리밍 기록 → "headphones listening music", "concert stage lights crowd" / 테슬라 신차 → "red electric sports car road" / 손흥민 경기 → "soccer stadium night crowd").\n` +
       `- reason은 오늘 날짜·날씨·맥락 반영. JSON만 출력.`,
   }],
 }).finalMessage();
@@ -656,6 +770,11 @@ if (gen.stop_reason === 'max_tokens') {
 const data = JSON.parse(raw);
 data.topics = (data.topics || []).filter((t) => Array.isArray(t.questions) && t.questions.length === 3).slice(0, 8);
 if (data.topics.length < 3) throw new Error('not enough valid topics');
+
+// Settle the titles NOW, before anything reads them: the news-card matching
+// below (title + desc), the push headline (topics[0]) and the Supabase sync all
+// use the final text. See shortenTitles.
+await shortenTitles(client, data.topics);
 
 // Shuffle so the deck order varies day to day — the model tends to emit the
 // same category sequence (날씨→음식→일상→문화→경제), which made every morning
@@ -845,7 +964,12 @@ function getRecentImages(days = 7) {
     for (const f of files) {
       try {
         const j = JSON.parse(readFileSync(`content/archive/${f}`, 'utf8'));
-        for (const t of j.topics || []) if (t.image) urls.add(t.image);
+        // `imageAttributed` too: subject photos are often attributed (CC BY-SA)
+        // and the same BTS photo two mornings in a row reads as a bug.
+        for (const t of j.topics || []) {
+          if (t.image) urls.add(t.image);
+          if (t.imageAttributed) urls.add(t.imageAttributed);
+        }
       } catch {}
     }
     return urls;
@@ -954,33 +1078,47 @@ let lastCommonsCall = 0;
 // 1.2s still drew 429s once the cascade (correctly) kept going past
 // artwork-only results — more Commons calls per run. 2s keeps it under.
 const COMMONS_GAP_MS = 2000;
-async function commonsJson(params) {
+// Every Wikimedia API call — Commons, Wikidata, Wikipedia — goes through here
+// and shares ONE pacing clock, so the subject-photo lookups (see below) add
+// calls but never a burst. Wikidata 429'd a 2 s-spaced loop of ~8 searches too.
+const WIKI_LABEL = { 'commons.wikimedia.org': 'commons', 'www.wikidata.org': 'wikidata' };
+// JSON errors worth waiting out; anything else (bad id, bad param…) is a bug
+// or a miss that a retry cannot fix and 30 s of sleeping would only hide.
+const WIKI_RETRY_CODE = /^(ratelimited|maxlag|readonly|internal_api_error.*|cirrussearch-too-busy-error)$/i;
+let wikiGaveUp = 0; // calls that stayed rate-limited through all 3 attempts
+async function wikiJson(host, params, timeoutMs = 10000) {
+  const label = WIKI_LABEL[host] || host;
   for (let attempt = 0; attempt < 3; attempt++) {
     const wait = lastCommonsCall + COMMONS_GAP_MS - Date.now();
     if (wait > 0) await new Promise((res) => setTimeout(res, wait));
     lastCommonsCall = Date.now();
-    const r = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`, {
+    const r = await fetch(`https://${host}/w/api.php?${params}`, {
       headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     const txt = await r.text();
+    let retry = true; // a non-JSON body is the "too many requests" page
     try {
       const j = JSON.parse(txt);
       if (!j.error) return j;
-      console.log(`commons api error: ${JSON.stringify(j.error).slice(0, 120)}`);
+      console.log(`${label} api error: ${JSON.stringify(j.error).slice(0, 120)}`);
+      retry = WIKI_RETRY_CODE.test(String(j.error.code));
     } catch {
-      console.log(`commons non-JSON (${r.status}): ${txt.slice(0, 80).replace(/\s+/g, ' ')}`);
+      console.log(`${label} non-JSON (${r.status}): ${txt.slice(0, 80).replace(/\s+/g, ' ')}`);
     }
+    if (!retry) return null;
     if (attempt < 2) {
       // One 8s pause wasn't enough on 2026-09-11 — the limit was still up
       // when it retried. Wait 10s, then 20s.
       const back = attempt === 0 ? 10000 : 20000;
-      console.log(`commons: rate-limited — backing off ${back / 1000}s (attempt ${attempt + 1}/3)`);
+      console.log(`${label}: rate-limited — backing off ${back / 1000}s (attempt ${attempt + 1}/3)`);
       await new Promise((res) => setTimeout(res, back));
     }
   }
+  wikiGaveUp++;
   return null;
 }
+const commonsJson = (params) => wikiJson('commons.wikimedia.org', params);
 
 async function searchCommons(query) {
   try {
@@ -1049,8 +1187,339 @@ async function searchCommons(query) {
   }
 }
 
+// --- subject photos: Wikidata → (Wikipedia) → Commons, for 화제 news cards ---
+// A news card is about SOMEONE, and a mood photo can't say who: BTS passing 10
+// billion Spotify streams shipped a generic record player (2026-10-20). For the
+// 오늘의 화제 cards the model names the subject(s) (`subjects` in the schema);
+// this finds a real, freely licensed photo of exactly that.
+//
+//  1. Wikidata wbsearchentities by the Korean name, then the English one. Only
+//     items NAMED exactly that count (the search is prefix-based: "BTS" also
+//     brings BTS Skytrain and an airport) and only items of the right TYPE: P31
+//     "instance of" on the kind's list, or failing that a description that
+//     reads like one. "테슬라" is also a unit of measure, a film and a GPU.
+//  2. Several items of the right type with the same name (a dozen 김민수) is
+//     ambiguity, not a pick — unless one has ≥ 4× the Wikipedia sitelinks of the
+//     next (Spotify the service vs. its two holding-company stubs). No clear
+//     winner → no photo, never a guess.
+//  3. The winner's P18 photos, preferred rank first. If none is good, the lead
+//     image of its ko/en Wikipedia article joins them.
+//  4. Commons imageinfo vets every file: licence (CC0/PD = free; CC BY / BY-SA
+//     get a credit), size, mime, logo/map/scan-like names and categories, and
+//     photoScore. People, groups and teams prefer photos from the last ~10 years.
+// Never throws; nothing usable → null and the generic cascade runs as before.
+const SUBJECT_MAX = 2; // subjects tried per card, in the model's order
+const SUBJECT_MIN_SITELINKS = 3; // below this the item is too obscure to be today's news subject
+const SUBJECT_MIN_W = 800;
+const SUBJECT_MIN_H = 600;
+const SUBJECT_MAX_BYTES_NON_JPEG = 3 * 1024 * 1024; // PNG thumbs stay PNG — keep the download sane
+
+// Wikidata classes ("instance of") accepted per kind. Direct P31 values only, no
+// subclass walk: a miss means "no subject photo" (the generic cover stays),
+// never a wrong one. Every id was checked against its English label.
+const SUBJECT_P31 = {
+  person: ['Q5'], // human
+  group: ['Q215380', 'Q216337', 'Q641066', 'Q2088357', 'Q5741069', 'Q16334295'], // musical group, boy band, girl group, musical ensemble, rock band, group of humans
+  team: ['Q12973014', 'Q847017', 'Q476028', 'Q13027888', 'Q13393265', 'Q6979593', 'Q1194951', 'Q4438121'], // sports team/club, football club, baseball/basketball team, national (football) team, sports organization
+  brand: ['Q431289', 'Q4830453', 'Q783794', 'Q167037', 'Q6881511', 'Q891723', 'Q43229', 'Q167270', 'Q15590336', 'Q620615', 'Q7397', 'Q40056'], // brand, business, company, corporation, enterprise, public company, organization, trademark, music streaming service, mobile app, software, computer program
+  product: ['Q3231690', 'Q1420', 'Q2424752', 'Q15056993'], // car model, car, product, aircraft family
+  place: [], // any item with coordinates (P625) — see subjectType
+};
+// When P31 has nothing from the list (items are often sparsely typed), a
+// description that reads like the kind (Korean or English) is enough.
+const SUBJECT_DESC = {
+  group: /그룹|밴드|듀오|트리오|boy band|girl group|\bband\b|\bduo\b|\btrio\b|musical group|ensemble/i,
+  team: /팀|구단|클럽|축구단|야구단|농구단|배구단|\bteam\b|\bclub\b|franchise/i,
+  brand: /기업|회사|브랜드|서비스|제조|플랫폼|\bcompany\b|brand|corporation|business|manufacturer|\bservice\b|platform|retailer|conglomerate/i,
+  product: /자동차|전기차|세단|스마트폰|제품|모델|차량|기기|게임기|\bcar\b|automobile|vehicle|\bmodel\b|smartphone|\bphone\b|device|console|\bproduct\b|motorcycle|tablet|laptop/i,
+};
+// Never a subject: disambiguation pages, lists, categories, templates, names.
+const SUBJECT_NEVER_P31 = new Set(['Q4167410', 'Q13406463', 'Q4167836', 'Q11266439', 'Q101352', 'Q202444']);
+const SUBJECT_NEVER_DESC = /위키미디어|위키백과|wikimedia|disambiguation|family name|given name|identifier/i;
+// Files that are logos, signatures, maps, posters and the like, by name…
+const SUBJECT_FILE_NOT_PHOTO =
+  /\b(logos?|logotype|wordmark|signature|autograph|flags?|maps?|locator|coat of arms|emblem|icons?|diagram|chart|infographic|screenshot|banner|sticker|poster|stamp)\b/i;
+// …and by category.
+const SUBJECT_BAD_CATEGORY = /\blogos?\b|signatures?\b|\bflags?\b|\bmaps?\b|diagrams?|\bicons?\b|\bsvg\b|screenshots?|\bposters?\b|album covers|wordmarks?/i;
+
+const subjectEntities = new Map(); // Wikidata id → entity | null, for this run
+// "Exactly that name" — for teams, companies and products also without the
+// legal / club suffix Wikidata labels carry ("Tottenham Hotspur F.C.",
+// "Samsung Electronics Co., Ltd.", "토트넘 홋스퍼 FC"). People and groups stay exact.
+const SUBJECT_NAME_SUFFIX = /(fc|afc|cf|inc|corp|corporation|ltd|co|주식회사|축구단|야구단|농구단|배구단|구단)$/;
+function subjectNameKey(kind, s) {
+  let k = normTitle(s);
+  if (kind !== 'team' && kind !== 'brand' && kind !== 'product') return k;
+  for (let i = 0; i < 3; i++) {
+    const next = k.replace(SUBJECT_NAME_SUFFIX, '').replace(/^(fc|afc)/, '');
+    if (next === k || next.length < 3) break;
+    k = next;
+  }
+  return k;
+}
+const normFile = (s) => String(s ?? '').replace(/^File:/i, '').replace(/_/g, ' ').trim().toLowerCase();
+
+// Statement values for a property: deprecated dropped, preferred rank first.
+function claimValues(e, prop) {
+  return (e?.claims?.[prop] || [])
+    .filter((c) => c.rank !== 'deprecated' && c.mainsnak?.snaktype === 'value')
+    .sort((a, b) => (b.rank === 'preferred') - (a.rank === 'preferred'))
+    .map((c) => c.mainsnak.datavalue?.value);
+}
+
+async function wikidataEntities(ids) {
+  const need = ids.filter((id) => !subjectEntities.has(id));
+  if (need.length) {
+    const j = await wikiJson('www.wikidata.org', new URLSearchParams({
+      action: 'wbgetentities', format: 'json', origin: '*', ids: need.join('|'),
+      props: 'claims|sitelinks|labels|descriptions', languages: 'ko|en',
+    }), 30000); // big items (Tesla, Musk) carry ~1 MB of claims
+    if (!j) return null;
+    for (const id of need) subjectEntities.set(id, j.entities?.[id] ?? null);
+  }
+  return ids.map((id) => subjectEntities.get(id));
+}
+
+// Is this item plausibly a `kind`? → { ok, how | why }
+function subjectType(kind, e, searchDesc) {
+  const ids = claimValues(e, 'P31').map((v) => v?.id).filter(Boolean);
+  const desc = `${e.descriptions?.ko?.value || ''} | ${e.descriptions?.en?.value || ''} | ${searchDesc || ''}`;
+  if (ids.some((id) => SUBJECT_NEVER_P31.has(id)) || SUBJECT_NEVER_DESC.test(desc)) {
+    return { ok: false, why: 'a list / disambiguation / name entry' };
+  }
+  if (kind === 'person') return ids.includes('Q5') ? { ok: true, how: 'human' } : { ok: false, why: 'not a human' };
+  if (kind === 'place') return claimValues(e, 'P625').length ? { ok: true, how: 'has coordinates' } : { ok: false, why: 'no coordinates' };
+  if (SUBJECT_P31[kind].some((id) => ids.includes(id))) return { ok: true, how: `P31 ${ids.filter((id) => SUBJECT_P31[kind].includes(id))[0]}` };
+  if (SUBJECT_DESC[kind]?.test(desc)) return { ok: true, how: 'description' };
+  return { ok: false, why: `not a ${kind}` };
+}
+
+// Lead image of the item's ko (else en) Wikipedia article — editors choose it
+// as THE picture of the subject, and it is often newer than P18. null if none.
+async function wikipediaLeadImage(e) {
+  for (const wiki of ['ko', 'en']) {
+    const title = e.sitelinks?.[`${wiki}wiki`]?.title;
+    if (!title) continue;
+    const j = await wikiJson(`${wiki}.wikipedia.org`, new URLSearchParams({
+      action: 'query', format: 'json', origin: '*', redirects: '1', titles: title,
+      prop: 'pageimages', piprop: 'name',
+    }));
+    const name = Object.values(j?.query?.pages || {})[0]?.pageimage;
+    if (name) return name;
+  }
+  return null;
+}
+
+// Vets Commons files in ONE imageinfo call. → { ok: [candidate], bad: [reason] }
+// or null when Commons could not be reached.
+async function subjectFiles(kind, names) {
+  const j = await commonsJson(new URLSearchParams({
+    action: 'query', format: 'json', origin: '*', redirects: '1',
+    titles: names.map((n) => `File:${String(n).replace(/^File:/i, '')}`).join('|'),
+    prop: 'imageinfo|categories', cllimit: 'max', clshow: '!hidden',
+    iiprop: 'url|size|mime|extmetadata', iiurlwidth: '1280',
+  }));
+  if (!j) return null;
+  const order = new Map(names.map((n, i) => [normFile(n), i]));
+  const from = new Map((j.query?.redirects || []).map((r) => [normFile(r.to), normFile(r.from)]));
+  const Y = Number(isoDate.slice(0, 4));
+  const people = kind === 'person' || kind === 'group' || kind === 'team';
+  const ok = [];
+  const bad = [];
+  for (const p of Object.values(j.query?.pages || {})) {
+    const name = String(p.title || '').replace(/^File:/, '');
+    const no = (why) => bad.push(`${name}: ${why}`);
+    const ii = p.imageinfo?.[0];
+    if (!ii) { no('not on Commons'); continue; }
+    if (!/^image\/(jpeg|png|webp|tiff)$/.test(ii.mime || '')) { no(ii.mime || 'unknown type'); continue; }
+    const stem = name.replace(/\.[a-z0-9]+$/i, '');
+    const cats = (p.categories || []).map((c) => c.title || '').join(' | ');
+    if (SUBJECT_FILE_NOT_PHOTO.test(stem)) { no('logo/map/poster-like name'); continue; }
+    if (SUBJECT_BAD_CATEGORY.test(cats)) { no('logo/map/poster-like category'); continue; }
+    const lic = plain(ii.extmetadata?.LicenseShortName?.value);
+    const free = /cc0|public domain/i.test(lic);
+    if (!free && !/^cc by(-sa)? /i.test(lic)) { no(`licence "${lic || 'unknown'}"`); continue; }
+    if ((ii.width ?? 0) < SUBJECT_MIN_W || (ii.height ?? 0) < SUBJECT_MIN_H) { no(`too small ${ii.width}×${ii.height}`); continue; }
+    const ratio = ii.width / ii.height;
+    if (ratio > 3 || ratio < 0.4) { no(`odd shape ${ii.width}×${ii.height}`); continue; }
+    if (ii.mime !== 'image/jpeg' && (ii.size ?? 0) > SUBJECT_MAX_BYTES_NON_JPEG) { no(`${ii.mime} of ${(ii.size / 1048576).toFixed(1)} MB`); continue; }
+    const author = creditName(ii.extmetadata?.Artist?.value);
+    if (!free && !author) { no('no author to credit'); continue; }
+    // "Portrait of …" is how people photos are named, but ARTWORK reads it as a painting.
+    let q = photoScore(stem.replace(/portrait of/gi, ''), cats);
+    if (ii.mime === 'image/png') q -= 1; // PNGs are mostly cut-outs and screenshots
+    if (people) {
+      const when = plain(ii.extmetadata?.DateTimeOriginal?.value);
+      const yr = Number((when.match(/\b(?:19|20)\d{2}\b/) || stem.match(/\b(?:19|20)\d{2}\b/) || [])[0]);
+      if (yr && yr <= Y) q += Y - yr <= 10 ? 1 : Y - yr <= 20 ? -1 : -3;
+    }
+    if (q <= -5) { no(`looks like a scan/artwork (score ${q})`); continue; }
+    ok.push({
+      url: ii.thumburl || ii.url,
+      name, w: ii.width, h: ii.height, lic, free,
+      // free wins ties: it works in every app version and needs no credit line
+      q: q + (free ? 0.5 : 0),
+      order: order.get(normFile(p.title)) ?? order.get(from.get(normFile(p.title))) ?? 99,
+      credit: free ? null : {
+        author,
+        license: lic,
+        licenseUrl: plain(ii.extmetadata?.LicenseUrl?.value),
+        sourceUrl: ii.descriptionurl || ii.url,
+      },
+    });
+  }
+  ok.sort((a, b) => b.q - a.q || a.order - b.order);
+  return { ok, bad };
+}
+
+// Photos of one resolved item. → { photo, note } | { why }
+async function subjectPhotoOf(kind, id, e) {
+  const p18 = [...new Set(claimValues(e, 'P18').filter((v) => typeof v === 'string'))].slice(0, 5);
+  let cands = [];
+  const bad = [];
+  let note = '';
+  if (p18.length) {
+    const r = await subjectFiles(kind, p18);
+    if (!r) return { why: `${id}: Commons lookup failed` };
+    cands = r.ok;
+    bad.push(...r.bad);
+  }
+  if (!cands.some((c) => c.q >= 0)) { // no P18, or only dated/shaky ones
+    const lead = await wikipediaLeadImage(e);
+    if (lead && !p18.some((n) => normFile(n) === normFile(lead))) {
+      const r = await subjectFiles(kind, [lead]);
+      if (r) {
+        if (r.ok.length) note = ' [Wikipedia lead image]';
+        cands = cands.concat(r.ok).sort((a, b) => b.q - a.q || a.order - b.order);
+        bad.push(...r.bad);
+      }
+    }
+  }
+  if (!cands.length) {
+    return { why: `${id}: no usable photo (${p18.length} P18; ${bad.slice(0, 3).join('; ') || 'no P18 and no Wikipedia lead image'})` };
+  }
+  const pick = pickVaried(cands);
+  if (cands.length > 1) note += ` [1 of ${cands.length} usable]`;
+  return { photo: pick, note };
+}
+
+// One name (ko or en) → { photo, qid, note } | { why }. `tried` holds item ids
+// an earlier attempt already ended on, so the English pass does not redo them.
+async function subjectByName(kind, lang, text, tried) {
+  const j = await wikiJson('www.wikidata.org', new URLSearchParams({
+    action: 'wbsearchentities', format: 'json', origin: '*', search: text,
+    language: lang, uselang: lang, strictlanguage: '1', type: 'item', limit: '8',
+  }));
+  if (!j) return { why: `${lang}: Wikidata search failed` };
+  const want = subjectNameKey(kind, text);
+  const hits = (j.search || []).filter((r) => (subjectNameKey(kind, r.match?.text) === want || subjectNameKey(kind, r.label) === want)
+    && !SUBJECT_NEVER_DESC.test(r.description || ''));
+  if (!hits.length) {
+    return { why: `${lang}: ${(j.search || []).length ? `${j.search.length} result(s), none named exactly "${text}"` : `no Wikidata item "${text}"`}` };
+  }
+  const ents = await wikidataEntities(hits.slice(0, 4).map((r) => r.id));
+  if (!ents) return { why: `${lang}: Wikidata lookup failed` };
+  const typed = [];
+  const rejected = [];
+  hits.slice(0, 4).forEach((r, i) => {
+    const e = ents[i];
+    if (!e) return;
+    const t = subjectType(kind, e, r.description);
+    if (t.ok) typed.push({ id: r.id, e, desc: r.description || e.descriptions?.en?.value || '', sl: Object.keys(e.sitelinks || {}).length, how: t.how });
+    else rejected.push(`${r.id} ${r.description || '(no description)'}: ${t.why}`);
+  });
+  if (!typed.length) return { why: `${lang}: ${hits.length} item(s) named "${text}", none a ${kind} (${rejected.slice(0, 3).join('; ')})` };
+  typed.sort((a, b) => b.sl - a.sl);
+  if (typed.length > 1 && !(typed[0].sl >= 10 && typed[0].sl >= 4 * typed[1].sl)) {
+    return { ambiguous: true, why: `${lang}: ambiguous — ${typed.length} ${kind}s are named "${text}" (${typed.slice(0, 3).map((x) => `${x.id} ${x.desc} [${x.sl} sitelinks]`).join('; ')})` };
+  }
+  const w = typed[0];
+  if (w.sl < SUBJECT_MIN_SITELINKS) return { why: `${lang}: ${w.id} ${w.desc} is too obscure (${w.sl} sitelink(s))` };
+  if (tried.has(w.id)) return { why: `${lang}: ${w.id} again` };
+  tried.add(w.id);
+  const r = await subjectPhotoOf(kind, w.id, w.e);
+  return r.photo ? { photo: r.photo, qid: w.id, note: `${r.note || ''}${typed.length > 1 ? ` [of ${typed.length} same-named, ${w.sl} sitelinks]` : ''}` } : { why: `${lang}: ${r.why}` };
+}
+
+// { name_ko, name_en, kind } → { photo, qid, note } | { why }. Korean name first
+// (what the news says), English as the second chance.
+async function resolveSubject(s) {
+  // A call that stayed throttled through its 10 s + 20 s backoffs means the
+  // limit is still up; every further lookup would burn another ~30 s for nothing.
+  if (wikiGaveUp) return { why: 'Wikimedia kept rate-limiting this run — lookup skipped' };
+  const tried = new Set();
+  const whys = [];
+  const tries = [];
+  if (s.name_ko) tries.push(['ko', s.name_ko]);
+  if (s.name_en && normTitle(s.name_en) !== normTitle(s.name_ko)) tries.push(['en', s.name_en]);
+  for (const [lang, text] of tries) {
+    const r = await subjectByName(s.kind, lang, text, tried);
+    if (r.photo) return r;
+    whys.push(r.why);
+    // Many people share the name → the English spelling can't tell them apart
+    // either, and its one exact hit may be somebody else. Stop.
+    if (r.ambiguous) break;
+  }
+  return { why: whys.join(' | ') };
+}
+
+// The model's `subjects` → at most SUBJECT_MAX well-formed, distinct entries.
+function cleanSubjects(raw) {
+  const out = [];
+  for (const s of Array.isArray(raw) ? raw : []) {
+    const name_ko = String(s?.name_ko ?? '').trim().slice(0, 60);
+    const name_en = String(s?.name_en ?? '').trim().slice(0, 80);
+    const key = normTitle(name_ko || name_en);
+    if (!key || !Object.hasOwn(SUBJECT_P31, s?.kind)) continue;
+    if (out.some((o) => normTitle(o.name_ko || o.name_en) === key)) continue;
+    out.push({ name_ko, name_en, kind: s.kind });
+  }
+  return out.slice(0, SUBJECT_MAX);
+}
+
+// The cover for one card, or null: { url, free, credit } — logs one line per card.
+async function coverFromSubject(t, isNews) {
+  const subjects = cleanSubjects(t.subjects);
+  const names = (s) => `${s.name_ko || s.name_en} (${[s.name_en, s.kind].filter(Boolean).join(', ')})`;
+  if (!isNews) {
+    if (subjects.length) console.log(`subject: '${t.id}' not a news card — ignoring ${subjects.map(names).join(', ')}`);
+    return null;
+  }
+  if (!subjects.length) {
+    console.log(`subject: '${t.id}' none — no single named subject on this news card`);
+    return null;
+  }
+  const misses = [];
+  for (const s of subjects) {
+    let r;
+    try {
+      r = await resolveSubject(s);
+    } catch (e) {
+      r = { why: `lookup failed: ${e.message}` };
+    }
+    if (r.photo) {
+      const p = r.photo;
+      console.log(
+        `subject: '${t.id}' ← ${names(s)} → ${r.qid} File:${p.name} (${p.lic}, ${p.w}×${p.h})${r.note || ''}` +
+        (misses.length ? `; first ${misses.join('; ')}` : ''),
+      );
+      return { url: p.url, free: p.free, credit: p.credit };
+    }
+    misses.push(`${names(s)} → none (${r.why})`);
+  }
+  console.log(`subject: '${t.id}' ← ${misses.join('; ')}`);
+  return null;
+}
+
 for (const t of data.topics) {
-  const queries = (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
+  // A real photo of the news card's own subject beats any mood photo. Free
+  // (CC0/PD) → it IS the cover for every app version and the generic search is
+  // skipped; attributed (CC BY / BY-SA) → it goes to imageAttributed, and the
+  // generic search still runs below to give builds that predate credit lines
+  // their CC0 `image`. No subject / nothing usable → null, cascade as before.
+  const subj = await coverFromSubject(t, newsCards.has(t));
+  const skipGeneric = !!subj?.free;
+  const queries = skipGeneric ? [] : (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
   // Cascade: the model's own queries on Openverse, then on Commons, then the
   // shuffled category fallback on both. Stop at the first query that yields
   // candidates. Gradient only if the whole cascade misses.
@@ -1063,7 +1532,7 @@ for (const t of data.topics) {
   let usable = [];
   for (const q of queries) { usable = usableOnly(await searchOpenverse(q)); if (usable.length) break; }
   if (!usable.length) for (const q of queries) { usable = usableOnly(await searchCommons(q)); if (usable.length) break; }
-  if (!usable.length) {
+  if (!usable.length && !skipGeneric) {
     // At most three fallbacks per topic — a hard topic used to walk every
     // phrase on both sources and exhaust the rate budget for the topics after it.
     for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle']).slice(0, 3)) {
@@ -1086,13 +1555,24 @@ for (const t of data.topics) {
   const free = pickVaried(usable.filter((c) => c.free));
 
   if (free) { t.image = free.url; recentImages.add(free.url); }
-  if (best && !best.free) {
+  if (subj) {
+    // Same conventions as any other cover: CC0/PD → `image`; otherwise the pair
+    // imageAttributed + imageCredit (the app shows them strictly together).
+    if (subj.free) {
+      t.image = subj.url;
+    } else {
+      t.imageAttributed = subj.url;
+      t.imageCredit = subj.credit;
+    }
+    recentImages.add(subj.url);
+  } else if (best && !best.free) {
     t.imageAttributed = best.url;
     t.imageCredit = best.credit;
     recentImages.add(best.url);
   }
 
   delete t.imageQueries; // internal only — not part of the app's Topic shape
+  delete t.subjects; // internal only
   // Say what the CARD gets, not just the CC0 slot: "image=none +attributed"
   // read as "no cover" and sent a whole investigation after a non-problem.
   const cover = t.imageAttributed
@@ -1100,7 +1580,7 @@ for (const t of data.topics) {
     : t.image
       ? 'cc0'
       : 'NONE → gradient';
-  console.log(`${t.id}: cover=${cover}; cc0-for-old-builds=${t.image ? 'yes' : 'no'}`);
+  console.log(`${t.id}: cover=${cover}${subj ? ' (subject photo)' : ''}; cc0-for-old-builds=${t.image ? 'yes' : 'no'}`);
 }
 
 // --- posters: TMDB, for 오늘의 화제 cards about one film or TV programme ---
