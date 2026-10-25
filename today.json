@@ -1,310 +1,319 @@
 {
-  "date": "2026-10-25",
-  "dateLabel": "10월 25일 일요일",
-  "generatedAt": "2026-10-25T14:54:16.990Z",
+  "date": "2026-10-26",
+  "dateLabel": "10월 26일 월요일",
+  "generatedAt": "2026-10-25T22:04:46.979Z",
   "topics": [
     {
-      "id": "typhoon-champi",
-      "cat": "날씨",
-      "subtopic": "태풍",
-      "label": "태풍",
-      "color": "#1E5A8C",
-      "title": "역대 가장 늦은 태풍 '참피'가 제주를 향했대요",
-      "desc": "한라산엔 310mm 폭우, 제주 남쪽 먼바다엔 태풍경보가 내렸대요.",
-      "reason": "삼성-기아 PO 1차전도 우천 취소됐어요.",
+      "id": "t1",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "닥터X",
+      "color": "#8B1E3F",
+      "title": "‘닥터X’가 최고 시청률 21.3%를 찍었대요",
+      "desc": "김지원 열연에 ‘적수 없는 독주’라는 말이 나온대요.",
+      "reason": "월요일 아침, 지난주 드라마 얘기를 꺼내기 좋은 때예요.",
       "questions": [
-        "태풍 오는 날엔 출근을 어떻게 하세요?",
-        "비바람 센 날 집에서 꼭 하는 게 있어요?",
-        "비 오는 날 제주에서 가 볼 만한 곳 아세요?"
+        "요즘 챙겨 보는 드라마 있으세요?",
+        "‘닥터X’ 보셨어요, 어디까지 보셨어요?",
+        "시청률 높은 드라마는 따라 보게 되세요?"
       ],
       "tips": {
         "work": {
-          "opener": "태풍 '참피' 뉴스 보셨어요? 역대 가장 늦게 온 태풍이래요.",
-          "follow": "제주 한라산엔 310mm 넘게 왔다는데, 숫자가 잘 감이 안 오더라고요.",
-          "caution": "피해·사고 얘기는 피하고 날씨 이야기 정도로만 두세요."
+          "opener": "‘닥터X’ 시청률이 21.3%까지 나왔대요. 보셨어요?",
+          "follow": "김지원 씨 열연이 대단하다던데 어디까지 보셨어요?",
+          "caution": "드라마 속 사회적 소재의 찬반 논쟁으로 번지지 않게 해요."
         },
         "friend": {
-          "opener": "야, 태풍 참피 봤어? 10월 말에 태풍이라니 신기하더라.",
-          "follow": "야구 PO 1차전도 비 때문에 취소됐대.",
-          "caution": "제주에 가족이나 친구 있는 사람한테 걱정 부추기는 말은 하지 마."
+          "opener": "야 ‘닥터X’ 시청률 21.3% 나왔대, 너 봤어?",
+          "follow": "1위라던데 우리도 몰아볼까?",
+          "caution": "결말 스포는 하지 말기."
         },
         "date": {
-          "opener": "혹시 태풍 소식 보셨어요? 역대 가장 늦은 태풍이래요.",
-          "follow": "비 오는 날엔 보통 뭐 하세요?",
-          "caution": "피해 상황 같은 무거운 얘기는 꺼내지 않기."
+          "opener": "‘닥터X’라는 드라마 시청률이 엄청 높대요. 혹시 보세요?",
+          "follow": "드라마 볼 때 어떤 장르를 좋아하세요?",
+          "caution": "소재가 무거울 수 있으니 논쟁 얘기는 피해요."
         }
       },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Bonaventura_Peeters_-_Stormy_sea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Waves_breaking_over_the_sea_wall_at_Dawlish_%282025a%29.JPG/1280px-Waves_breaking_over_the_sea_wall_at_Dawlish_%282025a%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg/1280px-HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Geof Sheppard",
+        "author": "YipshaiukOWL",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Waves_breaking_over_the_sea_wall_at_Dawlish_(2025a).JPG"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg"
       }
     },
     {
-      "id": "monday-commute",
-      "cat": "커리어",
-      "subtopic": "출퇴근",
-      "label": "출근",
-      "color": "#455A64",
-      "title": "월요일 출근길엔 주로 뭐 하면서 가세요?",
-      "desc": "10월도 이제 일주일이 채 안 남았어요.",
-      "reason": "오늘이 10월 25일 일요일이라 내일이 월요일이에요.",
+      "id": "t6",
+      "cat": "날씨",
+      "subtopic": "일교차",
+      "label": "일교차",
+      "color": "#D4812B",
+      "title": "오늘 서울이 14도에서 21도까지 오른대요",
+      "desc": "하늘은 맑고 강수확률은 25%예요.",
+      "reason": "월요일 출근길과 낮 기온 차가 7도나 나요.",
       "questions": [
-        "출근길에 꼭 들르는 곳이 있어요?",
-        "출퇴근하면서 본 풍경 중 기억나는 건요?",
-        "월요일 아침에 제일 먼저 하는 일은요?"
+        "아침에 입은 옷을 낮에 벗어서 들고 다닌 적 있어요?",
+        "단풍 구경은 어디로 가고 싶으세요?",
+        "요즘 낮에 걷기 좋은 길 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "월요일 출근길엔 보통 뭐 하면서 오세요?",
-          "follow": "시간이 얼마나 걸리는지, 그 시간에 뭘 하시는지 궁금해요.",
-          "caution": "집 위치나 사는 동네를 캐묻지 않기."
+          "opener": "오늘 낮엔 21도까지 오른대요.",
+          "follow": "점심에 산책 가실래요?",
+          "caution": "옷차림 지적은 피해요."
         },
         "friend": {
-          "opener": "월요일 출근길에 넌 뭐 하면서 가?",
-          "follow": "요즘 팟캐스트나 영상 보는 거 있어?",
-          "caution": "월요병 푸념으로만 끝내지 마."
+          "opener": "오늘 낮에 21도래, 단풍 보러 갈래?",
+          "follow": "어디가 좋을까?",
+          "caution": "약속 강요하지 않기."
         },
         "date": {
-          "opener": "평일엔 출근길에 보통 뭐 하세요?",
-          "follow": "출근길에 들르는 카페 같은 데 있어요?",
-          "caution": "회사나 상사 이야기로 넘어가지 않기."
+          "opener": "오늘 맑은데 낮엔 21도까지 오른대요.",
+          "follow": "단풍 구경 좋아하세요?",
+          "caution": "너무 이른 약속 제안은 피해요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E5%8D%97%E5%B1%B1%E5%8D%80_Nanshan_%E5%89%8D%E6%B5%B7_Qianhai_%E6%A1%82%E7%81%A3%E4%BA%8C%E8%B7%AF_Guiwan_2nd_Road_%E6%B7%B1%E4%B8%AD%E9%80%9A%E9%81%93%E8%B7%A8%E5%A2%83%E5%B7%B4%E5%A3%AB%E7%AB%99_Zhongshan_Link_InterCity_Bus_T01A_stop_morning_February_2025_R12S_04.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Serene_Park_Path_with_Autumn_Leaves_and_Benches.jpg/1280px-Serene_Park_Path_with_Autumn_Leaves_and_Benches.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Autumn_park_in_Quebec_City.jpg/1280px-Autumn_park_in_Quebec_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Wilfredor",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_park_in_Quebec_City.jpg"
+      }
     },
     {
-      "id": "sixsense-sorry",
-      "cat": "문화",
-      "subtopic": "예능",
-      "label": "식스센스",
-      "color": "#6A1B9A",
-      "title": "'식스센스' 진선규 일침에 유재석이 사과했대요",
-      "desc": "박진영과 진선규가 허당 부자로 '이 구역 갈대'래요.",
-      "reason": "진선규의 '선입견 있으시네요' 발언이 오늘 기사 제목이 됐어요.",
+      "id": "t2",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#1F3A5F",
+      "title": "SK하이닉스가 금요일에 4.4% 올랐대요",
+      "desc": "종가는 127만 7천 원이고, 코스피도 0.3% 올랐어요.",
+      "reason": "금요일 마감 뒤 처음 장이 열리는 월요일이에요.",
       "questions": [
-        "요즘 챙겨 보는 예능 있으세요?",
-        "예능 보다가 제일 크게 웃었던 장면은요?",
-        "다시 보기로 몰아 보는 예능 있어요?"
+        "삼전닉스 3분기 실적 얘기 들으셨어요?",
+        "요즘 주식 얘기 주변에서 많이 하세요?",
+        "주식 말고 재테크는 뭐 하세요?"
       ],
       "tips": {
         "work": {
-          "opener": "'식스센스' 보셨어요? 유재석 씨가 진선규 씨한테 사과했다더라고요.",
-          "follow": "'선입견 있으시네요' 한마디 때문이었대요, 무슨 일인지 궁금하더라고요.",
-          "caution": "출연자 평가나 사생활 얘기로 번지지 않게 하기."
+          "opener": "금요일에 하이닉스가 4.4% 올랐다던데 들으셨어요?",
+          "follow": "삼성전자도 0.5% 올랐다더라고요.",
+          "caution": "종목 추천이나 전망은 하지 않아요."
         },
         "friend": {
-          "opener": "야, 식스센스 봤어? 유재석이 진선규한테 사과했대.",
-          "follow": "박진영이랑 진선규가 허당 부자로 나온다더라.",
-          "caution": "안 본 사람 앞에서 결말까지 말하지 마."
+          "opener": "금요일에 하이닉스 4.4% 올랐대, 봤어?",
+          "follow": "3분기 실적 얘기도 많던데 너 주식 해?",
+          "caution": "수익률 자랑은 조심."
         },
         "date": {
-          "opener": "혹시 '식스센스' 보세요? 유재석 씨 사과했다는 기사가 떴더라고요.",
-          "follow": "요즘 챙겨 보는 예능은 뭐예요?",
-          "caution": "출연자 외모나 사생활 품평은 피하기."
+          "opener": "요즘 주식 얘기가 많던데 관심 있으세요?",
+          "follow": "재테크 중에 해보신 게 있어요?",
+          "caution": "투자 규모나 손익은 묻지 않아요."
         }
       },
-      "imageAttributed": "https://image.tmdb.org/t/p/original/fiAGcaP9W6SEoI82MYvZkFRLno0.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "엑시노스",
+      "color": "#2D4A7A",
+      "title": "삼성 ‘엑시노스 2700’이 퀄컴 최신 칩을 앞섰대요",
+      "desc": "내부 시험에서 멀티코어 성능이 약 20% 앞섰대요.",
+      "reason": "스마트폰 바꿀 때가 되면 칩 얘기가 궁금해지는 가을이에요.",
+      "questions": [
+        "폰은 보통 얼마나 쓰고 바꾸세요?",
+        "폰 고를 때 제일 먼저 보는 게 뭐예요?",
+        "지금 쓰는 폰 만족하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "엑시노스 2700이 퀄컴 최신 칩을 앞섰다던데 보셨어요?",
+          "follow": "멀티코어 성능이 약 20% 높대요.",
+          "caution": "브랜드 비교로 언쟁하지 않아요."
+        },
+        "friend": {
+          "opener": "엑시노스 2700이 퀄컴보다 20% 빠르대, 봤어?",
+          "follow": "넌 폰 언제 바꿀 거야?",
+          "caution": "내부 시험 결과라는 건 알고 말하기."
+        },
+        "date": {
+          "opener": "폰은 보통 얼마나 쓰고 바꾸세요?",
+          "follow": "고를 때 뭘 제일 보세요?",
+          "caution": "스펙 설명만 길게 늘어놓지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/HK_blue_male_uniform_Linde_Group_n_close_up_hand_holding_smartphone_with_gold_chain_September_2025_N13P.jpg/1280px-HK_blue_male_uniform_Linde_Group_n_close_up_hand_holding_smartphone_with_gold_chain_September_2025_N13P.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Qualcomm_headquarters.jpg/1280px-Qualcomm_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Coolcaesar at en.wikipedia",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Qualcomm_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "새벽감성",
+      "color": "#34495E",
+      "title": "요즘 밤에 잠이 안 올 땐 뭐 하며 시간 보내세요?",
+      "desc": "라이즈가 ‘Insomnia’로 새벽 감성 컴백을 앞뒀어요.",
+      "reason": "밤이 길어지는 가을이라 새벽에 깨어 있는 사람이 많아요.",
+      "questions": [
+        "잠 안 올 때 뭐 하세요?",
+        "새벽에 듣기 좋은 노래 있어요?",
+        "밤샘 해본 가장 기억나는 날은요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "라이즈가 ‘Insomnia’로 컴백한대요.",
+          "follow": "새벽에 들을 만한 노래 있어요?",
+          "caution": "수면 문제를 캐묻지 않아요."
+        },
+        "friend": {
+          "opener": "라이즈 ‘Insomnia’ 컴백한대, 들어볼래?",
+          "follow": "너 잠 안 올 땐 뭐 해?",
+          "caution": "늦은 시간 연락은 조심."
+        },
+        "date": {
+          "opener": "밤에 잠이 안 올 때 뭐 하세요?",
+          "follow": "좋아하는 새벽 노래 있어요?",
+          "caution": "사생활을 깊게 묻지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Night_light_ball.jpg/1280px-Night_light_ball.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t4",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "가능한사랑",
+      "color": "#5A2A5A",
+      "title": "전도연 주연 ‘가능한 사랑’이 11월 넷플릭스에 온대요",
+      "desc": "베니스에서 호평받아 오스카 후보 가능성도 나온대요.",
+      "reason": "월요일에 11월 볼거리를 미리 찜해 두기 좋아요.",
+      "questions": [
+        "요즘 본 영화 중 기억나는 거 있어요?",
+        "집에서 영화 볼 땐 어떤 장르 고르세요?",
+        "베니스 같은 영화제 수상작은 챙겨 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "‘가능한 사랑’ 11월에 넷플릭스에서 본대요.",
+          "follow": "전도연 씨 오스카 후보 가능성도 나온대요.",
+          "caution": "줄거리 스포는 피해요."
+        },
+        "friend": {
+          "opener": "‘가능한 사랑’ 11월에 넷플릭스 뜬대!",
+          "follow": "같이 볼래?",
+          "caution": "결말 스포 금지."
+        },
+        "date": {
+          "opener": "‘가능한 사랑’이라는 영화가 11월에 넷플릭스에 나온대요.",
+          "follow": "영화 보실 때 어떤 장르 좋아하세요?",
+          "caution": "취향을 평가하지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Film_Screen_in_the_Jeu_de_Paume.jpg/1280px-Film_Screen_in_the_Jeu_de_Paume.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/tnwFaR8oaRMW85iKmYxRtbuKx09.jpg",
       "imageCredit": {
         "author": "TMDB",
         "license": "포스터",
         "text": "포스터: TMDB",
-        "sourceUrl": "https://www.themoviedb.org/tv/108877"
+        "sourceUrl": "https://www.themoviedb.org/movie/1483525"
       },
       "imageKind": "poster"
     },
     {
-      "id": "shark-bukangi",
-      "cat": "일상",
-      "subtopic": "동물",
-      "label": "부캉이",
-      "color": "#2E7D6B",
-      "title": "흑상어 '부캉이'가 부산항에서 다시 포착됐대요",
-      "desc": "이틀째 안 보이다가 2km 떨어진 곳에서 발견됐대요.",
-      "reason": "오늘 하루 부캉이 관련 기사가 39건 나왔어요.",
-      "questions": [
-        "수족관이나 바다에서 본 동물 중 제일 기억나는 건요?",
-        "동네에 별명 붙은 동물 있어요?",
-        "물속 생물 중 직접 보고 싶은 게 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "부산항 상어 '부캉이' 얘기 들으셨어요? 이틀 안 보이다가 또 나왔대요.",
-          "follow": "2km 떨어진 곳에서 발견됐다는데, 활동 영역을 넓히는 중이라고 하더라고요.",
-          "caution": "유튜버 적발 같은 논란 얘기까지 끌고 가지 않기."
-        },
-        "friend": {
-          "opener": "부캉이 알아? 부산항 상어 이름이래, 또 나왔대.",
-          "follow": "이틀 동안 안 보여서 난리였다더라, 2km 밖에서 찾았대.",
-          "caution": "상어 무서운 얘기로 분위기 가라앉히지 마."
-        },
-        "date": {
-          "opener": "혹시 부산항 상어 '부캉이' 소식 보셨어요? 이름이 귀엽더라고요.",
-          "follow": "바다 동물 중에 좋아하는 거 있으세요?",
-          "caution": "무서운 상어 영상 얘기로 흐르지 않게 하기."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Shark_Bay_%28MODIS_2021-06-21%29.jpg/1280px-Shark_Bay_%28MODIS_2021-06-21%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Korea_busan_pusan_harbour_cargo_container_terminal.JPG/1280px-Korea_busan_pusan_harbour_cargo_container_terminal.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Martin Pueschel Eastberliner",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea_busan_pusan_harbour_cargo_container_terminal.JPG"
-      }
-    },
-    {
-      "id": "sleep-blanket",
-      "cat": "건강",
-      "subtopic": "수면",
-      "label": "이불",
-      "color": "#37474F",
-      "title": "요즘 새벽엔 꽤 쌀쌀한데, 이불은 뭐 덮으세요?",
-      "desc": "새벽과 한낮의 기온 차이가 13도예요.",
-      "reason": "서울 오늘 최저 기온이 10°예요.",
-      "questions": [
-        "이불은 언제 겨울용으로 바꾸세요?",
-        "잠이 잘 오는 침구 조합이 있어요?",
-        "아침에 일어나면 제일 먼저 뭐 하세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 새벽엔 10도까지 내려간다는데, 이불은 뭐 덮고 주무세요?",
-          "follow": "낮엔 23도라 겨울 이불을 꺼낼지 말지 애매하더라고요.",
-          "caution": "잠 못 자는 사정이나 건강 걱정은 캐묻지 않기."
-        },
-        "friend": {
-          "opener": "요즘 새벽에 추운데 이불 바꿨어? 뭐 덮고 자?",
-          "follow": "전기장판은 켜기 시작했어?",
-          "caution": "수면 습관을 훈수하지 마."
-        },
-        "date": {
-          "opener": "요즘 새벽엔 꽤 쌀쌀하죠? 잘 때는 뭐 덮으세요?",
-          "follow": "침구는 어떤 소재를 좋아하세요?",
-          "caution": "잠자리 얘기가 사적으로 들리지 않게 이불·침구 정도로만 하기."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Blanket_%28AM_8075-3%29.jpg/1280px-Blanket_%28AM_8075-3%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Unknown author Unknown author",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blanket_(AM_8075-3).jpg"
-      }
-    },
-    {
-      "id": "cafe-drink",
+      "id": "t7",
       "cat": "음식",
-      "subtopic": "커피·음료",
-      "label": "음료",
-      "color": "#6D4C41",
-      "title": "일요일 오후 카페에서 제일 자주 시키는 음료는요?",
-      "desc": "서울 낮 최고 기온은 23°까지 올라가요.",
-      "reason": "오늘 서울은 대체로 맑고 강수확률이 10%예요.",
+      "subtopic": "집밥·요리",
+      "label": "즉석식품",
+      "color": "#B5651D",
+      "title": "즉석식품 가격이 7개월 새 20% 올랐대요",
+      "desc": "물가대책을 점검해야 한다는 목소리가 나온대요.",
+      "reason": "월요일 점심·저녁 메뉴를 고민할 때예요.",
       "questions": [
-        "아이스 음료는 몇 월까지 드세요?",
-        "요즘 새로 시도해 본 음료 있어요?",
-        "카페에서 음료 말고 같이 시키는 건요?"
+        "즉석식품 자주 드세요?",
+        "바쁜 날 저녁엔 뭐 해 드세요?",
+        "요즘 장보기 체감 어떠세요?"
       ],
       "tips": {
         "work": {
-          "opener": "오늘 점심엔 어떤 음료 드실 거예요?",
-          "follow": "아이스는 몇 월까지 드시는지 궁금해요.",
-          "caution": "카페인을 못 마시는 사람에게 권하지 않기."
+          "opener": "즉석식품 가격이 7개월 새 20% 올랐대요.",
+          "follow": "점심은 주로 어떻게 해결하세요?",
+          "caution": "정책 비판으로 번지지 않게 해요."
         },
         "friend": {
-          "opener": "오늘 낮에 따뜻하다는데 카페 갈래? 뭐 마실 거야?",
-          "follow": "요즘 새로 나온 음료 먹어 본 거 있어?",
-          "caution": "메뉴 취향을 놀리지 마."
+          "opener": "즉석식품이 7개월 새 20% 올랐대.",
+          "follow": "너 요즘 뭐 해 먹어?",
+          "caution": "식습관 지적 금지."
         },
         "date": {
-          "opener": "카페 가면 보통 뭐 시키세요?",
-          "follow": "디저트도 같이 드시는 편이에요?",
-          "caution": "취향을 평가하거나 고치려 들지 않기."
+          "opener": "즉석식품 가격이 많이 올랐대요.",
+          "follow": "요리 좋아하세요?",
+          "caution": "요리 실력 평가는 피해요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Love-beans-caffeine-coffee_%2823698594734%29.jpg/1280px-Love-beans-caffeine-coffee_%2823698594734%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Weichuan_Chinese_Herbal_Flavor_Vegetarian_Noodles.jpg/1280px-Weichuan_Chinese_Herbal_Flavor_Vegetarian_Noodles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Instant_noodle_with_boiled_egg_and_spinach.jpg/1280px-Instant_noodle_with_boiled_egg_and_spinach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Pravito",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Instant_noodle_with_boiled_egg_and_spinach.jpg"
+      }
     },
     {
-      "id": "lotte-manager",
+      "id": "t5",
       "cat": "취미",
       "subtopic": "스포츠",
-      "label": "롯데",
-      "color": "#B71C1C",
-      "title": "롯데 새 감독이 이동욱이라는 단독 보도가 나왔대요",
-      "desc": "NC 우승 감독 출신이고, 신임 단장은 이택근 해설위원이래요.",
-      "reason": "오늘 기사가 여섯 건 나온 야구 소식이에요.",
+      "label": "안세영",
+      "color": "#C0392B",
+      "title": "안세영이 프랑스오픈 3연패에 50연승을 달성했대요",
+      "desc": "경기 중 흔들렸지만 이변은 없었대요.",
+      "reason": "월요일 아침에 주말 스포츠 소식을 나누기 좋아요.",
       "questions": [
-        "응원하는 야구팀 있으세요?",
-        "야구장 직관 가면 꼭 먹는 음식은요?",
-        "야구 직관 가 본 구장 중 제일 좋았던 곳은요?"
+        "배드민턴 쳐 보신 적 있어요?",
+        "주말에 스포츠 경기 챙겨 보세요?",
+        "요즘 응원하는 선수나 팀 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "롯데 새 감독으로 이동욱 감독이 온다는 단독 기사 보셨어요?",
-          "follow": "NC 우승 감독 출신이라는데, 신임 단장 소식도 같이 나왔더라고요.",
-          "caution": "응원팀이 갈릴 수 있으니 팀 비교나 비하는 피하기."
+          "opener": "안세영 선수가 프랑스오픈 3연패에 50연승이래요.",
+          "follow": "경기 중에 흔들렸는데도 이겼대요.",
+          "caution": "선수 평가는 하지 않아요."
         },
         "friend": {
-          "opener": "롯데 새 감독 이동욱이래, 단독 떴더라. 봤어?",
-          "follow": "단장은 이택근 해설위원이라는데, 대반전이라고 하더라.",
-          "caution": "상대 팀 놀리는 말은 하지 마."
+          "opener": "안세영 프랑스오픈 3연패에 50연승이래!",
+          "follow": "너 배드민턴 쳐 본 적 있어?",
+          "caution": "스포일러가 될 수 있으니 확인 후 말해."
         },
         "date": {
-          "opener": "야구 좋아하세요? 롯데 새 감독 소식이 나왔더라고요.",
-          "follow": "응원하는 팀 있으세요? 직관도 가 보셨어요?",
-          "caution": "응원팀 성적으로 놀리는 말은 피하기."
+          "opener": "안세영 선수가 3연패에 50연승 했다더라고요.",
+          "follow": "운동 좋아하세요?",
+          "caution": "운동 실력 평가는 피해요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Baseball_season_is_back_again_130415-M-KX456-014.jpg/1280px-Baseball_season_is_back_again_130415-M-KX456-014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Busan_Sajik_Stadium_20080706.JPG/1280px-Busan_Sajik_Stadium_20080706.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/US_Navy_040220-N-3874J-001_A_large_crowd_gathered_at_the_San_Diego_Sports_Arena_watch_Harlem_Globetrotters.jpg/1280px-US_Navy_040220-N-3874J-001_A_large_crowd_gathered_at_the_San_Diego_Sports_Arena_watch_Harlem_Globetrotters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Joe_Louis_Arena%2C_Detroit%2C_Michigan_%2821515176648%29.jpg/1280px-Joe_Louis_Arena%2C_Detroit%2C_Michigan_%2821515176648%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Cheolstar",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Busan_Sajik_Stadium_20080706.JPG"
-      }
-    },
-    {
-      "id": "fx-1324",
-      "cat": "경제",
-      "subtopic": "환율",
-      "label": "환율",
-      "color": "#0F766E",
-      "title": "환율이 1,324원까지 내렸다던데, 직구 하세요?",
-      "desc": "금요일보다 0.2% 내렸고, 원화 강세라 직구엔 유리해요.",
-      "reason": "오늘 종가 기준으로 집계된 최신 환율이에요.",
-      "questions": [
-        "해외 직구 마지막으로 뭐 사셨어요?",
-        "해외여행 가면 환전은 어떻게 하세요?",
-        "환율 숫자는 얼마나 챙겨 보세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "요즘 환율이 1,324원까지 내렸다던데 신경 쓰이세요?",
-          "follow": "원화 강세라 직구나 해외여행엔 유리하다고 하더라고요.",
-          "caution": "투자 조언이나 전망은 하지 말고, 개인 자산 얘기도 피하기."
-        },
-        "friend": {
-          "opener": "환율 1,324원이래, 좀 내렸더라. 직구로 살 거 있어?",
-          "follow": "해외여행 갈 땐 환전 어떻게 해?",
-          "caution": "전망이나 추천 얘기로 번지지 않게 해."
-        },
-        "date": {
-          "opener": "해외여행 좋아하세요? 환율이 좀 내렸다더라고요.",
-          "follow": "다음에 가 보고 싶은 나라 있으세요?",
-          "caution": "월급이나 재산 캐묻기는 금지."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/001_World_banknote_display_-_global_currency_collection_in_a_hotel_in_South_Korea.jpg/1280px-001_World_banknote_display_-_global_currency_collection_in_a_hotel_in_South_Korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Marek Ślusarczyk ( Tupungato ) Photo portfolio",
-        "license": "CC BY 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:001_World_banknote_display_-_global_currency_collection_in_a_hotel_in_South_Korea.jpg"
+        "author": "Ken Lund from Reno, Nevada, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joe_Louis_Arena,_Detroit,_Michigan_(21515176648).jpg"
       }
     }
   ]

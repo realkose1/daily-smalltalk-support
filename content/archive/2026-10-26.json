@@ -1,0 +1,320 @@
+{
+  "date": "2026-10-26",
+  "dateLabel": "10월 26일 월요일",
+  "generatedAt": "2026-10-25T22:04:46.979Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "닥터X",
+      "color": "#8B1E3F",
+      "title": "‘닥터X’가 최고 시청률 21.3%를 찍었대요",
+      "desc": "김지원 열연에 ‘적수 없는 독주’라는 말이 나온대요.",
+      "reason": "월요일 아침, 지난주 드라마 얘기를 꺼내기 좋은 때예요.",
+      "questions": [
+        "요즘 챙겨 보는 드라마 있으세요?",
+        "‘닥터X’ 보셨어요, 어디까지 보셨어요?",
+        "시청률 높은 드라마는 따라 보게 되세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "‘닥터X’ 시청률이 21.3%까지 나왔대요. 보셨어요?",
+          "follow": "김지원 씨 열연이 대단하다던데 어디까지 보셨어요?",
+          "caution": "드라마 속 사회적 소재의 찬반 논쟁으로 번지지 않게 해요."
+        },
+        "friend": {
+          "opener": "야 ‘닥터X’ 시청률 21.3% 나왔대, 너 봤어?",
+          "follow": "1위라던데 우리도 몰아볼까?",
+          "caution": "결말 스포는 하지 말기."
+        },
+        "date": {
+          "opener": "‘닥터X’라는 드라마 시청률이 엄청 높대요. 혹시 보세요?",
+          "follow": "드라마 볼 때 어떤 장르를 좋아하세요?",
+          "caution": "소재가 무거울 수 있으니 논쟁 얘기는 피해요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg/1280px-HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "YipshaiukOWL",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "날씨",
+      "subtopic": "일교차",
+      "label": "일교차",
+      "color": "#D4812B",
+      "title": "오늘 서울이 14도에서 21도까지 오른대요",
+      "desc": "하늘은 맑고 강수확률은 25%예요.",
+      "reason": "월요일 출근길과 낮 기온 차가 7도나 나요.",
+      "questions": [
+        "아침에 입은 옷을 낮에 벗어서 들고 다닌 적 있어요?",
+        "단풍 구경은 어디로 가고 싶으세요?",
+        "요즘 낮에 걷기 좋은 길 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 낮엔 21도까지 오른대요.",
+          "follow": "점심에 산책 가실래요?",
+          "caution": "옷차림 지적은 피해요."
+        },
+        "friend": {
+          "opener": "오늘 낮에 21도래, 단풍 보러 갈래?",
+          "follow": "어디가 좋을까?",
+          "caution": "약속 강요하지 않기."
+        },
+        "date": {
+          "opener": "오늘 맑은데 낮엔 21도까지 오른대요.",
+          "follow": "단풍 구경 좋아하세요?",
+          "caution": "너무 이른 약속 제안은 피해요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Serene_Park_Path_with_Autumn_Leaves_and_Benches.jpg/1280px-Serene_Park_Path_with_Autumn_Leaves_and_Benches.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Autumn_park_in_Quebec_City.jpg/1280px-Autumn_park_in_Quebec_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Wilfredor",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_park_in_Quebec_City.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#1F3A5F",
+      "title": "SK하이닉스가 금요일에 4.4% 올랐대요",
+      "desc": "종가는 127만 7천 원이고, 코스피도 0.3% 올랐어요.",
+      "reason": "금요일 마감 뒤 처음 장이 열리는 월요일이에요.",
+      "questions": [
+        "삼전닉스 3분기 실적 얘기 들으셨어요?",
+        "요즘 주식 얘기 주변에서 많이 하세요?",
+        "주식 말고 재테크는 뭐 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "금요일에 하이닉스가 4.4% 올랐다던데 들으셨어요?",
+          "follow": "삼성전자도 0.5% 올랐다더라고요.",
+          "caution": "종목 추천이나 전망은 하지 않아요."
+        },
+        "friend": {
+          "opener": "금요일에 하이닉스 4.4% 올랐대, 봤어?",
+          "follow": "3분기 실적 얘기도 많던데 너 주식 해?",
+          "caution": "수익률 자랑은 조심."
+        },
+        "date": {
+          "opener": "요즘 주식 얘기가 많던데 관심 있으세요?",
+          "follow": "재테크 중에 해보신 게 있어요?",
+          "caution": "투자 규모나 손익은 묻지 않아요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "엑시노스",
+      "color": "#2D4A7A",
+      "title": "삼성 ‘엑시노스 2700’이 퀄컴 최신 칩을 앞섰대요",
+      "desc": "내부 시험에서 멀티코어 성능이 약 20% 앞섰대요.",
+      "reason": "스마트폰 바꿀 때가 되면 칩 얘기가 궁금해지는 가을이에요.",
+      "questions": [
+        "폰은 보통 얼마나 쓰고 바꾸세요?",
+        "폰 고를 때 제일 먼저 보는 게 뭐예요?",
+        "지금 쓰는 폰 만족하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "엑시노스 2700이 퀄컴 최신 칩을 앞섰다던데 보셨어요?",
+          "follow": "멀티코어 성능이 약 20% 높대요.",
+          "caution": "브랜드 비교로 언쟁하지 않아요."
+        },
+        "friend": {
+          "opener": "엑시노스 2700이 퀄컴보다 20% 빠르대, 봤어?",
+          "follow": "넌 폰 언제 바꿀 거야?",
+          "caution": "내부 시험 결과라는 건 알고 말하기."
+        },
+        "date": {
+          "opener": "폰은 보통 얼마나 쓰고 바꾸세요?",
+          "follow": "고를 때 뭘 제일 보세요?",
+          "caution": "스펙 설명만 길게 늘어놓지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/HK_blue_male_uniform_Linde_Group_n_close_up_hand_holding_smartphone_with_gold_chain_September_2025_N13P.jpg/1280px-HK_blue_male_uniform_Linde_Group_n_close_up_hand_holding_smartphone_with_gold_chain_September_2025_N13P.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Qualcomm_headquarters.jpg/1280px-Qualcomm_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Coolcaesar at en.wikipedia",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Qualcomm_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "새벽감성",
+      "color": "#34495E",
+      "title": "요즘 밤에 잠이 안 올 땐 뭐 하며 시간 보내세요?",
+      "desc": "라이즈가 ‘Insomnia’로 새벽 감성 컴백을 앞뒀어요.",
+      "reason": "밤이 길어지는 가을이라 새벽에 깨어 있는 사람이 많아요.",
+      "questions": [
+        "잠 안 올 때 뭐 하세요?",
+        "새벽에 듣기 좋은 노래 있어요?",
+        "밤샘 해본 가장 기억나는 날은요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "라이즈가 ‘Insomnia’로 컴백한대요.",
+          "follow": "새벽에 들을 만한 노래 있어요?",
+          "caution": "수면 문제를 캐묻지 않아요."
+        },
+        "friend": {
+          "opener": "라이즈 ‘Insomnia’ 컴백한대, 들어볼래?",
+          "follow": "너 잠 안 올 땐 뭐 해?",
+          "caution": "늦은 시간 연락은 조심."
+        },
+        "date": {
+          "opener": "밤에 잠이 안 올 때 뭐 하세요?",
+          "follow": "좋아하는 새벽 노래 있어요?",
+          "caution": "사생활을 깊게 묻지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Night_light_ball.jpg/1280px-Night_light_ball.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t4",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "가능한사랑",
+      "color": "#5A2A5A",
+      "title": "전도연 주연 ‘가능한 사랑’이 11월 넷플릭스에 온대요",
+      "desc": "베니스에서 호평받아 오스카 후보 가능성도 나온대요.",
+      "reason": "월요일에 11월 볼거리를 미리 찜해 두기 좋아요.",
+      "questions": [
+        "요즘 본 영화 중 기억나는 거 있어요?",
+        "집에서 영화 볼 땐 어떤 장르 고르세요?",
+        "베니스 같은 영화제 수상작은 챙겨 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "‘가능한 사랑’ 11월에 넷플릭스에서 본대요.",
+          "follow": "전도연 씨 오스카 후보 가능성도 나온대요.",
+          "caution": "줄거리 스포는 피해요."
+        },
+        "friend": {
+          "opener": "‘가능한 사랑’ 11월에 넷플릭스 뜬대!",
+          "follow": "같이 볼래?",
+          "caution": "결말 스포 금지."
+        },
+        "date": {
+          "opener": "‘가능한 사랑’이라는 영화가 11월에 넷플릭스에 나온대요.",
+          "follow": "영화 보실 때 어떤 장르 좋아하세요?",
+          "caution": "취향을 평가하지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Film_Screen_in_the_Jeu_de_Paume.jpg/1280px-Film_Screen_in_the_Jeu_de_Paume.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/tnwFaR8oaRMW85iKmYxRtbuKx09.jpg",
+      "imageCredit": {
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/movie/1483525"
+      },
+      "imageKind": "poster"
+    },
+    {
+      "id": "t7",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "즉석식품",
+      "color": "#B5651D",
+      "title": "즉석식품 가격이 7개월 새 20% 올랐대요",
+      "desc": "물가대책을 점검해야 한다는 목소리가 나온대요.",
+      "reason": "월요일 점심·저녁 메뉴를 고민할 때예요.",
+      "questions": [
+        "즉석식품 자주 드세요?",
+        "바쁜 날 저녁엔 뭐 해 드세요?",
+        "요즘 장보기 체감 어떠세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "즉석식품 가격이 7개월 새 20% 올랐대요.",
+          "follow": "점심은 주로 어떻게 해결하세요?",
+          "caution": "정책 비판으로 번지지 않게 해요."
+        },
+        "friend": {
+          "opener": "즉석식품이 7개월 새 20% 올랐대.",
+          "follow": "너 요즘 뭐 해 먹어?",
+          "caution": "식습관 지적 금지."
+        },
+        "date": {
+          "opener": "즉석식품 가격이 많이 올랐대요.",
+          "follow": "요리 좋아하세요?",
+          "caution": "요리 실력 평가는 피해요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Weichuan_Chinese_Herbal_Flavor_Vegetarian_Noodles.jpg/1280px-Weichuan_Chinese_Herbal_Flavor_Vegetarian_Noodles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Instant_noodle_with_boiled_egg_and_spinach.jpg/1280px-Instant_noodle_with_boiled_egg_and_spinach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Pravito",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Instant_noodle_with_boiled_egg_and_spinach.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "안세영",
+      "color": "#C0392B",
+      "title": "안세영이 프랑스오픈 3연패에 50연승을 달성했대요",
+      "desc": "경기 중 흔들렸지만 이변은 없었대요.",
+      "reason": "월요일 아침에 주말 스포츠 소식을 나누기 좋아요.",
+      "questions": [
+        "배드민턴 쳐 보신 적 있어요?",
+        "주말에 스포츠 경기 챙겨 보세요?",
+        "요즘 응원하는 선수나 팀 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "안세영 선수가 프랑스오픈 3연패에 50연승이래요.",
+          "follow": "경기 중에 흔들렸는데도 이겼대요.",
+          "caution": "선수 평가는 하지 않아요."
+        },
+        "friend": {
+          "opener": "안세영 프랑스오픈 3연패에 50연승이래!",
+          "follow": "너 배드민턴 쳐 본 적 있어?",
+          "caution": "스포일러가 될 수 있으니 확인 후 말해."
+        },
+        "date": {
+          "opener": "안세영 선수가 3연패에 50연승 했다더라고요.",
+          "follow": "운동 좋아하세요?",
+          "caution": "운동 실력 평가는 피해요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/US_Navy_040220-N-3874J-001_A_large_crowd_gathered_at_the_San_Diego_Sports_Arena_watch_Harlem_Globetrotters.jpg/1280px-US_Navy_040220-N-3874J-001_A_large_crowd_gathered_at_the_San_Diego_Sports_Arena_watch_Harlem_Globetrotters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Joe_Louis_Arena%2C_Detroit%2C_Michigan_%2821515176648%29.jpg/1280px-Joe_Louis_Arena%2C_Detroit%2C_Michigan_%2821515176648%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Ken Lund from Reno, Nevada, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joe_Louis_Arena,_Detroit,_Michigan_(21515176648).jpg"
+      }
+    }
+  ]
+}
