@@ -35,12 +35,38 @@
 //   --brief-only  gather weather/markets/news, print the brief the model would
 //                 get, and exit — no API call, no files written.
 //   FORCE=1       regenerate even if today.json is already from today (KST).
+//   DRY_RUN=1     call the model and run the copy lint/repair as usual, print
+//                 the whole deck and the cost, then stop: no covers, nothing
+//                 written to the repo, no Supabase sync (the deck goes to a
+//                 temp file). Skips the run guard, like FORCE.
+//   EFFORT=<lvl>  main call's output_config.effort for this run (low|medium|
+//                 high|xhigh|max); unset = DEFAULT_EFFORT below.
 import { writeFileSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 const MODEL = 'claude-sonnet-5-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
 
 const BRIEF_ONLY = process.argv.includes('--brief-only');
 const FORCE = process.env.FORCE === '1';
+const DRY_RUN = process.env.DRY_RUN === '1';
+
+// Thinking depth of the main call. Thinking is always on for claude-sonnet-5-5
+// ({type:'disabled'} and budget_tokens both 400), so output_config.effort is the
+// dial; max_tokens only cuts the answer off. '' = send none (API default 'high').
+// At 'high', the 2026-10-25 deck spent ~13k of its 24k output tokens thinking.
+const EFFORTS = ['low', 'medium', 'high', 'xhigh', 'max'];
+const DEFAULT_EFFORT = '';
+const EFFORT = (process.env.EFFORT || '').trim() || DEFAULT_EFFORT;
+if (EFFORT && !EFFORTS.includes(EFFORT)) {
+  console.error(`EFFORT="${EFFORT}" is not one of ${EFFORTS.join('|')}`);
+  process.exit(1);
+}
+// claude-sonnet-5-5, $ per 1M tokens. Output includes thinking.
+const PRICE = { in: 2, cacheWrite: 2.5, cacheRead: 0.2, out: 10 };
+const costOf = (u) => ((u?.input_tokens || 0) * PRICE.in + (u?.cache_creation_input_tokens || 0) * PRICE.cacheWrite
+  + (u?.cache_read_input_tokens || 0) * PRICE.cacheRead + (u?.output_tokens || 0) * PRICE.out) / 1e6;
+const spend = { main: 0, repair: 0 };
 
 const now = new Date();
 const kst = new Date(now.getTime() + 9 * 3600 * 1000);
@@ -77,7 +103,9 @@ function generatedDay() {
   }
 }
 if (!BRIEF_ONLY) {
-  if (FORCE) {
+  if (DRY_RUN) {
+    console.log(`DRY_RUN=1 — generating ${isoDate} to the log only (effort ${EFFORT || 'API default'}); nothing is written or synced`);
+  } else if (FORCE) {
     console.log(`FORCE=1 — generating ${isoDate} regardless of the committed today.json`);
   } else {
     const hour = kst.getUTCHours();
@@ -662,7 +690,7 @@ const brief =
     : '\n[한국의 특별한 날] 오늘~3일 내 없음. ★주의: 이 목록에 없는 날을 초복·명절·절기라고 지어내지 마세요(과거에 아닌 날을 초복이라고 쓴 사고 있음).\n') +
   (markets ? `\n[시장 시그널 — 실제 수치. ★각 줄에 적힌 기준일을 그대로 쓰세요]\n- ${markets.join('\n- ')}\n` : '') +
   (news
-    ? `\n[오늘의 화제 뉴스 후보 — 실제 헤드라인. ★각 줄 앞 (…기사)는 그 기사가 나온 날이고, 헤드라인 속 '오늘·오늘 밤·내일'은 오늘이 아니라 그 발행일 기준입니다. '관련 N'은 같은 소식을 다룬 기사 수(클수록 많이 보도된 소식), ★는 여러 매체·분야에서 함께 다뤄 오늘 가장 많이 들어 봤을 소식, [ ]는 분야. '· 같은 소식'은 같은 사건을 다른 매체가 쓴 제목이라 카드에 쓸 구체적인 사실을 여기서 골라도 돼요. [경제] 줄은 경제 카드용 참고 자료예요. 무거운 정치·범죄·재난·사망 소식이 섞여 있으면 무시하세요]\n- ${news.map((n) => n.line).join('\n- ')}\n`
+    ? `\n[오늘의 화제 뉴스 후보 — 실제 헤드라인. ★줄 앞 (…기사)는 기사가 나온 날이라, 헤드라인 속 '오늘·오늘 밤·내일'은 오늘이 아니라 그 발행일 기준이에요. '관련 N'(같은 소식을 다룬 기사 수, 클수록 많이 보도됨)과 ★(여러 매체·분야가 함께 다뤄 오늘 가장 많이 들어 봤을 소식)는 고를 때만 쓰고 카드 문구에는 쓰지 마세요. [ ]는 분야, '· 같은 소식'은 같은 사건을 다른 매체가 쓴 제목이라 카드에 쓸 사실을 여기서 골라도 돼요. [경제] 줄은 경제 카드용 참고 자료. 무거운 정치·범죄·재난·사망 소식은 무시하세요]\n- ${news.map((n) => n.line).join('\n- ')}\n`
     : '') +
   (recent.length ? `\n[최근 며칠간 이미 나간 주제 — 소재·질문·문구가 겹치면 안 됩니다]\n${recent.join('\n')}\n` : '');
 // How many 오늘의 화제 cards to ask for. Most of the deck when the brief has
@@ -727,17 +755,22 @@ const REASON_LIMIT = 48;
 const charLen = (s) => [...String(s ?? '')].length;
 const TITLE_DESC = `공백 포함 ${TITLE_MAX}자 이내(앱 화면에서 2~3줄), 문장 하나에 질문은 하나까지. 화제 카드는 소식을 전하는 말 한 문장("<주인공>이 <무슨 일>했대요")이나 "<주인공>이 <무슨 일>했다던데, <짧은 질문>?" 꼴로, 누가 무슨 일을 했는지(결승 진출·신차 공개·4.4% 상승)가 보여야 한다 — "'○○' 얘기했다던데", "소식이 있다던데"처럼 무슨 일인지 안 보이는 말은 금지. 제목에 못 넣은 사실 하나는 desc로.`;
 const DESC_DESC = `공백 포함 ${DESC_MAX}자 이내 한 문장(카드 제목 밑 2줄 — 넘치면 "…"로 잘린다). 제목에 없는 사실이나 장면 하나만: 화제·경제 카드는 브리프의 사실·수치 그대로(수치는 2개까지), 일상 카드는 오늘 날씨·계절·날짜에서 나온 구체적인 사실. 제목을 다른 말로 되풀이하지 않고, "~이야기해 보세요", "~나눠 보세요", "~이어가기 좋아요" 같은 권유·마무리는 붙이지 않는다(질문과 팁이 그 역할을 한다).`;
-const REASON_DESC = `한 문장, ${REASON_MAX}자 안팎(카드 앞면에 2줄). '왜 오늘인가요'에 답하는 근거 하나를 사실로: 오늘 날씨 수치, 요일·날짜, 새로 나온 기사, 시장 기준일 같은 것. "<요일·날씨>(이)라 ~얘기가 잘 어울려요/꺼내기 좋아요/자연스러워요"처럼 평가로 끝내지 않고, desc와 같은 말을 되풀이하지 않는다.`;
+// A reason is about the reader's day, never about the news coverage: the
+// 2026-10-25 deck said "오늘 하루 부캉이 관련 기사가 39건 나왔어요", "오늘 기사가
+// 여섯 건 나온 야구 소식이에요" and "오늘 종가 기준으로 집계된 최신 환율이에요"
+// (the brief's '관련 N' and the old examples invited it). LINT 'meta-reason'.
+const REASON_DESC = `한 문장, ${REASON_MAX}자 안팎(카드 앞면에 2줄). '왜 오늘인가요'에 답하는, 읽는 사람의 오늘과 이어지는 실제 사정 하나: 오늘 날씨·기온, 요일(주말이 끝난 월요일, 퇴근을 앞둔 금요일), 오늘·이번 주에 열리거나 이어지는 일, 날짜·계절. 기사·보도·헤드라인·기사 수·집계·기준일 같은 출처 얘기는 쓰지 않는다("관련 기사가 39건 나왔어요", "오늘 종가 기준으로 집계된 환율이에요" ×). "<요일·날씨>(이)라 ~얘기가 잘 어울려요/꺼내기 좋아요/자연스러워요"처럼 평가로 끝내지 않고, desc와 같은 말을 되풀이하지 않는다.`;
 // Shown to the model with their lengths computed here (it counts Korean badly).
 // The facts in them are made up for illustration, and the prompt says so.
 const COPY_GOOD = [
-  { title: '테슬라가 새 로드스터를 공개했다던데, 타 보실래요?', desc: '공개 당일 테슬라 주가는 오히려 내렸대요.', reason: '어제 공개된 뒤 관련 기사가 열 건 넘게 나왔어요.' },
-  { title: '삼성전자가 금요일에 9% 빠졌다던데, 주식 하세요?', desc: '종가는 8만 1,200원이고, 코스피도 2% 내렸어요.', reason: '주말엔 장이 쉬어서 금요일 마감이 가장 최근 수치예요.' },
+  { title: '테슬라가 새 로드스터를 공개했다던데, 타 보실래요?', desc: '공개 당일 테슬라 주가는 오히려 내렸대요.', reason: '이번 주말부터 국내 매장에서 실물을 볼 수 있대요.' },
+  { title: '삼성전자가 금요일에 9% 빠졌다던데, 주식 하세요?', desc: '종가는 8만 1,200원이고, 코스피도 2% 내렸어요.', reason: '주말 동안 쉬던 주식시장이 오늘 다시 열려요.' },
   { title: '아침저녁 쌀쌀한데, 요즘 겉옷 뭐 입고 다니세요?', desc: '출근길엔 경량 패딩, 점심엔 반팔 차림도 보여요.', reason: '서울은 아침 9°에서 낮 21°까지 올라가요.' },
 ];
 const COPY_BAD = {
   desc: '테슬라가 새 로드스터를 공개했어요. 전기 스포츠카 이야기로 가볍게 이어가 보세요.',
   reason: '선선한 일요일이라 신차 얘기가 잘 어울려요.',
+  reasonMeta: '어제 공개된 뒤 관련 기사가 열 건 넘게 나왔어요.',
 };
 const TITLE_GOOD = COPY_GOOD.map((c) => c.title);
 // A 화제 card reads like passing the news on to a coworker (the user's model
@@ -784,6 +817,13 @@ const LINT = [
   { id: 'raw-number', hard: true, fields: ['title', 'desc', 'reason'], // G6-1
     re: /\d{1,3}(,\d{3}){2,}/,
     why: '큰 금액은 "127만 7천 원"처럼 한국어 단위로' },
+  // Coverage / provenance talk in a reason (REASON_DESC). Not the 기사 of
+  // 운전기사·기사님·기사식당·기사회생, not 횡단보도·보도블록·홍보도·정보도, and a
+  // count of 건 only when it is a count of articles ("39건 나왔어요"), so
+  // "청약이 3건 몰려 있어요" — a real event this week — still passes.
+  { id: 'meta-reason', hard: true, fields: ['reason'],
+    re: /(?<!운전|택시|버스|정비|배달|대리)기사(?!님|식당|회생)|(?<![가-힣])보도(?!블[록럭])|헤드라인|관련 ?\d|(\d+|한|두|세|네|다섯|여섯|일곱|여덟|아홉|열|수십|수백|여러) ?건(이나|이|도)? ?(넘게|이상|가까이)? ?(나왔|나온|쏟아|올라|보도|다뤄|다룬|실렸|실린)|집계|기준일|(종가|마감) ?기준|(최근|최신) ?(수치|시세|종가)/,
+    why: '기사·보도·기사 수·집계·기준일 같은 출처 얘기 대신, 오늘 날씨·요일·열리는 일처럼 읽는 사람의 오늘과 이어지는 사실로' },
   { id: 'stock', hard: false, fields: ['desc', 'reason'],
     re: /기 마련이에요|(좋은|딱 좋은) (날|때|시기|시점|타이밍|계절)(이에요|예요)|잘 (어울려요|맞아요)|(얘기|이야기)(가|도)? (잘 )?(어울려요|자연스러워요|나와요)|(꺼내|나누|공감하)기 좋아요|궁금해요[.!]?$|(하|되|이|있|많)죠[.!]?$/,
     why: '상투적인 평가·추측("잘 어울려요", "좋은 날이에요", "~하죠", "궁금해요") 대신 근거가 되는 사실로' },
@@ -880,7 +920,9 @@ const copyFixSchema = {
 // a failed call, or a rewrite that is still too long, still lints, or brings a
 // number the card didn't have, keeps the original and logs a warning — stock
 // copy is ugly, a failed run means no deck at all.
-async function repairCopy(client, topics, known = '') {
+// `today` is the date and weather line: the facts a rewritten reason may use
+// besides the card's own (its numbers pass rewriteProblem through `known`).
+async function repairCopy(client, topics, { known = '', today = '' } = {}) {
   const issues = lintCopy(topics);
   const summary = [...issues].map(([t, m]) => `${t.id} ${Object.entries(m).map(([f, e]) => (e.hard ? f : `${f}(soft)`)).join('+')}`).join(', ');
   if (![...issues.values()].some((m) => Object.values(m).some((e) => e.hard))) {
@@ -906,15 +948,17 @@ async function repairCopy(client, topics, known = '') {
           `"데일리 스몰토크" 앱 카드 문구 중 규칙에 걸린 필드만 다시 써 주세요. 카드마다 fix에 고칠 필드와 이유가 적혀 있어요.\n` +
           `- title: ${TITLE_DESC}\n- desc: ${DESC_DESC}\n- reason: ${REASON_DESC}\n` +
           `- 글자 수는 공백까지 세고, 쓴 뒤 다시 세어 넘으면 더 줄이세요.\n` +
-          `- 사실·수치·이름은 그 카드의 원문(title·desc·reason)에 있는 것만 쓰세요. 새 사실·수치·날짜·발언·감정을 지어내지 말고, 줄일 때는 덜어 내세요. "~했다던데" 같은 시제와 "금요일"·"어제" 같은 기준일 표현, 작품명·인물·제품명은 그대로 두세요. 수치는 한 문장에 2개까지, 큰 금액은 "127만 7천 원"처럼, 美 같은 한자 약어는 "미국"으로.\n` +
+          `- 사실·수치·이름은 그 카드의 원문(title·desc·reason)에 있는 것만 쓰세요(reason은 아래 [오늘]의 날짜·요일·날씨도 돼요). 새 사실·수치·날짜·발언·감정을 지어내지 말고, 줄일 때는 덜어 내세요. "~했다던데" 같은 시제와 "금요일"·"어제" 같은 기준일 표현, 작품명·인물·제품명은 그대로 두세요. 수치는 한 문장에 2개까지, 큰 금액은 "127만 7천 원"처럼, 美 같은 한자 약어는 "미국"으로.\n` +
           `- 존댓말 ~요체로, 사람이 동료에게 말하듯 자연스럽게. 읽는 사람의 기분을 대신 정하지 말고, 과장 수식도 빼세요. 상투어를 다른 상투어로 바꿔 끼우거나(가볍게 → 편하게) 문장을 명사 토막으로 끊지 마세요.\n` +
           `- fix에 적힌 필드만 카드 id·필드 이름과 함께 출력하세요.\n` +
-          `예) desc "${COPY_BAD.desc}" → "${COPY_GOOD[0].desc}" / reason "${COPY_BAD.reason}" → "${COPY_GOOD[0].reason}" / title "${TITLE_BAD}" → "${TITLE_GOOD[0]}"\n\n` +
+          (today ? `[오늘] ${today}\n` : '') +
+          `예) desc "${COPY_BAD.desc}" → "${COPY_GOOD[0].desc}" / reason "${COPY_BAD.reasonMeta}", "${COPY_BAD.reason}" → "${COPY_GOOD[2].reason}"(오늘 날씨처럼 [오늘]이나 카드 원문에 있는 사실로) / title "${TITLE_BAD}" → "${TITLE_GOOD[0]}"\n\n` +
           `[고칠 카드]\n${JSON.stringify(items, null, 1)}\n\nJSON만 출력.`,
       }],
     });
     const u = res.usage;
-    if (u) console.log(`copy fix tokens: in ${u.input_tokens} / out ${u.output_tokens} (stop=${res.stop_reason}) → ~$${((u.input_tokens * 2 + u.output_tokens * 10) / 1e6).toFixed(4)}`);
+    spend.repair = costOf(u);
+    if (u) console.log(`copy fix tokens: in ${u.input_tokens} / out ${u.output_tokens} (stop=${res.stop_reason}) → ~$${spend.repair.toFixed(4)}`);
     if (res.stop_reason === 'max_tokens' || res.stop_reason === 'refusal') throw new Error(`stop_reason ${res.stop_reason}`);
     const text = res.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
     const done = [];
@@ -992,21 +1036,23 @@ const topic = {
     id: { type: 'string' }, cat: { type: 'string', enum: ['시즌', '날씨', '음식', '일상', '여행', '문화', '건강', '취미', '쇼핑', '경제', '커리어', '관계'] },
     // Must belong to the chosen cat — see SUBTOPIC_GUIDE in the prompt.
     subtopic: { type: 'string', enum: ALL_SUBTOPICS },
-    label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string', description: TITLE_DESC }, desc: { type: 'string', description: DESC_DESC }, reason: { type: 'string', description: REASON_DESC },
-    special: { type: 'boolean', description: '오늘이 [한국의 특별한 날](초복·중복·말복·명절·기념일 등)이고 이 주제가 바로 그 날을 소재로 만든 주제일 때만 true. 그런 주제는 정확히 1개. 오늘이 특별한 날이 아니거나 이 주제가 그 소재가 아니면 false.' },
+    // title / desc / reason / special / news / media / subjects are spelled out
+    // once, in the prompt's [요구사항] — a schema description is input too, and
+    // until 2026-10-26 most of these rules were sent twice.
+    label: { type: 'string' }, color: { type: 'string' }, title: { type: 'string' }, desc: { type: 'string' }, reason: { type: 'string' },
+    special: { type: 'boolean' },
     // Internal (dropped before writing): which cards are the day's 오늘의 화제
     // news cards, so the code can put the strongest one first (it becomes the
     // 09:00 push headline) — the deck is shuffled after generation.
-    news: { type: 'string', enum: ['none', 'first', 'second', 'more'], description: "[오늘의 화제 뉴스 후보]의 헤드라인으로 만든 '오늘의 화제' 카드면 가장 강한 것은 'first', 두 번째는 'second', 나머지 화제 카드는 'more'. 그 밖의 모든 카드(시장 시그널·[경제] 줄로 만든 경제 카드 포함)는 'none'. 'first'와 'second'는 각각 최대 1개." },
+    news: { type: 'string', enum: ['none', 'first', 'second', 'more'] },
     // Internal (dropped before writing): the film / TV programme a 화제 card is
     // about, so the code can look up its official poster on TMDB.
     media: {
       type: 'object', additionalProperties: false,
-      description: "화제 카드(news가 'none'이 아닌 카드)가 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다룰 때만 채우세요. 그 밖의 모든 카드는 kind 'none', title \"\", year 0.",
       properties: {
-        kind: { type: 'string', enum: ['movie', 'tv', 'none'], description: "영화면 'movie', 드라마·예능 등 TV 프로그램이면 'tv', 그 밖에는 'none'." },
-        title: { type: 'string', description: '헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호만 빼고). none이면 "".' },
-        year: { type: 'integer', description: '헤드라인에서 드러나는 개봉·방영 연도, 드러나지 않으면 올해. none이면 0.' },
+        kind: { type: 'string', enum: ['movie', 'tv', 'none'] },
+        title: { type: 'string' },
+        year: { type: 'integer' },
       },
       required: ['kind', 'title', 'year'],
     },
@@ -1017,12 +1063,11 @@ const topic = {
     // when the first has no usable free photo. No maxItems — see the NOTE below.
     subjects: {
       type: 'array',
-      description: "화제 카드(news가 'none'이 아닌 카드)의 헤드라인이 실존하는 구체적 인물·그룹·팀·기업·제품·장소를 다룰 때만 채우세요. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에, 헤드라인에 함께 나온 다른 구체적 대상은 뒤에(전체 최대 2개). 영화·TV 프로그램 한 편이 중심인 카드(media를 채운 카드)와 그 밖의 모든 카드는 빈 배열 [].",
       items: {
         type: 'object', additionalProperties: false,
         properties: {
-          name_ko: { type: 'string', description: '한국어 위키백과 문서 제목처럼 정식 표기 (BTS → "방탄소년단", 삼성 → "삼성전자", 신차는 한정판·색상명을 뺀 모델명 → "현대 아반떼 N").' },
-          name_en: { type: 'string', description: '영어 위키백과 문서 제목처럼 정식 표기 ("BTS", "Samsung Electronics", "Hyundai Elantra N").' },
+          name_ko: { type: 'string' },
+          name_en: { type: 'string' },
           kind: { type: 'string', enum: SUBJECT_KINDS, description: 'person=개인, group=가수·밴드 그룹, team=스포츠 팀·구단, brand=기업·브랜드·서비스, product=제품·차종·기기, place=장소·건물·관광지.' },
         },
         required: ['name_ko', 'name_en', 'kind'],
@@ -1033,7 +1078,8 @@ const topic = {
     // NOTE: structured outputs only support minItems 0/1 — don't add
     // minItems/maxItems here (a 3/3 constraint 400'd the whole run on
     // 2026-07-12). "Exactly 3" lives in the description + slice(0,3) below.
-    imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns. For a news card, shoot the generic thing the story is about — a car launch → "red electric sports car road", "electric car charging station"; avoid showrooms, shops, expos and signage — they usually show another company logo; a drama → "tv remote sofa living room"; baseball → "baseball stadium night crowd" — never a celebrity, athlete or any real person.' },
+    // The one place the image-query rules live (the prompt only points here).
+    imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic\'s cover photo search, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns; Korean dishes and places in generic English (삼계탕 → "chicken soup bowl", 냉면 → "cold noodles bowl"). For a news card, shoot the generic thing the story is about — a car launch → "red electric sports car road", "electric car charging station"; a drama → "tv remote sofa living room"; baseball → "baseball stadium night crowd"; a music record → "headphones listening music"; avoid showrooms, shops, expos and signage — they usually show another company logo; never a celebrity, athlete or any real person. Fill these on news cards with subjects too — they are the fallback when no photo of the subject is found.' },
   },
   required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'news', 'media', 'subjects', 'questions', 'tips', 'imageQueries'],
 };
@@ -1050,83 +1096,87 @@ if (!process.env.ANTHROPIC_API_KEY) {
 // no installed dependencies.
 const { default: Anthropic } = await import('@anthropic-ai/sdk');
 const client = new Anthropic();
+// The rules, once each. Until 2026-10-26 the prompt asked the model to count
+// every title/desc/reason after writing it and to keep each stock word to one
+// use across the deck; lintCopy measures both after the fact and repairCopy
+// rewrites what fails, so the prompt now says the limits are targets — at
+// effort 'high' the counting showed up as ~13k thinking tokens a run.
 const gen = await client.messages.stream({
   model: MODEL,
   // 8 topics × (3 questions + 3 moods × 3 tips + imageQueries + subtopic).
   // 12k truncated once the deck grew from 5 to 8; 20k truncated again on
-  // 2026-09-03, so leave real headroom.
+  // 2026-09-03, so leave real headroom. A backstop, not a cost dial: thinking
+  // counts toward it, and hitting it throws the whole deck away.
   max_tokens: 32000,
-  output_config: { format: { type: 'json_schema', schema } },
+  output_config: { ...(EFFORT && { effort: EFFORT }), format: { type: 'json_schema', schema } },
   messages: [{
     role: 'user',
     content:
       `너는 "데일리 스몰토크" 앱의 오늘의 주제 8개 에디터야. 오늘: ${dateLabel}.\n\n[오늘의 실시간 맥락]\n${brief}\n[요구사항]\n` +
-      `- 정확히 8개 주제, 카테고리 겹치지 않게. 각 필드는 1~2문장으로 간결하게(title·desc·reason은 한 문장). 날씨 주제는 최대 1개까지만, 순서는 자유롭게(날씨가 꼭 첫 번째일 필요 없음).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
+      `■ 덱 구성\n` +
+      `- 정확히 8개 주제. 카테고리는 시즌/날씨/음식/일상/여행/문화/건강/취미/쇼핑/경제/커리어/관계 중에서 8개 모두 다르게 고르세요. 앱에서 사용자가 '관심 주제'로 고르는 값이라 매일 같은 조합만 나오면 안 돼요 — 최근에 안 나온 카테고리도 적극적으로 섞어 주세요(아래 스몰토크 적합성은 그대로). 날씨 주제는 최대 1개, 순서는 상관없어요(덱 순서는 코드가 정해요).` + (isWeekend ? ' 주말 소재 하나 포함 가능.' : '') + `\n` +
       (todaySpecial
         ? `- ★오늘은 "${todaySpecial}" — 1년에 한 번뿐인 날이에요. 이 날을 소재로 한 주제를 정확히 1개 만들고 그 주제에만 special:true를 설정하세요(나머지 주제는 모두 false). 그 주제가 덱 맨 앞(첫 카드)에 놓입니다.\n`
         : `- 오늘은 [한국의 특별한 날] 목록에 있는 날이 아니에요. 모든 주제의 special은 false로 두세요.\n`) +
-      `- 카테고리는 시즌/날씨/음식/일상/여행/문화/건강/취미/쇼핑/경제/커리어/관계 중에서 고르고, 8개가 서로 달라야 해요. 앱에서 사용자가 '관심 주제'로 고르는 값이라 매일 같은 조합만 나오면 안 됩니다 — 최근에 안 나온 카테고리도 적극적으로 섞어 주세요(단, 아래 '스몰토크 적합성' 기준은 그대로 지키세요).\n` +
-      `- subtopic은 반드시 그 카테고리에 속한 것으로 고르세요:\n${SUBTOPIC_GUIDE}\n` +
-      `- 같은 subtopic이 하루에 두 번 나오면 안 되고, [최근 며칠간 이미 나간 주제]에서 자주 보인 subtopic은 피하세요.\n` +
-      `- 카테고리 감: 여행=휴가·나들이·가보고 싶은 곳 / 문화=드라마·영화·음악·공연(화제의 작품·컴백 포함) / 건강=운동·수면·컨디션 / 취미=게임·독서·수집·배우는 것·스포츠 경기 보기 / 쇼핑=요즘 산 것·패션·생활용품·신제품·테크 / 커리어=일하는 방식·출퇴근·이직 고민(가볍게) / 관계=친구·가족·주변 사람 이야기(사생활 캐묻기 금지).\n` +
-      `- ★위 [최근 며칠간 이미 나간 주제]와 겹치지 마세요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(예: 장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수). 제목·질문 문구가 비슷해도 안 됩니다.\n` +
-      `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 누구나 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로 쓰세요(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
-      `- 모든 문장 존댓말 ~요체(단 친구 팁은 반말도 자연스러우면 허용). 친근하고 구체적, 살짝 위트.\n` +
-      `- ★★문구는 사람이 동료에게 말하듯 쓰세요. AI가 쓴 티가 나면 안 돼요:\n` +
-      `  · desc: ${DESC_DESC}\n` +
-      `  · reason: ${REASON_DESC}\n` +
-      `  · title·desc·reason은 서로 다른 정보를 담으세요. desc가 제목을 풀어 쓰거나 reason이 desc를 되풀이하면 안 돼요.\n` +
-      `  · 상투어는 덱 전체(title·desc·reason·questions)에서 각각 한 번까지: ${STOCK_WORDS.join('·')}. "~기 마련이에요", "~하는 시기예요", "좋은 날이에요", "잘 어울려요", "꺼내기 좋아요"는 쓰지 마세요. 상투어를 다른 상투어로 바꿔 끼우는 것도 안 돼요.\n` +
-      `  · 과장·홍보 수식('세계 최강', '역대급', '신드롬', '열풍', '화제의', '성큼')은 빼세요. 사실만으로 충분해요.\n` +
-      `  · 읽는 사람의 기분·사정을 대신 정하지 마세요("뒤숭숭하시죠?", "기분을 달래는", "~로 가득하죠"). 확인할 수 있는 사실을 쓰고, 불안·손해를 부추기는 말도 쓰지 마세요.\n` +
-      `  · 한 문장에 수치는 2개까지. 표기는 한국어로: 美 → 미국, 1,277,000 → 127만 7천 원(브리프에 적힌 표기 그대로).\n` +
-      `  · 8장의 문장 모양을 섞으세요. 제목이 줄줄이 "~있으세요?"로 끝나거나 desc·reason이 같은 어미·같은 틀로 이어지면 기계가 쓴 티가 나요.\n` +
-      `  · 지어내지 마세요: 브리프에 없는 사실·수치·발언·감정(헤드라인에 없는 "뿌듯했다" 같은 말)이나 경험담("저도 그래요")은 넣지 않아요. 리듬을 만들려고 문장을 명사 토막으로 끊지도 마세요.\n` +
-      `  · 좋은 예(사실·수치는 지어낸 것 — 형식만 참고): ${COPY_GOOD.map((c) => `title "${c.title}"(${charLen(c.title)}자) / desc "${c.desc}"(${charLen(c.desc)}자) / reason "${c.reason}"(${charLen(c.reason)}자)`).join(' ‖ ')}.\n` +
-      `  · 나쁜 예: desc "${COPY_BAD.desc}"(${charLen(COPY_BAD.desc)}자) — 제목을 되풀이하고 권유 문장을 붙였어요. reason "${COPY_BAD.reason}" — 요일·날씨 + "잘 어울려요" 틀이에요.\n` +
-      `- ★★title은 카드 맨 위에 큰 글씨로 나오고(아침 9시 알림 문구도 돼요) 공백 포함 ${TITLE_MAX}자 이내여야 해요 — 앱 화면에서 2~3줄에 들어가야 해요. 문장 하나에 질문도 하나만 쓰고, 보기·예시 나열은 questions로 보내세요. 화제 카드도 한 줄로 줄이고(아래 화제 카드 문구 규칙), 제목에 못 넣은 사실 하나는 desc로 보내세요. 나쁜 예(${charLen(TITLE_BAD)}자, 너무 김): "${TITLE_BAD}" — 질문에 군더더기가 붙었어요. 쓴 뒤 글자 수를 세어 ${TITLE_MAX}자를 넘으면 줄여 쓰세요.\n` +
-      `- ★스몰토크 적합성이 최우선: 좋은 주제는 "동료 대부분이 이미 들었거나, 듣자마자 한마디 보탤 수 있는 것"이에요. 오늘의 화제 카드를 뺀 나머지는 날씨, 음식/식사, 주말·퇴근 후 시간, 요즘 보는 드라마·영상, 물가·생활비 체감, 계절 변화, 여행·휴가처럼 대다수가 공감하는 일상 소재로 채우세요.\n` +
-      `- ★★오늘의 화제(뉴스 카드) ${NEWS_TARGET}장: [오늘의 화제 뉴스 후보]에서 "내일 아침 동료 대부분이 이미 봤거나 들었을 소식"을 골라 각각 카드 1장으로 만드세요. 이름 붙은 날씨 사건(태풍 '○○'), 별명이 붙은 동물·동네 소식, 영상으로 퍼진 해외 소식, 아이돌 데뷔·컴백·작품처럼 구체적인 이름 하나가 걸린 소식이 좋아요. ★ 표시, '관련' 숫자가 큰 것, (오늘 기사)·(어제 기사)를 우선하세요. 같은 사건은 한 장만. 쓸 만한 후보가 모자라면 적게 만들어도 되지만 5장을 넘기면 안 돼요. [시장 시그널]·[경제] 줄로 만든 경제 카드는 이 수에 세지 않고, 화제 카드끼리도 카테고리는 서로 달라야 해요.\n` +
-      `- ★★화제 카드 문구는 동료에게 소식을 전하듯 써요(아래 예시의 사실은 지어낸 것 — 형식만 참고):\n` +
+      `- subtopic은 반드시 그 카테고리에 속한 것으로, 하루에 같은 subtopic은 한 번만, [최근 며칠간 이미 나간 주제]에서 자주 보인 subtopic은 피하세요:\n${SUBTOPIC_GUIDE}\n` +
+      `- 카테고리 감: 여행=휴가·나들이·가보고 싶은 곳 / 문화=드라마·영화·음악·공연(요즘 나온 작품·컴백 포함) / 건강=운동·수면·컨디션 / 취미=게임·독서·수집·배우는 것·스포츠 경기 보기 / 쇼핑=요즘 산 것·패션·생활용품·신제품·테크 / 커리어=일하는 방식·출퇴근·이직 고민(무겁지 않게) / 관계=친구·가족·주변 사람 이야기(사생활 캐묻기 금지).\n` +
+      `- ★스몰토크 적합성이 최우선: 좋은 주제는 "동료 대부분이 이미 들었거나, 듣자마자 한마디 보탤 수 있는 것"이에요. 화제 카드를 뺀 나머지는 날씨, 음식/식사, 주말·퇴근 후 시간, 요즘 보는 드라마·영상, 물가·생활비 체감, 계절 변화, 여행·휴가처럼 대다수가 공감하는 일상 소재로 채우세요.\n` +
+      `- ★[최근 며칠간 이미 나간 주제]와 소재·제목·질문 문구가 겹치면 안 돼요. 같은 소재(장마, 삼계탕, 물가 등)를 또 쓰려면 각도를 완전히 바꾸세요(장마 → 우산 얘기 대신 빗소리·제습·빨래·출퇴근길 / 보양식 → 삼계탕 대신 냉면·수박·팥빙수).\n` +
+      `- ★답이 뻔한 예/아니오 질문 금지: 비 오는 날 "우산 챙기셨어요?"처럼 답이 정해진 질문은 대화가 한 마디로 끝나요. 취향·경험·이야기를 끌어내는 열린 질문으로(예: "비 오는 날엔 어떤 노래 들으세요?", "장마철 최악의 출근길 썰 있으세요?").\n` +
+      `■ 문구 — 사람이 동료에게 말하듯. AI가 쓴 티가 나면 안 돼요\n` +
+      `- 모든 문장 존댓말 ~요체(단 친구 팁은 반말도 자연스러우면 허용). 친근하고 구체적, 살짝 위트. 각 필드는 1~2문장으로 간결하게.\n` +
+      `- title: ${TITLE_DESC} 카드 맨 위에 큰 글씨로 나오고 아침 9시 알림 문구도 돼요. 보기·예시 나열은 questions로.\n` +
+      `- desc: ${DESC_DESC}\n` +
+      `- reason: ${REASON_DESC}\n` +
+      `- title·desc·reason은 서로 다른 정보를 담으세요. desc가 제목을 풀어 쓰거나 reason이 desc를 되풀이하면 안 돼요.\n` +
+      `- 상투어(${STOCK_WORDS.join('·')})는 되도록 피하고, "~기 마련이에요", "~하는 시기예요", "좋은 날이에요", "잘 어울려요", "꺼내기 좋아요"는 쓰지 마세요. 상투어를 다른 상투어로 바꿔 끼우는 것도 안 돼요.\n` +
+      `- 과장·홍보 수식(세계 최강·역대급·신드롬·열풍·화제의·성큼) 없이 사실만. 읽는 사람의 기분·사정을 대신 정하지 말고("뒤숭숭하시죠?", "기분을 달래는", "~로 가득하죠"), 불안·손해를 부추기는 말도 쓰지 마세요.\n` +
+      `- 한 문장에 수치는 2개까지. 표기는 한국어로: 美 → 미국, 1,277,000 → 127만 7천 원(브리프에 적힌 표기 그대로).\n` +
+      `- 8장의 문장 모양을 섞으세요. 제목이 줄줄이 "~있으세요?"로 끝나거나 desc·reason이 같은 어미·같은 틀로 이어지면 기계가 쓴 티가 나요.\n` +
+      `- ★지어내지 마세요: 브리프에 없는 사실·수치·날짜·발언·감정(헤드라인에 없는 "뿌듯했다" 같은 말)이나 경험담("저도 그래요")은 넣지 않아요. 리듬을 만들려고 문장을 명사 토막으로 끊지도 마세요.\n` +
+      `- 맞춤법은 표준으로: ~더라고요(×더라구요), ~거예요(×거에요), 돼요(×되요).\n` +
+      `- 좋은 예(사실·수치는 지어낸 것 — 형식만 참고): ${COPY_GOOD.map((c) => `title "${c.title}"(${charLen(c.title)}자) / desc "${c.desc}"(${charLen(c.desc)}자) / reason "${c.reason}"(${charLen(c.reason)}자)`).join(' ‖ ')}.\n` +
+      `- 나쁜 예: desc "${COPY_BAD.desc}"(${charLen(COPY_BAD.desc)}자) — 제목을 되풀이하고 권유 문장을 붙였어요. reason "${COPY_BAD.reason}" — 요일·날씨 + "잘 어울려요" 틀이에요. reason "${COPY_BAD.reasonMeta}" — 읽는 사람의 오늘이 아니라 기사 얘기예요. title "${TITLE_BAD}"(${charLen(TITLE_BAD)}자) — 너무 길고 질문에 군더더기가 붙었어요.\n` +
+      `- 글자 수와 상투어는 코드가 재요: 위 글자 수는 목표치예요. 다 쓴 뒤 코드가 필드마다 글자 수, 덱 전체에서 반복된 상투어, 권유 어미·과장 수식·출처 얘기를 검사해서 걸린 필드만 따로 고쳐 써요. 그러니 글자를 하나씩 세거나 덱 전체를 다시 훑어 집계하지 말고, 대략 그 길이로 한 번에 쓰세요. 코드가 못 보는 건 사실이 브리프와 맞는지예요 — 그것만은 꼭 지키세요.\n` +
+      `■ 오늘의 화제(뉴스 카드) ${NEWS_TARGET}장\n` +
+      `- [오늘의 화제 뉴스 후보]에서 "내일 아침 동료 대부분이 이미 봤거나 들었을 소식"을 골라 각각 카드 1장으로. 이름 붙은 날씨 사건(태풍 '○○'), 별명이 붙은 동물·동네 소식, 영상으로 퍼진 해외 소식, 아이돌 데뷔·컴백·작품처럼 구체적인 이름 하나가 걸린 소식이 좋아요. ★ 표시, '관련' 숫자가 큰 것, (오늘 기사)·(어제 기사)를 우선하세요. 같은 사건은 한 장만. 쓸 만한 후보가 모자라면 적게 만들어도 되지만 5장을 넘기면 안 돼요. [시장 시그널]·[경제] 줄로 만든 경제 카드는 이 수에 세지 않고, 화제 카드끼리도 카테고리는 서로 달라야 해요.\n` +
+      `- 지역 축제, 선수 부상, 업계 내부 소식처럼 관심 있는 소수만 아는 뉴스와 정치·범죄·사고·재난·사망 소식은 후보에 있어도 화제 카드로 쓰지 마세요.\n` +
+      `- ★사실은 헤드라인과 그 아래 '같은 소식'에 적힌 것만 쓰세요. 거기에 없는 가격·날짜·사양·순위·수치·발언 인용은 지어내지 말고, 헤드라인이 애매하면 확실한 부분까지만 다루세요.\n` +
+      `- ★사람이 나오는 소식은 공개 활동(작품, 컴백, 공연, 수상, 경기 결과, 출연)만. 사생활·연애·결혼·가족·건강·루머는 금지, 그 사람을 평가하거나 품평하는 것도 금지예요. 질문은 연예인·선수의 사생활이 아니라 그 소식(무대·경기·작품)이나 듣는 사람의 경험으로 이어지게(예: "'○○' 무대 보셨어요?", "요즘 듣는 신인 노래 있어요?").\n` +
+      `- 해외 시위처럼 편이 갈리는 소식은 무슨 일이 있었는지(규모·장소)만 쓰고 어느 쪽이 옳은지는 말하지 않아요. 사상자·피해 얘기는 쓰지 않아요.\n` +
+      `- 시제: 어제·오늘 나온 소식이니 "~했대요", "~했다던데", "~공개됐다는데"처럼 이미 일어난 일로 쓰세요(아래 ★★"오늘" 단정 금지).\n` +
+      `- 문구는 동료에게 소식을 전하듯(예시의 사실은 지어낸 것 — 형식만 참고):\n` +
       `  · title: 소식의 고리 하나 — 주인공(작품명·인물·제품명·팀·별명)과 무슨 일이 있었는지. 질문이 아니어도 돼요("~래요/~대요"로 끝나는 말 한 문장). "화제의 신차", "○○가 '△△' 얘기했다던데"처럼 무슨 일인지 안 보이면 안 돼요.\n` +
       `  · desc: 헤드라인이나 그 아래 '같은 소식'에 적힌 흥미로운 사실 하나만 덧붙여요.\n` +
-      `  · tips의 opener·follow: 실제로 할 말로 써요. opener는 소식을 전하는 말(~래요·~대요, ~던데요, ~더라고요, ~네요)에 가벼운 반응이나 "보셨어요?", follow는 사실 하나를 더 꺼내는 다음 말이에요. "~얘기로 이어가 보세요" 같은 지시문이 아니에요. friend는 반말로.\n` +
+      `  · tips의 opener·follow: 실제로 할 말로. opener는 소식을 전하는 말(~래요·~대요, ~던데요, ~더라고요, ~네요)에 가벼운 반응이나 "보셨어요?", follow는 사실 하나를 더 꺼내는 다음 말이에요. "~얘기로 이어가 보세요" 같은 지시문이 아니에요. friend는 반말로.\n` +
       `  · 반응은 opener·follow에서만, 말하는 사람 자신의 흔하고 가벼운 반응으로("신기하더라고요", "좀 무섭더라고요"). 듣는 사람의 기분을 대신 정하거나("걱정되시죠?"), 브리프에 없는 사실·경험("영상 보니까")을 지어내지 마세요.\n` +
       `  · questions: 그 소식에서 자연스럽게 이어지는 질문 3개(예: "태풍 오는 날엔 출근 어떻게 하세요?", "한강 가면 물범 보러 가 보실래요?"). 소식과 상관없는 인터뷰 질문("즐겨 보는 종목은?")은 안 돼요.\n` +
-      `  · 해외 시위처럼 편이 갈리는 소식은 무슨 일이 있었는지(규모·장소)만 쓰고 어느 쪽이 옳은지는 말하지 않아요. 사상자·피해 얘기는 쓰지 않아요.\n` +
-      `  · 맞춤법은 표준으로: ~더라고요(×더라구요), ~거예요(×거에요), 돼요(×되요).\n` +
       `  · 예: ${NEWS_GOOD.map((c) => `title "${c.title}"(${charLen(c.title)}자) / desc "${c.desc}"(${charLen(c.desc)}자) / opener "${c.opener}" / follow "${c.follow}"`).join(' ‖ ')}\n` +
-      `- ★화제 카드의 사실은 헤드라인과 그 아래 '같은 소식'에 적힌 것만 쓰세요. 거기에 없는 가격·날짜·사양·순위·수치·발언 인용은 지어내지 말고, 헤드라인이 애매하면 확실한 부분까지만 다루세요.\n` +
-      `- ★사람이 나오는 소식은 공개 활동(작품, 컴백, 공연, 수상, 경기 결과, 출연)만 다루세요. 사생활·연애·결혼·가족·건강·루머는 금지, 그 사람을 평가하거나 품평하는 것도 금지예요. 질문은 연예인·선수의 사생활이 아니라 그 소식(무대·경기·작품)이나 듣는 사람의 경험으로 이어지게 쓰세요(예: "'○○' 무대 보셨어요?", "요즘 듣는 신인 노래 있어요?").\n` +
-      `- 화제 카드의 시제: 어제·오늘 나온 소식이니 "~했대요", "~했다던데", "~공개됐다는데"처럼 이미 일어난 일로 쓰세요. [한국의 특별한 날] 표에 있는 게 아니면 행사·경기·방송이 "오늘/오늘 밤" 있다고 쓰지 마세요(아래 ★★규칙).\n` +
-      `- 화제 카드의 카테고리: 연예·작품 → 문화(드라마/영화/음악/예능/공연·전시/웹툰·책 중 맞는 것), 신제품·가젯·자동차 공개 → 쇼핑 '신제품·테크', 스포츠 → 취미 '스포츠', 태풍 같은 날씨 사건 → 날씨 '태풍' 등 맞는 것, 동물 소식 → 일상 '동물', 해외 소식 → 일상 '해외소식', 그 밖의 가벼운 시사 → 가장 잘 맞는 카테고리.\n` +
-      `- 지역 축제, 선수 부상, 업계 내부 소식처럼 관심 있는 소수만 아는 뉴스와 정치·범죄·사고·재난·사망 소식은 후보에 있어도 화제 카드로 쓰지 마세요.\n` +
-      `- news 필드: 가장 강한 화제 카드에 "first", 두 번째에 "second", 나머지 화제 카드는 "more", 그 밖의 카드(경제 카드 포함)는 모두 "none". 덱 순서는 코드가 정해요 — 특별한 날 카드가 있으면 그게 맨 앞, 없으면 "first" 카드가 맨 앞에 놓이고 그 제목이 아침 9시 알림 문구가 되니, 알림으로 받았을 때 가장 눌러 보고 싶을 소식을 "first"로 고르세요.\n` +
+      `- 카테고리: 연예·작품 → 문화(드라마/영화/음악/예능/공연·전시/웹툰·책 중 맞는 것), 신제품·가젯·자동차 공개 → 쇼핑 '신제품·테크', 스포츠 → 취미 '스포츠', 태풍 같은 날씨 사건 → 날씨 '태풍' 등 맞는 것, 동물 소식 → 일상 '동물', 해외 소식 → 일상 '해외소식', 그 밖의 가벼운 시사 → 가장 잘 맞는 카테고리.\n` +
+      `- news 필드: 가장 강한 화제 카드에 "first", 두 번째에 "second"(각각 1장만), 나머지 화제 카드는 "more", 그 밖의 카드(시장 시그널·[경제] 줄로 만든 경제 카드 포함)는 모두 "none". 특별한 날 카드가 있으면 그게 덱 맨 앞, 없으면 "first" 카드가 맨 앞에 놓이고 그 제목이 아침 9시 알림 문구가 되니, 알림으로 받았을 때 가장 눌러 보고 싶을 소식을 "first"로 고르세요.\n` +
       `- media 필드: 화제 카드(news가 "none"이 아닌 카드) 중 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다루는 카드만 채우세요 — 공식 포스터를 커버로 찾는 데 씁니다. 영화면 kind "movie", 드라마·예능이면 "tv". title은 헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호 ' ' " " 「 」 < > 만 빼고, 철자를 바꾸거나 번역하지 말고), year는 헤드라인에서 개봉·방영 연도가 드러나면 그 연도, 아니면 올해(${kst.getUTCFullYear()}). 신제품·스포츠·음악(앨범·컴백·공연)·인물 소식, 여러 작품을 묶은 소식, 화제 카드가 아닌 모든 카드는 kind "none", title "", year 0.\n` +
-      `- subjects 필드: 화제 카드(news가 "none"이 아닌 카드)의 헤드라인이 실존하는 구체적인 인물·그룹·팀·기업(브랜드)·제품·장소를 다룰 때 채우세요 — 스톡 사진으로는 누구 얘긴지 알 수 없어서, 그 대상의 실제 사진을 커버로 찾는 데 씁니다. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에 쓰고, 헤드라인에 함께 나온 다른 구체적 대상이 있으면 두 번째로(최대 2개). 예: "BTS가 스포티파이 연간 100억 스트리밍을 넘겼다" → [방탄소년단(group), 스포티파이(brand)] / "머스크가 어린이에게 스페이스X 주식을 준다" → [일론 머스크(person), 스페이스X(brand)] / "현대차가 아반떼 N 모노크롬을 공개" → [현대 아반떼 N(product), 현대자동차(brand)] / "손흥민 해트트릭" → [손흥민(person)]. name_ko·name_en은 각 언어 위키백과 문서 제목처럼 정식 표기로 쓰세요(BTS → "방탄소년단"/"BTS", "삼성"이 아니라 "삼성전자"/"Samsung Electronics", 신차는 한정판·색상명을 뺀 모델명). 헤드라인에 없는 대상을 지어내지 말고, 영화·드라마·예능 한 편이 중심인 카드(media를 채운 카드), 여러 대상을 뭉뚱그린 소식, 화제 카드가 아닌 모든 카드는 빈 배열 [].\n` +
-      `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. [오늘의 화제 뉴스 후보]에 구체적 제목이 없어 무엇인지 특정할 수 없으면, 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
-      `- ★★행사·공연·경기가 "오늘" 열린다고 절대 단정하지 마세요. 헤드라인의 '오늘 저녁', '오늘 밤', '1시간 뒤'는 그 기사 발행일 기준이라 오늘과 다릅니다 — 어제 끝난 불꽃축제를 오늘 아침에 "오늘 밤 열린다"고 안내한 사고가 있었습니다. 날짜가 확실한 건 위 [한국의 특별한 날] 표뿐이에요. 지난 행사는 "어제 ~했다던데 다녀오셨어요?"처럼 지난 일로 쓰거나, 시점을 빼고 "불꽃축제 좋아하세요?"처럼 취향 질문으로 바꾸세요. 시작 시각·남은 시간을 지어내는 것도 금지.\n` +
+      `- subjects 필드: 화제 카드의 헤드라인이 실존하는 구체적인 인물·그룹·팀·기업(브랜드)·제품·장소를 다룰 때 채우세요 — 스톡 사진으로는 누구 얘긴지 알 수 없어서, 그 대상의 실제 사진을 커버로 찾는 데 씁니다. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에 쓰고, 헤드라인에 함께 나온 다른 구체적 대상이 있으면 두 번째로(최대 2개). 예: "BTS가 스포티파이 연간 100억 스트리밍을 넘겼다" → [방탄소년단(group), 스포티파이(brand)] / "머스크가 어린이에게 스페이스X 주식을 준다" → [일론 머스크(person), 스페이스X(brand)] / "현대차가 아반떼 N 모노크롬을 공개" → [현대 아반떼 N(product), 현대자동차(brand)] / "손흥민 해트트릭" → [손흥민(person)]. name_ko·name_en은 각 언어 위키백과 문서 제목처럼 정식 표기로 쓰세요(BTS → "방탄소년단"/"BTS", "삼성"이 아니라 "삼성전자"/"Samsung Electronics", 신차는 한정판·색상명을 뺀 모델명 → "현대 아반떼 N"/"Hyundai Elantra N"). 헤드라인에 없는 대상을 지어내지 말고, 영화·드라마·예능 한 편이 중심인 카드(media를 채운 카드), 여러 대상을 뭉뚱그린 소식, 화제 카드가 아닌 모든 카드는 빈 배열 [].\n` +
+      `■ 이름과 날짜\n` +
+      `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. 브리프에 구체적 제목이 없어 무엇인지 특정할 수 없으면 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
+      `- ★★행사·공연·경기가 "오늘" 열린다고 절대 단정하지 마세요. 헤드라인의 '오늘 저녁', '오늘 밤', '1시간 뒤'는 그 기사 발행일 기준이라 오늘과 다릅니다 — 어제 끝난 불꽃축제를 오늘 아침에 "오늘 밤 열린다"고 안내한 사고가 있었습니다. 날짜가 확실한 건 [한국의 특별한 날] 표뿐이에요. 지난 행사는 "어제 ~했다던데 다녀오셨어요?"처럼 지난 일로 쓰거나, 시점을 빼고 "불꽃축제 좋아하세요?"처럼 취향 질문으로 바꾸세요. 시작 시각·남은 시간을 지어내는 것도 금지.\n` +
+      `■ 경제 카드\n` +
       `- 요즘 주식·재테크에 관심이 많은 분위기라, '경제' 카테고리로 생활경제 주제를 하나 넣어주세요. 기본은 "요즘 주식이나 재테크 하세요?", "월급 관리 어떻게 하세요?", "물가 체감"처럼 누구나 자기 얘기로 대답할 수 있는 소재로.\n` +
       `- ★단, [시장 시그널]에 '큰 변동' 표시가 있거나 [오늘의 화제 뉴스 후보]의 [경제] 줄에 기준금리 인상/인하 같은 굵직한 경제 뉴스가 있으면, 그날의 경제 주제는 두루뭉술한 물가 얘기 대신 그 사실을 구체적으로 다루세요. 수치도 브리프에 있는 그대로 인용해도 좋아요(예: "${TITLE_GOOD[1]}", "기준금리가 0.25%p 올랐다는데, 적금 드세요?"). 브리프에 없는 수치·날짜를 지어내는 건 금지.\n` +
       `- ★★오르내림은 [시장 시그널]에 적힌 '올랐어요/내렸어요'를 그대로 쓰세요. 숫자만 보고 방향을 추측하지 마세요 — 환율이 크게 내렸는데 "올랐다"고 쓴 사고가 있었습니다. 환율은 숫자가 내려가면 원화 강세(해외여행·직구에 유리), 올라가면 원화 약세예요. 브리프에 '→ 원화 강세/약세'가 적혀 있으면 그 해석을 따르세요.\n` +
-      `- ★★시장 수치를 언급할 땐 [시장 시그널] 각 줄에 적힌 기준일 표현을 그대로 쓰세요. 주식·코스피는 주말·공휴일에 쉬기 때문에, 기준일이 "8월 15일(금)"인데 "어제"라고 쓰면 날짜가 틀립니다(일요일 주제에 금요일 등락을 "어제"라고 쓴 사고 있음). 기준일이 '어제'라고 적혀 있을 때만 "어제"라고 쓰고, 아니면 "지난 금요일" 같은 실제 요일이나 "최근"으로 쓰세요.\n` +
-      `- 이때도 매수/매도 추천·목표가·시황분석·전망은 절대 금지 — "다들 얘기하더라"며 화제로 가볍게 나누는 톤만. 삼성전자·SK하이닉스·코스피·환율·비트코인처럼 다들 아는 것만 다루고, 소수만 아는 종목은 피하세요.\n` +
+      `- ★★title·desc에서 시장 수치를 언급할 땐 [시장 시그널] 각 줄에 적힌 기준일 표현을 그대로 쓰세요. 주식·코스피는 주말·공휴일에 쉬기 때문에, 기준일이 "8월 15일(금)"인데 "어제"라고 쓰면 날짜가 틀립니다(일요일 주제에 금요일 등락을 "어제"라고 쓴 사고 있음). 기준일이 '어제'라고 적혀 있을 때만 "어제", 아니면 "지난 금요일" 같은 실제 요일이나 "최근"으로 쓰세요.\n` +
+      `- 매수/매도 추천·목표가·시황분석·전망은 절대 금지 — "다들 얘기하더라"며 화제로 나누는 톤만. 삼성전자·SK하이닉스·코스피·환율·비트코인처럼 다들 아는 것만 다루고, 소수만 아는 종목은 피하세요.\n` +
+      `■ 나머지 필드\n` +
       `- label: 커버용 1~4글자 핵심 단어. color: 진한 hex.\n` +
       `- questions: 바로 쓸 시작 질문 정확히 3개(화제 카드는 위 규칙대로 소식에서 이어지는 질문).\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지. follow를 매번 "~얘기로 이어가 보세요"로 끝내지 말고, 다음에 던질 말이나 물어볼 거리를 구체적으로 쓰세요.\n` +
-      `- imageQueries: 이 주제의 커버 사진을 찾기 위한 검색어 3개(서로 다른 피사체/장면으로). 반드시 사진으로 실제 찍을 수 있는 구체적 대상(사물·음식·날씨·장소·행동)으로 쓰세요. "주말", "느낌", "분위기" 같은 추상적 시간/기분 표현은 금지 — 대신 그 시간에 실제 보이는 장면으로 바꾸세요(예: "비 오는 일요일 집에서" → "person relaxing sofa blanket" / "rain drops window" / "umbrella wet street"). 한국 고유 음식/지명은 일반적인 영어 표현으로(예: 삼계탕→"chicken soup bowl", 냉면→"cold noodles bowl"). 브랜드명·고유명사·한국어 금지. 화제 카드도 마찬가지로 그 소식의 일반적인 사물·장면으로 쓰세요(예: 신차 공개 → "red electric sports car road", "electric car charging station" / 드라마 → "tv remote sofa living room" / 야구 → "baseball stadium night crowd"). 전시장·매장·박람회·간판처럼 다른 회사 로고가 찍히기 쉬운 장면은 피하세요. 연예인·선수 등 실존 인물 이름은 절대 금지. 화제 카드는 subjects의 실제 사진을 못 찾았을 때 이 검색어로 대체 사진을 찾으니, subjects를 채웠어도 imageQueries는 그 소식의 일반적인 사물·장면으로 반드시 채우세요(예: BTS 스트리밍 기록 → "headphones listening music", "concert stage lights crowd" / 테슬라 신차 → "red electric sports car road" / 손흥민 경기 → "soccer stadium night crowd").\n` +
+      `- imageQueries: 스키마 설명대로 커버 사진 검색용 영어 검색어 3개(화제 카드도, subjects를 채운 카드도).\n` +
       `- JSON만 출력.`,
   }],
 }).finalMessage();
 
-// Log usage so cost is visible in the Actions log (claude-sonnet-5-5: $2 in /
-// $10 out per 1M tokens; output includes thinking tokens).
-{
-  const u = gen.usage;
-  const cost = (u.input_tokens * 2 + (u.cache_creation_input_tokens || 0) * 2.5
-    + (u.cache_read_input_tokens || 0) * 0.2 + u.output_tokens * 10) / 1e6;
-  console.log(`tokens: in ${u.input_tokens} / out ${u.output_tokens} (stop=${gen.stop_reason}) → ~$${cost.toFixed(3)}`);
-}
+// Log usage so cost is visible in the Actions log (output includes thinking).
+spend.main = costOf(gen.usage);
+console.log(`tokens: in ${gen.usage.input_tokens} / out ${gen.usage.output_tokens} (effort=${EFFORT || 'default'}, stop=${gen.stop_reason}) → ~$${spend.main.toFixed(3)}`);
 
 const raw = gen.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
 // A truncated response surfaces as a confusing JSON syntax error several
@@ -1145,7 +1195,10 @@ if (data.topics.length < 3) throw new Error('not enough valid topics');
 // keeps the draft title + desc, since a repair can drop a headline term from
 // them. See repairCopy.
 const draftCopy = new Map(data.topics.map((t) => [t, `${t.title} ${t.desc}`]));
-await repairCopy(client, data.topics, `${isoDate} ${dateLabel}`);
+await repairCopy(client, data.topics, {
+  known: `${isoDate} ${dateLabel} ${weather ?? ''}`,
+  today: `${dateLabel}${weather ? ` · ${weather}` : ''}`,
+});
 fixSpelling(data.topics);
 
 // Shuffle so the deck order varies day to day — the model tends to emit the
@@ -1230,6 +1283,35 @@ for (const t of data.topics) if (!t.special) delete t.special;
     (econ.length ? `; 경제 card from a headline: ${econ.join(', ')}` : ''),
   );
 }
+// DRY_RUN=1: the deck in final order with its copy settled, the lint left after
+// the repair, and what the run cost — then stop before covers, today.json, the
+// archive and the Supabase headline. The JSON goes to the runner's temp dir,
+// outside the checkout, so the workflow's commit step couldn't see it anyway.
+if (DRY_RUN) {
+  const left = lintCopy(data.topics);
+  const n = (s) => `(${charLen(s)}자)`;
+  console.log(`\n--- dry run deck (${data.topics.length} cards, effort ${EFFORT || 'default'}) ---`);
+  data.topics.forEach((t, i) => {
+    const media = t.media?.kind && t.media.kind !== 'none' ? ` · media ${t.media.kind} "${t.media.title}" ${t.media.year}` : '';
+    const subj = (t.subjects || []).length ? ` · subjects ${t.subjects.map((s) => `${s.name_ko}/${s.name_en}(${s.kind})`).join(', ')}` : '';
+    const lint = left.get(t);
+    console.log(
+      `\n[${i + 1}] ${t.id} · ${t.cat}/${t.subtopic} · "${t.label}" · news=${t.news}${t.special ? ' · SPECIAL' : ''}${media}${subj}\n` +
+      `  title  ${n(t.title)} ${t.title}\n  desc   ${n(t.desc)} ${t.desc}\n  reason ${n(t.reason)} ${t.reason}\n` +
+      `  q      ${(t.questions || []).join(' | ')}\n` +
+      ['work', 'friend', 'date'].map((m) => `  ${m.padEnd(6)} ${t.tips?.[m]?.opener} → ${t.tips?.[m]?.follow} (× ${t.tips?.[m]?.caution})`).join('\n') +
+      `\n  images ${(t.imageQueries || []).join(' / ')}` +
+      (lint ? `\n  LINT   ${Object.entries(lint).map(([f, e]) => `${f}${e.hard ? '' : '(soft)'}: ${e.why.join('; ')}`).join(' / ')}` : ''),
+    );
+  });
+  console.log(`\nlint after repair: ${left.size ? `${left.size} card(s) still flagged` : 'clean'}`);
+  console.log(`cost: main $${spend.main.toFixed(4)} + repair $${spend.repair.toFixed(4)} = $${(spend.main + spend.repair).toFixed(4)} (effort ${EFFORT || 'default'})`);
+  const path = join(process.env.RUNNER_TEMP || tmpdir(), `dry-run-${isoDate}.json`);
+  writeFileSync(path, JSON.stringify({ date: isoDate, dateLabel, generatedAt: now.toISOString(), effort: EFFORT || 'default', spend, topics: data.topics }, null, 2));
+  console.log(`DRY_RUN=1 — deck written to ${path} only; no covers, no today.json/archive, no headline sync`);
+  process.exit(0);
+}
+
 // Remembered past the delete below: only these cards may take a TMDB poster.
 const newsCards = new Set(data.topics.filter((t) => t.news && t.news !== 'none'));
 for (const t of data.topics) delete t.news; // internal only — not part of the app's Topic shape
@@ -2178,4 +2260,5 @@ if (SB_URL && SB_KEY) {
     console.log('headline sync failed (push falls back to generic title):', e.message);
   }
 }
-console.log(`gen tokens: in=${gen.usage.input_tokens} out=${gen.usage.output_tokens} (${MODEL})`);
+console.log(`gen tokens: in=${gen.usage.input_tokens} out=${gen.usage.output_tokens} (${MODEL}, effort ${EFFORT || 'default'})`);
+console.log(`cost: main $${spend.main.toFixed(4)} + repair $${spend.repair.toFixed(4)} = $${(spend.main + spend.repair).toFixed(4)}`);

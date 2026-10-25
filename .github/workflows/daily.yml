@@ -21,14 +21,27 @@ on:
         description: "Regenerate even if today's deck already exists"
         type: boolean
         default: true
+      # A/B a prompt or effort change without shipping it: the model is called
+      # and the copy lint/repair runs, the deck and its cost go to the log, and
+      # nothing is committed, archived or synced to Supabase.
+      dry_run:
+        description: "Dry run: print the deck and cost only (no commit, no Supabase sync)"
+        type: boolean
+        default: false
+      effort:
+        description: "Main call effort for this run: low | medium | high | xhigh | max (empty = the code's default)"
+        type: string
+        default: ''
 
 permissions:
   contents: write
 
 # Runs queue here instead of overlapping, so a later schedule only starts once
-# the earlier run has pushed its today.json.
+# the earlier run has pushed its today.json. Dry runs get a group of their own:
+# a group holds one pending run, and a dry run queued behind a running one
+# would cancel a pending scheduled run.
 concurrency:
-  group: daily-topic
+  group: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'daily-topic-dry-run' || 'daily-topic' }}
   cancel-in-progress: false
 
 jobs:
@@ -52,17 +65,24 @@ jobs:
       - name: Generate today's topics
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          # A dry run never gets the Supabase key (generate.mjs also stops
+          # before the sync), so it can't overwrite the 09:00 push headline.
+          SUPABASE_URL: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) && secrets.SUPABASE_URL || '' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) && secrets.SUPABASE_SERVICE_ROLE_KEY || '' }}
           # Optional: movie/TV news cards use the TMDB poster as their cover.
           # Unset → the poster step logs "skipped" and the stock photo stays.
           TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
           # Manual runs skip the "already generated today" / before-04:00 guard
           # (untick "force" to test the guard itself). Scheduled runs never force.
           FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '1' || '0' }}
+          # Manual-only; scheduled runs get '0' / '' (= the code's default effort).
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '0' }}
+          EFFORT: ${{ github.event_name == 'workflow_dispatch' && inputs.effort || '' }}
         run: npm run generate
 
       - name: Commit if changed
+        # Skipped on a dry run, which writes nothing to the checkout anyway.
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
         run: |
           git config user.name "daily-smalltalk-bot"
           git config user.email "bot@users.noreply.github.com"
