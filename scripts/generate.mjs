@@ -54,9 +54,12 @@ const DRY_RUN = process.env.DRY_RUN === '1';
 // Thinking depth of the main call. Thinking is always on for claude-sonnet-5-5
 // ({type:'disabled'} and budget_tokens both 400), so output_config.effort is the
 // dial; max_tokens only cuts the answer off. '' = send none (API default 'high').
-// At 'high', the 2026-10-25 deck spent ~13k of its 24k output tokens thinking.
+// Dry runs on 2026-10-26, same brief, de-burdened prompt: 'high' 18.1k in /
+// 20.5k out = $0.24; 'medium' 18.2k / 4.8k = $0.085 — the deck's visible JSON
+// is ~4.5k tokens, so 'medium' thinks very little and 'low' could save at
+// most ~$0.005 more. The copy lint + repair catch what the thinking used to.
 const EFFORTS = ['low', 'medium', 'high', 'xhigh', 'max'];
-const DEFAULT_EFFORT = '';
+const DEFAULT_EFFORT = 'medium';
 const EFFORT = (process.env.EFFORT || '').trim() || DEFAULT_EFFORT;
 if (EFFORT && !EFFORTS.includes(EFFORT)) {
   console.error(`EFFORT="${EFFORT}" is not one of ${EFFORTS.join('|')}`);
@@ -619,19 +622,47 @@ const [weather, news, markets] = await Promise.all([getWeather(), getNews(), get
 function getRecentTopics(days = 5) {
   try {
     const files = readdirSync('content/archive').filter((f) => f.endsWith('.json')).sort().slice(-days);
-    const lines = [];
+    const cards = [];
     for (const f of files) {
       try {
         const j = JSON.parse(readFileSync(`content/archive/${f}`, 'utf8'));
-        for (const t of j.topics || []) lines.push(`- [${f.replace('.json', '')}] ${t.label}: ${String(t.title).replace(/\n/g, ' ')}`);
+        for (const t of j.topics || []) cards.push({ day: f.replace('.json', ''), label: t.label, title: String(t.title).replace(/\n/g, ' ') });
       } catch {}
     }
-    return lines;
+    return cards;
   } catch {
     return [];
   }
 }
-const recent = getRecentTopics();
+const recentCards = getRecentTopics();
+const recent = recentCards.map((c) => `- [${c.day}] ${c.label}: ${c.title}`);
+
+// How strongly a news line is about the same thing as `text` (lowercased, no
+// spaces): a quoted name from the headline or its '같은 소식' found in it
+// counts 10, each of the headline's key words its length. null = no match:
+// no quoted name and fewer than two key words (with `loose`, one key word of
+// 3+ characters is enough — what the news-slot log uses on a card's own copy).
+function headlineScore(n, text, loose = false) {
+  const quoted = [...new Set(quotedTitles([n.title, ...(n.details || [])].join(' ')))].filter((q) => text.includes(q));
+  const words = [...keyWords(n.title)].filter((w) => text.includes(w));
+  if (!quoted.length && words.length < 2 && !(loose && words.some((w) => w.length >= 3))) return null;
+  return quoted.length * 10 + words.reduce((sum, w) => sum + w.length, 0);
+}
+// A story the last few decks already made a card of. Checking 40 recent titles
+// against 20 headlines is work the model did (or skipped) while thinking: at
+// effort 'medium' the 2026-10-26 dry run brought back 부캉이, 식스센스 and 아이폰
+// 듀오, each carded in the previous two days. The code marks them instead, and
+// the prompt says not to pick them; they also stop counting toward NEWS_TARGET.
+// [경제] lines are reference for the daily 경제 card and are never marked.
+for (const n of news || []) {
+  if (n.tag === '경제') continue;
+  const hit = recentCards.find((c) => headlineScore(n, `${c.label} ${c.title}`.toLowerCase().replace(/\s+/g, '')) != null);
+  if (!hit) continue;
+  n.seen = hit.day;
+  n.line = n.line.replace(/^(\([^)]*\) )/, `$1[이미 다룸 ${hit.day.slice(5)}] `);
+}
+const seenNews = (news || []).filter((n) => n.seen);
+if (seenNews.length) console.log(`news: ${seenNews.length} line(s) already carded in the last ${new Set(recentCards.map((c) => c.day)).size} decks — ${seenNews.map((n) => `${n.seen.slice(5)} "${n.title}"`).join(', ')}`);
 
 // Curated Korean special days — the model does NOT know these dates reliably
 // (it once called 7/8 "초복" and then missed the real 초복 on 7/15). Verified
@@ -697,7 +728,7 @@ const brief =
 // enough stories most people will have heard of (관련 ≥ 5 outside 경제): what
 // people actually bring up at work is the typhoon, the shark with a nickname,
 // the idol debut — 가을 디저트 and 가족 단톡방 are filler (user, 2026-10-25).
-const strongNews = (news || []).filter((n) => n.tag !== '경제' && n.coverage >= 5).length;
+const strongNews = (news || []).filter((n) => n.tag !== '경제' && !n.seen && n.coverage >= 5).length;
 const NEWS_TARGET = !news ? '0' : strongNews >= 6 ? '4~5' : strongNews >= 4 ? '3~4' : strongNews >= 2 ? '2~3' : '1~2';
 console.log('--- brief ---\n' + brief);
 if (BRIEF_ONLY) {
@@ -764,7 +795,7 @@ const REASON_DESC = `한 문장, ${REASON_MAX}자 안팎(카드 앞면에 2줄).
 // The facts in them are made up for illustration, and the prompt says so.
 const COPY_GOOD = [
   { title: '테슬라가 새 로드스터를 공개했다던데, 타 보실래요?', desc: '공개 당일 테슬라 주가는 오히려 내렸대요.', reason: '이번 주말부터 국내 매장에서 실물을 볼 수 있대요.' },
-  { title: '삼성전자가 금요일에 9% 빠졌다던데, 주식 하세요?', desc: '종가는 8만 1,200원이고, 코스피도 2% 내렸어요.', reason: '주말 동안 쉬던 주식시장이 오늘 다시 열려요.' },
+  { title: '삼성전자가 금요일에 9% 빠졌다던데, 주식 하세요?', desc: '종가는 8만 1,200원이고, 코스피도 2% 내렸어요.', reason: '금요일 마감 뒤 처음 장이 열리는 월요일이에요.' },
   { title: '아침저녁 쌀쌀한데, 요즘 겉옷 뭐 입고 다니세요?', desc: '출근길엔 경량 패딩, 점심엔 반팔 차림도 보여요.', reason: '서울은 아침 9°에서 낮 21°까지 올라가요.' },
 ];
 const COPY_BAD = {
@@ -1132,16 +1163,16 @@ const gen = await client.messages.stream({
       `- 상투어(${STOCK_WORDS.join('·')})는 되도록 피하고, "~기 마련이에요", "~하는 시기예요", "좋은 날이에요", "잘 어울려요", "꺼내기 좋아요"는 쓰지 마세요. 상투어를 다른 상투어로 바꿔 끼우는 것도 안 돼요.\n` +
       `- 과장·홍보 수식(세계 최강·역대급·신드롬·열풍·화제의·성큼) 없이 사실만. 읽는 사람의 기분·사정을 대신 정하지 말고("뒤숭숭하시죠?", "기분을 달래는", "~로 가득하죠"), 불안·손해를 부추기는 말도 쓰지 마세요.\n` +
       `- 한 문장에 수치는 2개까지. 표기는 한국어로: 美 → 미국, 1,277,000 → 127만 7천 원(브리프에 적힌 표기 그대로).\n` +
-      `- 8장의 문장 모양을 섞으세요. 제목이 줄줄이 "~있으세요?"로 끝나거나 desc·reason이 같은 어미·같은 틀로 이어지면 기계가 쓴 티가 나요.\n` +
+      `- 8장의 문장 모양을 섞으세요. 제목이 줄줄이 "~있으세요?"로 끝나거나 desc·reason이 같은 어미·같은 틀로 이어지면 기계가 쓴 티가 나요. reason도 8장이 다 요일 얘기로 몰리지 않게 날씨·열리는 일·날짜를 섞으세요.\n` +
       `- ★지어내지 마세요: 브리프에 없는 사실·수치·날짜·발언·감정(헤드라인에 없는 "뿌듯했다" 같은 말)이나 경험담("저도 그래요")은 넣지 않아요. 리듬을 만들려고 문장을 명사 토막으로 끊지도 마세요.\n` +
       `- 맞춤법은 표준으로: ~더라고요(×더라구요), ~거예요(×거에요), 돼요(×되요).\n` +
-      `- 좋은 예(사실·수치는 지어낸 것 — 형식만 참고): ${COPY_GOOD.map((c) => `title "${c.title}"(${charLen(c.title)}자) / desc "${c.desc}"(${charLen(c.desc)}자) / reason "${c.reason}"(${charLen(c.reason)}자)`).join(' ‖ ')}.\n` +
+      `- 좋은 예(사실·수치는 지어낸 것 — 형식만 참고하고 문장을 그대로 옮기지 마세요): ${COPY_GOOD.map((c) => `title "${c.title}"(${charLen(c.title)}자) / desc "${c.desc}"(${charLen(c.desc)}자) / reason "${c.reason}"(${charLen(c.reason)}자)`).join(' ‖ ')}.\n` +
       `- 나쁜 예: desc "${COPY_BAD.desc}"(${charLen(COPY_BAD.desc)}자) — 제목을 되풀이하고 권유 문장을 붙였어요. reason "${COPY_BAD.reason}" — 요일·날씨 + "잘 어울려요" 틀이에요. reason "${COPY_BAD.reasonMeta}" — 읽는 사람의 오늘이 아니라 기사 얘기예요. title "${TITLE_BAD}"(${charLen(TITLE_BAD)}자) — 너무 길고 질문에 군더더기가 붙었어요.\n` +
       `- 글자 수와 상투어는 코드가 재요: 위 글자 수는 목표치예요. 다 쓴 뒤 코드가 필드마다 글자 수, 덱 전체에서 반복된 상투어, 권유 어미·과장 수식·출처 얘기를 검사해서 걸린 필드만 따로 고쳐 써요. 그러니 글자를 하나씩 세거나 덱 전체를 다시 훑어 집계하지 말고, 대략 그 길이로 한 번에 쓰세요. 코드가 못 보는 건 사실이 브리프와 맞는지예요 — 그것만은 꼭 지키세요.\n` +
       `■ 오늘의 화제(뉴스 카드) ${NEWS_TARGET}장\n` +
-      `- [오늘의 화제 뉴스 후보]에서 "내일 아침 동료 대부분이 이미 봤거나 들었을 소식"을 골라 각각 카드 1장으로. 이름 붙은 날씨 사건(태풍 '○○'), 별명이 붙은 동물·동네 소식, 영상으로 퍼진 해외 소식, 아이돌 데뷔·컴백·작품처럼 구체적인 이름 하나가 걸린 소식이 좋아요. ★ 표시, '관련' 숫자가 큰 것, (오늘 기사)·(어제 기사)를 우선하세요. 같은 사건은 한 장만. 쓸 만한 후보가 모자라면 적게 만들어도 되지만 5장을 넘기면 안 돼요. [시장 시그널]·[경제] 줄로 만든 경제 카드는 이 수에 세지 않고, 화제 카드끼리도 카테고리는 서로 달라야 해요.\n` +
+      `- [오늘의 화제 뉴스 후보]에서 "내일 아침 동료 대부분이 이미 봤거나 들었을 소식"을 골라 각각 카드 1장으로. 이름 붙은 날씨 사건(태풍 '○○'), 별명이 붙은 동물·동네 소식, 영상으로 퍼진 해외 소식, 아이돌 데뷔·컴백·작품처럼 구체적인 이름 하나가 걸린 소식이 좋아요. ★ 표시, '관련' 숫자가 큰 것, (오늘 기사)·(어제 기사)를 우선하세요. 같은 사건은 한 장만. [이미 다룸 MM-DD]가 붙은 줄은 최근 덱에서 이미 카드로 나간 소식이라 고르지 마세요(같은 주인공의 다른 소식이어도요). 쓸 만한 후보가 모자라면 적게 만들어도 되지만 5장을 넘기면 안 돼요. [시장 시그널]·[경제] 줄로 만든 경제 카드는 이 수에 세지 않고, 화제 카드끼리도 카테고리는 서로 달라야 해요.\n` +
       `- 지역 축제, 선수 부상, 업계 내부 소식처럼 관심 있는 소수만 아는 뉴스와 정치·범죄·사고·재난·사망 소식은 후보에 있어도 화제 카드로 쓰지 마세요.\n` +
-      `- ★사실은 헤드라인과 그 아래 '같은 소식'에 적힌 것만 쓰세요. 거기에 없는 가격·날짜·사양·순위·수치·발언 인용은 지어내지 말고, 헤드라인이 애매하면 확실한 부분까지만 다루세요.\n` +
+      `- ★사실은 헤드라인과 그 아래 '같은 소식'에 적힌 것만 쓰세요. 거기에 없는 가격·날짜·사양·순위·수치·발언 인용은 지어내지 말고, 헤드라인이 애매하면 확실한 부분까지만 다루세요. 물음표로 끝나거나 추측하는 헤드라인('맛집 가짜?', '~할까')은 확정된 일로 쓰지 않아요.\n` +
       `- ★사람이 나오는 소식은 공개 활동(작품, 컴백, 공연, 수상, 경기 결과, 출연)만. 사생활·연애·결혼·가족·건강·루머는 금지, 그 사람을 평가하거나 품평하는 것도 금지예요. 질문은 연예인·선수의 사생활이 아니라 그 소식(무대·경기·작품)이나 듣는 사람의 경험으로 이어지게(예: "'○○' 무대 보셨어요?", "요즘 듣는 신인 노래 있어요?").\n` +
       `- 해외 시위처럼 편이 갈리는 소식은 무슨 일이 있었는지(규모·장소)만 쓰고 어느 쪽이 옳은지는 말하지 않아요. 사상자·피해 얘기는 쓰지 않아요.\n` +
       `- 시제: 어제·오늘 나온 소식이니 "~했대요", "~했다던데", "~공개됐다는데"처럼 이미 일어난 일로 쓰세요(아래 ★★"오늘" 단정 금지).\n` +
@@ -1260,11 +1291,8 @@ for (const t of data.topics) if (!t.special) delete t.special;
     const text = [draftCopy.get(t), t.title, t.desc].join(' ').toLowerCase().replace(/\s+/g, '');
     let best = null;
     for (const n of news) {
-      const quoted = [...new Set(quotedTitles([n.title, ...(n.details || [])].join(' ')))].filter((q) => text.includes(q));
-      const words = [...keyWords(n.title)].filter((w) => text.includes(w));
-      if (!quoted.length && words.length < 2 && !words.some((w) => w.length >= 3)) continue;
-      const score = quoted.length * 10 + words.reduce((sum, w) => sum + w.length, 0);
-      if (!best || score > best.score) best = { n, score };
+      const score = headlineScore(n, text, true);
+      if (score != null && (!best || score > best.score)) best = { n, score };
     }
     return best?.n ?? null;
   };
