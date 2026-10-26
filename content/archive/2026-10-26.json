@@ -34,13 +34,14 @@
           "caution": "소재가 무거울 수 있으니 논쟁 얘기는 피해요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg/1280px-HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/xYFTiwC7Tl0xOUFiVFUPWXHTHnr.jpg",
       "imageCredit": {
-        "author": "YipshaiukOWL",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:HK_%E5%B1%AF%E9%96%80%E9%86%AB%E9%99%A2_Tuen_Mun_Hospital_ground_floor_corridor_interior_July_2016_DSC.jpg"
-      }
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/tv/293610"
+      },
+      "imageKind": "poster"
     },
     {
       "id": "t6",
