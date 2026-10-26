@@ -41,6 +41,10 @@
 //                 temp file). Skips the run guard, like FORCE.
 //   EFFORT=<lvl>  main call's output_config.effort for this run (low|medium|
 //                 high|xhigh|max); unset = DEFAULT_EFFORT below.
+//   POSTER_TEST="<title>|<tv|movie>|<year>"  run only the TMDB poster lookup for
+//                 that title, log the result (poster URL included) and exit 0 —
+//                 no brief, no Claude call, nothing written. Needs
+//                 TMDB_READ_TOKEN. daily.yml's `poster_test` dispatch input.
 import { writeFileSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -84,6 +88,49 @@ const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
 const wd = kst.getUTCDay();
 const dateLabel = `${month}월 ${day}일 ${weekdays[wd]}요일`;
 const isWeekend = wd === 0 || wd === 6;
+
+// TMDB poster lookup (see "posters" near the bottom). These three constants
+// live up here, not next to findPoster, because POSTER_TEST runs that function
+// before the rest of the script — a `const` further down would still be in its
+// temporal dead zone (the function declarations below are hoisted).
+const TMDB_API = 'https://api.themoviedb.org/3';
+const TMDB_IMG = 'https://image.tmdb.org/t/p/';
+// `original` posters run ~0.1–1.5 MB; the rare huge one drops to w780.
+const TMDB_POSTER_MAX_BYTES = 2.5 * 1024 * 1024;
+
+// --- POSTER_TEST: verify the poster lookup on its own (e.g. from Actions, where
+// TMDB_READ_TOKEN lives). Runs before the run guard and everything that fetches,
+// calls Claude or writes a file, so it is safe on any day. Exit 0 whether or not
+// a poster was found — the log line is the answer; exit 1 only for bad input, a
+// missing token or a TMDB/network error.
+const POSTER_TEST = (process.env.POSTER_TEST || '').trim();
+if (POSTER_TEST) {
+  const [title = '', kind = '', yearText = ''] = POSTER_TEST.split('|').map((x) => x.trim());
+  const token = (process.env.TMDB_READ_TOKEN || '').trim();
+  if (!title || (kind !== 'tv' && kind !== 'movie')) {
+    console.error(`POSTER_TEST="${POSTER_TEST}" must look like "<title>|<tv|movie>|<year>"`);
+    process.exit(1);
+  }
+  if (!token) {
+    console.error('POSTER_TEST: TMDB_READ_TOKEN is not set');
+    process.exit(1);
+  }
+  const year = Number(yearText);
+  try {
+    const res = await findPoster({ kind, title, year: Number.isInteger(year) ? year : null }, { token, today: isoDate });
+    if (res.url) {
+      console.log(`poster test: FOUND ${res.kind} ${res.id} "${res.title}" (${res.date || 'undated'})${res.note}`);
+      console.log(`poster test: url ${res.url}${res.bytes ? ` (${(res.bytes / 1024).toFixed(0)} KB)` : ''}`);
+      console.log(`poster test: source ${res.sourceUrl}`);
+    } else {
+      console.log(`poster test: none for "${title}" (${kind}, ${yearText || 'no year'}) — ${res.why}`);
+    }
+  } catch (e) {
+    console.error(`poster test: lookup failed — ${e.message}`);
+    process.exit(1);
+  }
+  process.exit(0);
+}
 
 // --- run guard: only the first scheduled run of the day spends an API call ---
 // daily.yml fires at 04:47, 05:47 and 06:47 KST because GitHub's cron lands
@@ -2079,10 +2126,7 @@ for (const t of data.topics) {
 // photo for builds that predate credit lines, and the poster goes only into
 // `imageAttributed` + `imageCredit`, which the app shows strictly as a pair.
 // A missing token or any TMDB failure leaves the card's photo as it was.
-const TMDB_API = 'https://api.themoviedb.org/3';
-const TMDB_IMG = 'https://image.tmdb.org/t/p/';
-// `original` posters run ~0.1–1.5 MB; the rare huge one drops to w780.
-const TMDB_POSTER_MAX_BYTES = 2.5 * 1024 * 1024;
+// (TMDB_API, TMDB_IMG and TMDB_POSTER_MAX_BYTES are defined near the top, for POSTER_TEST.)
 
 // "'100일의 거짓말'" / "100일의 거짓말!" / "암살자(들)" → letters and digits only,
 // so quote marks, brackets, spacing and punctuation never decide a match.
@@ -2133,10 +2177,35 @@ async function probeImage(url) {
   }
 }
 
+// Does `raw` start with the headline's title (already normalised as `want`) and
+// then a subtitle boundary? Checked on the raw string, because normTitle drops
+// the very punctuation that marks the boundary: "닥터 X ~외과의 다이몬 미치코~"
+// → head "닥터 X " → "닥터x". A boundary needs a title before it, and "-" only
+// counts with a space in front, so "스파이더-맨" is not "스파이더" + subtitle.
+function startsWithTitle(raw, want) {
+  const text = String(raw ?? '').normalize('NFC');
+  // Defined here, not at module level: POSTER_TEST calls this before the script's
+  // other top-level consts exist.
+  const boundary = /[:：–—~～〜(（]| -/gu;
+  for (const m of text.matchAll(boundary)) {
+    if (normTitle(text.slice(0, m.index)) === want) return true;
+  }
+  return false;
+}
+
 // Matching rules (TMDB search returns everything that merely CONTAINS the
 // words — "실낙원" also brings back three "Paradise Lost" documentaries):
-//  1. Exact title only: the normalised Korean `title`/`name` or the original
-//     title must equal the headline's title. With a poster.
+//  1. Exact title: the normalised Korean `title`/`name` or the original title
+//     must equal the headline's title. With a poster.
+//     Only when NOTHING matches exactly: a "short title" match — the title (or
+//     original title) STARTS with the headline's title and then a subtitle
+//     boundary (":", " -", "–", "~", "(", "："). News says '닥터X'; TMDB files
+//     '닥터X: 하얀 마피아의 시대'. A bare prefix is not enough ('닥터' must not
+//     pick '닥터 차정숙'), and an exact match always beats a prefix match. Below,
+//     rules 2–3 apply to whichever kind of match we have; among several
+//     title+subtitle matches in the window a Korean headline prefers a Korean
+//     work (origin_country KR / original_language ko — '닥터 X ~외과의 다이몬
+//     미치코~' is the Japanese one), then the newest.
 //  2. Prefer works dated within [today − 2 y, today + 1 y] — the news is
 //     almost always about something new — closest year to `media.year` first,
 //     then popularity. "실낙원" has TWO exact matches in that window: 연상호's
@@ -2165,13 +2234,21 @@ async function findPoster(media, { token, today }) {
   const params = { query: String(media.title).trim(), language: 'ko-KR', include_adult: 'false' };
   if (kind === 'movie') params.region = 'KR';
   const results = (await tmdbGet(`/search/${kind}`, params, token)).results || [];
-  const exact = results.filter((it) => normTitle(name(it)) === want || normTitle(orig(it)) === want);
-  if (!exact.length) {
-    const near = results.slice(0, 3).map((it) => `"${name(it)}"`).join(', ');
-    return { why: `no exact ${kind} title match for "${media.title}" among ${results.length} result(s)${near ? ` (${near})` : ''}` };
+  // An exact match always beats a short-title match, so the second pool is only
+  // looked at when the first one is empty.
+  let matches = results.filter((it) => normTitle(name(it)) === want || normTitle(orig(it)) === want);
+  let rule = 'exact';
+  if (!matches.length) {
+    matches = results.filter((it) => startsWithTitle(name(it), want) || startsWithTitle(orig(it), want));
+    rule = 'prefix+subtitle';
   }
-  const usable = exact.filter((it) => it.poster_path);
-  if (!usable.length) return { why: `${exact.length} exact match(es) for "${media.title}", none with a poster` };
+  if (!matches.length) {
+    const near = results.slice(0, 3).map((it) => `"${name(it)}"`).join(', ');
+    return { why: `no exact or title+subtitle ${kind} match for "${media.title}" among ${results.length} result(s)${near ? ` (${near})` : ''}` };
+  }
+  const label = rule === 'exact' ? 'exact' : 'title+subtitle';
+  const usable = matches.filter((it) => it.poster_path);
+  if (!usable.length) return { why: `${matches.length} ${label} match(es) for "${media.title}", none with a poster` };
 
   const Y = Number(today.slice(0, 4));
   const lo = `${Y - 2}${today.slice(4)}`;
@@ -2181,32 +2258,45 @@ async function findPoster(media, { token, today }) {
   const pop = (it) => it.popularity || 0;
   const stub = (it) => !it.vote_count && date(it) && (Date.parse(today) - Date.parse(date(it))) / 86400e3 > 60;
   const inWindow = usable.filter((it) => date(it) >= lo && date(it) <= hi && !stub(it));
+  // Short-title matches only: for a Korean headline a Korean work comes first.
+  const korean = rule !== 'exact' && /\p{Script=Hangul}/u.test(media.title);
+  const isKorean = (it) => it.original_language === 'ko' || (it.origin_country || []).includes('KR');
+  const koreanFirst = (it) => (korean && isKorean(it) ? 0 : 1);
   let pick;
-  let note = '';
+  let note = rule === 'exact' ? '' : ' [prefix+subtitle]';
   if (inWindow.length) {
-    pick = inWindow.sort((a, b) => yearGap(a) - yearGap(b) || pop(b) - pop(a))[0];
-    if (inWindow.length > 1) note = ` [${inWindow.length} exact matches in window, closest to ${year}]`;
+    pick = rule === 'exact'
+      ? inWindow.sort((a, b) => yearGap(a) - yearGap(b) || pop(b) - pop(a))[0]
+      : inWindow.sort((a, b) => koreanFirst(a) - koreanFirst(b) || date(b).localeCompare(date(a)) || pop(b) - pop(a))[0];
+    if (inWindow.length > 1) {
+      note += rule === 'exact'
+        ? ` [${inWindow.length} exact matches in window, closest to ${year}]`
+        : ` [${inWindow.length} title+subtitle matches in window, ${korean ? 'Korean first, then ' : ''}newest]`;
+    }
   } else {
     const clearly = (list) => {
       const byPop = [...list].sort((a, b) => pop(b) - pop(a));
-      if (byPop.length === 1) return { it: byPop[0], why: 'the only exact match' };
+      if (byPop.length === 1) return { it: byPop[0], why: `the only ${label} match` };
       if (pop(byPop[0]) > 0 && pop(byPop[0]) >= 10 * pop(byPop[1])) {
         return { it: byPop[0], why: `${Math.round(pop(byPop[0]) / Math.max(pop(byPop[1]), 0.01))}× as popular as the other ${byPop.length - 1}` };
       }
       return null;
     };
     const own = usable.filter((it) => normTitle(orig(it)) === want);
-    let c = clearly(usable);
+    // Short-title matches outside the window: a Korean headline narrows to the
+    // Korean works first (when there are any), then the same "clearly the one" test.
+    const korean1 = korean && usable.some(isKorean) ? usable.filter(isKorean) : usable;
+    let c = clearly(korean1);
     if (!c && own.length && own.length < usable.length) {
       c = clearly(own);
       if (c) c.why += ` of ${own.length} originally titled "${media.title}"`;
     }
     if (!c) {
       const list = [...usable].sort((a, b) => pop(b) - pop(a)).slice(0, 4).map((it) => `${it.id} ${date(it) || 'undated'}`).join(', ');
-      return { why: `${usable.length} exact matches for "${media.title}", none usable in ${lo}…${hi} and none clearly the one (${list})` };
+      return { why: `${usable.length} ${label} matches for "${media.title}", none usable in ${lo}…${hi} and none clearly the one (${list})` };
     }
     pick = c.it;
-    note = ` [nothing recent and rated in ${lo}…${hi}; ${c.why}]`;
+    note += ` [nothing recent and rated in ${lo}…${hi}; ${c.why}]`;
   }
 
   // `original` unless it is oversized or its size is unknown; then w780.
@@ -2224,7 +2314,7 @@ async function findPoster(media, { token, today }) {
     }
   }
   return {
-    kind, id: pick.id, title: name(pick), date: date(pick), url, bytes: probe.bytes, note,
+    kind, id: pick.id, title: name(pick), date: date(pick), url, bytes: probe.bytes, note, rule,
     sourceUrl: `https://www.themoviedb.org/${kind}/${pick.id}`,
   };
 }

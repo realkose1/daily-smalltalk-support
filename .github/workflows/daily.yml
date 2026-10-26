@@ -32,6 +32,13 @@ on:
         description: "Main call effort for this run: low | medium | high | xhigh | max (empty = the code's default)"
         type: string
         default: ''
+      # Check the TMDB poster lookup live (the token only exists as a repo
+      # secret): "<title>|<tv|movie>|<year>", e.g. 닥터X|tv|2026. Runs only the
+      # poster search — no Claude call, nothing generated, committed or synced.
+      poster_test:
+        description: "Poster lookup test only, '<title>|<tv|movie>|<year>' (empty = normal run)"
+        type: string
+        default: ''
 
 permissions:
   contents: write
@@ -39,9 +46,9 @@ permissions:
 # Runs queue here instead of overlapping, so a later schedule only starts once
 # the earlier run has pushed its today.json. Dry runs get a group of their own:
 # a group holds one pending run, and a dry run queued behind a running one
-# would cancel a pending scheduled run.
+# would cancel a pending scheduled run. Poster tests likewise.
 concurrency:
-  group: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'daily-topic-dry-run' || 'daily-topic' }}
+  group: ${{ github.event_name == 'workflow_dispatch' && inputs.poster_test != '' && 'daily-topic-poster-test' || github.event_name == 'workflow_dispatch' && inputs.dry_run && 'daily-topic-dry-run' || 'daily-topic' }}
   cancel-in-progress: false
 
 jobs:
@@ -78,11 +85,14 @@ jobs:
           # Manual-only; scheduled runs get '0' / '' (= the code's default effort).
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '0' }}
           EFFORT: ${{ github.event_name == 'workflow_dispatch' && inputs.effort || '' }}
+          # Manual-only: set → generate.mjs runs just the poster lookup and exits 0.
+          POSTER_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.poster_test || '' }}
         run: npm run generate
 
       - name: Commit if changed
-        # Skipped on a dry run, which writes nothing to the checkout anyway.
-        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+        # Skipped on a dry run or a poster test, which write nothing to the
+        # checkout anyway.
+        if: ${{ !(github.event_name == 'workflow_dispatch' && (inputs.dry_run || inputs.poster_test != '')) }}
         run: |
           git config user.name "daily-smalltalk-bot"
           git config user.email "bot@users.noreply.github.com"
