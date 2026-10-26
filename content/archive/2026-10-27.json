@@ -1,0 +1,302 @@
+{
+  "date": "2026-10-27",
+  "dateLabel": "10월 27일 화요일",
+  "generatedAt": "2026-10-26T23:22:38.663Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "버즈",
+      "color": "#1F4E8C",
+      "title": "삼성이 클립형 이어폰 '갤럭시 버즈 온'을 냈대요",
+      "desc": "시리즈 최초 클립형 무선 이어폰으로 국내 출시됐대요.",
+      "reason": "아침 9°로 쌀쌀해 이어폰 끼고 걷는 출근길이 늘었어요.",
+      "questions": [
+        "이어폰은 귀에 꽂는 게 편하세요, 클립형이 끌리세요?",
+        "출퇴근길에 이어폰으로 뭐 들으세요?",
+        "최근에 새로 산 전자기기 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성에서 클립형 이어폰 나왔다던데 보셨어요?",
+          "follow": "시리즈 최초 클립형이라는데, 평소에 쓰는 이어폰은 어떤 거예요?",
+          "caution": "특정 제품 사라고 권하는 말투는 피하세요."
+        },
+        "friend": {
+          "opener": "삼성에서 클립형 이어폰 나왔더라. 봤어?",
+          "follow": "귀에 안 꽂는 거라 신기하더라. 너 지금 뭐 써?",
+          "caution": "가격 얘기로 신제품 쓰는 사람 놀리지 마세요."
+        },
+        "date": {
+          "opener": "요즘 이어폰 뭐 쓰세요? 삼성에서 클립형이 새로 나왔대요.",
+          "follow": "음악 들을 때 주로 어떤 장르 들으세요?",
+          "caution": "제품 스펙을 길게 설명하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "날씨",
+      "subtopic": "태풍",
+      "label": "태풍",
+      "color": "#2C5F7C",
+      "title": "31호 태풍 '인파'가 초속 53m까지 발달한대요",
+      "desc": "괌 동쪽 해상에서 서쪽으로 이동 중이래요.",
+      "reason": "오늘 서울은 맑고 최고 16°라 태풍이 먼 얘기 같아요.",
+      "questions": [
+        "태풍 오는 날 출근길은 어떻게 하세요?",
+        "태풍 때문에 계획이 틀어진 적 있으세요?",
+        "강풍 부는 날엔 집에서 뭘 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "31호 태풍 인파가 초속 53m까지 강해진대요. 보셨어요?",
+          "follow": "한반도 영향 가능성도 지켜보는 중이래요. 지난 태풍 때 출근 어땠어요?",
+          "caution": "피해 상황을 과장해서 말하지 마세요."
+        },
+        "friend": {
+          "opener": "31호 태풍 인파 알아? 초속 53m까지 강해진대.",
+          "follow": "아직 괌 쪽이래. 태풍 오면 뭐 할 거야?",
+          "caution": "불안을 부추기는 말은 빼요."
+        },
+        "date": {
+          "opener": "31호 태풍 인파가 엄청 세진대요. 태풍 오는 날 좋아하세요?",
+          "follow": "비 오는 날엔 주로 뭐 하세요?",
+          "caution": "재난 이야기로 분위기 무겁게 만들지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Stormy_Shores_MG_0679.jpg/1280px-Stormy_Shores_MG_0679.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Ronnie Robertson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stormy_Shores_MG_0679.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "음식",
+      "subtopic": "커피·음료",
+      "label": "따뜻한차",
+      "color": "#6D4C41",
+      "title": "쌀쌀한 아침엔 어떤 따뜻한 음료로 시작하세요?",
+      "desc": "오늘 서울은 최저 5°에서 최고 16°까지 올라요.",
+      "reason": "맑지만 찬바람이 부는 화요일 아침이에요.",
+      "questions": [
+        "요즘 가장 자주 마시는 따뜻한 음료는요?",
+        "뜨거운 음료 vs 아이스, 겨울에도 아이스세요?",
+        "집에서 우려 마시는 차 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "아침 공기 차가운데 오늘 뭐 드셨어요?",
+          "follow": "따뜻한 음료로 시작하는 편이세요?",
+          "caution": "카페인 섭취를 지적하지 마세요."
+        },
+        "friend": {
+          "opener": "아침 되게 춥더라. 오늘 뭐 마셨어?",
+          "follow": "요즘 꽂힌 음료 있어?",
+          "caution": "취향 비하는 하지 마."
+        },
+        "date": {
+          "opener": "요즘 날씨 쌀쌀한데 따뜻한 음료 좋아하세요?",
+          "follow": "자주 가는 카페 있으세요?",
+          "caution": "취향 평가는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Hot_Chocolate.jpg/1280px-Hot_Chocolate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "KR Chrutti",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hot_Chocolate.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "커리어",
+      "subtopic": "이직",
+      "label": "계약직",
+      "color": "#455A64",
+      "title": "청년들이 계약직만 잡혀 이직 장벽이 높대요",
+      "desc": "AI 성장의 수출엔 효자인데 취업엔 장벽이래요.",
+      "reason": "가을 이직 시즌이라 일자리 고민이 자주 나와요.",
+      "questions": [
+        "첫 직장에서 가장 많이 배운 건 뭐예요?",
+        "이직 고민해 본 적 있으세요?",
+        "일하면서 숙련도가 쌓인다고 느낄 때는 언제예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "청년들 계약직 때문에 이직 장벽이 높다는 기사 봤어요?",
+          "follow": "처음 일 시작했을 때 어땠어요?",
+          "caution": "개인 처우나 연봉 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "청년들 계약직만 잡혀서 이직 어렵다던데.",
+          "follow": "너는 요즘 일 어때?",
+          "caution": "고민 있는 사람에게 훈계하지 마."
+        },
+        "date": {
+          "opener": "요즘 일 구하기 어렵다는 얘기 들으셨어요?",
+          "follow": "지금 하는 일 어떻게 시작하셨어요?",
+          "caution": "직장 불만을 길게 늘어놓지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Weston_Tolls-_Weekday_Morning_Peak_More_Fast_Lanes%2C_January_21%2C_2010_%284293675322%29.jpg/1280px-Weston_Tolls-_Weekday_Morning_Peak_More_Fast_Lanes%2C_January_21%2C_2010_%284293675322%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t8",
+      "cat": "건강",
+      "subtopic": "운동",
+      "label": "걸음",
+      "color": "#00796B",
+      "title": "하루 8875보 걸으면 뇌에 변화가 있대요",
+      "desc": "5000보 미만이면 치매 등 뇌질환 진단율이 거의 두 배래요.",
+      "reason": "맑고 최고 16°라 점심에 걷기 좋아요.",
+      "questions": [
+        "하루에 몇 보쯤 걸으세요?",
+        "걷기 좋은 코스 알고 계세요?",
+        "점심시간에 산책하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "하루 8875보 걸으면 뇌에 좋대요. 보셨어요?",
+          "follow": "5000보 미만이면 진단율이 두 배라던데, 보통 얼마나 걸으세요?",
+          "caution": "건강 상태를 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "하루 8875보가 뇌에 좋대. 알아?",
+          "follow": "우리 오늘 점심에 걸을까?",
+          "caution": "겁주는 말투는 피해."
+        },
+        "date": {
+          "opener": "요즘 걷기 좋은 날씨죠? 하루에 얼마나 걸으세요?",
+          "follow": "좋아하는 산책 코스 있으세요?",
+          "caution": "몸 상태 묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/2019-11-26_12_26_12_Norway_Maple_leaves_in_late_autumn_along_a_walking_path_in_the_Franklin_Glen_section_of_Chantilly%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-11-26_12_26_12_Norway_Maple_leaves_in_late_autumn_along_a_walking_path_in_the_Franklin_Glen_section_of_Chantilly%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Famartin",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019-11-26_12_26_12_Norway_Maple_leaves_in_late_autumn_along_a_walking_path_in_the_Franklin_Glen_section_of_Chantilly,_Fairfax_County,_Virginia.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "치이카와",
+      "color": "#C2185B",
+      "title": "'치이카와'가 3주째 박스오피스 1위래요",
+      "desc": "관객 200만을 넘겨 올해 열 번째 200만 영화가 됐대요.",
+      "reason": "단풍 철이라 주말 나들이 뒤에 영화 한 편 보기 좋아요.",
+      "questions": [
+        "'치이카와' 보셨거나 볼 생각 있으세요?",
+        "올해 본 영화 중 제일 좋았던 건 뭐예요?",
+        "영화는 혼자 보세요, 같이 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'치이카와'가 3주째 1위래요. 보셨어요?",
+          "follow": "200만도 넘었대요. 요즘 극장 가신 적 있어요?",
+          "caution": "취향 품평은 피하세요."
+        },
+        "friend": {
+          "opener": "'치이카와' 3주째 1위래. 봤어?",
+          "follow": "200만 넘었다던데 같이 볼래?",
+          "caution": "스포일러 조심해."
+        },
+        "date": {
+          "opener": "'치이카와'가 3주째 1위라던데 아세요?",
+          "follow": "영화 볼 때 팝콘 꼭 드세요?",
+          "caution": "취향을 평가하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Sylvan_Theater_Building%2C_Sylva%2C_NC_%2832764629778%29.jpg/1280px-Sylvan_Theater_Building%2C_Sylva%2C_NC_%2832764629778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/4DX_seats_in_cinema_%28motion_and_environmental_effects_synced_with_the_on-screen_action%29_bench_rows_in_a_movie_theater_hall_Kinostoler_kinosal_Kilden_kino_T%C3%B8nsberg%2C_Norway_2023_IMG_7852.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Wolfmann",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:4DX_seats_in_cinema_(motion_and_environmental_effects_synced_with_the_on-screen_action)_bench_rows_in_a_movie_theater_hall_Kinostoler_kinosal_Kilden_kino_T%C3%B8nsberg,_Norway_2023_IMG_7852.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "경제",
+      "subtopic": "환율",
+      "label": "환율",
+      "color": "#2E7D32",
+      "title": "환율이 1,325원으로 내렸다던데, 직구 하세요?",
+      "desc": "어제 종가 기준 직전 거래일보다 0.1% 내려 원화 강세예요.",
+      "reason": "겨울 옷 장만하는 철이라 직구 얘기가 나올 때예요.",
+      "questions": [
+        "요즘 직구로 산 것 있으세요?",
+        "해외여행 가면 제일 먼저 사는 게 뭐예요?",
+        "환율 체감할 때가 언제예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "환율이 1,325원으로 내렸대요. 직구 하세요?",
+          "follow": "원화 강세라는데 요즘 산 것 있어요?",
+          "caution": "전망이나 투자 조언은 피하세요."
+        },
+        "friend": {
+          "opener": "환율 1,325원으로 내렸더라. 직구 뭐 사봤어?",
+          "follow": "해외여행 가면 뭐 살 거야?",
+          "caution": "돈 쓰는 걸 지적하지 마."
+        },
+        "date": {
+          "opener": "환율이 좀 내렸대요. 해외여행 가신 적 있으세요?",
+          "follow": "제일 좋았던 곳이 어디예요?",
+          "caution": "소득이나 재산 얘기는 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Stock_market_Image_public_domain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t4",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "판다",
+      "color": "#37474F",
+      "title": "에버랜드 유튜브 구독자가 200만을 넘었대요",
+      "desc": "판다 영상이 인기고 쌍둥이는 12월 중으로 온대요.",
+      "reason": "단풍철이라 동물원 나들이 얘기 꺼내기 좋은 때예요.",
+      "questions": [
+        "동물원 마지막으로 간 게 언제예요?",
+        "좋아하는 동물 영상 있으세요?",
+        "판다 보러 가 보실래요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "에버랜드 유튜브가 구독자 200만 넘었대요. 보셨어요?",
+          "follow": "판다 영상 인기가 크대요. 동물 영상 즐겨 보세요?",
+          "caution": "개인 취향 몰아가지 마세요."
+        },
+        "friend": {
+          "opener": "에버랜드 유튜브 200만 넘었대. 판다 때문인가 봐.",
+          "follow": "우리 단풍 구경 겸 가볼까?",
+          "caution": "너무 길게 영상 설명하지 마."
+        },
+        "date": {
+          "opener": "에버랜드 유튜브가 200만 넘었대요. 동물 좋아하세요?",
+          "follow": "동물원 가면 제일 보고 싶은 동물이 뭐예요?",
+          "caution": "동물 알레르기 등 민감 주제는 조심하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Panda_eating_bamboo_leaves.jpg/1280px-Panda_eating_bamboo_leaves.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    }
+  ]
+}
