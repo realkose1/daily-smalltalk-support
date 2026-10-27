@@ -1,0 +1,317 @@
+{
+  "date": "2026-10-28",
+  "dateLabel": "10월 28일 수요일",
+  "generatedAt": "2026-10-27T23:14:37.500Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "문화",
+      "subtopic": "예능",
+      "label": "스디파",
+      "color": "#6A1B9A",
+      "title": "백구영이 '스디파'에서 41세에 우승했대요",
+      "desc": "24년간 멈추지 않고 달려온 자신에게 주는 개근상이라고 했대요.",
+      "reason": "수요일 한가운데, 보고 나면 힘이 나는 우승 소식이에요.",
+      "questions": [
+        "요즘 챙겨 보는 댄스나 서바이벌 프로 있어요?",
+        "오래 해온 일로 상을 받는다면 뭐가 좋으세요?",
+        "최근에 무대 영상 찾아본 적 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'스디파' 우승한 백구영 씨 얘기 들으셨어요? 41세에 우승했대요.",
+          "follow": "24년 동안 쉬지 않고 달려온 개근상 같다고 했대요.",
+          "caution": "출연자 외모나 나이를 평가하는 말은 피하세요."
+        },
+        "friend": {
+          "opener": "야 '스디파' 백구영 우승한 거 봤어? 41세래.",
+          "follow": "본인이 개근상 받은 기분이라고 했다더라.",
+          "caution": "참가자 품평은 하지 말기."
+        },
+        "date": {
+          "opener": "'스디파'라는 댄서 서바이벌 우승 소식 들으셨어요?",
+          "follow": "춤 나오는 프로그램 즐겨 보시는 편이세요?",
+          "caution": "출연자 사생활 얘기는 꺼내지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Spotlight_on_Tradition.jpg/1280px-Spotlight_on_Tradition.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Bert Andone",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spotlight_on_Tradition.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "PO",
+      "color": "#1565C0",
+      "title": "삼성이 KIA 꺾고 플레이오프 2차전을 가져갔대요",
+      "desc": "최형우가 홈런·타점·보살까지 해내며 8-3으로 이겼대요.",
+      "reason": "3차전 선발이 시라카와로 정해져 시리즈가 이어져요.",
+      "questions": [
+        "가을야구 어느 팀 응원하세요?",
+        "야구 볼 때 꼭 챙기는 간식 있어요?",
+        "직관과 집관 중 어느 쪽이세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "어제 플레이오프 보셨어요? 삼성이 8-3으로 이겼대요.",
+          "follow": "최형우 선수가 홈런에 보살까지 했다던데요.",
+          "caution": "응원 팀이 갈릴 수 있으니 승패 놀리기는 피하세요."
+        },
+        "friend": {
+          "opener": "어제 삼성 이긴 거 봤어? 8-3이래.",
+          "follow": "최형우가 수비까지 잘했대, 3차전은 시라카와래.",
+          "caution": "상대 팀 팬 놀리지 말기."
+        },
+        "date": {
+          "opener": "요즘 가을야구 하는데 야구 좋아하세요?",
+          "follow": "직관 가보신 적 있으세요?",
+          "caution": "응원팀 얘기로 열 올리지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WiiWii",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(5).jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "GPT",
+      "color": "#00695C",
+      "title": "오픈AI가 'GPT-6.1 테라'를 공개했대요",
+      "desc": "API 비용을 절반으로 낮추고 코딩 성능은 2배라고 해요.",
+      "reason": "수요일 업무 중에 AI 도구를 쓰는 분이 많아요.",
+      "questions": [
+        "요즘 AI 어떤 일에 쓰세요?",
+        "AI한테 제일 먼저 맡긴 일이 뭐예요?",
+        "새 AI 나오면 바로 써 보는 편이에요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오픈AI가 GPT-6.1 테라 냈대요. 써 보셨어요?",
+          "follow": "API 비용이 절반으로 내렸다던데요.",
+          "caution": "회사 자료를 AI에 넣는 얘기는 조심하세요."
+        },
+        "friend": {
+          "opener": "GPT-6.1 테라 나왔대, 써 봤어?",
+          "follow": "코딩 성능이 2배라던데.",
+          "caution": "기술 용어 너무 늘어놓지 말기."
+        },
+        "date": {
+          "opener": "요즘 AI 서비스 쓰세요?",
+          "follow": "주로 어떤 걸 물어보세요?",
+          "caution": "업무 얘기로 빠지지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "HaeB",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pioneer_Building,_San_Francisco_(2019)_-1.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#C62828",
+      "title": "SK하이닉스가 어제 5.2% 올랐다던데, 주식 하세요?",
+      "desc": "어제 종가 134만 1천 원이고 삼성전자도 4.2% 올랐어요.",
+      "reason": "내일 SK하이닉스 3분기 실적 발표가 예정돼 있어요.",
+      "questions": [
+        "주식 얘기 주변에서 많이 들리세요?",
+        "처음 산 주식 기억나세요?",
+        "재테크는 어떻게 하고 계세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "어제 SK하이닉스 5.2% 올랐대요.",
+          "follow": "삼성전자도 4.2% 올랐다던데요.",
+          "caution": "종목 추천이나 수익 자랑은 피하세요."
+        },
+        "friend": {
+          "opener": "어제 하이닉스 5% 넘게 올랐더라.",
+          "follow": "너 주식 하는 거 있어?",
+          "caution": "사라 말라 하지 말기."
+        },
+        "date": {
+          "opener": "요즘 주식 얘기 많은데 관심 있으세요?",
+          "follow": "재테크 뭐 해보셨어요?",
+          "caution": "수익 캐묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "핼러윈",
+      "color": "#4527A0",
+      "title": "3일 뒤가 핼러윈인데, 친구들이랑 뭐 하세요?",
+      "desc": "10월 31일이고 올해는 토요일이에요.",
+      "reason": "핼러윈이 사흘 앞이라 모임 계획이 오가는 때예요.",
+      "questions": [
+        "핼러윈 분장해 본 적 있어요?",
+        "호박 모양 간식 좋아하세요?",
+        "친구들이랑 하는 연례 모임이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "곧 핼러윈인데 계획 있으세요?",
+          "follow": "분장해 본 적 있으세요?",
+          "caution": "참여를 강요하지 마세요."
+        },
+        "friend": {
+          "opener": "핼러윈 3일 남았네, 뭐 할 거야?",
+          "follow": "분장 같이 할까?",
+          "caution": "복장 놀리지 말기."
+        },
+        "date": {
+          "opener": "핼러윈 챙기는 편이세요?",
+          "follow": "좋아하는 공포 영화 있으세요?",
+          "caution": "무서운 얘기 강요하지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/Jack-o-lantern_pumpkins.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Jack-o%27-lantern_2.jpg/1280px-Jack-o%27-lantern_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "F0i",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jack-o%27-lantern_2.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "한파",
+      "color": "#37474F",
+      "title": "전국에 한파특보가 내려 영하권으로 떨어졌대요",
+      "desc": "서울 아침 2°C, 낮엔 11°까지 올라 맑아요.",
+      "reason": "아침엔 쌀쌀하고 낮엔 포근해 겉옷 고민이 돼요.",
+      "questions": [
+        "아침에 제일 먼저 꺼낸 겨울 아이템이 뭐예요?",
+        "출근길 추위 피하는 비법 있어요?",
+        "올가을 단풍은 보셨어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 아침 꽤 춥던데 어떻게 오셨어요?",
+          "follow": "낮엔 11도까지 오른대요.",
+          "caution": "날씨 불평만 길게 하진 마세요."
+        },
+        "friend": {
+          "opener": "오늘 아침 완전 춥지 않았어? 벌써 겨울이야.",
+          "follow": "너 첫 패딩 꺼냈어?",
+          "caution": "옷차림 지적 금지."
+        },
+        "date": {
+          "opener": "요즘 아침에 많이 춥죠? 뭐 입고 다니세요?",
+          "follow": "겨울보다 가을이 더 좋으세요?",
+          "caution": "날씨 얘기만 반복하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Frosty_Morning.jpg/1280px-Frosty_Morning.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Theactivistuk",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frosty_Morning.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "슈바오",
+      "color": "#2E7D32",
+      "title": "아기 판다 '슈바오'가 30일에 첫 공개된대요",
+      "desc": "171g으로 태어나 지금은 9kg까지 컸대요.",
+      "reason": "공개가 이틀 뒤라 주말 나들이 계획과 이어져요.",
+      "questions": [
+        "동물원 마지막으로 간 게 언제예요?",
+        "판다 보러 간다면 누구랑 가고 싶어요?",
+        "좋아하는 동물 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "슈바오 30일에 처음 공개된대요. 보셨어요?",
+          "follow": "171g으로 태어나서 9kg까지 컸대요.",
+          "caution": "관람 일정은 확인된 것만 말하세요."
+        },
+        "friend": {
+          "opener": "슈바오 30일에 공개된대, 같이 갈래?",
+          "follow": "판다 5마리를 한자리에서 볼 수 있대.",
+          "caution": "날짜 확정 안 된 약속은 금물."
+        },
+        "date": {
+          "opener": "에버랜드 아기 판다 소식 들으셨어요?",
+          "follow": "동물원 가는 거 좋아하세요?",
+          "caution": "첫 만남부터 장거리 약속은 부담돼요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Panda_eating_bamboo_leaves.jpg/1280px-Panda_eating_bamboo_leaves.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Korea-Yongin-Everland-04.jpg/1280px-Korea-Yongin-Everland-04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "by Nagyman",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea-Yongin-Everland-04.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "군고구마",
+      "color": "#E65100",
+      "title": "쌀쌀한 아침엔 어떤 제철 간식이 생각나세요?",
+      "desc": "단풍 든 가을이라 길거리에서 군고구마 냄새가 나기 시작해요.",
+      "reason": "서울 낮 최고가 11°라 따뜻한 간식이 당겨요.",
+      "questions": [
+        "겨울 간식 중 최애가 뭐예요?",
+        "올해 첫 호떡이나 붕어빵 먹었어요?",
+        "집에서 해 먹는 간식 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "날 추워지니 군고구마 같은 게 생각나네요.",
+          "follow": "점심에 따뜻한 국물 드실래요?",
+          "caution": "다이어트 얘기는 꺼내지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 붕어빵 파는 데 찾았어?",
+          "follow": "난 고구마가 당기더라.",
+          "caution": "맛 취향 비난 금지."
+        },
+        "date": {
+          "opener": "요즘 날씨에 생각나는 간식 있으세요?",
+          "follow": "겨울 간식 중 뭐 좋아하세요?",
+          "caution": "음식 가리는 걸 지적하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Roasted_sweet_potato.jpg/1280px-Roasted_sweet_potato.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Sesame-roasted_sweet_potato_wedges_with_Brocolli_%283257806891%29.jpg/1280px-Sesame-roasted_sweet_potato_wedges_with_Brocolli_%283257806891%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Karen and Brad Emerson",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sesame-roasted_sweet_potato_wedges_with_Brocolli_(3257806891).jpg"
+      }
+    }
+  ]
+}
