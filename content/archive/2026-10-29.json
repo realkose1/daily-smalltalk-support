@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-29",
+  "dateLabel": "10월 29일 목요일",
+  "generatedAt": "2026-10-28T23:35:34.651Z",
+  "topics": [
+    {
+      "id": "macbook",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "맥북",
+      "color": "#1F2937",
+      "title": "애플이 첫 터치스크린 맥북 프로를 공개했대요",
+      "desc": "OLED 화면에 M5 칩을 달았고 479만원부터래요.",
+      "reason": "비 오는 목요일, 노트북 바꿀 때가 됐는지 따져 보는 사람이 많아요.",
+      "questions": [
+        "터치스크린 노트북이라면 어떨 때 제일 쓸 것 같아요?",
+        "지금 쓰는 노트북은 몇 년째예요?",
+        "노트북 고를 때 제일 먼저 보는 게 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "애플이 터치스크린 맥북 프로 냈다던데 보셨어요?",
+          "follow": "479만원부터라는데, 회사에서 쓰는 노트북은 어떤 거예요?",
+          "caution": "특정 기종 비하나 가격 자랑은 피하세요."
+        },
+        "friend": {
+          "opener": "맥북 프로가 터치스크린으로 나왔대. 봤어?",
+          "follow": "OLED에 M5 칩이라는데 너 노트북 바꿀 때 안 됐어?",
+          "caution": "사라 말라 부추기지 마."
+        },
+        "date": {
+          "opener": "애플이 터치스크린 맥북 프로를 냈다던데 들으셨어요?",
+          "follow": "노트북은 주로 어떤 일에 쓰세요?",
+          "caution": "가격이나 스펙 자랑은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Apple_park_cupertino_2019.jpg/1280px-Apple_park_cupertino_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Arne Müseler",
+        "license": "CC BY-SA 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple_park_cupertino_2019.jpg"
+      }
+    },
+    {
+      "id": "hydrogen",
+      "cat": "시즌",
+      "subtopic": "기념일",
+      "label": "핼러윈",
+      "color": "#C2410C",
+      "title": "모레가 핼러윈인데, 올해 코스튬 정하셨어요?",
+      "desc": "이번 핼러윈은 토요일이라 하루 전 금요일 밤에도 모임이 많아요.",
+      "reason": "서울은 최저 5°라 겉옷을 겹쳐 입는 코스튬이 현실적이에요.",
+      "questions": [
+        "코스튬 중에 제일 기억에 남는 건 뭐예요?",
+        "핼러윈에 꼭 먹는 간식 있어요?",
+        "올해 해 보고 싶은 분장이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "모레가 핼러윈이네요. 사무실에 사탕 놓아 볼까요?",
+          "follow": "어릴 때 해 본 분장 있으세요?",
+          "caution": "종교나 취향 얘기로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "모레 핼러윈인데 뭐 입을 거야?",
+          "follow": "추우니까 안에 껴입는 것도 생각해 봐야겠다.",
+          "caution": "남의 분장 품평은 하지 마."
+        },
+        "date": {
+          "opener": "핼러윈 분장해 보신 적 있으세요?",
+          "follow": "제일 웃겼던 분장은 뭐였어요?",
+          "caution": "같이 하자고 강요하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Traveler_and_Friends_Halloween_Pumpkin_Stencils_%28SVS14436_-_PumpkinTemplate_Traveler_Carved%29.jpg/1280px-Traveler_and_Friends_Halloween_Pumpkin_Stencils_%28SVS14436_-_PumpkinTemplate_Traveler_Carved%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "rest",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "컨디션",
+      "color": "#0F766E",
+      "title": "쌀쌀한 날씨에 몸 컨디션은 어떠세요?",
+      "desc": "아침 5°에서 낮 11°까지 오르는 날이에요.",
+      "reason": "환절기에 비까지 와서 몸이 무거운 날이에요.",
+      "questions": [
+        "요즘 아침에 일어나기 어떠세요?",
+        "환절기에 꼭 챙기는 게 있어요?",
+        "퇴근하고 몸 풀기엔 뭐가 좋아요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 아침 쌀쌀해서 일어나기 힘들지 않으세요?",
+          "follow": "출근하면 제일 먼저 뭐 드세요?",
+          "caution": "건강 상태를 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "요즘 날씨 때문에 몸이 무겁더라. 넌 어때?",
+          "follow": "뭐 챙겨 먹고 있어?",
+          "caution": "병원 얘기로 무겁게 가지 마."
+        },
+        "date": {
+          "opener": "환절기에 즐겨 하는 루틴이 있으세요?",
+          "follow": "따뜻한 차를 좋아하세요?",
+          "caution": "건강 문제를 캐묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Dog_sleeping_in_a_dog_bed.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "soup",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "국물",
+      "color": "#9A3412",
+      "title": "비 오는 날 퇴근길엔 어떤 국물이 당기세요?",
+      "desc": "최고기온이 11°에 그쳐서 따끈한 음식이 생각나는 날씨예요.",
+      "reason": "아침 5°에 비까지 와서 점심 메뉴 고르기 어려워요.",
+      "questions": [
+        "비 오는 날 꼭 먹는 음식이 있어요?",
+        "요즘 단골로 가는 국물 집 있어요?",
+        "집에서 끓여 먹는 국물 요리는 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 점심은 국물 있는 걸로 먹을까요?",
+          "follow": "이 근처에 칼국수나 찌개 잘하는 곳 아세요?",
+          "caution": "메뉴 취향을 강요하지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 같은 날 뜨끈한 국물 땡기지 않아?",
+          "follow": "퇴근하고 한 그릇 하러 갈래?",
+          "caution": "메뉴로 오래 실랑이하지 마."
+        },
+        "date": {
+          "opener": "쌀쌀한 날엔 어떤 국물 요리 좋아하세요?",
+          "follow": "추억의 음식도 있으세요?",
+          "caution": "취향을 평가하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Noodle_soups_in_Asia_Bowl_2025-07-26.jpg/1280px-Noodle_soups_in_Asia_Bowl_2025-07-26.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Spring_Noodle_Soup_%28%E9%99%BD%E6%98%A5%E9%BA%B5%29.jpg/1280px-Spring_Noodle_Soup_%28%E9%99%BD%E6%98%A5%E9%BA%B5%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "NeoBatfreak",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spring_Noodle_Soup_(%E9%99%BD%E6%98%A5%E9%BA%B5).jpg"
+      }
+    },
+    {
+      "id": "memory",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#047857",
+      "title": "SK하이닉스가 어제 10.9% 올랐다던데, 주식 하세요?",
+      "desc": "삼성전자도 9.0% 올라 24만 2천 원이 됐어요.",
+      "reason": "비 오는 목요일 아침, 주식 얘기가 먼저 나올 만한 날이에요.",
+      "questions": [
+        "요즘 재테크로 하는 게 있으세요?",
+        "주식 앱은 하루에 몇 번 열어 보세요?",
+        "월급 관리는 어떻게 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "하이닉스가 어제 10.9% 올랐다던데 보셨어요?",
+          "follow": "삼성전자도 9.0% 올랐대요. 주변에서도 얘기하던가요?",
+          "caution": "종목 추천이나 수익 자랑은 피하세요."
+        },
+        "friend": {
+          "opener": "어제 하이닉스 10.9% 올랐대. 봤어?",
+          "follow": "삼성전자도 9.0% 올랐다는데 주식 해?",
+          "caution": "사라 말라 하지 마."
+        },
+        "date": {
+          "opener": "요즘 재테크 관심 있으세요?",
+          "follow": "어제 반도체주가 많이 올랐다던데 들어 보셨어요?",
+          "caution": "수익 자랑이나 투자 권유는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Qtstalker_candlestick_chart.png/1280px-Qtstalker_candlestick_chart.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "po3",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "PO",
+      "color": "#B91C1C",
+      "title": "최원태가 PO 3차전에서 KIA를 다시 만난대요",
+      "desc": "KIA전 평균자책점이 8.10이라 천적이란 말이 나와요.",
+      "reason": "비 오는 저녁, 야구 틀어 놓고 퇴근할 사람이 많아요.",
+      "questions": [
+        "가을야구는 어느 팀 응원하세요?",
+        "3차전은 어떻게 흘러갈 것 같아요?",
+        "야구 볼 때 꼭 먹는 게 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "PO 3차전이 시리즈 분수령이라던데 보실 거예요?",
+          "follow": "방망이에 달렸다는데 어느 팀 응원하세요?",
+          "caution": "응원팀 놓고 말다툼은 피하세요."
+        },
+        "friend": {
+          "opener": "PO 3차전 최원태가 KIA 상대래. 봤어?",
+          "follow": "천적이라던데 이번엔 어떨 것 같아?",
+          "caution": "선수 욕은 하지 마."
+        },
+        "date": {
+          "opener": "야구 좋아하세요? PO가 한창이던데요.",
+          "follow": "직관 가 본 적 있으세요?",
+          "caution": "전문 용어를 쏟아 내지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Humphreys_community_experiences_Korean-style_professional_baseball_1.jpg/1280px-Humphreys_community_experiences_Korean-style_professional_baseball_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "USAG-Humphreys",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Humphreys_community_experiences_Korean-style_professional_baseball_1.jpg"
+      }
+    },
+    {
+      "id": "audrey",
+      "cat": "취미",
+      "subtopic": "독서",
+      "label": "책",
+      "color": "#7C3AED",
+      "title": "비 오는 저녁, 읽을 책 한 권 골라 두셨어요?",
+      "desc": "가을 단풍 끝물에 해가 일찍 져서 저녁이 길어졌어요.",
+      "reason": "오늘 서울 강수확률이 99%예요.",
+      "questions": [
+        "요즘 읽고 있는 책이 있어요?",
+        "비 올 때 읽기 좋은 책은 뭐예요?",
+        "최근에 끝까지 읽은 책은 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "비 오는 날엔 책 읽고 싶더라고요. 요즘 읽는 책 있어요?",
+          "follow": "점심시간에 읽으신다면 어떤 장르예요?",
+          "caution": "책 취향을 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "비 오는데 집에서 읽을 책 있어?",
+          "follow": "최근에 재밌게 읽은 거 하나만 추천해 줘.",
+          "caution": "안 읽었다고 놀리지 마."
+        },
+        "date": {
+          "opener": "책 좋아하세요? 비 오는 날엔 읽고 싶더라고요.",
+          "follow": "최근에 읽은 책 중에 기억에 남는 건요?",
+          "caution": "독서량을 비교하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Book%2C_coffee_and_clock_Mumbai_%28Unsplash%29.jpg/1280px-Book%2C_coffee_and_clock_Mumbai_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "typhoon",
+      "cat": "날씨",
+      "subtopic": "일교차",
+      "label": "기온차",
+      "color": "#2563EB",
+      "title": "오늘 오후부터 내일 새벽까지 전국에 비가 온대요",
+      "desc": "서울은 낮 11°, 아침 5°로 기온차가 커요.",
+      "reason": "비 오는 목요일이라 출근길 옷차림이 고민돼요.",
+      "questions": [
+        "비 오는 날 출근길엔 뭐 입고 나가세요?",
+        "비 오는 날 어떤 노래 들으세요?",
+        "쌀쌀한 날 퇴근하면 제일 먼저 뭐 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 온다는데 아침에 많이 춥죠?",
+          "follow": "낮엔 11도까지 오른다는데 겉옷 뭐 입고 오셨어요?",
+          "caution": "날씨 불평만 길게 하지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 비 오고 되게 춥다. 뭐 입고 왔어?",
+          "follow": "퇴근하고 뜨끈한 거 먹으러 갈래?",
+          "caution": "약속 취소 핑계로만 쓰지 마."
+        },
+        "date": {
+          "opener": "요즘 날씨가 쌀쌀한데 비 오는 날 좋아하세요?",
+          "follow": "비 오는 날 주로 뭐 하세요?",
+          "caution": "날씨 불평만 하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/024-02_-_free_download_photo_of_people_shopping_and_walking_with_umbrellas_in_the_shopping_street_Steenweg_in_Utrecht_city_on_a_rainy_day_with_lighting_shop_shop_windows._Street_photography_in_high_resolution_photos_by_Fons_Heijnsbroek.tif/lossy-page1-1280px-thumbnail.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Moscow%2C_Korovy_Val_Street%2C_rainy_day_%2830302698243%29.jpg/1280px-Moscow%2C_Korovy_Val_Street%2C_rainy_day_%2830302698243%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Gennady Grachev from Moscow, Russia",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Moscow,_Korovy_Val_Street,_rainy_day_(30302698243).jpg"
+      }
+    }
+  ]
+}
