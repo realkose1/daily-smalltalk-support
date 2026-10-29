@@ -1,0 +1,318 @@
+{
+  "date": "2026-10-30",
+  "dateLabel": "10월 30일 금요일",
+  "generatedAt": "2026-10-29T23:37:15.284Z",
+  "topics": [
+    {
+      "id": "t7",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "문화훈장",
+      "color": "#6C3483",
+      "title": "블랙핑크와 유재석이 문화훈장을 받았대요",
+      "desc": "고 신해철도 함께 훈장을 받았고, 대중문화예술상 시상식에서 수여했대요.",
+      "reason": "가을 문화의 달이라 시상식 소식이 많은 때예요.",
+      "questions": [
+        "블랙핑크 노래 중에 좋아하는 곡 있으세요?",
+        "유재석 예능 중 제일 재밌게 본 게 뭐예요?",
+        "신해철 노래 중 자주 듣는 곡이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "블랙핑크랑 유재석이 문화훈장 받았대요. 보셨어요?",
+          "follow": "고 신해철도 받았다던데, 좋아하는 노래 있으세요?",
+          "caution": "인물 평가는 하지 않아요."
+        },
+        "friend": {
+          "opener": "블랙핑크, 유재석 문화훈장 받았대. 들었어?",
+          "follow": "신해철도 받았대. 네가 좋아하는 곡 뭐야?",
+          "caution": "팬덤 비교는 피하기."
+        },
+        "date": {
+          "opener": "요즘 즐겨 듣는 노래 있으세요? 블랙핑크가 문화훈장을 받았대요.",
+          "follow": "예능은 어떤 거 즐겨 보세요?",
+          "caution": "취향 평가는 하지 않아요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Blackpink_Pink_Carpet_Event_4.jpg/1280px-Blackpink_Pink_Carpet_Event_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "TV10 (티비텐)",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blackpink_Pink_Carpet_Event_4.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "삼성전자",
+      "color": "#1B4F72",
+      "title": "삼성전자가 어제 4.1% 내렸다던데, 주식 하세요?",
+      "desc": "어제 종가는 23만 2천 원이고 코스피는 6,012예요.",
+      "reason": "금요일 장 마감을 앞두고 주식 얘기가 오가는 때예요.",
+      "questions": [
+        "요즘 주식이나 재테크 하세요?",
+        "주가 확인은 하루에 몇 번 하세요?",
+        "처음 주식 시작한 계기가 뭐였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성전자가 어제 4.1% 내렸다던데, 보셨어요?",
+          "follow": "코스피는 6,012까지 올랐대요. 요즘 주식 얘기 많이 들으세요?",
+          "caution": "종목 추천이나 전망은 하지 않아요."
+        },
+        "friend": {
+          "opener": "삼성전자 어제 4.1% 빠졌다던데 봤어?",
+          "follow": "코스피는 6,012래. 너 주식 해?",
+          "caution": "수익률 캐묻지 않기."
+        },
+        "date": {
+          "opener": "요즘 재테크 관심 있으세요? 삼성전자가 어제 내렸다고 하더라고요.",
+          "follow": "주식 말고 저축은 어떻게 하세요?",
+          "caution": "투자 금액을 묻지 않아요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t1",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "갤럭시",
+      "color": "#1F3A93",
+      "title": "삼성이 보급형 '갤럭시 A18 LTE'를 냈대요",
+      "desc": "AI 기능에 대화면을 갖춘 보급형 모델이래요.",
+      "reason": "가을 끝자락, 휴대폰 바꿀 때를 떠올리는 계절이에요.",
+      "questions": [
+        "지금 쓰는 폰은 몇 년째 쓰고 계세요?",
+        "폰 바꿀 때 제일 먼저 보는 게 뭐예요?",
+        "보급형 폰 써 보신 적 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성에서 AI 넣은 보급형 폰 냈대요. 보셨어요?",
+          "follow": "대화면이라는데, 폰은 언제 바꾸셨어요?",
+          "caution": "브랜드 우열 논쟁으로 번지지 않게 해요."
+        },
+        "friend": {
+          "opener": "삼성에서 AI 되는 보급형 폰 나왔대. 봤어?",
+          "follow": "화면도 크대. 너 폰 바꿀 때 안 됐어?",
+          "caution": "가격 얘기는 지어내지 말기."
+        },
+        "date": {
+          "opener": "요즘 새로 나온 폰 보신 거 있으세요? 삼성이 보급형을 냈대요.",
+          "follow": "폰 바꿀 때 뭘 제일 보세요?",
+          "caution": "상대 폰 기종을 평가하지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Alshabaab_Mobile_Phone_Internet_Ban_%2811946785475%29.jpg/1280px-Alshabaab_Mobile_Phone_Internet_Ban_%2811946785475%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "일상",
+      "subtopic": "주말계획",
+      "label": "주말",
+      "color": "#117A65",
+      "title": "이번 주말엔 어디 가세요? 일요일엔 비 소식도 있던데요",
+      "desc": "일요일 전국 대부분 지역에 가끔 비가 온대요.",
+      "reason": "금요일이라 주말 일정을 정하는 시점이에요.",
+      "questions": [
+        "토요일에 하고 싶은 일이 뭐예요?",
+        "비 오는 일요일엔 집에서 뭘 하세요?",
+        "이번 주말 계획 중에 제일 기대되는 건요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "이번 주말엔 계획 있으세요? 일요일엔 비 온다던데요.",
+          "follow": "그럼 토요일에 움직이시나요?",
+          "caution": "사생활을 캐묻지 않아요."
+        },
+        "friend": {
+          "opener": "주말에 뭐 해? 일요일엔 비 온대.",
+          "follow": "토요일에 단풍 보러 갈래?",
+          "caution": "약속 강요는 피하기."
+        },
+        "date": {
+          "opener": "주말엔 보통 어떻게 보내세요?",
+          "follow": "비 오는 날은 어떤 걸 좋아하세요?",
+          "caution": "다음 약속으로 몰아가지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/A_brick_park_walking_path_leads_to_the_Arkansas_River_in_North_Little_Rock%2C_Arkansas_%28fd1d11c5-f57a-406b-ab4f-d7d2f80a68ea%29.JPG/1280px-A_brick_park_walking_path_leads_to_the_Arkansas_River_in_North_Little_Rock%2C_Arkansas_%28fd1d11c5-f57a-406b-ab4f-d7d2f80a68ea%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/2020-09-20_13_21_38_View_along_a_walking_path_during_early_autumn_within_Horsepen_Run_Stream_Valley_Park_in_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2020-09-20_13_21_38_View_along_a_walking_path_during_early_autumn_within_Horsepen_Run_Stream_Valley_Park_in_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Famartin",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020-09-20_13_21_38_View_along_a_walking_path_during_early_autumn_within_Horsepen_Run_Stream_Valley_Park_in_Oak_Hill,_Fairfax_County,_Virginia.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "전골",
+      "color": "#B9770E",
+      "title": "쌀쌀한 날 집에서 끓여 먹는 요리 있으세요?",
+      "desc": "서울은 아침 7°에서 낮 18°까지 올라요.",
+      "reason": "아침저녁 기온 차가 11° 정도 나는 날이에요.",
+      "questions": [
+        "집에서 끓여 먹는 가을 요리가 뭐예요?",
+        "요리할 때 꼭 넣는 재료가 있어요?",
+        "혼자 먹을 때 제일 자주 해 먹는 건요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 점심에 뜨끈한 게 당기더라고요. 뭐 드세요?",
+          "follow": "집에선 어떤 걸 끓여 드세요?",
+          "caution": "식성 평가는 피해요."
+        },
+        "friend": {
+          "opener": "요즘 집에서 뭐 끓여 먹어?",
+          "follow": "레시피 하나만 알려줘. 이번 주말에 해 볼게.",
+          "caution": "요리 실력 놀리지 않기."
+        },
+        "date": {
+          "opener": "집에서 요리 자주 하세요?",
+          "follow": "가장 자신 있는 메뉴가 뭐예요?",
+          "caution": "집으로 초대하는 뉘앙스는 피해요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Large_pot_of_simmering_tomato_sauce_with_wooden_spoon.jpg/1280px-Large_pot_of_simmering_tomato_sauce_with_wooden_spoon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Large_pot_of_simmering_tomato_sauce_with_wooden_spoon.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "날씨",
+      "subtopic": "태풍",
+      "label": "인파",
+      "color": "#0B5394",
+      "title": "31호 태풍 '인파'가 초강력으로 발달한대요",
+      "desc": "시속 180km 태풍이고 11월 3일 오키나와를 지난대요.",
+      "reason": "오늘 서울은 맑고 낮 18°까지 오르는 날이에요.",
+      "questions": [
+        "태풍 오는 날엔 출근을 어떻게 하세요?",
+        "태풍 때문에 계획이 틀어진 적 있으세요?",
+        "가을 태풍 하면 떠오르는 기억 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "태풍 '인파'가 초강력으로 발달한대요. 보셨어요?",
+          "follow": "11월 3일에 오키나와를 지난다던데, 우리한테 영향 있을까요?",
+          "caution": "피해 예측은 단정하지 않아요."
+        },
+        "friend": {
+          "opener": "31호 태풍 인파 알아? 엄청 세다던데.",
+          "follow": "11월 3일에 오키나와 지난대. 어디로 가려나?",
+          "caution": "겁주는 말은 줄이기."
+        },
+        "date": {
+          "opener": "요즘 태풍 소식 들으셨어요? 인파라는 이름이래요.",
+          "follow": "태풍 오는 날엔 보통 뭐 하세요?",
+          "caution": "여행 취소 같은 무거운 얘기는 피해요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Gravity_Waves_and_Severe_Storms_Across_Eastern_New_Mexico_%28CIRA_2023-10-02%29.png/1280px-Gravity_Waves_and_Severe_Storms_Across_Eastern_New_Mexico_%28CIRA_2023-10-02%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Kallbadhuset_Lysekil_during_storm.jpg/1280px-Kallbadhuset_Lysekil_during_storm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "W.carter",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kallbadhuset_Lysekil_during_storm.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "암살자들",
+      "color": "#7B241C",
+      "title": "'암살자(들)'가 340만 관객을 넘었대요",
+      "desc": "허진호 감독 작품이고 손익분기점을 넘었대요.",
+      "reason": "금요일 저녁이라 주말 극장 계획을 세울 때예요.",
+      "questions": [
+        "'암살자(들)' 보셨어요?",
+        "요즘 극장에서 본 영화 있으세요?",
+        "주말에 영화 보러 가면 팝콘은 뭐 드세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'암살자(들)'가 340만 넘었대요. 보셨어요?",
+          "follow": "손익분기점도 넘었다던데, 본 영화 중에 추천할 게 있으세요?",
+          "caution": "결말 스포일러는 피해요."
+        },
+        "friend": {
+          "opener": "암살자(들) 340만 넘었대. 봤어?",
+          "follow": "허진호 감독 작품이래. 이번 주말에 볼래?",
+          "caution": "스포 금지."
+        },
+        "date": {
+          "opener": "요즘 극장 가세요? '암살자(들)'가 340만 넘었대요.",
+          "follow": "영화 고를 때 뭘 보고 정하세요?",
+          "caution": "취향을 평가하지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Movie_theater_seats_%28Unsplash%29.jpg/1280px-Movie_theater_seats_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/c55ijsOdntj6P25vDwHLdgsBpmV.jpg",
+      "imageCredit": {
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/movie/1418428"
+      },
+      "imageKind": "poster"
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "핼러윈",
+      "color": "#D35400",
+      "title": "내일이 핼러윈인데, 친구들이랑 모임 있으세요?",
+      "desc": "핼러윈은 10월 31일이고 내일이 토요일이에요.",
+      "reason": "금요일 저녁, 내일 약속을 잡는 사람이 많아요.",
+      "questions": [
+        "친구들이랑 핼러윈에 해 본 제일 기억나는 일이 뭐예요?",
+        "핼러윈 분장 중 제일 웃겼던 건 뭐예요?",
+        "핼러윈 말고 친구랑 챙기는 날이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일이 핼러윈이네요. 약속 있으세요?",
+          "follow": "예전에 본 분장 중 인상 깊은 게 있었어요?",
+          "caution": "사생활을 캐묻지 않아요."
+        },
+        "friend": {
+          "opener": "내일 핼러윈인데 뭐 해?",
+          "follow": "작년에 뭐 했는지 기억나?",
+          "caution": "참여를 강요하지 않기."
+        },
+        "date": {
+          "opener": "핼러윈 좋아하세요? 내일이래요.",
+          "follow": "어릴 때 좋아했던 명절은 뭐예요?",
+          "caution": "약속을 몰아가지 않아요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Jack-o%27-lanterns_in_Cairns%2C_Queensland.jpg/1280px-Jack-o%27-lanterns_in_Cairns%2C_Queensland.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Fiona Henderson",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jack-o%27-lanterns_in_Cairns,_Queensland.jpg"
+      }
+    }
+  ]
+}
