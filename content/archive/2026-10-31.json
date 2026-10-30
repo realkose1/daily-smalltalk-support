@@ -1,0 +1,308 @@
+{
+  "date": "2026-10-31",
+  "dateLabel": "10월 31일 토요일",
+  "generatedAt": "2026-10-30T23:16:54.043Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "시즌",
+      "subtopic": "기념일",
+      "label": "핼러윈",
+      "color": "#E8590C",
+      "title": "오늘이 핼러윈인데, 올해는 어떻게 보내세요?",
+      "desc": "이태원엔 부캉이 코스튬을 입은 사람들이 보였대요.",
+      "reason": "토요일 저녁이라 약속 잡은 사람이 많아요.",
+      "special": true,
+      "questions": [
+        "핼러윈 하면 제일 먼저 떠오르는 간식이 뭐예요?",
+        "코스튬 입고 가장 민망했던 순간 있으세요?",
+        "호박 장식이나 파티 해 본 적 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 핼러윈인데 저녁에 뭐 하세요?",
+          "follow": "어릴 때 핼러윈 챙긴 기억 있으세요?",
+          "caution": "코스튬 품평이나 이태원 사고 얘기는 꺼내지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 핼러윈인데 우리 뭐 할래?",
+          "follow": "분장 말고 호박 모양 디저트라도 먹으러 갈까?",
+          "caution": "코스튬 강요는 하지 말기."
+        },
+        "date": {
+          "opener": "오늘 핼러윈인데 코스튬 입어 본 적 있으세요?",
+          "follow": "입어 봤다면 뭐였는지, 아니면 입어 보고 싶은 게 있는지 물어보세요.",
+          "caution": "외모나 분장 평가는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Traveler_and_Friends_Halloween_Pumpkin_Stencils_%28SVS14436_-_PumpkinTemplate_Traveler_Carved%29.jpg/1280px-Traveler_and_Friends_Halloween_Pumpkin_Stencils_%28SVS14436_-_PumpkinTemplate_Traveler_Carved%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t2",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "폭설",
+      "color": "#1F3A5F",
+      "title": "김윤석·구교환 영화 '폭설' 제보회가 열렸대요",
+      "desc": "감독이 두 배우를 '천재와 괴인의 만남'이라 소개했대요.",
+      "reason": "토요일인 오늘, 주말에 볼 영화를 고르고 계실지도 몰라요.",
+      "questions": [
+        "김윤석 배우 출연작 중 제일 좋아하는 영화 있으세요?",
+        "올겨울 기대하는 영화 있으세요?",
+        "주말에 극장 가시면 어떤 장르 고르세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "영화 '폭설' 제보회 열렸다는 거 들으셨어요?",
+          "follow": "김윤석, 구교환 두 배우 케미가 기대된다던데요.",
+          "caution": "배우 개인 평가는 하지 마세요."
+        },
+        "friend": {
+          "opener": "'폭설' 제보회 했다는데 봤어? 김윤석이랑 구교환 나와.",
+          "follow": "감독이 천재와 괴인의 만남이라고 했대. 같이 볼래?",
+          "caution": "줄거리 스포는 하지 말기."
+        },
+        "date": {
+          "opener": "요즘 영화 자주 보세요? '폭설' 이라고 새 영화 소식이 있더라고요.",
+          "follow": "극장 가면 어떤 장르 즐겨 보시는지 물어보세요.",
+          "caution": "취향을 평가하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Long_snowy_road_from_above_%28Unsplash%29.jpg/1280px-Long_snowy_road_from_above_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/xiBYIFWBrLD7Z7jWrt0e7YLLmfC.jpg",
+      "imageCredit": {
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/movie/1244809"
+      },
+      "imageKind": "poster"
+    },
+    {
+      "id": "t3",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "PO",
+      "color": "#C92A2A",
+      "title": "KIA가 PO 4차전에서 역전승을 거뒀대요",
+      "desc": "김도영 선수가 2번 타자로 나와 3출루 2득점을 했대요.",
+      "reason": "토요일이라 5차전을 챙겨 보기 좋아요.",
+      "questions": [
+        "야구 보실 때 응원하는 팀 있으세요?",
+        "5차전은 어느 팀이 이길 것 같으세요?",
+        "야구장에서 먹는 음식 중 최애는요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "어제 PO 4차전 보셨어요? KIA가 역전했대요.",
+          "follow": "삼성이 한국시리즈까지 1승 남았었는데 5차전으로 갔네요.",
+          "caution": "응원 팀 갖고 신경전은 피하세요."
+        },
+        "friend": {
+          "opener": "어제 PO 4차전 봤어? KIA 역전승했더라.",
+          "follow": "5차전 삼성 홈에서 하는데 같이 볼래?",
+          "caution": "팀 놀리기는 적당히."
+        },
+        "date": {
+          "opener": "야구 좋아하세요? 어제 PO 4차전 재밌었대요.",
+          "follow": "직관 가 보신 적 있는지 물어보세요.",
+          "caution": "규칙을 모른다고 설명하려 들지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WiiWii",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(5).jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "여행",
+      "subtopic": "해외여행",
+      "label": "환율",
+      "color": "#0C8599",
+      "title": "환율이 어제 0.5% 내렸다던데, 해외 가고 싶으세요?",
+      "desc": "원화 강세라 해외여행과 직구에 유리해요.",
+      "reason": "토요일이라 다음 여행 계획 세우기 좋아요.",
+      "questions": [
+        "다음에 가고 싶은 해외 도시 있으세요?",
+        "직구로 제일 잘 산 물건은 뭐예요?",
+        "여행 가면 꼭 하는 일 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "환율이 조금 내렸다는데 해외여행 계획 있으세요?",
+          "follow": "가 보고 싶은 나라가 어디세요?",
+          "caution": "소비 규모는 묻지 마세요."
+        },
+        "friend": {
+          "opener": "환율 1,333원으로 내렸대. 어디 가고 싶어?",
+          "follow": "겨울 여행 같이 갈까?",
+          "caution": "비용 부담 강요 금지."
+        },
+        "date": {
+          "opener": "해외여행 좋아하세요? 최근에 어디 다녀오셨어요?",
+          "follow": "다음 가고 싶은 곳을 물어보세요.",
+          "caution": "동반 여행 얘기는 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Sunset_view_from_an_airplane_window_above_the_clouds.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/3/34/Airplane_window_capture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Marcelomenezes96",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Airplane_window_capture.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "날씨",
+      "subtopic": "일교차",
+      "label": "일교차",
+      "color": "#364FC7",
+      "title": "오늘 서울이 7도에서 13도까지 오른대요",
+      "desc": "현재 9°C이고 강수확률은 47%예요.",
+      "reason": "10월의 마지막 날이라 겉옷을 바꿔 입게 돼요.",
+      "questions": [
+        "요즘 아침에 뭐 입고 나가세요?",
+        "가을 옷 중 제일 아끼는 한 벌 있으세요?",
+        "단풍 구경 계획 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 낮 13도까지 오른다는데 겉옷 어떻게 입으셨어요?",
+          "follow": "아침엔 7도라 쌀쌀했죠.",
+          "caution": "옷차림 품평은 피하세요."
+        },
+        "friend": {
+          "opener": "오늘 최고 13도래. 뭐 입고 나왔어?",
+          "follow": "단풍 보러 갈까?",
+          "caution": "약속 취소 압박은 하지 말기."
+        },
+        "date": {
+          "opener": "요즘 아침저녁 쌀쌀한데 어떻게 입고 다니세요?",
+          "follow": "가을에 좋아하는 옷차림을 물어보세요.",
+          "caution": "외모 평가는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_young_man_is_walking_in_front_of_the_facade_of_the_Planetarium_building_of_Artis_Zoo_at_the_Plantage_Kerklaan_street_in_Amsterdam%3B_free_photo%2C_Fons_Heijnsbroek%2C_Autumn_2008.tif/lossy-page1-1280px-thumbnail.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/2019-11-26_12_49_11_Blackhaw_Viburnum_autumn_leaves_and_fruit_along_a_walking_trail_in_the_Franklin_Glen_section_of_Chantilly%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-11-26_12_49_11_Blackhaw_Viburnum_autumn_leaves_and_fruit_along_a_walking_trail_in_the_Franklin_Glen_section_of_Chantilly%2C_Fairfax_County%2C_Virginia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Famartin",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019-11-26_12_49_11_Blackhaw_Viburnum_autumn_leaves_and_fruit_along_a_walking_trail_in_the_Franklin_Glen_section_of_Chantilly,_Fairfax_County,_Virginia.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "음식",
+      "subtopic": "디저트",
+      "label": "디저트",
+      "color": "#862E9C",
+      "title": "핼러윈이면 생각나는 호박 디저트 좋아하세요?",
+      "desc": "호박 푸딩, 호박 라떼 같은 가을 메뉴가 나올 때예요.",
+      "reason": "오늘이 10월의 마지막 날이라서요.",
+      "questions": [
+        "호박 들어간 디저트 중 뭐가 제일 맛있으세요?",
+        "가을에만 찾는 간식 있으세요?",
+        "주말에 카페 가면 뭐 시키세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "호박 라떼 같은 가을 메뉴 드셔 보셨어요?",
+          "follow": "점심 후 디저트로 뭐 드세요?",
+          "caution": "다이어트 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "호박 디저트 먹으러 갈래?",
+          "follow": "카페 어디 가고 싶어?",
+          "caution": "비싼 곳만 고집하지 말기."
+        },
+        "date": {
+          "opener": "단 거 좋아하세요? 호박 디저트 좋아하세요?",
+          "follow": "좋아하는 카페 스타일을 물어보세요.",
+          "caution": "음식 취향 평가는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Pumpkin_pie_19_41_00_054000.jpeg/1280px-Pumpkin_pie_19_41_00_054000.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Pumpkin-Pie-Slice.jpg/1280px-Pumpkin-Pie-Slice.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Evan-Amos",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pumpkin-Pie-Slice.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#0B7285",
+      "title": "SK하이닉스가 어제 7.1% 내렸다던데, 주식 하세요?",
+      "desc": "종가는 141만 8천 원이고, 삼성전자도 3.0% 내렸어요.",
+      "reason": "토요일이라 장이 쉬는 동안 주식 계좌를 열어 볼 수 있어요.",
+      "questions": [
+        "요즘 주식이나 재테크 하세요?",
+        "주식 앱은 하루에 몇 번쯤 열어 보세요?",
+        "주식 말고 요즘 신경 쓰는 저축 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "SK하이닉스가 어제 많이 내렸다던데 보셨어요?",
+          "follow": "삼성전자도 3.0% 내렸대요.",
+          "caution": "종목 추천이나 수익 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "하이닉스 어제 7.1% 내린 거 봤어?",
+          "follow": "삼성전자도 내렸더라. 너 주식 하고 있어?",
+          "caution": "손실 금액 캐묻지 말기."
+        },
+        "date": {
+          "opener": "요즘 재테크 하시는 거 있으세요?",
+          "follow": "주식, 적금 중 어떤 걸 선호하는지 물어보세요.",
+          "caution": "자산 규모는 묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t5",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "수달",
+      "color": "#5C940D",
+      "title": "석포제련소 앞 낙동강에 수달이 사계절 산대요",
+      "desc": "수달 가족이 4년 전부터 일 년 내내 나타난대요.",
+      "reason": "서울은 맑고 최고 13°라 강가를 걷기 괜찮은 날이에요.",
+      "questions": [
+        "야생 동물 직접 본 적 있으세요?",
+        "수달 보러 강가에 가 보실래요?",
+        "좋아하는 동물 한 가지만 고르면요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "낙동강에 수달이 사계절 산다는 소식 들으셨어요?",
+          "follow": "4년 전부터 가족이 나타났대요.",
+          "caution": "기업 환경 논쟁으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "낙동강에 수달 가족이 사계절 산대. 신기하지?",
+          "follow": "멸종위기종이라는데 보러 가고 싶다.",
+          "caution": "야생동물 접근은 조심."
+        },
+        "date": {
+          "opener": "동물 좋아하세요? 낙동강에 수달이 산다는 소식이 있더라고요.",
+          "follow": "좋아하는 동물이 뭔지 물어보세요.",
+          "caution": "동물 알레르기 얘기 등 민감한 얘기는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/River_Otter_%28Lontra_canadensis%29.jpg/1280px-River_Otter_%28Lontra_canadensis%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    }
+  ]
+}
