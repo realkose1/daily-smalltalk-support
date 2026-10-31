@@ -1,0 +1,318 @@
+{
+  "date": "2026-11-01",
+  "dateLabel": "11월 1일 일요일",
+  "generatedAt": "2026-10-31T22:51:02.131Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "PO",
+      "color": "#1D4ED8",
+      "title": "삼성과 KIA가 내일 대구서 최종 결전이래요",
+      "desc": "불펜을 총동원하고도 역전패해 벼랑 끝에 몰렸대요.",
+      "reason": "가을야구 승부가 마지막 경기로 이어지는 주말이에요.",
+      "questions": [
+        "가을야구 보면 어느 팀 응원하세요?",
+        "마지막 경기까지 가면 어떤 장면이 제일 기억에 남아요?",
+        "야구 볼 때 꼭 챙기는 간식 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성이랑 KIA가 대구에서 최종전 한대요. 보셨어요?",
+          "follow": "불펜 총동원하고도 역전패했다던데요.",
+          "caution": "응원팀 때문에 말다툼으로 번지지 않게 해요."
+        },
+        "friend": {
+          "opener": "삼성이랑 KIA 최종전 대구에서 한대. 봤어?",
+          "follow": "후라도랑 원태인한테 달렸다던데, 누가 이길 것 같아?",
+          "caution": "응원팀 놀리기는 적당히 해."
+        },
+        "date": {
+          "opener": "요즘 야구 가을 승부 보세요? 삼성이랑 KIA가 최종전까지 갔대요.",
+          "follow": "야구장 가 보신 적 있으세요?",
+          "caution": "팀 응원 얘기를 길게 따지지 않아요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WiiWii",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(5).jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "예능",
+      "label": "놀뭐",
+      "color": "#B45309",
+      "title": "'놀면 뭐하니'에서 김광규 잔치국수 맛집이 나왔대요",
+      "desc": "인생 맛집이라는 잔치국수집이 어디인지 궁금해하더라고요.",
+      "reason": "비 오는 일요일엔 따뜻한 국수 한 그릇이 생각나요.",
+      "questions": [
+        "인생 국수 맛집 있으세요?",
+        "잔치국수 vs 칼국수, 어느 쪽이세요?",
+        "예능 보다가 가 보고 싶었던 식당 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "놀면 뭐하니에서 김광규 씨 잔치국수 맛집 나왔대요. 보셨어요?",
+          "follow": "인생 맛집이라는데 어디인지 궁금하더라고요.",
+          "caution": "출연자 평가는 하지 않아요."
+        },
+        "friend": {
+          "opener": "놀면 뭐하니 봤어? 김광규 잔치국수 맛집 나왔대.",
+          "follow": "우리도 국수 먹으러 갈래?",
+          "caution": "본방 안 본 친구한테 스포하지 마."
+        },
+        "date": {
+          "opener": "놀면 뭐하니에서 잔치국수 맛집 나왔다던데 보셨어요?",
+          "follow": "국수 좋아하시면 어떤 국수 드세요?",
+          "caution": "출연자 이야기는 가볍게만 해요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/3_mushroom_curry_noodle_soup_with_ph%E1%BB%9F_-_Pho_2025-11-12.jpg/1280px-3_mushroom_curry_noodle_soup_with_ph%E1%BB%9F_-_Pho_2025-11-12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/10dL6iCqPIaAoDq1CTBOrOmbsmo.jpg",
+      "imageCredit": {
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/tv/91121"
+      },
+      "imageKind": "poster"
+    },
+    {
+      "id": "t6",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "집밥",
+      "color": "#C2410C",
+      "title": "비 오는 일요일엔 집에서 뭐 해 드세요?",
+      "desc": "낮 최고가 11°라 따뜻한 음식이 생각나는 날씨예요.",
+      "reason": "종일 이슬비라 밖에 나가기 번거로운 일요일이에요.",
+      "questions": [
+        "비 오는 날 꼭 해 먹는 음식 있으세요?",
+        "냉장고 털어 만든 최고의 요리는 뭐였어요?",
+        "요즘 자주 해 먹는 간단 요리 알려 주실래요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 와서 집에서 뭐 해 먹을까 고민이에요.",
+          "follow": "요즘 자주 해 드시는 요리 있어요?",
+          "caution": "음식 취향을 평가하지 않아요."
+        },
+        "friend": {
+          "opener": "오늘 비 오는데 집에서 뭐 해 먹어?",
+          "follow": "내가 레시피 알려 줄까?",
+          "caution": "요리 못한다고 놀리지 마."
+        },
+        "date": {
+          "opener": "집에서 요리 자주 하세요?",
+          "follow": "제일 자신 있는 요리가 뭐예요?",
+          "caution": "요리 실력을 평가하지 않아요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/-2022-02-08_Cooking_Irish_Stew%2C_Trimingham%2C_Norfolk.JPG/1280px--2022-02-08_Cooking_Irish_Stew%2C_Trimingham%2C_Norfolk.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Kolforn ( Kolforn ) I'd appreciate if you could ma",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:-2022-02-08_Cooking_Irish_Stew,_Trimingham,_Norfolk.JPG"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "부캉이",
+      "color": "#0E7490",
+      "title": "부산 북항 상어 '부캉이'가 닷새째 안 보인대요",
+      "desc": "수온이 내려가 깊은 바다로 내려갔나 보대요.",
+      "reason": "서울도 6°라 바닷속 수온 얘기가 와닿는 날이에요.",
+      "questions": [
+        "부캉이 소식 들으셨어요?",
+        "바다 동물 보러 간 곳 중 기억나는 데 있으세요?",
+        "수족관 가면 제일 오래 보는 동물이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "부산 북항 상어 부캉이 닷새째 안 보인대요. 들으셨어요?",
+          "follow": "160만 명이 보러 갔다던데 어디 갔을까요.",
+          "caution": "동물 걱정을 너무 무겁게 끌지 않아요."
+        },
+        "friend": {
+          "opener": "부산 상어 부캉이 닷새째 행방불명이래. 알아?",
+          "follow": "수온 떨어져서 깊은 데로 갔나 봐.",
+          "caution": "진짜 떠났다고 단정하지 마."
+        },
+        "date": {
+          "opener": "부산 북항 상어 부캉이 소식 들으셨어요? 닷새째 안 보인대요.",
+          "follow": "바다 근처 좋아하는 곳 있으세요?",
+          "caution": "동물 얘기에 너무 감정 이입하지 않아요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/US_Navy_110901-N-HZ247-081_Master_Chief_Navy_Diver_Joe_Howard%2C_right%2C_answers_questions_while_swimming_with_the_sharks_at_the_Newport_Aquarium_in_N.jpg/1280px-US_Navy_110901-N-HZ247-081_Master_Chief_Navy_Diver_Joe_Howard%2C_right%2C_answers_questions_while_swimming_with_the_sharks_at_the_Newport_Aquarium_in_N.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Whale_Shark_diagonal.jpg/1280px-Whale_Shark_diagonal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "istolethetv",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Whale_Shark_diagonal.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "올트먼",
+      "color": "#0F766E",
+      "title": "올트먼이 삼성 사장단에 30만 원짜리 키보드를 선물했대요",
+      "desc": "AI 미래와 반도체 협력을 논의하는 자리였대요.",
+      "reason": "가을이라 책상 위 장비 바꾸는 얘기가 나올 때예요.",
+      "questions": [
+        "키보드에 돈 써 본 적 있으세요?",
+        "책상 위에서 제일 아끼는 물건이 뭐예요?",
+        "30만 원짜리 키보드면 사 보실래요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "올트먼이 삼성 사장단한테 30만 원짜리 키보드 선물했대요.",
+          "follow": "어떤 키보드인지 궁금하더라고요.",
+          "caution": "회사 내부 사정은 추측하지 않아요."
+        },
+        "friend": {
+          "opener": "올트먼이 삼성 사장들한테 키보드 선물했대. 30만 원짜리래.",
+          "follow": "너라면 키보드에 그만큼 써?",
+          "caution": "가격 비교로 놀리지 마."
+        },
+        "date": {
+          "opener": "올트먼이 삼성 경영진에게 키보드를 선물했대요. 들으셨어요?",
+          "follow": "키보드 쓰는 거 좋아하세요?",
+          "caution": "업무 얘기로 끌고 가지 않아요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Sam_Altman_speaking_at_TED_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Steve Jurvetson",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sam_Altman_speaking_at_TED_(cropped).jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "친구",
+      "color": "#7C3AED",
+      "title": "쌀쌀한 일요일, 친구랑 뭐 하며 보내고 싶으세요?",
+      "desc": "이슬비에 6°라 야외보다 실내 약속이 어울려요.",
+      "reason": "수능과 김장 철이라 가족·친구 모임 얘기가 늘어요.",
+      "questions": [
+        "친구랑 비 오는 날 갔던 곳 중 기억나는 데 있으세요?",
+        "오래된 친구와 자주 하는 일이 뭐예요?",
+        "요즘 연락 다시 하고 싶은 친구 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "비 오는 일요일에 친구들이랑 뭐 하세요?",
+          "follow": "실내에서 갈 만한 곳 추천해 주실래요?",
+          "caution": "사적인 사정은 캐묻지 않아요."
+        },
+        "friend": {
+          "opener": "오늘 비 오는데 같이 뭐 할래?",
+          "follow": "영화 보거나 국수 먹으러 갈까?",
+          "caution": "약속 강요는 하지 마."
+        },
+        "date": {
+          "opener": "친구들이랑 보통 어디서 만나세요?",
+          "follow": "비 오는 날 좋아하는 약속 장소가 있으세요?",
+          "caution": "친구 험담은 하지 않아요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Friends_enjoy_drinks_and_snacks_at_a_table.jpg/1280px-Friends_enjoy_drinks_and_snacks_at_a_table.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Friends_enjoy_drinks_and_snacks_at_a_table.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "이슬비",
+      "color": "#475569",
+      "title": "오늘 서울에 하루 종일 이슬비가 온대요",
+      "desc": "현재 6°C, 낮 최고 11°라 쌀쌀해요.",
+      "reason": "강수확률이 100%인 일요일이에요.",
+      "questions": [
+        "이슬비 오는 날엔 어떤 노래 들으세요?",
+        "비 오는 일요일엔 집에서 뭘 하세요?",
+        "비 올 때 제일 좋아하는 창밖 풍경 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 하루 종일 비 온대요.",
+          "follow": "내일 출근길까지 이어질까요?",
+          "caution": "날씨 불평만 길게 하지 않아요."
+        },
+        "friend": {
+          "opener": "오늘 비 오는데 뭐 해?",
+          "follow": "집에서 영화나 볼까?",
+          "caution": "약속 취소 압박은 하지 마."
+        },
+        "date": {
+          "opener": "오늘 이슬비 오네요. 이런 날 뭐 하세요?",
+          "follow": "비 오는 날 가는 카페 있으세요?",
+          "caution": "날씨 불평만 하지 않아요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Pitt_Street_%28Sydney%29_on_rainy_day%2C_c.1933_-_by_Sam_Hood_%283294687758%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Colorful_Rainy_Day_%28238641099%29.jpeg/1280px-Colorful_Rainy_Day_%28238641099%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Sergio Miranda",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colorful_Rainy_Day_(238641099).jpeg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "주식",
+      "color": "#B91C1C",
+      "title": "SK하이닉스가 지난 금요일 7.1% 내렸다던데, 보셨어요?",
+      "desc": "삼성전자는 3.0%, 코스피는 3.5% 함께 내렸어요.",
+      "reason": "금요일 마감 뒤 처음 맞는 주말이라 지켜본 분이 많아요.",
+      "questions": [
+        "요즘 주식 얘기 주변에서 많이 들으세요?",
+        "큰 변동 날엔 앱을 자주 열어 보세요?",
+        "주식 말고 요즘 관심 가는 재테크 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "지난 금요일에 하이닉스랑 코스피 많이 내렸다던데요.",
+          "follow": "삼성전자도 3.0% 내렸대요.",
+          "caution": "종목 추천이나 전망은 하지 않아요."
+        },
+        "friend": {
+          "opener": "금요일에 코스피 3.5% 내렸더라. 봤어?",
+          "follow": "하이닉스는 7.1%나 빠졌대.",
+          "caution": "수익 손실 캐묻지 마."
+        },
+        "date": {
+          "opener": "요즘 주식 얘기 많던데 관심 있으세요?",
+          "follow": "재테크 하시는 거 있으세요?",
+          "caution": "투자 조언은 하지 않아요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    }
+  ]
+}
