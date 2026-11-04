@@ -1,0 +1,318 @@
+{
+  "date": "2026-11-04",
+  "dateLabel": "11월 4일 수요일",
+  "generatedAt": "2026-11-04T00:13:14.786Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "아리랑",
+      "color": "#8B1A1A",
+      "title": "방탄소년단 '아리랑'이 이탈리아 플래티넘을 받았대요",
+      "desc": "K팝 가수로는 처음으로 인증을 받았다고 해요.",
+      "reason": "수요일 아침, 출근길에 한 번쯤 들었을 소식이에요.",
+      "questions": [
+        "요즘 자주 듣는 노래 있으세요?",
+        "'아리랑' 들어 보셨어요?",
+        "K팝 가수 중에 해외에서 더 유명해졌으면 하는 팀 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "BTS '아리랑'이 이탈리아에서 플래티넘 받았대요. 보셨어요?",
+          "follow": "K팝 최초라는 점이 신기하더라고요.",
+          "caution": "특정 가수 호불호를 따지지 않기"
+        },
+        "friend": {
+          "opener": "BTS 아리랑 이탈리아 플래티넘이래, 봤어?",
+          "follow": "하이브도 최고 실적이라던데, 요즘 뭐 듣고 있어?",
+          "caution": "팬덤 비교하지 않기"
+        },
+        "date": {
+          "opener": "BTS '아리랑'이 이탈리아 플래티넘을 받았대요. 들어 보셨어요?",
+          "follow": "평소에 어떤 음악 즐겨 들으세요?",
+          "caution": "취향을 평가하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg/1280px-BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t2",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "챔스",
+      "color": "#0B3D91",
+      "title": "이강인의 아틀레티코가 김민재의 뮌헨에 0-2로 졌대요",
+      "desc": "챔피언스리그에서 성사된 코리안 더비였어요.",
+      "reason": "어제 밤 경기라 오늘 아침에 결과 얘기가 나오기 쉬워요.",
+      "questions": [
+        "축구 경기 챙겨 보세요?",
+        "코리안 더비 보셨어요?",
+        "경기 볼 때 치킨 말고 뭐 드세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "챔스에서 이강인이랑 김민재가 맞붙었다던데 보셨어요?",
+          "follow": "결과는 뮌헨이 2대 0으로 이겼대요.",
+          "caution": "응원팀 때문에 열 올리지 않기"
+        },
+        "friend": {
+          "opener": "이강인 대 김민재 챔스 봤어?",
+          "follow": "0-2로 뮌헨이 이겼더라. 누구 응원했어?",
+          "caution": "선수 평가는 삼가기"
+        },
+        "date": {
+          "opener": "챔피언스리그에서 한국 선수끼리 맞붙었대요.",
+          "follow": "축구 즐겨 보세요?",
+          "caution": "전문용어 남발하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Spectators_at_Ralph_Wilson_Stadium_11-16-08.JPG/1280px-Spectators_at_Ralph_Wilson_Stadium_11-16-08.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/1/13/Lee_Kang-in_-_2022_%2852551771501%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Republic of Korea from Seoul, Republic of Korea",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lee_Kang-in_-_2022_(52551771501)_(cropped).jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "삼전",
+      "color": "#0B3D2E",
+      "title": "삼성전자가 어제 4.1% 내렸다던데, 주식 하세요?",
+      "desc": "종가는 21만 9,500원이고 SK하이닉스는 5.0% 내렸어요.",
+      "reason": "주식 얘기는 점심 자리에서 자주 나오는 소재예요.",
+      "questions": [
+        "요즘 재테크 뭐 하세요?",
+        "월급 들어오면 제일 먼저 뭐 하세요?",
+        "주식 앱은 하루에 몇 번 열어 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성전자가 어제 4.1% 내렸다던데 보셨어요?",
+          "follow": "SK하이닉스도 5.0% 내렸대요.",
+          "caution": "종목 추천은 하지 않기"
+        },
+        "friend": {
+          "opener": "삼성전자 어제 4.1% 내렸더라, 너 주식 해?",
+          "follow": "요즘 재테크 뭐 해?",
+          "caution": "수익률 캐묻지 않기"
+        },
+        "date": {
+          "opener": "요즘 재테크 관심 있으세요?",
+          "follow": "저축이랑 투자 중 어느 쪽이 더 맞으세요?",
+          "caution": "손익 얘기 깊게 안 하기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/7/78/Market_centre_in_Tokyo_stock_exchange.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "ehnmark",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Market_centre_in_Tokyo_stock_exchange.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "비",
+      "color": "#2C5F7C",
+      "title": "밤부터 남해안과 제주에 비가 와서 내일 전국으로 번진대요",
+      "desc": "낮 최고기온은 14~19도로 예상돼요.",
+      "reason": "오늘 서울은 구름 조금에 최고 17°까지 올라요.",
+      "questions": [
+        "비 오는 날엔 어떤 노래 들으세요?",
+        "비 오는 출근길 최악의 기억 있으세요?",
+        "비 오는 날 꼭 먹는 음식 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일 전국에 비 온다던데, 출근 어떻게 하세요?",
+          "follow": "낮엔 14~19도래요.",
+          "caution": "날씨 불평만 하지 않기"
+        },
+        "friend": {
+          "opener": "내일 비 온대, 뭐 할 거야?",
+          "follow": "비 오면 생각나는 음식 있어?",
+          "caution": "약속 취소 강요하지 않기"
+        },
+        "date": {
+          "opener": "내일 비 온다던데 비 오는 날 좋아하세요?",
+          "follow": "비 오는 날엔 주로 뭐 하세요?",
+          "caution": "날씨 얘기만 길게 하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/024-02_-_free_download_photo_of_people_shopping_and_walking_with_umbrellas_in_the_shopping_street_Steenweg_in_Utrecht_city_on_a_rainy_day_with_lighting_shop_shop_windows._Street_photography_in_high_resolution_photos_by_Fons_Heijnsbroek.tif/lossy-page1-1280px-thumbnail.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/3/34/A_rainy_day_on_Iberville_Street%2C_New_Orleans_Umbrella.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Andy Clarke",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_rainy_day_on_Iberville_Street,_New_Orleans_Umbrella.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "입동",
+      "color": "#8A4B08",
+      "title": "모레 글피면 입동인데, 겨울 첫 음식으로 뭐 드세요?",
+      "desc": "입동은 겨울의 시작이라는 절기예요.",
+      "reason": "3일 뒤가 입동이고 오늘 아침은 9°예요.",
+      "questions": [
+        "겨울이 오면 가장 먼저 찾는 음식이 뭐예요?",
+        "따뜻한 국물 중 최애가 뭐예요?",
+        "붕어빵 파는 곳 찾아보셨어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "곧 입동이래요. 점심에 따뜻한 국물 어떠세요?",
+          "follow": "어떤 국물이 제일 좋으세요?",
+          "caution": "메뉴 강요하지 않기"
+        },
+        "friend": {
+          "opener": "곧 입동이래, 뭐 먹을래?",
+          "follow": "겨울 되면 꼭 먹는 거 있어?",
+          "caution": "식성 놀리지 않기"
+        },
+        "date": {
+          "opener": "곧 입동인데 겨울 음식 좋아하세요?",
+          "follow": "좋아하는 겨울 간식 있으세요?",
+          "caution": "식성 평가하지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/The_snack_bar_district_in_Sapporo%27s_Susukino_in_winter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/T%C3%A9li_fagyi_%28winter_ice_cream%29_03.jpg/1280px-T%C3%A9li_fagyi_%28winter_ice_cream%29_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Rev-san",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C3%A9li_fagyi_(winter_ice_cream)_03.jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "이웃·동료",
+      "label": "김장",
+      "color": "#7A2E2E",
+      "title": "올해 김장은 가족끼리 하세요, 사 먹으세요?",
+      "desc": "11월 초라 김장 얘기가 슬슬 나오는 때예요.",
+      "reason": "수능을 앞둔 가을이라 가족 일정이 바빠지는 시기예요.",
+      "questions": [
+        "어릴 때 김장하는 날 기억나세요?",
+        "김장 때 맡던 역할이 있었어요?",
+        "가족 중 손맛 좋은 분이 누구세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "김장철인데 올해는 담그세요?",
+          "follow": "어릴 때 김장 기억 있으세요?",
+          "caution": "가족사 캐묻지 않기"
+        },
+        "friend": {
+          "opener": "김장 올해는 해?",
+          "follow": "우리 집은 어땠는지 얘기해 줘",
+          "caution": "집안일 분담 따지지 않기"
+        },
+        "date": {
+          "opener": "김장하는 집 많잖아요, 어릴 때 해 보셨어요?",
+          "follow": "김치 중 좋아하는 종류 있어요?",
+          "caution": "가족 사정 캐묻지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Kimchi_making.jpg/1280px-Kimchi_making.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "USAG- Humphreys",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kimchi_making.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "폭파위협",
+      "color": "#4A4A4A",
+      "title": "런던발 여객기가 폭파 위협 신고로 비상착륙했대요",
+      "desc": "181명이 탄 비행기였고, 유럽 공항이 폐쇄되기도 했대요.",
+      "reason": "연말 해외여행 예약을 슬슬 찾아볼 때예요.",
+      "questions": [
+        "비행기 탈 때 꼭 챙기는 물건 있으세요?",
+        "기내에서 주로 뭐 하세요?",
+        "가장 오래 타 본 비행은 어디예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "런던발 여객기가 폭파 위협 신고로 비상착륙했대요.",
+          "follow": "유럽 공항이 폐쇄되기도 했다네요.",
+          "caution": "불안감 키우는 말 피하기"
+        },
+        "friend": {
+          "opener": "런던발 비행기 비상착륙했다더라, 봤어?",
+          "follow": "넌 비행기 탈 때 뭐 해?",
+          "caution": "무섭게 과장하지 않기"
+        },
+        "date": {
+          "opener": "비행기 자주 타세요? 런던발 여객기 소식 들으셨어요?",
+          "follow": "가 보고 싶은 나라 있으세요?",
+          "caution": "사고 얘기 길게 하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/%27Time-capsule%27_workshop_display_with_Thomas-Morse_Scout_S-4C_wing_being_repaired.jpg/1280px-%27Time-capsule%27_workshop_display_with_Thomas-Morse_Scout_S-4C_wing_being_repaired.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Airplane_wing_in_the_sky_above_Nepal.jpg/1280px-Airplane_wing_in_the_sky_above_Nepal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Nirajan pant",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Airplane_wing_in_the_sky_above_Nepal.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "폴드",
+      "color": "#1F3A5F",
+      "title": "아이폰 듀오 나온 주에 갤럭시 폴드8이 더 팔렸대요",
+      "desc": "국내 판매가 20% 넘게 늘었다고 해요.",
+      "reason": "폰 바꿀 때가 되면 접히는 폰 얘기가 자주 나와요.",
+      "questions": [
+        "폰은 보통 몇 년 쓰세요?",
+        "접히는 폰 써 보고 싶으세요?",
+        "폰 바꿀 때 가장 따지는 게 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "아이폰 듀오 나온 주에 폴드8이 더 팔렸다네요.",
+          "follow": "국내 판매가 20% 넘게 늘었대요.",
+          "caution": "브랜드 우열 따지지 않기"
+        },
+        "friend": {
+          "opener": "아이폰 듀오 나왔는데 폴드8이 더 팔렸대",
+          "follow": "너는 폰 언제 바꿀 거야?",
+          "caution": "기종 놀리지 않기"
+        },
+        "date": {
+          "opener": "요즘 폰 뭐 쓰세요? 폴드8이 더 팔렸다더라고요.",
+          "follow": "접히는 폰 써 보고 싶으세요?",
+          "caution": "가격 캐묻지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Apple_park_cupertino_2019.jpg/1280px-Apple_park_cupertino_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Arne Müseler",
+        "license": "CC BY-SA 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple_park_cupertino_2019.jpg"
+      }
+    }
+  ]
+}

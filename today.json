@@ -1,303 +1,318 @@
 {
-  "date": "2026-11-03",
-  "dateLabel": "11월 3일 화요일",
-  "generatedAt": "2026-11-03T01:49:28.226Z",
+  "date": "2026-11-04",
+  "dateLabel": "11월 4일 수요일",
+  "generatedAt": "2026-11-04T00:13:14.786Z",
   "topics": [
     {
       "id": "t1",
-      "cat": "취미",
-      "subtopic": "스포츠",
-      "label": "한국시리즈",
-      "color": "#1E3A8A",
-      "title": "kt와 삼성이 한국시리즈에서 맞붙는대요",
-      "desc": "1차전 선발은 kt 대니엘, 삼성 최원태래요.",
-      "reason": "가을 야구의 마지막 무대가 이어지는 11월 초예요.",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "아리랑",
+      "color": "#8B1A1A",
+      "title": "방탄소년단 '아리랑'이 이탈리아 플래티넘을 받았대요",
+      "desc": "K팝 가수로는 처음으로 인증을 받았다고 해요.",
+      "reason": "수요일 아침, 출근길에 한 번쯤 들었을 소식이에요.",
       "questions": [
-        "올해 한국시리즈는 어느 팀이 이길 것 같으세요?",
-        "야구장에서 먹었던 최고의 간식은 뭐예요?",
-        "가을 야구 직관 가 보신 적 있으세요?"
+        "요즘 자주 듣는 노래 있으세요?",
+        "'아리랑' 들어 보셨어요?",
+        "K팝 가수 중에 해외에서 더 유명해졌으면 하는 팀 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "kt랑 삼성이 한국시리즈에서 붙는대요. 보셨어요?",
-          "follow": "1차전 선발이 대니엘이랑 최원태라던데요. 어느 팀 응원하세요?",
-          "caution": "응원팀 때문에 말다툼으로 번지지 않게 해요."
+          "opener": "BTS '아리랑'이 이탈리아에서 플래티넘 받았대요. 보셨어요?",
+          "follow": "K팝 최초라는 점이 신기하더라고요.",
+          "caution": "특정 가수 호불호를 따지지 않기"
         },
         "friend": {
-          "opener": "야 kt랑 삼성 한국시리즈 붙는대. 봤어?",
-          "follow": "1차전 선발이 대니엘이랑 최원태래. 너는 어디가 이길 것 같아?",
-          "caution": "내기 판돈을 너무 키우지 마."
+          "opener": "BTS 아리랑 이탈리아 플래티넘이래, 봤어?",
+          "follow": "하이브도 최고 실적이라던데, 요즘 뭐 듣고 있어?",
+          "caution": "팬덤 비교하지 않기"
         },
         "date": {
-          "opener": "요즘 한국시리즈 시작한다던데, 야구 좋아하세요?",
-          "follow": "직관 가 보신 적 있으세요? 야구장 간식 중에 뭐 좋아하세요?",
-          "caution": "야구 규칙을 아는 척 길게 설명하지 않아요."
+          "opener": "BTS '아리랑'이 이탈리아 플래티넘을 받았대요. 들어 보셨어요?",
+          "follow": "평소에 어떤 음악 즐겨 들으세요?",
+          "caution": "취향을 평가하지 않기"
         }
       },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "WiiWii",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(5).jpg"
-      }
-    },
-    {
-      "id": "t3",
-      "cat": "경제",
-      "subtopic": "환율",
-      "label": "환율",
-      "color": "#0F766E",
-      "title": "환율이 오늘 1.3% 올랐다던데, 해외 가세요?",
-      "desc": "원/달러는 1,343원으로 마감했어요.",
-      "reason": "겨울 휴가 계획을 슬슬 세울 때예요.",
-      "questions": [
-        "환율 오르면 해외직구 줄이세요?",
-        "다음 해외여행으로 가고 싶은 곳이 어디예요?",
-        "여행 갈 때 환전은 어떻게 하세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오늘 환율이 1.3% 올랐대요. 원화 약세라 해외 나가기는 부담이네요.",
-          "follow": "연말에 여행 계획 있으세요?",
-          "caution": "전망이나 투자 조언은 하지 않아요."
-        },
-        "friend": {
-          "opener": "오늘 환율 1.3% 올랐대. 1,343원이래.",
-          "follow": "직구 하려던 거 있어? 겨울에 어디 가고 싶어?",
-          "caution": "환전 타이밍 훈수는 두지 마."
-        },
-        "date": {
-          "opener": "요즘 환율이 올라서 해외여행이 부담되더라고요.",
-          "follow": "가 보고 싶은 나라 있으세요?",
-          "caution": "소비 규모를 캐묻지 않아요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/European_pet_passport_%28P-063737-00-15%29.jpg/1280px-European_pet_passport_%28P-063737-00-15%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Europäische Kommission - Audiovisueller Dienst, Je",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:European_pet_passport_(P-063737-00-15).jpg"
-      }
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg/1280px-BTS_during_a_White_House_press_conference_May_31%2C_2022_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
       "id": "t2",
-      "cat": "날씨",
-      "subtopic": "미세먼지",
-      "label": "황사",
-      "color": "#B45309",
-      "title": "11월인데 서울에 황사가 덮쳤대요",
-      "desc": "11월 황사 관측은 6년 만이래요.",
-      "reason": "오늘 서울은 최저 5°에서 최고 16°까지 올라요.",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "챔스",
+      "color": "#0B3D91",
+      "title": "이강인의 아틀레티코가 김민재의 뮌헨에 0-2로 졌대요",
+      "desc": "챔피언스리그에서 성사된 코리안 더비였어요.",
+      "reason": "어제 밤 경기라 오늘 아침에 결과 얘기가 나오기 쉬워요.",
       "questions": [
-        "황사 낀 날엔 마스크 챙겨 쓰세요?",
-        "일교차 큰 날엔 겉옷 어떻게 입으세요?",
-        "밤사이 기온이 뚝 떨어지면 집에서 뭐 하세요?"
+        "축구 경기 챙겨 보세요?",
+        "코리안 더비 보셨어요?",
+        "경기 볼 때 치킨 말고 뭐 드세요?"
       ],
       "tips": {
         "work": {
-          "opener": "봄도 아닌데 황사가 왔대요. 목은 괜찮으세요?",
-          "follow": "밤엔 서울이 올가을 최저로 3℃까지 떨어진대요.",
-          "caution": "건강 상태를 캐묻지 않아요."
+          "opener": "챔스에서 이강인이랑 김민재가 맞붙었다던데 보셨어요?",
+          "follow": "결과는 뮌헨이 2대 0으로 이겼대요.",
+          "caution": "응원팀 때문에 열 올리지 않기"
         },
         "friend": {
-          "opener": "11월에 황사래. 6년 만이라더라.",
-          "follow": "밤엔 서울 3℃래. 옷 뭐 입고 나갈 거야?",
-          "caution": "약속 취소 압박은 하지 마."
+          "opener": "이강인 대 김민재 챔스 봤어?",
+          "follow": "0-2로 뮌헨이 이겼더라. 누구 응원했어?",
+          "caution": "선수 평가는 삼가기"
         },
         "date": {
-          "opener": "11월에 황사라니 신기하죠. 요즘 날씨 어떠세요?",
-          "follow": "일교차 큰 날엔 뭐 걸치고 다니세요?",
-          "caution": "건강 걱정을 길게 늘어놓지 않아요."
+          "opener": "챔피언스리그에서 한국 선수끼리 맞붙었대요.",
+          "follow": "축구 즐겨 보세요?",
+          "caution": "전문용어 남발하지 않기"
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Hazy_aerial_panorama_of_Venice_rooftops_toward_the_lagoon_at_sunset_%282023%29.jpg/1280px-Hazy_aerial_panorama_of_Venice_rooftops_toward_the_lagoon_at_sunset_%282023%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Spectators_at_Ralph_Wilson_Stadium_11-16-08.JPG/1280px-Spectators_at_Ralph_Wilson_Stadium_11-16-08.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/1/13/Lee_Kang-in_-_2022_%2852551771501%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
       "imageCredit": {
-        "author": "Paul Colin Hennig firstdorsal.eu",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hazy_aerial_panorama_of_Venice_rooftops_toward_the_lagoon_at_sunset_(2023).jpg"
+        "author": "Republic of Korea from Seoul, Republic of Korea",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lee_Kang-in_-_2022_(52551771501)_(cropped).jpg"
       }
     },
     {
       "id": "t6",
-      "cat": "음식",
-      "subtopic": "제철음식",
-      "label": "굴",
-      "color": "#B91C1C",
-      "title": "찬바람 불면 생각나는 제철 음식 있으세요?",
-      "desc": "서울 아침 기온이 5°까지 내려가요.",
-      "reason": "김장철이 시작되는 11월 초예요.",
-      "questions": [
-        "겨울 하면 떠오르는 간식이 뭐예요?",
-        "이맘때 꼭 먹는 음식 있으세요?",
-        "호떡이나 붕어빵 중에 뭐가 더 끌리세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "아침에 5°까지 내려가니까 따뜻한 게 당기네요.",
-          "follow": "점심에 뭐 드실 거예요?",
-          "caution": "메뉴 고르기로 오래 끌지 않아요."
-        },
-        "friend": {
-          "opener": "요즘 추워서 붕어빵 생각나더라.",
-          "follow": "너는 호떡이야 붕어빵이야?",
-          "caution": "입맛 평가는 하지 마."
-        },
-        "date": {
-          "opener": "쌀쌀해지니 따뜻한 간식이 생각나는데, 좋아하는 게 있으세요?",
-          "follow": "겨울 간식 중에 최고는 뭐예요?",
-          "caution": "식성을 평가하지 않아요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/3_mushroom_curry_noodle_soup_with_ph%E1%BB%9F_-_Pho_2025-11-12.jpg/1280px-3_mushroom_curry_noodle_soup_with_ph%E1%BB%9F_-_Pho_2025-11-12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/DFC_3982_A_steaming_bowl_of_homemade_vegetable_soup_garnished_with_chopped_parsley_served_with_a_slice_of_rustic_brown_bread.jpg/1280px-DFC_3982_A_steaming_bowl_of_homemade_vegetable_soup_garnished_with_chopped_parsley_served_with_a_slice_of_rustic_brown_bread.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "PattayaPatrol",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DFC_3982_A_steaming_bowl_of_homemade_vegetable_soup_garnished_with_chopped_parsley_served_with_a_slice_of_rustic_brown_bread.jpg"
-      }
-    },
-    {
-      "id": "t8",
-      "cat": "일상",
-      "subtopic": "잠·수면",
-      "label": "이불",
-      "color": "#4338CA",
-      "title": "일교차 큰 요즘, 이불은 어떻게 덮고 주무세요?",
-      "desc": "서울은 오늘 밤 3℃까지 떨어진대요.",
-      "reason": "올가을 가장 쌀쌀한 밤이 이어져요.",
-      "questions": [
-        "겨울 이불은 언제부터 꺼내세요?",
-        "잘 때 꼭 필요한 물건이 있으세요?",
-        "추운 아침에 이불 속에서 나오는 팁이 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "밤에 3℃까지 떨어진다는데 이불 바꾸셨어요?",
-          "follow": "전기장판 쓰세요?",
-          "caution": "수면 상태를 캐묻지 않아요."
-        },
-        "friend": {
-          "opener": "밤에 3℃래. 이불 꺼냈어?",
-          "follow": "전기장판 vs 보일러 뭐가 나아?",
-          "caution": "잠 못 잤다고 타박하지 마."
-        },
-        "date": {
-          "opener": "요즘 밤이 추워졌는데 잘 때 뭐 덮으세요?",
-          "follow": "겨울 침구 중에 좋아하는 게 있으세요?",
-          "caution": "잠자리 얘기로 번지지 않게 해요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Cat_dozing_off_on_a_blanket_%28Unsplash%29.jpg/1280px-Cat_dozing_off_on_a_blanket_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "t4",
       "cat": "경제",
       "subtopic": "주식·투자",
-      "label": "삼전닉스",
-      "color": "#1D4ED8",
-      "title": "삼성전자가 3.2% 내렸다던데, 주식 하세요?",
-      "desc": "SK하이닉스도 4.0% 내려 141만 3천 원이에요.",
-      "reason": "월요일 휴일 뒤 이어진 화요일 장이 마감했어요.",
+      "label": "삼전",
+      "color": "#0B3D2E",
+      "title": "삼성전자가 어제 4.1% 내렸다던데, 주식 하세요?",
+      "desc": "종가는 21만 9,500원이고 SK하이닉스는 5.0% 내렸어요.",
+      "reason": "주식 얘기는 점심 자리에서 자주 나오는 소재예요.",
       "questions": [
-        "요즘 주식 앱 얼마나 자주 열어 보세요?",
-        "주식 말고 하고 계신 재테크 있으세요?",
-        "주식 얘기 나오면 어떤 반응이세요?"
+        "요즘 재테크 뭐 하세요?",
+        "월급 들어오면 제일 먼저 뭐 하세요?",
+        "주식 앱은 하루에 몇 번 열어 보세요?"
       ],
       "tips": {
         "work": {
-          "opener": "삼성전자가 오늘 3.2% 내렸대요. 하이닉스는 4.0%래요.",
-          "follow": "요즘 주식 얘기 많이 하던데 하세요?",
-          "caution": "종목 추천이나 전망은 하지 않아요."
+          "opener": "삼성전자가 어제 4.1% 내렸다던데 보셨어요?",
+          "follow": "SK하이닉스도 5.0% 내렸대요.",
+          "caution": "종목 추천은 하지 않기"
         },
         "friend": {
-          "opener": "삼성전자 오늘 3.2% 내렸대. 하이닉스는 4%야.",
-          "follow": "너 주식 해? 요즘 앱 자주 봐?",
-          "caution": "손익 캐묻지 마."
+          "opener": "삼성전자 어제 4.1% 내렸더라, 너 주식 해?",
+          "follow": "요즘 재테크 뭐 해?",
+          "caution": "수익률 캐묻지 않기"
         },
         "date": {
-          "opener": "요즘 주식 얘기 많이 하던데 관심 있으세요?",
-          "follow": "재테크는 따로 하는 게 있으세요?",
-          "caution": "투자 금액은 묻지 않아요."
+          "opener": "요즘 재테크 관심 있으세요?",
+          "follow": "저축이랑 투자 중 어느 쪽이 더 맞으세요?",
+          "caution": "손익 얘기 깊게 안 하기"
         }
       },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "id": "t7",
-      "cat": "문화",
-      "subtopic": "드라마",
-      "label": "보검매직컬",
-      "color": "#BE185D",
-      "title": "박보검이 '보검 매직컬2'로 미용사 자격증을 땄대요",
-      "desc": "매일 4시간 넘게 연습했대요.",
-      "reason": "요즘 저녁에 볼 예능을 고를 때예요.",
-      "questions": [
-        "요즘 정주행하는 예능 있으세요?",
-        "새로운 자격증 따 보고 싶은 게 있으세요?",
-        "머리 자르러 가면 어떻게 말씀하세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "'보검 매직컬2' 시작했대요. 박보검이 미용사 자격증도 땄다던데요.",
-          "follow": "매일 4시간 넘게 연습했대요. 보셨어요?",
-          "caution": "출연자 평가는 하지 않아요."
-        },
-        "friend": {
-          "opener": "보검 매직컬2 시작했더라. 박보검 자격증 땄대.",
-          "follow": "매일 4시간 연습했대. 너 봤어?",
-          "caution": "스포일러는 조심해."
-        },
-        "date": {
-          "opener": "요즘 보는 예능 있으세요? 보검 매직컬2 시작했다던데요.",
-          "follow": "예능 중에 좋아하는 장르가 뭐예요?",
-          "caution": "취향 평가를 하지 않아요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Holding_a_remote_control_in_a_dimly_lit_room_while_preparing_to_watch_a_favorite_show_during_the_evening.jpg/1280px-Holding_a_remote_control_in_a_dimly_lit_room_while_preparing_to_watch_a_favorite_show_during_the_evening.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/7/78/Market_centre_in_Tokyo_stock_exchange.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
       "imageCredit": {
-        "author": "Shixart1985",
+        "author": "ehnmark",
         "license": "CC BY 2.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Holding_a_remote_control_in_a_dimly_lit_room_while_preparing_to_watch_a_favorite_show_during_the_evening.jpg"
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Market_centre_in_Tokyo_stock_exchange.jpg"
       }
     },
     {
       "id": "t5",
-      "cat": "쇼핑",
-      "subtopic": "중고거래",
-      "label": "중고차",
-      "color": "#7C3AED",
-      "title": "현대차가 중고차에 이전 차주 운전점수를 공개한대요",
-      "desc": "전기차는 배터리 셀 전압·온도 편차도 안내한대요.",
-      "reason": "겨울 오기 전 차 바꾸는 얘기가 나올 때예요.",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "비",
+      "color": "#2C5F7C",
+      "title": "밤부터 남해안과 제주에 비가 와서 내일 전국으로 번진대요",
+      "desc": "낮 최고기온은 14~19도로 예상돼요.",
+      "reason": "오늘 서울은 구름 조금에 최고 17°까지 올라요.",
       "questions": [
-        "중고차 사 보신 적 있으세요?",
-        "차 살 때 제일 중요하게 보는 게 뭐예요?",
-        "중고거래하면서 겪은 일 있으세요?"
+        "비 오는 날엔 어떤 노래 들으세요?",
+        "비 오는 출근길 최악의 기억 있으세요?",
+        "비 오는 날 꼭 먹는 음식 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "현대차가 중고차에 이전 차주 안전운전점수를 공개한대요.",
-          "follow": "전기차는 배터리 편차도 알려준대요. 중고차 사 보셨어요?",
-          "caution": "차량 가격을 캐묻지 않아요."
+          "opener": "내일 전국에 비 온다던데, 출근 어떻게 하세요?",
+          "follow": "낮엔 14~19도래요.",
+          "caution": "날씨 불평만 하지 않기"
         },
         "friend": {
-          "opener": "현대차가 중고차에 이전 차주 운전점수 공개한대.",
-          "follow": "배터리 상태도 알려준다더라. 중고차 사 본 적 있어?",
-          "caution": "차종 훈수는 줄여."
+          "opener": "내일 비 온대, 뭐 할 거야?",
+          "follow": "비 오면 생각나는 음식 있어?",
+          "caution": "약속 취소 강요하지 않기"
         },
         "date": {
-          "opener": "중고차에 이전 차주 운전점수가 공개된대요. 신기하죠?",
-          "follow": "운전 자주 하세요? 차 있으세요?",
-          "caution": "차 가격이나 재산은 묻지 않아요."
+          "opener": "내일 비 온다던데 비 오는 날 좋아하세요?",
+          "follow": "비 오는 날엔 주로 뭐 하세요?",
+          "caution": "날씨 얘기만 길게 하지 않기"
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Car_dashboard_on_highway_%28Unsplash%29.jpg/1280px-Car_dashboard_on_highway_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/024-02_-_free_download_photo_of_people_shopping_and_walking_with_umbrellas_in_the_shopping_street_Steenweg_in_Utrecht_city_on_a_rainy_day_with_lighting_shop_shop_windows._Street_photography_in_high_resolution_photos_by_Fons_Heijnsbroek.tif/lossy-page1-1280px-thumbnail.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/3/34/A_rainy_day_on_Iberville_Street%2C_New_Orleans_Umbrella.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Andy Clarke",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_rainy_day_on_Iberville_Street,_New_Orleans_Umbrella.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "입동",
+      "color": "#8A4B08",
+      "title": "모레 글피면 입동인데, 겨울 첫 음식으로 뭐 드세요?",
+      "desc": "입동은 겨울의 시작이라는 절기예요.",
+      "reason": "3일 뒤가 입동이고 오늘 아침은 9°예요.",
+      "questions": [
+        "겨울이 오면 가장 먼저 찾는 음식이 뭐예요?",
+        "따뜻한 국물 중 최애가 뭐예요?",
+        "붕어빵 파는 곳 찾아보셨어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "곧 입동이래요. 점심에 따뜻한 국물 어떠세요?",
+          "follow": "어떤 국물이 제일 좋으세요?",
+          "caution": "메뉴 강요하지 않기"
+        },
+        "friend": {
+          "opener": "곧 입동이래, 뭐 먹을래?",
+          "follow": "겨울 되면 꼭 먹는 거 있어?",
+          "caution": "식성 놀리지 않기"
+        },
+        "date": {
+          "opener": "곧 입동인데 겨울 음식 좋아하세요?",
+          "follow": "좋아하는 겨울 간식 있으세요?",
+          "caution": "식성 평가하지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/The_snack_bar_district_in_Sapporo%27s_Susukino_in_winter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/T%C3%A9li_fagyi_%28winter_ice_cream%29_03.jpg/1280px-T%C3%A9li_fagyi_%28winter_ice_cream%29_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Rev-san",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C3%A9li_fagyi_(winter_ice_cream)_03.jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "이웃·동료",
+      "label": "김장",
+      "color": "#7A2E2E",
+      "title": "올해 김장은 가족끼리 하세요, 사 먹으세요?",
+      "desc": "11월 초라 김장 얘기가 슬슬 나오는 때예요.",
+      "reason": "수능을 앞둔 가을이라 가족 일정이 바빠지는 시기예요.",
+      "questions": [
+        "어릴 때 김장하는 날 기억나세요?",
+        "김장 때 맡던 역할이 있었어요?",
+        "가족 중 손맛 좋은 분이 누구세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "김장철인데 올해는 담그세요?",
+          "follow": "어릴 때 김장 기억 있으세요?",
+          "caution": "가족사 캐묻지 않기"
+        },
+        "friend": {
+          "opener": "김장 올해는 해?",
+          "follow": "우리 집은 어땠는지 얘기해 줘",
+          "caution": "집안일 분담 따지지 않기"
+        },
+        "date": {
+          "opener": "김장하는 집 많잖아요, 어릴 때 해 보셨어요?",
+          "follow": "김치 중 좋아하는 종류 있어요?",
+          "caution": "가족 사정 캐묻지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Kimchi_making.jpg/1280px-Kimchi_making.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "USAG- Humphreys",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kimchi_making.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "폭파위협",
+      "color": "#4A4A4A",
+      "title": "런던발 여객기가 폭파 위협 신고로 비상착륙했대요",
+      "desc": "181명이 탄 비행기였고, 유럽 공항이 폐쇄되기도 했대요.",
+      "reason": "연말 해외여행 예약을 슬슬 찾아볼 때예요.",
+      "questions": [
+        "비행기 탈 때 꼭 챙기는 물건 있으세요?",
+        "기내에서 주로 뭐 하세요?",
+        "가장 오래 타 본 비행은 어디예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "런던발 여객기가 폭파 위협 신고로 비상착륙했대요.",
+          "follow": "유럽 공항이 폐쇄되기도 했다네요.",
+          "caution": "불안감 키우는 말 피하기"
+        },
+        "friend": {
+          "opener": "런던발 비행기 비상착륙했다더라, 봤어?",
+          "follow": "넌 비행기 탈 때 뭐 해?",
+          "caution": "무섭게 과장하지 않기"
+        },
+        "date": {
+          "opener": "비행기 자주 타세요? 런던발 여객기 소식 들으셨어요?",
+          "follow": "가 보고 싶은 나라 있으세요?",
+          "caution": "사고 얘기 길게 하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/%27Time-capsule%27_workshop_display_with_Thomas-Morse_Scout_S-4C_wing_being_repaired.jpg/1280px-%27Time-capsule%27_workshop_display_with_Thomas-Morse_Scout_S-4C_wing_being_repaired.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Airplane_wing_in_the_sky_above_Nepal.jpg/1280px-Airplane_wing_in_the_sky_above_Nepal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Nirajan pant",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Airplane_wing_in_the_sky_above_Nepal.jpg"
+      }
+    },
+    {
+      "id": "t3",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "폴드",
+      "color": "#1F3A5F",
+      "title": "아이폰 듀오 나온 주에 갤럭시 폴드8이 더 팔렸대요",
+      "desc": "국내 판매가 20% 넘게 늘었다고 해요.",
+      "reason": "폰 바꿀 때가 되면 접히는 폰 얘기가 자주 나와요.",
+      "questions": [
+        "폰은 보통 몇 년 쓰세요?",
+        "접히는 폰 써 보고 싶으세요?",
+        "폰 바꿀 때 가장 따지는 게 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "아이폰 듀오 나온 주에 폴드8이 더 팔렸다네요.",
+          "follow": "국내 판매가 20% 넘게 늘었대요.",
+          "caution": "브랜드 우열 따지지 않기"
+        },
+        "friend": {
+          "opener": "아이폰 듀오 나왔는데 폴드8이 더 팔렸대",
+          "follow": "너는 폰 언제 바꿀 거야?",
+          "caution": "기종 놀리지 않기"
+        },
+        "date": {
+          "opener": "요즘 폰 뭐 쓰세요? 폴드8이 더 팔렸다더라고요.",
+          "follow": "접히는 폰 써 보고 싶으세요?",
+          "caution": "가격 캐묻지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Apple_park_cupertino_2019.jpg/1280px-Apple_park_cupertino_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Arne Müseler",
+        "license": "CC BY-SA 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple_park_cupertino_2019.jpg"
+      }
     }
   ]
 }
