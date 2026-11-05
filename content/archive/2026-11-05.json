@@ -1,0 +1,315 @@
+{
+  "date": "2026-11-05",
+  "dateLabel": "11월 5일 목요일",
+  "generatedAt": "2026-11-05T00:32:59.302Z",
+  "topics": [
+    {
+      "id": "20261105-risenne",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "리센느",
+      "color": "#8E24AA",
+      "title": "리센느가 신보 5곡을 멜론 톱10에 올렸대요",
+      "desc": "컴백하자마자 멜론 차트 1위에 올랐어요.",
+      "reason": "성수동 팝업스토어가 6일에 문을 연대요.",
+      "questions": [
+        "요즘 플레이리스트에 새로 넣은 노래 있어요?",
+        "신인 그룹 노래는 어떻게 찾아 들으세요?",
+        "팝업스토어 같은 데는 직접 가 보는 편이에요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "리센느 신곡이 멜론 차트 1위래요. 수록곡 5곡이 다 톱10이라던데요.",
+          "follow": "성수동에서 팝업스토어도 연대요. 혹시 요즘 출근길에 듣는 노래 있으세요?",
+          "caution": "멤버 개인 얘기나 외모 품평은 피하세요."
+        },
+        "friend": {
+          "opener": "야, 리센느 신보 5곡이 멜론 톱10 다 차지했대. 들어봤어?",
+          "follow": "성수동 팝업도 6일에 열린대. 같이 가볼래?",
+          "caution": "취향 갈리는 노래를 깎아내리지 말기."
+        },
+        "date": {
+          "opener": "리센느 신보가 멜론 1위래요. 혹시 들어보셨어요?",
+          "follow": "요즘 자주 듣는 노래는 어떤 쪽이세요?",
+          "caution": "아이돌 취향을 평가하는 말투는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/RESCENE_at_Incheon_Airport%2C_12_August_2026.png/1280px-RESCENE_at_Incheon_Airport%2C_12_August_2026.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "K-POPIT 케이팝잇",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:RESCENE_at_Incheon_Airport,_12_August_2026.png"
+      }
+    },
+    {
+      "id": "20261105-typhoon",
+      "cat": "날씨",
+      "subtopic": "태풍",
+      "label": "태풍",
+      "color": "#00695C",
+      "title": "31호 태풍 '인파'가 일본 도쿄까지 올라갔대요",
+      "desc": "6일에 온대저기압으로 바뀔 전망이래요.",
+      "reason": "11월 첫 주인데 태풍 소식이 아직 이어져요.",
+      "questions": [
+        "태풍 올 때 제일 기억에 남는 일 있어요?",
+        "11월에 태풍 소식은 처음 들으셨어요?",
+        "일본 여행 가 보셨으면 어디가 좋았어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "31호 태풍 인파가 도쿄 남쪽까지 올라왔대요. 6일엔 온대저기압으로 바뀐다네요.",
+          "follow": "11월에 태풍 얘기 나오니 신기하더라고요.",
+          "caution": "피해 상황을 단정해서 말하지 마세요."
+        },
+        "friend": {
+          "opener": "태풍 인파가 도쿄까지 올라갔대. 11월에 태풍이라니 신기하지 않아?",
+          "follow": "6일엔 온대저기압으로 바뀐대. 너 일본 가본 적 있어?",
+          "caution": "사고 소식처럼 무겁게 몰고 가지 말기."
+        },
+        "date": {
+          "opener": "요즘 11월인데도 태풍 소식이 있더라고요. 들으셨어요?",
+          "follow": "혹시 일본 가 보셨어요? 어디가 기억에 남아요?",
+          "caution": "재난 얘기로 길게 끌지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Gravity_Waves_and_Severe_Storms_Across_Eastern_New_Mexico_%28CIRA_2023-10-02%29.png/1280px-Gravity_Waves_and_Severe_Storms_Across_Eastern_New_Mexico_%28CIRA_2023-10-02%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Kallbadhuset_Lysekil_during_storm.jpg/1280px-Kallbadhuset_Lysekil_during_storm.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "W.carter",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kallbadhuset_Lysekil_during_storm.jpg"
+      }
+    },
+    {
+      "id": "20261105-kimchi",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "김치",
+      "color": "#C62828",
+      "title": "김치 100g을 매일 먹었더니 장내 미생물이 달라졌대요",
+      "desc": "KBS에선 '세계가 김치에 빠지다' 편이 방송됐어요.",
+      "reason": "곧 입동이라 김치 담글 준비를 하는 집이 있어요.",
+      "questions": [
+        "김치 없으면 밥이 안 넘어가는 편이세요?",
+        "요즘 즐겨 먹는 김치 종류 있어요?",
+        "장 건강 챙기려고 따로 먹는 게 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "김치 100g을 매일 먹었더니 장내 미생물이 달라졌다는 얘기가 있더라고요.",
+          "follow": "점심에 김치찌개 먹으러 갈 때 이 얘기 나오겠네요. 어떤 김치 좋아하세요?",
+          "caution": "건강 효과를 단정해서 말하지 마세요."
+        },
+        "friend": {
+          "opener": "김치 100g 매일 먹으면 장내 미생물이 달라진대. 신기하지?",
+          "follow": "너 김치 하루에 얼마나 먹어? 집에서 담가?",
+          "caution": "병이나 체질 얘기는 캐묻지 말기."
+        },
+        "date": {
+          "opener": "김치를 매일 먹었더니 장내 미생물이 달라졌다는 얘기를 봤어요.",
+          "follow": "김치 좋아하세요? 좋아하는 종류는 뭐예요?",
+          "caution": "식습관을 평가하는 말은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Korean_table_setting-01.jpg/1280px-Korean_table_setting-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Alan Chan",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean_table_setting-01.jpg"
+      }
+    },
+    {
+      "id": "20261105-wontaein",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "원태인",
+      "color": "#1565C0",
+      "title": "삼성 원태인이 불펜 32구로 끝내기 위기를 막았대요",
+      "desc": "1~2차전 불펜 대기 뒤 대구에서 선발 가능성이 나왔어요.",
+      "reason": "연장 12회 끝에 삼성이 KT를 3-2로 꺾은 시리즈예요.",
+      "questions": [
+        "한국시리즈 경기는 어디서 보세요?",
+        "야구 볼 때 꼭 챙기는 간식 있어요?",
+        "선발이랑 불펜 중 어느 쪽 승부가 더 재밌어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "원태인 선수가 불펜에서 32구 던져서 끝내기 위기를 막았대요. 보셨어요?",
+          "follow": "그 뒤에 대구에서 선발로 나올 수도 있다던데요.",
+          "caution": "응원하는 팀이 갈리면 승패 얘기는 짧게 하세요."
+        },
+        "friend": {
+          "opener": "원태인 불펜 32구로 위기 막은 거 봤어? 대박이더라.",
+          "follow": "선발로 돌아올 수도 있대. 이번 시리즈 어떻게 볼 것 같아?",
+          "caution": "상대 팀 팬이면 놀리는 말은 적당히 하기."
+        },
+        "date": {
+          "opener": "요즘 한국시리즈 하던데 야구 좋아하세요?",
+          "follow": "직관 가 보신 적 있으세요? 어느 구장이 좋았어요?",
+          "caution": "야구 용어를 너무 길게 풀지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/%EC%9B%90%ED%83%9C%EC%9D%B8_%EC%84%A0%EC%88%98.jpg/1280px-%EC%9B%90%ED%83%9C%EC%9D%B8_%EC%84%A0%EC%88%98.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "LionsTV",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EC%9B%90%ED%83%9C%EC%9D%B8_%EC%84%A0%EC%88%98.jpg"
+      }
+    },
+    {
+      "id": "20261105-bitcoin",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "비트코인",
+      "color": "#EF6C00",
+      "title": "비트코인이 화요일보다 4.2% 올랐다던데, 하세요?",
+      "desc": "8만 628달러예요. 코스피는 1.6% 내렸어요.",
+      "reason": "코스피가 내린 날 비트코인은 반대로 움직였어요.",
+      "questions": [
+        "요즘 재테크 얘기 주변에서 많이 들리세요?",
+        "투자 소식은 어디서 챙겨 보세요?",
+        "주식이랑 코인 중 관심 가는 쪽이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "비트코인이 화요일보다 4.2% 올랐대요. 코스피는 1.6% 내렸고요.",
+          "follow": "요즘 재테크 얘기 주변에서 자주 들리세요?",
+          "caution": "종목 추천이나 수익 자랑은 피하세요."
+        },
+        "friend": {
+          "opener": "비트코인 화요일보다 4.2% 올랐대. 코스피는 내렸고. 너 봤어?",
+          "follow": "요즘 투자 뭐 하는 거 있어?",
+          "caution": "손익 금액을 캐묻지 말기."
+        },
+        "date": {
+          "opener": "비트코인이 올랐다는 소식 들으셨어요? 코스피는 내렸더라고요.",
+          "follow": "재테크에 관심 있으세요? 요즘 눈여겨보는 게 있으세요?",
+          "caution": "투자 성향이나 자산 규모는 묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "20261105-trip",
+      "cat": "여행",
+      "subtopic": "국내여행",
+      "label": "나들이",
+      "color": "#2E7D32",
+      "title": "겨울 오기 전에 다녀오고 싶은 국내 여행지 있으세요?",
+      "desc": "토요일이 입동이라 겨울 절기가 시작돼요.",
+      "reason": "서울 낮 기온이 16°C까지 올라가는 목요일이에요.",
+      "questions": [
+        "바다랑 산 중에 어디가 더 끌리세요?",
+        "당일치기로 다녀온 곳 중 또 가고 싶은 데 있어요?",
+        "겨울에 꼭 가 보고 싶은 국내 여행지는요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "곧 입동이라 겨울 되기 전에 어디 한 번 다녀오고 싶더라고요. 가 보고 싶은 데 있으세요?",
+          "follow": "당일치기로 다녀올 만한 곳 추천해 주실래요?",
+          "caution": "휴가 일정을 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "겨울 되기 전에 어디 한 번 다녀올까? 가고 싶은 데 있어?",
+          "follow": "바다랑 산 중에 어디가 끌려? 당일치기도 괜찮고.",
+          "caution": "날짜나 예산을 대신 정하지 말기."
+        },
+        "date": {
+          "opener": "곧 겨울이라 어디 다녀오고 싶은데, 최근에 다녀온 여행지 있으세요?",
+          "follow": "거기서 뭐가 제일 좋았어요?",
+          "caution": "같이 가자는 식의 말은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Top_Mountain_Trail_%2817%29_%2815391759747%29.jpg/1280px-Top_Mountain_Trail_%2817%29_%2815391759747%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Nicholas A. Tonelli from Northeast Pennsylvania, U",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_Mountain_Trail_(17)_(15391759747).jpg"
+      }
+    },
+    {
+      "id": "20261105-daiso",
+      "cat": "쇼핑",
+      "subtopic": "생활용품",
+      "label": "다이소",
+      "color": "#D84315",
+      "title": "다이소 2천 원짜리가 매장마다 품절이래요",
+      "desc": "'오픈런'까지 나올 만큼 싹쓸이 품절이 이어졌대요.",
+      "reason": "입동을 이틀 앞두고 있어요.",
+      "questions": [
+        "다이소에서 최근에 산 물건 뭐예요?",
+        "2천 원짜리 중에 의외로 잘 쓰는 게 있어요?",
+        "품절 때문에 헛걸음한 적 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "다이소 2천 원짜리가 매장마다 품절이래요. 오픈런까지 한다던데요.",
+          "follow": "혹시 다이소에서 요즘 사신 거 있어요?",
+          "caution": "특정 상품 홍보처럼 들리지 않게 하세요."
+        },
+        "friend": {
+          "opener": "다이소 2천 원짜리가 품절 대란이래. 너 다이소 자주 가?",
+          "follow": "가면 꼭 사 오는 거 있어? 나도 추천 좀 해줘.",
+          "caution": "산 물건 가격을 캐묻지 말기."
+        },
+        "date": {
+          "opener": "다이소 2천 원짜리가 품절이라던데 들어보셨어요?",
+          "follow": "혹시 다이소에서 의외로 잘 쓰는 물건 있으세요?",
+          "caution": "소비 습관을 평가하는 말은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Daiso_Industries_headquarters_20101113.jpg/1280px-Daiso_Industries_headquarters_20101113.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Taisyo",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daiso_Industries_headquarters_20101113.jpg"
+      }
+    },
+    {
+      "id": "20261105-commute",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "출근길",
+      "color": "#455A64",
+      "title": "출근길 비 소식이 있는데, 비 오는 날 출근 어떠세요?",
+      "desc": "서울은 아침 9°C에서 낮 16°C까지 올라가요.",
+      "reason": "오늘 서울 강수확률이 57%예요.",
+      "questions": [
+        "비 오는 날 출근길에 꼭 하는 루틴 있어요?",
+        "출근길에 즐겨 듣는 노래나 팟캐스트는 뭐예요?",
+        "최악의 출근길 썰 하나 풀어 주실래요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 소식 있던데 출근길 어떠셨어요?",
+          "follow": "저는 이럴 때 지하철이 더 붐비더라고요. 어떻게 오세요?",
+          "caution": "출근 불평이 회사 불만으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "오늘 비 온다던데 너 출근길 어때?",
+          "follow": "비 오는 날엔 뭐 들으면서 가? 나 추천 좀.",
+          "caution": "짜증 섞인 푸념만 길게 늘어놓지 말기."
+        },
+        "date": {
+          "opener": "오늘 비 소식 있던데 평소엔 어떻게 이동하세요?",
+          "follow": "출퇴근길에 즐겨 듣는 거 있으세요?",
+          "caution": "직장 얘기를 깊게 파고들지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Morning_commuters_tapping_out_at_Xi%27erqi_Station_%2820220418095811%29.jpg/1280px-Morning_commuters_tapping_out_at_Xi%27erqi_Station_%2820220418095811%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "N509FZ",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Morning_commuters_tapping_out_at_Xi%27erqi_Station_(20220418095811).jpg"
+      }
+    }
+  ]
+}
