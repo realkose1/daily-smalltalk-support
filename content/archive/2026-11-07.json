@@ -1,0 +1,298 @@
+{
+  "date": "2026-11-07",
+  "dateLabel": "11월 7일 토요일",
+  "generatedAt": "2026-11-06T23:49:35.553Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "시즌",
+      "subtopic": "절기",
+      "label": "입동",
+      "color": "#1F3A5F",
+      "title": "오늘이 입동인데, 서울이 영하권이래요",
+      "desc": "서울 최저 0°C, 입동에 영하권인 건 20년 만이래요.",
+      "reason": "겨울의 시작이라는 절기가 바로 오늘이에요.",
+      "special": true,
+      "questions": [
+        "겨울이 시작되면 제일 먼저 꺼내는 물건이 뭐예요?",
+        "입동 하면 떠오르는 음식이나 풍경 있으세요?",
+        "겨울 중 가장 좋아하는 순간은 언제예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 입동인데 아침에 진짜 춥더라고요.",
+          "follow": "출근길에 제일 먼저 꺼내신 겨울 아이템이 뭐예요?",
+          "caution": "추위 불평만 길게 늘어놓지 않기"
+        },
+        "friend": {
+          "opener": "오늘 입동이래, 서울은 영하권이라던데 아침에 어땠어?",
+          "follow": "올겨울엔 뭐 제일 하고 싶어?",
+          "caution": "날씨 얘기만 하다 끝내지 않기"
+        },
+        "date": {
+          "opener": "오늘이 입동이래요, 겨울 좋아하세요?",
+          "follow": "겨울에 꼭 가보는 장소나 즐겨 먹는 간식 있으세요?",
+          "caution": "추위를 싫어한다고 단정해서 말하지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/FrostedClover.jpg/1280px-FrostedClover.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WillMatt4",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:FrostedClover.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "시그널",
+      "color": "#2C3E50",
+      "title": "'두번째 시그널'이 12월 7일에 방영된대요",
+      "desc": "AI로 조진웅 교체를 시도했지만 실패했다는 소식도 있어요.",
+      "reason": "겨울 드라마 편성을 챙기기 시작하는 11월 초예요.",
+      "questions": [
+        "'시그널' 1편은 보셨어요?",
+        "기다려지는 후속 시즌이 있으세요?",
+        "겨울에 몰아보기 좋은 드라마 추천해 주실래요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'두번째 시그널' 12월 7일에 방영된대요, 보셨어요?",
+          "follow": "AI로 조진웅 씨 교체 시도했는데 실패했다더라고요.",
+          "caution": "배우 개인 평가는 하지 않기"
+        },
+        "friend": {
+          "opener": "'두번째 시그널' 12월 7일 방영이래, 들었어?",
+          "follow": "AI로 조진웅 교체 시도했다가 안 됐대. 1편 다시 볼래?",
+          "caution": "결말 스포는 하지 않기"
+        },
+        "date": {
+          "opener": "'두번째 시그널' 12월에 나온대요, 시그널 보셨어요?",
+          "follow": "드라마 보면 어떤 장르를 제일 좋아하세요?",
+          "caution": "취향을 평가하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Snowy_Sainte-Famille_Street_in_Quebec_City.jpg/1280px-Snowy_Sainte-Famille_Street_in_Quebec_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Wolfe_City_October_2015_05_%28Main_Street%29.jpg/1280px-Wolfe_City_October_2015_05_%28Main_Street%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Michael Barera",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wolfe_City_October_2015_05_(Main_Street).jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "겨울음식",
+      "color": "#A0522D",
+      "title": "겨울 되면 꼭 챙겨 먹는 간식 있으세요?",
+      "desc": "붕어빵, 군고구마, 호빵이 슬슬 떠오르는 영하권 아침이에요.",
+      "reason": "오늘 서울 아침이 0°C까지 내려갔어요.",
+      "questions": [
+        "길거리 간식 중 제일 좋아하는 건 뭐예요?",
+        "추운 날 꼭 먹는 따뜻한 음식이 있어요?",
+        "올겨울에 처음 먹은 음식이 뭐였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 추우니까 따뜻한 간식 생각나더라고요.",
+          "follow": "점심에 뭐 드셨어요?",
+          "caution": "다이어트 얘기로 몰지 않기"
+        },
+        "friend": {
+          "opener": "요즘 붕어빵 벌써 파는 데 있어?",
+          "follow": "군고구마파야 호빵파야?",
+          "caution": "메뉴 고르는 데 너무 오래 끌지 않기"
+        },
+        "date": {
+          "opener": "추운 날엔 따뜻한 음식이 생각나잖아요, 뭐 좋아하세요?",
+          "follow": "겨울 간식 중에 최애가 있으세요?",
+          "caution": "식습관을 평가하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Taiyaki_Japanese_Fish-shaped_Cake_%28cut_in_half%29_-_Kitokito_2025-09-23.jpg/1280px-Taiyaki_Japanese_Fish-shaped_Cake_%28cut_in_half%29_-_Kitokito_2025-09-23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t5",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "판다",
+      "color": "#4A4A4A",
+      "title": "쌍둥이 판다가 용인 명예시민증을 받았대요",
+      "desc": "루이바오·후이바오는 12월에 중국으로 간대요.",
+      "reason": "겨울이 오면 판다를 볼 날도 얼마 안 남았어요.",
+      "questions": [
+        "판다 직접 본 적 있으세요?",
+        "좋아하는 동물 중에 제일 먼저 떠오르는 건 뭐예요?",
+        "동물원 가면 꼭 보는 동물이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "용인 판다 쌍둥이가 명예시민증 받았대요, 보셨어요?",
+          "follow": "12월에 중국 간다던데 아쉽네요.",
+          "caution": "동물 처우 논란으로 번지지 않게 하기"
+        },
+        "friend": {
+          "opener": "루이바오 후이바오 명예시민증 받았대, 봤어?",
+          "follow": "12월에 중국 간대. 가기 전에 보러 갈래?",
+          "caution": "가자고 강요하지 않기"
+        },
+        "date": {
+          "opener": "쌍둥이 판다가 용인 명예시민이 됐다던데 아세요?",
+          "follow": "좋아하는 동물 있으세요?",
+          "caution": "동물 알레르기 같은 얘기는 먼저 묻지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Red_Panda_Bamboo_Dinner_%2826790302521%29.jpg/1280px-Red_Panda_Bamboo_Dinner_%2826790302521%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Korea-Yongin-Everland-04.jpg/1280px-Korea-Yongin-Everland-04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "by Nagyman",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea-Yongin-Everland-04.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "한파",
+      "color": "#3B6EA5",
+      "title": "강원 14곳에 한파주의보가 발효됐대요",
+      "desc": "춘천·원주 등 14곳이고, 내일은 더 춥대요.",
+      "reason": "오늘 서울 아침 기온이 1°C까지 내려갔어요.",
+      "questions": [
+        "이 정도 추위에는 뭐부터 껴입으세요?",
+        "내일 더 춥다는데 주말 계획 바꾸실 거예요?",
+        "추운 날 집에서 제일 먼저 하는 일이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "강원도엔 한파주의보까지 났대요. 내일은 더 춥다던데요.",
+          "follow": "내일 출근 복장은 어떻게 하실 거예요?",
+          "caution": "건강 걱정을 과하게 부추기지 않기"
+        },
+        "friend": {
+          "opener": "강원도 14곳에 한파주의보 떴대. 내일 더 춥다더라.",
+          "follow": "주말에 어디 나가? 아님 집에만 있어?",
+          "caution": "추위 때문에 약속 취소하자고 몰아가지 않기"
+        },
+        "date": {
+          "opener": "강원도에 한파주의보가 났다던데 추위 잘 타세요?",
+          "follow": "겨울엔 따뜻한 음식 중에 뭘 제일 좋아하세요?",
+          "caution": "추위 타는 정도를 캐묻지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Snowboarders_breath_on_a_cold_day_%28Unsplash%29.jpg/1280px-Snowboarders_breath_on_a_cold_day_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t7",
+      "cat": "취미",
+      "subtopic": "게임",
+      "label": "스텔라",
+      "color": "#6C3483",
+      "title": "'스텔라 블레이드'가 스위치 2로 출시됐대요",
+      "desc": "PC에 이어 닌텐도 콘솔에도 컴플리트 에디션이 나왔어요.",
+      "reason": "주말 저녁에 게임할 시간이 생기는 토요일이에요.",
+      "questions": [
+        "요즘 하는 게임 있으세요?",
+        "콘솔로 하세요, PC로 하세요?",
+        "주말에 게임할 때 꼭 곁들이는 간식이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'스텔라 블레이드'가 스위치 2로 나왔대요, 들으셨어요?",
+          "follow": "PC에서 먼저 나왔는데 이번엔 닌텐도로 판매를 늘린대요.",
+          "caution": "게임 과몰입을 놀리지 않기"
+        },
+        "friend": {
+          "opener": "스텔라 블레이드 스위치 2로 나왔대, 알아?",
+          "follow": "컴플리트 에디션이라던데 해볼 생각 있어?",
+          "caution": "플랫폼 논쟁으로 번지지 않게 하기"
+        },
+        "date": {
+          "opener": "요즘 하시는 게임 있으세요?",
+          "follow": "스위치 같은 콘솔도 해보셨어요?",
+          "caution": "게임 시간을 따져 묻지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Nintendo_Switch_2_console_in_handheld_mode.png/1280px-Nintendo_Switch_2_console_in_handheld_mode.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t3",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "삼전닉스",
+      "color": "#B03A2E",
+      "title": "SK하이닉스가 어제 10.4% 내렸다던데, 주식 하세요?",
+      "desc": "삼성전자도 어제 6.4% 내려 18만 8,700원이 됐어요.",
+      "reason": "주말이라 이번 주 장 얘기를 짚어보는 때예요.",
+      "questions": [
+        "요즘 주식 앱은 얼마나 자주 열어 보세요?",
+        "이번 주 장 보면서 제일 놀랐던 순간이 있어요?",
+        "주식 말고 요즘 신경 쓰는 재테크가 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "어제 하이닉스가 10.4% 내렸다던데 보셨어요?",
+          "follow": "삼성전자도 6.4% 내려서 18만 8,700원이래요.",
+          "caution": "종목 추천이나 전망 얘기는 하지 않기"
+        },
+        "friend": {
+          "opener": "어제 하이닉스 10.4% 빠졌더라, 너 주식 해?",
+          "follow": "삼성전자도 6.4% 내렸던데 앱은 열어 봤어?",
+          "caution": "손익 금액을 캐묻지 않기"
+        },
+        "date": {
+          "opener": "어제 반도체 주식이 많이 내렸다던데 주식 관심 있으세요?",
+          "follow": "투자 말고 모으는 습관 같은 건 있으세요?",
+          "caution": "수익이나 자산 규모를 묻지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t8",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "난방",
+      "color": "#C0392B",
+      "title": "마곡동 온수관이 터져 9천 세대 난방이 멈췄대요",
+      "desc": "영하권 날씨에 난방·온수 공급이 한꺼번에 끊겼대요.",
+      "reason": "집에서 보일러를 제일 많이 트는 추운 토요일이에요.",
+      "questions": [
+        "집에서 추울 때 제일 먼저 하는 게 뭐예요?",
+        "겨울에 몸 따뜻하게 하는 나만의 비법 있어요?",
+        "올겨울 난방비는 어떻게 아낄 생각이세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "마곡동에서 온수관이 터져서 9천 세대 난방이 멈췄대요.",
+          "follow": "추운 날씨에 난방까지 끊기면 힘들겠어요.",
+          "caution": "피해 상황을 가볍게 다루지 않기"
+        },
+        "friend": {
+          "opener": "마곡동 온수관 터져서 9천 세대 난방 끊겼대.",
+          "follow": "너네 집은 괜찮아? 겨울 난방은 어떻게 해?",
+          "caution": "남 일처럼 농담하지 않기"
+        },
+        "date": {
+          "opener": "추운 날엔 집에서 어떻게 지내세요?",
+          "follow": "겨울엔 몸을 녹이는 따뜻한 차나 음식 뭐 좋아하세요?",
+          "caution": "사는 동네를 캐묻지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Nineteenth_century_heater.jpg/1280px-Nineteenth_century_heater.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Doug Coldwell",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nineteenth_century_heater.jpg"
+      }
+    }
+  ]
+}
