@@ -1,0 +1,303 @@
+{
+  "date": "2026-11-09",
+  "dateLabel": "11월 9일 월요일",
+  "generatedAt": "2026-11-08T23:10:36.483Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "안세영",
+      "color": "#1B5E9E",
+      "title": "안세영이 2년 연속 시즌 11승을 채웠대요",
+      "desc": "승률 98.6%라는 기록에 중국에서도 극찬이 나왔대요.",
+      "reason": "월요일 아침, 주말 사이 나온 경기 소식이 막 퍼지는 때예요.",
+      "questions": [
+        "배드민턴 직접 쳐 보신 적 있으세요?",
+        "요즘 챙겨 보는 스포츠 경기 있으세요?",
+        "한 시즌에 11번 우승하는 게 얼마나 대단한 건지 아세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "안세영 선수가 2년 연속 11승 했대요. 승률이 98.6%라니 놀랍네요.",
+          "follow": "김원호-서승재 조도 4승 했다던데 혹시 배드민턴 보세요?",
+          "caution": "선수 개인을 평가하거나 품평하는 말은 피하세요."
+        },
+        "friend": {
+          "opener": "야 안세영 2년 연속 11승 했대, 봤어?",
+          "follow": "승률이 98.6%래. 너 배드민턴 쳐 본 적 있어?",
+          "caution": "선수 사생활 얘기로 새지 않게 해."
+        },
+        "date": {
+          "opener": "안세영 선수가 올해도 11승을 했대요. 혹시 배드민턴 좋아하세요?",
+          "follow": "평소에 보거나 하는 운동이 있는지 물어보세요.",
+          "caution": "운동 실력이나 체형 얘기는 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/65/Hawk-Eye_Camera%2C_Blair_Camera_Company%2C_The_British_journal_of_photography%2C_Vol_XL%2C_No_1742%2C_September_22%2C_1893%2C_2_of_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/0/09/Hangzhou_AsianGames_Team_Korea_05_%28An_Se-young%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "KOCIS(Korean Culture and Information Service) Offi",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hangzhou_AsianGames_Team_Korea_05_(An_Se-young).jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "안목이",
+      "color": "#0E7C86",
+      "title": "돌고래 안목이가 4개월 만에 바다로 돌아간대요",
+      "desc": "강릉에서 구조된 남방큰돌고래가 10일 제주 바다로 간대요.",
+      "reason": "기온이 5°C까지 내려간 월요일, 바다 소식이 따뜻하게 들려요.",
+      "questions": [
+        "돌고래나 바다 동물 직접 본 적 있으세요?",
+        "동물 구조 소식 중에 기억나는 거 있으세요?",
+        "상어 부캉이도 바다로 돌아간 거 아세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "강릉에서 구조된 돌고래 안목이가 4개월 만에 바다로 간대요.",
+          "follow": "앞서 상어 부캉이도 바다로 돌아갔다던데 아셨어요?",
+          "caution": "구조 과정을 비판하는 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "안목이라는 돌고래 알아? 4개월 만에 바다로 돌아간대.",
+          "follow": "온몸에 상처가 났었대. 너 돌고래 본 적 있어?",
+          "caution": "무거운 동물 학대 얘기로 번지지 않게 해."
+        },
+        "date": {
+          "opener": "강릉에서 구조된 돌고래 안목이가 제주 바다로 돌아간대요.",
+          "follow": "동물원이나 수족관 좋아하시는지 물어보세요.",
+          "caution": "동물 관련 호불호 논쟁은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Shore_west_beach_waves.jpg/1280px-Shore_west_beach_waves.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Indo-Pacific_Bottlenose_Dolphins_%28Tursiops_aduncus%29.jpg/1280px-Indo-Pacific_Bottlenose_Dolphins_%28Tursiops_aduncus%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Bernard DUPONT",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Indo-Pacific_Bottlenose_Dolphins_(Tursiops_aduncus).jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "월요일",
+      "color": "#2E7D32",
+      "title": "월요일 출근길, 요즘 어떻게 시작하세요?",
+      "desc": "오늘 서울은 아침 4°C에서 낮 11°C까지 올라가요.",
+      "reason": "빼빼로데이가 이틀 뒤라 이번 주가 조금 가벼워 보여요.",
+      "questions": [
+        "월요일을 버티는 나만의 방법이 있으세요?",
+        "출근길에 꼭 하는 일이 뭐예요?",
+        "빼빼로데이에 주고받아 본 적 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "월요일 아침이네요. 주말은 잘 보내셨어요?",
+          "follow": "이번 주 빼빼로데이도 있는데 챙기세요?",
+          "caution": "업무 불평으로 흐르지 않게 하세요."
+        },
+        "friend": {
+          "opener": "월요일 출근길 어땠어?",
+          "follow": "빼빼로데이 이틀 남았는데 뭐 할 거야?",
+          "caution": "월요병 푸념만 하진 마."
+        },
+        "date": {
+          "opener": "월요일인데 아침엔 보통 뭐 하세요?",
+          "follow": "아침 루틴이나 출근길 취향을 물어보세요.",
+          "caution": "직장 얘기는 길게 하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_city_walk_morning_January_2025_R12S_101.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_city_walk_morning_January_2025_R12S_101.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "리센느",
+      "color": "#8E3B8F",
+      "title": "리센느가 걸그룹 11월 브랜드평판 1위래요",
+      "desc": "2위는 아이브, 3위는 블랙핑크였대요.",
+      "reason": "월요일 출근길 플레이리스트를 새로 채울 시기예요.",
+      "questions": [
+        "요즘 출근길에 듣는 노래 있으세요?",
+        "새로 알게 된 신인 그룹 있으세요?",
+        "걸그룹 노래 중 계속 듣게 되는 곡 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "리센느가 걸그룹 브랜드평판 1위래요. 2위가 아이브라네요.",
+          "follow": "요즘 출근길에 듣는 노래는 뭐예요?",
+          "caution": "특정 가수 팬덤을 평가하는 말은 피하세요."
+        },
+        "friend": {
+          "opener": "리센느가 걸그룹 평판 1위래. 컴백하고 반응 좋았나 봐.",
+          "follow": "요즘 네 플레이리스트엔 뭐 있어?",
+          "caution": "그룹끼리 비교해서 깎아내리지 마."
+        },
+        "date": {
+          "opener": "리센느가 걸그룹 브랜드평판 1위래요. 혹시 들어보셨어요?",
+          "follow": "평소 어떤 음악 들으시는지 물어보세요.",
+          "caution": "취향을 평가하거나 비웃지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/RESCENE_at_Incheon_Airport%2C_12_August_2026.png/1280px-RESCENE_at_Incheon_Airport%2C_12_August_2026.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "K-POPIT 케이팝잇",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:RESCENE_at_Incheon_Airport,_12_August_2026.png"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "김장철",
+      "color": "#B03A2E",
+      "title": "11월 중순이면 김장 시작인데, 속은 뭐가 좋으세요?",
+      "desc": "서울은 최저 4°C라 김치 담그기 좋은 기온이래요.",
+      "reason": "수능을 앞둔 늦가을, 김장 준비 얘기가 나오는 때예요.",
+      "questions": [
+        "김장 때 제일 기억에 남는 음식은 뭐예요?",
+        "김장하는 날 먹는 수육 좋아하세요?",
+        "어릴 때 김장 도운 기억 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 김장철인데 김치는 어떻게 하세요?",
+          "follow": "김장 날 먹던 수육 얘기 해 보세요.",
+          "caution": "집안 사정을 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "김장철이네. 올해 김치 어디서 구해?",
+          "follow": "김장 때 먹은 수육이 제일 맛있었어.",
+          "caution": "음식 취향 우열을 가리지 마."
+        },
+        "date": {
+          "opener": "김장철인데 김치 좋아하세요?",
+          "follow": "좋아하는 김치 종류를 물어보세요.",
+          "caution": "냄새 얘기는 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Kimchi-making_memories_%288762989%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t7",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "비소식",
+      "color": "#34495E",
+      "title": "오늘 강수확률이 78%인데, 비 오는 날 뭐 드세요?",
+      "desc": "서울은 현재 5°C, 최고 11°C 예상이에요.",
+      "reason": "아침에 쌀쌀하고 비 소식이 겹친 월요일이에요.",
+      "questions": [
+        "비 오는 날 생각나는 음식 있으세요?",
+        "비 오는 날 퇴근길엔 어떤 노래 들으세요?",
+        "궂은 날 집에서 꼭 하는 일 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 올 확률이 78%라는데 점심 뭐 드실래요?",
+          "follow": "비 오는 날엔 뜨끈한 게 당기더라고요.",
+          "caution": "출퇴근 불평만 늘어놓지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 비 온다는데 뭐 먹을래?",
+          "follow": "전이나 국물 중에 뭐가 땡겨?",
+          "caution": "약속 취소하자는 말은 조심해."
+        },
+        "date": {
+          "opener": "오늘 비 온다는데 비 오는 날 좋아하세요?",
+          "follow": "비 오는 날 하는 일을 물어보세요.",
+          "caution": "우울한 분위기로 끌지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Window_of_the_Nutella_Cafe_Chicago_%2852038860171%29.jpg/1280px-Window_of_the_Nutella_Cafe_Chicago_%2852038860171%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Chris Rycroft from Cambridge, Massachusetts, Unite",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Window_of_the_Nutella_Cafe_Chicago_(52038860171).jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "코스피",
+      "color": "#1F3A5F",
+      "title": "코스피가 지난 금요일 6.0% 내렸다던데, 주식 하세요?",
+      "desc": "삼성전자는 6.4%, SK하이닉스는 10.4% 내렸대요.",
+      "reason": "금요일 마감 뒤 처음 장이 열리는 월요일이에요.",
+      "questions": [
+        "요즘 주식 얘기 주변에서 많이 들리세요?",
+        "월급 들어오면 제일 먼저 하는 게 뭐예요?",
+        "투자와 저축 중 어느 쪽이 더 마음 편하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "지난 금요일에 코스피가 6.0% 내렸다던데 들으셨어요?",
+          "follow": "삼성전자도 6.4% 내렸대요. 주변에서 주식 얘기 하세요?",
+          "caution": "종목 추천이나 전망 얘기는 하지 마세요."
+        },
+        "friend": {
+          "opener": "금요일에 코스피 6.0% 내렸대. 너 주식 해?",
+          "follow": "삼전이랑 하이닉스도 많이 빠졌다더라.",
+          "caution": "수익률 자랑이나 손실 캐묻기는 하지 마."
+        },
+        "date": {
+          "opener": "지난 금요일에 코스피가 많이 내렸대요. 재테크 관심 있으세요?",
+          "follow": "돈 관리를 어떻게 하는지 가볍게 물어보세요.",
+          "caution": "자산이나 연봉 질문은 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t4",
+      "cat": "쇼핑",
+      "subtopic": "생활용품",
+      "label": "다이소",
+      "color": "#C0392B",
+      "title": "다이소 2천 원짜리가 또 품절 대란이래요",
+      "desc": "매대가 싹 털려서 가 보면 '품절입니다'만 보인대요.",
+      "reason": "기온이 5°C라 겨울 생활용품을 슬슬 찾을 때예요.",
+      "questions": [
+        "다이소에서 가장 잘 샀다 싶은 물건 있으세요?",
+        "2천 원인데 없어서 못 산 경험 있으세요?",
+        "겨울 앞두고 장만할 물건 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "다이소 2천 원짜리가 품절 대란이래요. 매대가 싹 털렸다던데요.",
+          "follow": "다이소에서 자주 사는 물건 있으세요?",
+          "caution": "특정 제품 구매를 강하게 권하지 마세요."
+        },
+        "friend": {
+          "opener": "다이소 2천 원짜리 또 품절 대란이래. 가 봤어?",
+          "follow": "너 다이소 갓템 뭐 있어?",
+          "caution": "사재기 얘기로 몰아가지 마."
+        },
+        "date": {
+          "opener": "다이소에서 2천 원짜리가 품절이 났대요. 가끔 가세요?",
+          "follow": "최근 산 소소한 물건이 뭔지 물어보세요.",
+          "caution": "가격으로 사람을 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Daiso_Industries_headquarters_20101113.jpg/1280px-Daiso_Industries_headquarters_20101113.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Taisyo",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Daiso_Industries_headquarters_20101113.jpg"
+      }
+    }
+  ]
+}
