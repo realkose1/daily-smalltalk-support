@@ -1486,6 +1486,11 @@ function photoScore(text, categories = '') {
   if (NOT_A_PHOTO.test(text)) q -= 4;
   if (PRINTED_SCAN.test(text)) q -= 4;
   if (OLD_YEAR.test(text)) q -= 3;
+  // Fortepan is a Hungarian archive of 1900s–1990s photos, mostly black and
+  // white; its files are named "… Fortepan 2596.jpg" and match none of the
+  // patterns above. A 1950s men-with-a-movie-camera shot fronted a badminton
+  // card on 2026-11-08. Alone it must condemn the file (≤ -5).
+  if (/fortepan/i.test(text) || /fortepan/i.test(categories)) q -= 6;
   return q;
 }
 
@@ -1745,8 +1750,12 @@ async function searchCommons(query) {
 // Never throws; nothing usable → null and the generic cascade runs as before.
 const SUBJECT_MAX = 2; // subjects tried per card, in the model's order
 const SUBJECT_MIN_SITELINKS = 3; // below this the item is too obscure to be today's news subject
-const SUBJECT_MIN_W = 800;
-const SUBJECT_MIN_H = 600;
+// The card cover is PORTRAIT, so a 500×750 portrait of a person is a better
+// cover than a 1000×700 landscape — judge the short and long side separately,
+// not width and height. 안세영's only P18 (500×750) was refused as "too small"
+// under the old landscape-shaped 800×600 rule on 2026-11-08.
+const SUBJECT_MIN_SHORT = 480;
+const SUBJECT_MIN_LONG = 640;
 const SUBJECT_MAX_BYTES_NON_JPEG = 3 * 1024 * 1024; // PNG thumbs stay PNG — keep the download sane
 
 // Wikidata classes ("instance of") accepted per kind. Direct P31 values only, no
@@ -1777,6 +1786,8 @@ const SUBJECT_FILE_NOT_PHOTO =
 // …and by category.
 const SUBJECT_BAD_CATEGORY = /\blogos?\b|signatures?\b|\bflags?\b|\bmaps?\b|diagrams?|\bicons?\b|\bsvg\b|screenshots?|\bposters?\b|album covers|wordmarks?/i;
 
+const SUBJECT_COOLDOWNS = 3; // 60 s waits allowed per run after a rate-limit give-up
+let subjectCooldowns = 0;
 const subjectEntities = new Map(); // Wikidata id → entity | null, for this run
 // "Exactly that name" — for teams, companies and products also without the
 // legal / club suffix Wikidata labels carry ("Tottenham Hotspur F.C.",
@@ -1874,7 +1885,7 @@ async function subjectFiles(kind, names) {
     const lic = plain(ii.extmetadata?.LicenseShortName?.value);
     const free = /cc0|public domain/i.test(lic);
     if (!free && !/^cc by(-sa)? /i.test(lic)) { no(`licence "${lic || 'unknown'}"`); continue; }
-    if ((ii.width ?? 0) < SUBJECT_MIN_W || (ii.height ?? 0) < SUBJECT_MIN_H) { no(`too small ${ii.width}×${ii.height}`); continue; }
+    if (Math.min(ii.width ?? 0, ii.height ?? 0) < SUBJECT_MIN_SHORT || Math.max(ii.width ?? 0, ii.height ?? 0) < SUBJECT_MIN_LONG) { no(`too small ${ii.width}×${ii.height}`); continue; }
     const ratio = ii.width / ii.height;
     if (ratio > 3 || ratio < 0.4) { no(`odd shape ${ii.width}×${ii.height}`); continue; }
     if (ii.mime !== 'image/jpeg' && (ii.size ?? 0) > SUBJECT_MAX_BYTES_NON_JPEG) { no(`${ii.mime} of ${(ii.size / 1048576).toFixed(1)} MB`); continue; }
@@ -1980,8 +1991,18 @@ async function subjectByName(kind, lang, text, tried) {
 // (what the news says), English as the second chance.
 async function resolveSubject(s) {
   // A call that stayed throttled through its 10 s + 20 s backoffs means the
-  // limit is still up; every further lookup would burn another ~30 s for nothing.
-  if (wikiGaveUp) return { why: 'Wikimedia kept rate-limiting this run — lookup skipped' };
+  // limit was up a moment ago. The give-up may come from the generic cover
+  // search, not from a subject lookup, so it must not doom every subject for
+  // the rest of the run (it did: 테슬라 사이버트럭 was skipped on 2026-11-08).
+  // Cool down once for 60 s and try again; after SUBJECT_COOLDOWNS such waits
+  // the limit is clearly not lifting and further lookups would only burn time.
+  if (wikiGaveUp) {
+    if (subjectCooldowns >= SUBJECT_COOLDOWNS) return { why: 'Wikimedia kept rate-limiting this run — lookup skipped' };
+    subjectCooldowns++;
+    console.log(`subject: Wikimedia rate-limited earlier — cooling down 60s before the lookup (${subjectCooldowns}/${SUBJECT_COOLDOWNS})`);
+    await new Promise((res) => setTimeout(res, 60000));
+    wikiGaveUp = 0;
+  }
   const tried = new Set();
   const whys = [];
   const tries = [];
@@ -1996,6 +2017,33 @@ async function resolveSubject(s) {
     if (r.ambiguous) break;
   }
   return { why: whys.join(' | ') };
+}
+
+// Last resort for a named subject Wikidata could not give a photo for: search
+// Commons for the English name and keep only files whose NAME contains it
+// ("File:Tesla Cybertruck ….jpg", "… (An Se-young).jpg"), so a hit is that
+// subject and not whatever the full-text search found nearby. Vetted by the
+// same subjectFiles rules (licence, size, shape, photoScore) as a P18 photo.
+// → { photo, note } | { why }
+async function subjectCommonsSearch(s) {
+  const name = s.name_en;
+  const want = normTitle(name);
+  if (want.length < 5) return { why: 'no English name to search' };
+  const j = await commonsJson(new URLSearchParams({
+    action: 'query', format: 'json', origin: '*',
+    list: 'search', srsearch: `filetype:bitmap "${name}"`, srnamespace: '6', srlimit: '30',
+  }));
+  if (!j) return { why: 'Commons name search failed' };
+  const names = (j.query?.search || [])
+    .map((r) => String(r.title || '').replace(/^File:/, ''))
+    .filter((n) => normTitle(n.replace(/\.[a-z0-9]+$/i, '')).includes(want))
+    .slice(0, 15);
+  if (!names.length) return { why: `no Commons file named "${name}"` };
+  const r = await subjectFiles(s.kind, names);
+  if (!r) return { why: 'Commons lookup failed' };
+  const cands = r.ok.filter((c) => c.q >= 0);
+  if (!cands.length) return { why: `${names.length} file(s) named "${name}", none usable (${r.bad.slice(0, 3).join('; ') || 'all scored low'})` };
+  return { photo: pickVaried(cands), note: ` [Commons name search, 1 of ${cands.length} usable]` };
 }
 
 // The model's `subjects` → at most SUBJECT_MAX well-formed, distinct entries.
@@ -2042,9 +2090,34 @@ async function coverFromSubject(t, isNews) {
     }
     misses.push(`${names(s)} → none (${r.why})`);
   }
+  // Named subjects, no Wikidata photo: the generic cascade would now give a
+  // mood photo of the category (an EV charger for a Cybertruck card, 1950s men
+  // for a badminton star). Try Commons files carrying the subject's own name first.
+  for (const s of subjects) {
+    if (!s.name_en) continue;
+    let r;
+    try {
+      r = await subjectCommonsSearch(s);
+    } catch (e) {
+      r = { why: `lookup failed: ${e.message}` };
+    }
+    if (r.photo) {
+      const p = r.photo;
+      console.log(`subject: '${t.id}' ← ${names(s)} → File:${p.name} (${p.lic}, ${p.w}×${p.h})${r.note || ''}; first ${misses.join('; ')}`);
+      return { url: p.url, free: p.free, credit: p.credit };
+    }
+    misses.push(`${names(s)} → name search: ${r.why}`);
+  }
   console.log(`subject: '${t.id}' ← ${misses.join('; ')}`);
   return null;
 }
+
+// Every subject photo is resolved BEFORE any generic cover search, while the
+// Wikimedia rate budget is fresh. The two used to alternate per card, so the
+// generic searches of cards 1–4 (Commons, up to 3 queries each) burned the
+// budget and the later cards' subject lookups were skipped as rate-limited.
+const subjectCovers = new Map();
+for (const t of data.topics) subjectCovers.set(t, await coverFromSubject(t, newsCards.has(t)));
 
 for (const t of data.topics) {
   // A real photo of the news card's own subject beats any mood photo. Free
@@ -2052,7 +2125,7 @@ for (const t of data.topics) {
   // skipped; attributed (CC BY / BY-SA) → it goes to imageAttributed, and the
   // generic search still runs below to give builds that predate credit lines
   // their CC0 `image`. No subject / nothing usable → null, cascade as before.
-  const subj = await coverFromSubject(t, newsCards.has(t));
+  const subj = subjectCovers.get(t);
   const skipGeneric = !!subj?.free;
   const queries = skipGeneric ? [] : (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
   // Cascade: the model's own queries on Openverse, then on Commons, then the
