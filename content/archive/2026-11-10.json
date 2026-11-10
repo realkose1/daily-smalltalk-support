@@ -1,0 +1,302 @@
+{
+  "date": "2026-11-10",
+  "dateLabel": "11월 10일 화요일",
+  "generatedAt": "2026-11-10T02:24:58.176Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "우승신문",
+      "color": "#1D4ED8",
+      "title": "삼성 팬들이 우승 신문 구하려 편의점 67곳 돌았대요",
+      "desc": "우승 뒤 1000명이 기다린 '특별한 약속'도 있대요.",
+      "reason": "화요일 아침 출근길에 야구 얘기가 나올 만한 때예요.",
+      "questions": [
+        "우승 순간을 어디서 보셨어요?",
+        "기념으로 사 모은 물건 있으세요?",
+        "야구 말고 챙겨 보는 경기 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성 팬들이 우승 신문 구하려고 편의점 67곳을 돌았대요. 보셨어요?",
+          "follow": "강민호 선수 관련해서 1000명이 기다린 특별한 약속도 있다던데, 들어보셨어요?",
+          "caution": "응원 팀이 갈리면 팀 깎아내리는 말은 피하세요."
+        },
+        "friend": {
+          "opener": "야 삼성 우승 신문 구하려고 편의점 67곳 돌았대. 신기하지 않아?",
+          "follow": "너도 우승 기념으로 뭐 사 둔 거 있어?",
+          "caution": "다른 팀 팬한테 놀리듯 말하지 마."
+        },
+        "date": {
+          "opener": "삼성이 우승했다던데, 야구 좋아하세요?",
+          "follow": "직관 가 보신 적 있으면 어느 구장이 좋았는지 물어보세요.",
+          "caution": "응원 팀 얘기로 열을 올리거나 상대 팀을 깎아내리지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WiiWii",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(5).jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "음식",
+      "subtopic": "커피·음료",
+      "label": "따뜻한 음료",
+      "color": "#92400E",
+      "title": "손이 시린 아침, 요즘 어떤 따뜻한 음료 드세요?",
+      "desc": "서울 아침 최저 기온이 1°C까지 내려가요.",
+      "reason": "최고 10°라 낮에도 따뜻한 잔을 손에 쥐게 돼요.",
+      "questions": [
+        "겨울이 되면 꼭 시키는 음료가 있어요?",
+        "집에서 타 먹는 차나 커피 있으세요?",
+        "최근에 먹어 본 새로운 음료 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 아침 꽤 춥네요. 요즘 어떤 따뜻한 음료 드세요?",
+          "follow": "점심 먹고 같이 한 잔 하러 가실래요?",
+          "caution": "카페인 못 드는 사람한테 커피 권하지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 완전 춥다. 요즘 뭐 마셔?",
+          "follow": "겨울에 꼭 시키는 메뉴가 뭐야?",
+          "caution": "취향 갖고 놀리지 말자."
+        },
+        "date": {
+          "opener": "날이 추운데, 겨울에 즐겨 드시는 따뜻한 음료가 있으세요?",
+          "follow": "좋아하는 카페 분위기를 물어보세요.",
+          "caution": "카페인이나 알코올 취향을 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Dark_Hot_Chocolate%2C_San_Churro_Leederville%2C_2026_%2802%29.jpg/1280px-Dark_Hot_Chocolate%2C_San_Churro_Leederville%2C_2026_%2802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Bahnfrend",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dark_Hot_Chocolate,_San_Churro_Leederville,_2026_(02).jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "날씨",
+      "subtopic": "일교차",
+      "label": "일교차",
+      "color": "#0369A1",
+      "title": "아침 1°C에 낮 10°C인데, 뭐 입고 나오셨어요?",
+      "desc": "서울은 맑고 강수확률이 0%예요.",
+      "reason": "어제와 달리 비 없이 맑은 화요일이에요.",
+      "questions": [
+        "아침에 제일 먼저 꺼내는 겉옷이 뭐예요?",
+        "목도리나 장갑은 언제부터 쓰세요?",
+        "오늘 같은 날 점심은 어디서 드세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "아침엔 1°C였는데 낮엔 10°C까지 오르네요. 뭐 입고 나오셨어요?",
+          "follow": "점심에 산책 나가기 괜찮겠던데 같이 걸으실래요?",
+          "caution": "옷차림 품평은 하지 마세요."
+        },
+        "friend": {
+          "opener": "아침 1도였는데 낮엔 10도래. 뭐 입고 나왔어?",
+          "follow": "패딩 아직 안 꺼냈어?",
+          "caution": "추위 타는 거 놀리지 말자."
+        },
+        "date": {
+          "opener": "아침엔 쌀쌀해도 낮엔 해가 나네요. 겨울 옷 중에 제일 좋아하는 게 뭐예요?",
+          "follow": "좋아하는 겨울 코디가 있는지 물어보세요.",
+          "caution": "상대 옷차림에 대한 평가는 피하세요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/6/61/Park_%26_Shop%2C_Concord_%286030566285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "InSapphoWeTrust from Los Angeles, California, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Park_%26_Shop,_Concord_(6030566285).jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "갤럭시AI",
+      "color": "#0F766E",
+      "title": "삼성이 갤럭시 AI를 월 5달러 구독으로 바꾼대요",
+      "desc": "월 5달러를 내야 쓸 수 있는 기능이 생긴대요.",
+      "reason": "기온이 한 자릿수라 폰을 오래 만지는 실내 시간이 늘어요.",
+      "questions": [
+        "폰 AI 기능 중 제일 자주 쓰는 게 뭐예요?",
+        "월 구독료 내고 쓰는 서비스 있으세요?",
+        "구독 서비스는 몇 개나 쓰세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "갤럭시 AI가 월 5달러 구독으로 바뀐대요. 들으셨어요?",
+          "follow": "평소에 AI 기능 쓰시는 거 있으세요?",
+          "caution": "특정 브랜드 폰을 깎아내리지 마세요."
+        },
+        "friend": {
+          "opener": "갤럭시 AI 월 5달러 구독으로 간대. 너 그거 쓰고 있어?",
+          "follow": "구독 서비스 지금 몇 개 내고 있어?",
+          "caution": "폰 브랜드 갖고 서로 우기지 말자."
+        },
+        "date": {
+          "opener": "갤럭시 AI가 월 5달러 구독이 된다던데, 폰 AI 기능 쓰세요?",
+          "follow": "번역이나 사진 편집 중에 뭘 제일 쓰는지 물어보세요.",
+          "caution": "가격을 따지거나 폰 스펙 자랑으로 흐르지 않게 하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "시즌",
+      "subtopic": "기념일",
+      "label": "빼빼로",
+      "color": "#B45309",
+      "title": "내일이 빼빼로데이인데, 누구한테 챙겨 주세요?",
+      "desc": "11월 11일을 하루 앞두고 있어요.",
+      "reason": "기온이 한 자릿수라 달달한 간식이 당기는 철이에요.",
+      "questions": [
+        "제일 좋아하는 빼빼로 맛이 뭐예요?",
+        "받았던 선물 중 기억에 남는 게 있으세요?",
+        "빼빼로 말고 챙기는 기념일 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일 빼빼로데이네요. 사무실에서 나눠 먹을까요?",
+          "follow": "좋아하는 맛 있으세요? 저는 기본이 제일 무난하더라고요.",
+          "caution": "선물 강요하거나 못 받은 사람 놀리지 마세요."
+        },
+        "friend": {
+          "opener": "내일 빼빼로데이다. 너 뭐 줄 거야?",
+          "follow": "제일 좋아하는 맛이 뭐야?",
+          "caution": "받은 개수로 비교하지 말자."
+        },
+        "date": {
+          "opener": "내일이 빼빼로데이인데, 이런 날 챙기는 편이세요?",
+          "follow": "좋아하는 과자나 간식을 물어보세요.",
+          "caution": "선물을 기대한다는 듯한 말은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Traditional_Himachali_Snack_%22Modi%22_in_the_Forests_of_Himachal_Pradesh%2C_India.jpg/1280px-Traditional_Himachali_Snack_%22Modi%22_in_the_Forests_of_Himachal_Pradesh%2C_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Nomadicmonksaraji",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Traditional_Himachali_Snack_%22Modi%22_in_the_Forests_of_Himachal_Pradesh,_India.jpg"
+      }
+    },
+    {
+      "id": "t4",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "NASA",
+      "color": "#1E3A8A",
+      "title": "NASA가 달·화성 탐사할 우주비행사를 공개 모집한대요",
+      "desc": "경쟁률이 800대 1이라는 말이 나와요.",
+      "reason": "맑은 가을 하늘이 이어지는 날이라 하늘 얘기가 떠올라요.",
+      "questions": [
+        "우주에서 일할 기회가 오면 가 보실래요?",
+        "어릴 때 꿈이 뭐였어요?",
+        "달에 가면 제일 먼저 뭐 하고 싶으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "NASA가 달에서 일할 사람을 공개 모집한대요. 보셨어요?",
+          "follow": "경쟁률이 800대 1이라던데 지원해 보실래요?",
+          "caution": "지원 자격이나 조건은 확인한 것만 말하세요."
+        },
+        "friend": {
+          "opener": "NASA가 우주비행사 공개 모집한대. 경쟁률 800대 1이래.",
+          "follow": "달에서 일하라고 하면 갈래?",
+          "caution": "진지하게 스펙 따지면 분위기 깨져."
+        },
+        "date": {
+          "opener": "NASA가 달·화성 탐사 우주비행사를 모집한다던데, 가 보실래요?",
+          "follow": "어릴 때 꿈이 뭐였는지 물어보세요.",
+          "caution": "상대를 평가하는 질문은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Astronaut_Virgil_I._Gus_Grissom_in_Space_Suit_2.tif/lossy-page1-1280px-Astronaut_Virgil_I._Gus_Grissom_in_Space_Suit_2.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "굿파트너2",
+      "color": "#7C3AED",
+      "title": "'굿파트너2'에서 표지훈이 어쏘 변호사로 컴백했대요",
+      "desc": "장나라, 김혜윤과 호흡을 맞춘다고 해요.",
+      "reason": "퇴근하고 틀어 볼 시리즈를 고르는 저녁이 길어졌어요.",
+      "questions": [
+        "전작 굿파트너 보셨어요?",
+        "법정 드라마 좋아하세요?",
+        "요즘 정주행하는 드라마 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "굿파트너2에 표지훈 씨가 어쏘 변호사로 나온대요. 아세요?",
+          "follow": "전작 재밌게 보셨으면 이번에도 볼 건지 물어보세요.",
+          "caution": "결말이나 줄거리 스포는 조심하세요."
+        },
+        "friend": {
+          "opener": "굿파트너2에 표지훈이 어쏘 변호사로 나온대. 봤어?",
+          "follow": "장나라, 김혜윤도 같이 나온다던데 너 1편 봤어?",
+          "caution": "안 본 사람한테 스포하지 마."
+        },
+        "date": {
+          "opener": "굿파트너2 나온다던데, 법정 드라마 좋아하세요?",
+          "follow": "최근에 재밌게 본 드라마가 뭔지 물어보세요.",
+          "caution": "배우 외모 품평은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Man_playing_an_acoustic_brazilian_guitar_%28Viol%C3%A3o%29_on_Marco_Zero_Square%2C_Refice%2C_Pernambuco%2C_Brazil.jpg/1280px-Man_playing_an_acoustic_brazilian_guitar_%28Viol%C3%A3o%29_on_Marco_Zero_Square%2C_Refice%2C_Pernambuco%2C_Brazil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t5",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "코스피",
+      "color": "#B91C1C",
+      "title": "코스피가 금요일보다 3.5% 올랐다던데, 주식 하세요?",
+      "desc": "삼성전자는 어제보다 5.0% 올라 19만 9,400원이에요.",
+      "reason": "지난주 금요일 이후 처음 크게 오른 장이 마감됐어요.",
+      "questions": [
+        "요즘 주식 얘기 많이 들리세요?",
+        "주식 말고 챙기시는 재테크 있으세요?",
+        "월급 들어오면 제일 먼저 뭐 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "코스피가 지난 금요일보다 3.5% 올랐대요. 보셨어요?",
+          "follow": "삼성전자도 어제보다 5.0% 올랐다는데 주변에서 얘기 많이 하죠?",
+          "caution": "종목 추천이나 수익률 자랑은 하지 마세요."
+        },
+        "friend": {
+          "opener": "코스피 지난 금요일보다 3.5% 올랐더라. 봤어?",
+          "follow": "SK하이닉스도 어제보다 6.0% 올랐대. 너 주식 해?",
+          "caution": "누가 얼마 벌었는지 캐묻지 마."
+        },
+        "date": {
+          "opener": "코스피가 크게 올랐다던데, 주식 관심 있으세요?",
+          "follow": "재테크 중에 해 본 게 있는지 물어보세요.",
+          "caution": "투자 금액이나 손익은 묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    }
+  ]
+}
