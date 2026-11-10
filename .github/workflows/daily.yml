@@ -96,7 +96,7 @@ jobs:
         run: |
           git config user.name "daily-smalltalk-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add today.json content/archive
+          git add today.json content/archive content/cover-reports.md
           if git diff --cached --quiet; then
             echo "No changes."
           else

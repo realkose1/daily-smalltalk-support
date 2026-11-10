@@ -27,6 +27,10 @@
 //   - Posters: TMDB (free API key) — a 오늘의 화제 card about one specific
 //     film or TV programme gets its official poster as the cover, credited to
 //     TMDB. Optional: without TMDB_READ_TOKEN every card keeps its photo.
+//   - Cover reports: readers flag "사진이 주제와 안 맞아요" in the app (Supabase
+//     table cover_reports). Read back at the start of a run: reported files are
+//     never picked again, recent reports become a few lines of the prompt, and
+//     content/cover-reports.md lists them — see scripts/cover-reports.mjs.
 // Writes today.json (served via GitHub Pages) + an archive copy.
 //
 // Requires env: ANTHROPIC_API_KEY (not needed for --brief-only)
@@ -48,6 +52,10 @@
 import { writeFileSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import {
+  COVER_REPORT_DAYS, loadCoverReports, shippedCovers, groupCoverReports, coverBlocklist,
+  isCoverBlocked, usableCandidates, coverLessonsPrompt, coverReportsMarkdown,
+} from './cover-reports.mjs';
 
 const MODEL = 'claude-sonnet-5-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
 
@@ -1174,6 +1182,26 @@ if (!process.env.ANTHROPIC_API_KEY) {
 // no installed dependencies.
 const { default: Anthropic } = await import('@anthropic-ai/sdk');
 const client = new Anthropic();
+
+// --- cover reports: what readers flagged as "the photo doesn't match" ---
+// Read before the main call so the lessons can go into its prompt; the
+// blocklist is consulted by every cover search further down. Fail-soft: no env
+// (dry runs get none — daily.yml), no table yet, or a network error is one log
+// line and an empty blocklist — the run is then exactly what it was before
+// reports existed. Only reports of a cover the deck really shipped count (see
+// groupCoverReports): the table is anon-writable.
+const coverReports = await loadCoverReports({ url: process.env.SUPABASE_URL, key: process.env.SUPABASE_SERVICE_ROLE_KEY });
+const coverReportGroups = coverReports.ok ? groupCoverReports(coverReports.reports, shippedCovers()) : { groups: [], ignored: 0 };
+const coverBlocked = coverBlocklist(coverReportGroups.groups);
+const coverLessons = coverLessonsPrompt(coverReportGroups.groups);
+if (coverReports.ok) {
+  console.log(
+    `cover reports: ${coverReports.reports.length} loaded, ${coverBlocked.size} blocklisted files, ${coverLessons.count} lessons in prompt` +
+    (coverReportGroups.ignored ? ` (${coverReportGroups.ignored} ignored — not a cover the deck shipped)` : ''),
+  );
+} else {
+  console.log(`cover reports: none loaded (${coverReports.why}) — 0 blocklisted files, 0 lessons in prompt`);
+}
 // The rules, once each. Until 2026-10-26 the prompt asked the model to count
 // every title/desc/reason after writing it and to keep each stock word to one
 // use across the deck; lintCopy measures both after the fact and repairCopy
@@ -1248,6 +1276,7 @@ const gen = await client.messages.stream({
       `- questions: 바로 쓸 시작 질문 정확히 3개(화제 카드는 위 규칙대로 소식에서 이어지는 질문).\n` +
       `- tips: work(직장)/friend(친구)/date(소개팅)마다 opener(첫 멘트, 예문)/follow(이어가기)/caution(피할 것). date에 상사·업무 얘기 금지. follow를 매번 "~얘기로 이어가 보세요"로 끝내지 말고, 다음에 던질 말이나 물어볼 거리를 구체적으로 쓰세요.\n` +
       `- imageQueries: 스키마 설명대로 커버 사진 검색용 영어 검색어 3개(화제 카드도, subjects를 채운 카드도).\n` +
+      coverLessons.text +
       `- JSON만 출력.`,
   }],
 }).finalMessage();
@@ -1525,9 +1554,14 @@ const recentImages = getRecentImages();
 // All candidates already passed the strict keyword-relevance filter, so a
 // random top pick stays on-topic. `sorted` is [{ url, ... }] best-first.
 function pickVaried(sorted) {
-  if (!sorted.length) return null;
-  const fresh = sorted.filter((c) => !recentImages.has(c.url));
-  const pool = fresh.length ? fresh : sorted; // all seen recently → allow reuse
+  // A file readers reported as off-topic is never picked — unlike a recent
+  // one, not even when it is the only candidate. Every cover path (cascade,
+  // subject photo, name search) ends here, so this is the backstop; the
+  // searches also drop blocked files earlier so they don't fill a candidate list.
+  const allowed = sorted.filter((c) => !isCoverBlocked(coverBlocked, c.url));
+  if (!allowed.length) return null;
+  const fresh = allowed.filter((c) => !recentImages.has(c.url));
+  const pool = fresh.length ? fresh : allowed; // all seen recently → allow reuse
   // Rotate only among candidates as good as the best one. Picking uniformly
   // across the whole top-6 is what let a painting win over real photos.
   const best = pool[0];
@@ -1877,6 +1911,9 @@ async function subjectFiles(kind, names) {
     const no = (why) => bad.push(`${name}: ${why}`);
     const ii = p.imageinfo?.[0];
     if (!ii) { no('not on Commons'); continue; }
+    // Checked first: a reported file must not count as "a usable P18" and stop
+    // the Wikipedia lead image / name search from being tried.
+    if (isCoverBlocked(coverBlocked, ii.url)) { no('reported by readers as off-topic'); continue; }
     if (!/^image\/(jpeg|png|webp|tiff)$/.test(ii.mime || '')) { no(ii.mime || 'unknown type'); continue; }
     const stem = name.replace(/\.[a-z0-9]+$/i, '');
     const cats = (p.categories || []).map((c) => c.title || '').join(' | ');
@@ -2136,7 +2173,9 @@ for (const t of data.topics) {
   // back with 20 condemned files "succeeded", the loop stopped, and the topic
   // shipped with no cover — 4 gradients on 2026-09-10 and 3 on 09-11, each
   // decided in ~1.3s without ever reaching the fallbacks.
-  const usableOnly = (list) => list.filter((c) => (c.q ?? 0) > -5);
+  // Reader-reported files are dropped here too, so a query whose only hits are
+  // reported files counts as a miss and the cascade moves on.
+  const usableOnly = (list) => usableCandidates(list, coverBlocked);
   let usable = [];
   for (const q of queries) { usable = usableOnly(await searchOpenverse(q)); if (usable.length) break; }
   if (!usable.length) for (const q of queries) { usable = usableOnly(await searchCommons(q)); if (usable.length) break; }
@@ -2406,6 +2445,7 @@ async function findPoster(media, { token, today }) {
       } else {
         try {
           res = await findPoster(m, { token, today: isoDate });
+          if (res.url && isCoverBlocked(coverBlocked, res.url)) res = { why: `TMDB ${res.kind} ${res.id} poster was reported by readers as off-topic` };
         } catch (e) {
           res = { why: e.message };
         }
@@ -2428,6 +2468,12 @@ mkdirSync('content/archive', { recursive: true });
 writeFileSync('today.json', JSON.stringify(out, null, 2));
 writeFileSync(`content/archive/${isoDate}.json`, JSON.stringify(out, null, 2));
 console.log(`Wrote today.json (${out.topics.length} topics) for ${isoDate}`);
+// Only when the reports were actually read: a failed load must not wipe the
+// last good digest. daily.yml commits it with today.json.
+if (coverReports.ok) {
+  writeFileSync('content/cover-reports.md', coverReportsMarkdown(coverReportGroups.groups, { generatedAt: now.toISOString(), ignored: coverReportGroups.ignored, days: COVER_REPORT_DAYS }));
+  console.log(`Wrote content/cover-reports.md (${Math.min(coverReportGroups.groups.length, 50)} row(s))`);
+}
 
 // Sync today's headline to Supabase so the 09:00 push (sent by Supabase
 // pg_cron — GitHub's cron runs hours late, see push.yml) has the topic title.
