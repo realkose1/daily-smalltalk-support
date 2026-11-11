@@ -1,0 +1,310 @@
+{
+  "date": "2026-11-11",
+  "dateLabel": "11월 11일 수요일",
+  "generatedAt": "2026-11-11T00:15:09.187Z",
+  "topics": [
+    {
+      "id": "pepero-day",
+      "cat": "시즌",
+      "subtopic": "기념일",
+      "label": "빼빼로",
+      "color": "#B71C1C",
+      "title": "오늘 빼빼로데이인데, 어떤 맛 제일 좋아하세요?",
+      "desc": "11월 11일이라 막대 모양 과자를 주고받는 날이에요.",
+      "reason": "수요일 한가운데라 책상 위에 하나쯤 놓여 있을 법해요.",
+      "special": true,
+      "questions": [
+        "빼빼로 중에 제일 좋아하는 맛이 뭐예요?",
+        "학생 때 빼빼로데이에 뭐 주고받으셨어요?",
+        "빼빼로 말고 이런 날 챙기는 과자 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 빼빼로데이네요. 책상에 하나 놓여 있던데 드셨어요?",
+          "follow": "혹시 초코, 아몬드, 누드 중에 어떤 걸 제일 좋아하세요?",
+          "caution": "누구에게 받았는지 캐묻거나 안 챙긴 사람을 놀리지 마세요."
+        },
+        "friend": {
+          "opener": "야 오늘 빼빼로데이잖아, 너 뭐 받았어?",
+          "follow": "난 어릴 때 학교에서 박스째 사서 돌렸던 기억이 나는데, 너는?",
+          "caution": "받은 개수로 인기를 비교하지 마세요."
+        },
+        "date": {
+          "opener": "오늘 빼빼로데이래요. 좋아하는 맛 있으세요?",
+          "follow": "어릴 때 이런 날 뭐 하고 보냈는지도 물어보세요.",
+          "caution": "선물 기대하는 티를 내거나 부담 주는 말은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Pocky-Sticks.jpg/1280px-Pocky-Sticks.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Evan-Amos",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pocky-Sticks.jpg"
+      }
+    },
+    {
+      "id": "post-office-shelter",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "한파쉼터",
+      "color": "#1565C0",
+      "title": "전국 우체국 2천 곳이 한파 쉼터로 열린대요",
+      "desc": "15일부터 내년 3월 15일까지, 9~18시에 쓸 수 있대요.",
+      "reason": "서울은 지금 6°C고 최저 4°까지 내려가요.",
+      "questions": [
+        "우체국에 마지막으로 간 게 언제예요?",
+        "추운 날 잠깐 몸 녹이려고 들르는 곳 있으세요?",
+        "올겨울 추위 대비로 제일 먼저 꺼낸 게 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "올겨울엔 우체국 2천 곳이 한파 쉼터가 된대요. 보셨어요?",
+          "follow": "15일부터 내년 3월 15일까지, 9시부터 18시까지래요.",
+          "caution": "특정 지역 사정을 단정해서 말하지 마세요."
+        },
+        "friend": {
+          "opener": "우체국이 한파 쉼터로 열린대, 들어봤어?",
+          "follow": "15일부터 3월 15일까지고 낮 시간만 되나 봐. 근처에 우체국 있어?",
+          "caution": "운영 시간을 확인 안 하고 확정처럼 말하지 마."
+        },
+        "date": {
+          "opener": "올겨울 우체국이 한파 쉼터로 열린다네요. 들어보셨어요?",
+          "follow": "추위 많이 타세요? 겨울에 즐겨 입는 옷도 궁금해요.",
+          "caution": "체질이나 건강을 지나치게 캐묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/VTBS-Post_office.JPG/1280px-VTBS-Post_office.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Kia_Ray_EV_Van_TAM_PE2_EV_Korea_Post_%2810%29.jpg/1280px-Kia_Ray_EV_Van_TAM_PE2_EV_Korea_Post_%2810%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Damian B Oh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kia_Ray_EV_Van_TAM_PE2_EV_Korea_Post_(10).jpg"
+      }
+    },
+    {
+      "id": "jaehon-hwanghu",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "재혼황후",
+      "color": "#6A1B9A",
+      "title": "'재혼황후'가 공개 첫 주 화제성 1위래요",
+      "desc": "주연 4명이 나란히 화제성 톱10에 들었대요.",
+      "reason": "퇴근 후 틀어 볼 작품 고르기 좋은 수요일 저녁이에요.",
+      "questions": [
+        "'재혼황후' 보기 시작하셨어요?",
+        "요즘 정주행하는 드라마 있으세요?",
+        "사극풍 드라마 하면 떠오르는 작품이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'재혼황후'가 공개 첫 주에 화제성 1위래요. 보셨어요?",
+          "follow": "주연 네 명이 다 톱10에 들었다던데, 어떤 배우 연기가 제일 눈에 들어와요?",
+          "caution": "결말이나 반전 내용을 먼저 말하지 마세요."
+        },
+        "friend": {
+          "opener": "'재혼황후' 화제성 1위라던데 너 봤어?",
+          "follow": "주연 4명이 다 톱10 들었대. 몇 화까지 봤는지 말해줘, 스포 안 할게.",
+          "caution": "안 본 친구에게 줄거리를 줄줄 말하지 마."
+        },
+        "date": {
+          "opener": "요즘 '재혼황후' 화제성 1위라던데 보셨어요?",
+          "follow": "드라마는 보통 어떤 장르 좋아하세요?",
+          "caution": "취향이 다르다고 작품을 깎아내리지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Guangzhou_Music_2011_-_3_%28by_Charley_Guitars%29.jpg/1280px-Guangzhou_Music_2011_-_3_%28by_Charley_Guitars%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Charley Guitars",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guangzhou_Music_2011_-_3_(by_Charley_Guitars).jpg"
+      }
+    },
+    {
+      "id": "baseball-tokyo",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "한일전",
+      "color": "#0D47A1",
+      "title": "한국 야구가 도쿄돔에서 한일전을 치른대요",
+      "desc": "올해 마지막 승부고 한일전 11연패 중이래요.",
+      "reason": "한국시리즈가 끝나고 처음 야구 얘기가 이어지는 주예요.",
+      "questions": [
+        "한일전 하면 기억나는 경기 있으세요?",
+        "야구는 직관파세요, 중계파세요?",
+        "올해 야구 보면서 제일 재밌었던 장면이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "야구 대표팀이 도쿄돔에서 일본이랑 붙는대요. 보셨어요?",
+          "follow": "한일전 11연패 중이라 이번엔 끊을지 궁금하더라고요.",
+          "caution": "응원팀 때문에 말다툼으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "야구 대표팀 도쿄돔에서 한일전 한대, 알았어?",
+          "follow": "11연패 중이래. 거포 야구로 간다는데 김도영이랑 한동희 기대되지 않아?",
+          "caution": "선수를 평가하거나 깎아내리지 마."
+        },
+        "date": {
+          "opener": "야구 대표팀이 도쿄돔에서 한일전을 한대요. 야구 좋아하세요?",
+          "follow": "직관 가 보신 적 있으세요? 가 봤던 구장이 궁금해요.",
+          "caution": "야구를 모르는 상대에게 규칙을 길게 설명하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/%E3%83%A9%E3%82%B0%E3%82%B6%E3%82%B9_%E4%BE%8D%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA2025_%E6%97%A5%E6%9C%AC_vs_%E9%9F%93%E5%9B%BD_%E6%9D%B1%E4%BA%AC%E3%83%89%E3%83%BC%E3%83%A0_2025%E5%B9%B411%E6%9C%8816%E6%97%A5%E3%81%AE%E6%9D%B1%E4%BA%AC_202511161856_DSCN3548.jpg/1280px-%E3%83%A9%E3%82%B0%E3%82%B6%E3%82%B9_%E4%BE%8D%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA2025_%E6%97%A5%E6%9C%AC_vs_%E9%9F%93%E5%9B%BD_%E6%9D%B1%E4%BA%AC%E3%83%89%E3%83%BC%E3%83%A0_2025%E5%B9%B411%E6%9C%8816%E6%97%A5%E3%81%AE%E6%9D%B1%E4%BA%AC_202511161856_DSCN3548.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "ウィ貴公子",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E3%83%A9%E3%82%B0%E3%82%B6%E3%82%B9_%E4%BE%8D%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA2025_%E6%97%A5%E6%9C%AC_vs_%E9%9F%93%E5%9B%BD_%E6%9D%B1%E4%BA%AC%E3%83%89%E3%83%BC%E3%83%A0_2025%E5%B9%B411%E6%9C%8816%E6%97%A5%E3%81%AE%E6%9D%B1%E4%BA%AC_202511161856_DSCN3548.jpg"
+      }
+    },
+    {
+      "id": "samsung-hynix",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "삼전닉스",
+      "color": "#00695C",
+      "title": "삼성전자가 어제 4.7% 올랐다던데, 주식 하세요?",
+      "desc": "SK하이닉스는 어제 6.7% 올라 121만 2천 원이에요.",
+      "reason": "오늘 원/달러 환율은 1,340원으로 0.3% 내렸어요.",
+      "questions": [
+        "요즘 주식이나 재테크 하고 계세요?",
+        "월급 들어오면 제일 먼저 하는 게 뭐예요?",
+        "올해 가장 잘 쓴 돈이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성전자가 어제 4.7%, SK하이닉스는 6.7% 올랐더라고요.",
+          "follow": "혹시 주식 하세요? 아니면 적금 쪽이세요?",
+          "caution": "종목 추천이나 수익률 자랑은 하지 마세요."
+        },
+        "friend": {
+          "opener": "삼성전자 어제 4.7% 올랐던데 너 주식 해?",
+          "follow": "하이닉스는 6.7% 올랐대. 요즘 재테크 뭐 하는지 궁금하다.",
+          "caution": "손익 금액을 캐묻지 마."
+        },
+        "date": {
+          "opener": "요즘 삼성전자가 많이 올랐다던데, 재테크 관심 있으세요?",
+          "follow": "저축이든 투자든 요즘 챙기는 거 있으세요?",
+          "caution": "수익이나 자산 규모를 묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "fiber-gut",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "식이섬유",
+      "color": "#558B2F",
+      "title": "식이섬유가 장 보호막 유지에 도움이 된대요",
+      "desc": "식이섬유가 부족하면 장내세균이 장벽을 갉아먹는단 말도 있어요.",
+      "reason": "최저 4°까지 내려가 아침 몸이 무거운 요즘이에요.",
+      "questions": [
+        "식단에서 채소는 얼마나 챙기세요?",
+        "요즘 챙겨 먹는 건강 음식 있으세요?",
+        "아침에 컨디션 올리려고 하는 게 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "식이섬유가 장 보호막 유지에 도움이 된대요. 챙겨 드세요?",
+          "follow": "점심에 샐러드나 나물 반찬 고르게 되던데, 어떠세요?",
+          "caution": "남의 식습관이나 체형을 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "식이섬유가 장 보호막에 좋다더라, 너 챙겨 먹어?",
+          "follow": "나는 채소를 더 먹어야겠더라. 너는 뭐 먹어?",
+          "caution": "건강 정보를 훈계처럼 하지 마."
+        },
+        "date": {
+          "opener": "요즘 건강 챙기려고 하는 거 있으세요?",
+          "follow": "좋아하는 채소나 나물 반찬이 있는지도 물어보세요.",
+          "caution": "몸 상태나 병력을 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/DFC_5010_Grilled_sesame_pork_slices_with_fresh_garden_salad_and_creamy_dipping_sauce_-_a_flavorful_Thai-style_plate_from_Sattahip.jpg/1280px-DFC_5010_Grilled_sesame_pork_slices_with_fresh_garden_salad_and_creamy_dipping_sauce_-_a_flavorful_Thai-style_plate_from_Sattahip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "PattayaPatrol",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DFC_5010_Grilled_sesame_pork_slices_with_fresh_garden_salad_and_creamy_dipping_sauce_-_a_flavorful_Thai-style_plate_from_Sattahip.jpg"
+      }
+    },
+    {
+      "id": "nvidia-groot2",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "로봇AI",
+      "color": "#2E7D32",
+      "title": "엔비디아가 2세대 로봇 AI '그루트 2'를 공개했대요",
+      "desc": "시범 다섯 번 만에 작업 성공률이 95%래요.",
+      "reason": "출근길에 보는 새 기술 소식이 하나쯤 궁금한 주중이에요.",
+      "questions": [
+        "집안일을 대신해 주는 로봇이 있다면 뭘 맡기고 싶으세요?",
+        "요즘 써 본 AI 서비스 중에 쓸 만했던 게 뭐예요?",
+        "로봇 하면 제일 먼저 떠오르는 장면이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "엔비디아가 '그루트 2'라는 로봇 AI를 공개했대요. 보셨어요?",
+          "follow": "시범 다섯 번으로 성공률 95%래요. 신기하더라고요.",
+          "caution": "특정 주식 전망으로 이어가지 마세요."
+        },
+        "friend": {
+          "opener": "엔비디아가 로봇 AI 2세대 냈대, 들었어?",
+          "follow": "다섯 번 시범 보여주고 95% 성공이래. 너라면 로봇한테 뭐 시킬래?",
+          "caution": "기술 용어를 늘어놓지 마."
+        },
+        "date": {
+          "opener": "엔비디아가 새 로봇 AI를 공개했다네요. 보셨어요?",
+          "follow": "집안일 하나를 로봇이 대신 해 준다면 뭘 맡기고 싶으세요?",
+          "caution": "일 얘기나 관련 업계 전망으로 빠지지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Nvidiaheadquarters.jpg/1280px-Nvidiaheadquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Coolcaesar",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nvidiaheadquarters.jpg"
+      }
+    },
+    {
+      "id": "dinner-out-or-in",
+      "cat": "음식",
+      "subtopic": "배달·외식",
+      "label": "저녁메뉴",
+      "color": "#E65100",
+      "title": "수요일 저녁, 밖에서 먹을지 시킬지 정하셨어요?",
+      "desc": "서울은 낮 최고 14°, 최저 4°예요.",
+      "reason": "강수확률 0%라 저녁 약속을 잡기 수월해요.",
+      "questions": [
+        "오늘 저녁 뭐 드실 거예요?",
+        "배달 앱에서 제일 자주 시키는 메뉴가 뭐예요?",
+        "동네에서 숨은 단골집 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 저녁 뭐 드실 거예요? 저는 아직 못 정했어요.",
+          "follow": "자주 시키는 배달 메뉴가 있으세요? 단골집도 궁금해요.",
+          "caution": "회식 제안처럼 들리지 않게 하세요."
+        },
+        "friend": {
+          "opener": "오늘 저녁 뭐 먹을래? 나가서 먹을까 시킬까?",
+          "follow": "요즘 꽂힌 메뉴 있어? 나는 뜨끈한 게 당겨.",
+          "caution": "메뉴로 오래 고민하다 싸우지 마."
+        },
+        "date": {
+          "opener": "평소엔 외식 쪽이세요, 배달 쪽이세요?",
+          "follow": "좋아하는 음식 종류를 물어보고 가 본 맛집 얘기로 이어가 보세요.",
+          "caution": "식성을 평가하거나 다이어트 얘기를 꺼내지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/20200824-FNS-LSC-Box_to_Table_%2850287966517%29.jpg/1280px-20200824-FNS-LSC-Box_to_Table_%2850287966517%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    }
+  ]
+}
