@@ -45,7 +45,7 @@
 //                 temp file). Skips the run guard, like FORCE.
 //   EFFORT=<lvl>  main call's output_config.effort for this run (low|medium|
 //                 high|xhigh|max); unset = DEFAULT_EFFORT below.
-//   POSTER_TEST="<title>|<tv|movie>|<year>"  run only the TMDB poster lookup for
+//   POSTER_TEST="<title>|<tv|movie>|<year>[|<title_en>]"  run only the TMDB poster lookup for
 //                 that title, log the result (poster URL included) and exit 0 —
 //                 no brief, no Claude call, nothing written. Needs
 //                 TMDB_READ_TOKEN. daily.yml's `poster_test` dispatch input.
@@ -113,10 +113,10 @@ const TMDB_POSTER_MAX_BYTES = 2.5 * 1024 * 1024;
 // missing token or a TMDB/network error.
 const POSTER_TEST = (process.env.POSTER_TEST || '').trim();
 if (POSTER_TEST) {
-  const [title = '', kind = '', yearText = ''] = POSTER_TEST.split('|').map((x) => x.trim());
+  const [title = '', kind = '', yearText = '', titleEn = ''] = POSTER_TEST.split('|').map((x) => x.trim());
   const token = (process.env.TMDB_READ_TOKEN || '').trim();
   if (!title || (kind !== 'tv' && kind !== 'movie')) {
-    console.error(`POSTER_TEST="${POSTER_TEST}" must look like "<title>|<tv|movie>|<year>"`);
+    console.error(`POSTER_TEST="${POSTER_TEST}" must look like "<title>|<tv|movie>|<year>[|<title_en>]"`);
     process.exit(1);
   }
   if (!token) {
@@ -125,7 +125,7 @@ if (POSTER_TEST) {
   }
   const year = Number(yearText);
   try {
-    const res = await findPoster({ kind, title, year: Number.isInteger(year) ? year : null }, { token, today: isoDate });
+    const res = await findPoster({ kind, title, year: Number.isInteger(year) ? year : null, title_en: titleEn }, { token, today: isoDate });
     if (res.url) {
       console.log(`poster test: FOUND ${res.kind} ${res.id} "${res.title}" (${res.date || 'undated'})${res.note}`);
       console.log(`poster test: url ${res.url}${res.bytes ? ` (${(res.bytes / 1024).toFixed(0)} KB)` : ''}`);
@@ -1139,8 +1139,13 @@ const topic = {
         kind: { type: 'string', enum: ['movie', 'tv', 'none'] },
         title: { type: 'string' },
         year: { type: 'integer' },
+        // The work's English / original title, for TMDB when its Korean-title
+        // search comes back empty (a brand-new series TMDB has no Korean name
+        // for: 2026-11-11 '재혼황후' → 0 results). Lives inside `media`, so it is
+        // dropped with it before writing.
+        title_en: { type: 'string' },
       },
-      required: ['kind', 'title', 'year'],
+      required: ['kind', 'title', 'year', 'title_en'],
     },
     // Internal (dropped before writing): the real person / group / team /
     // company / product / place a 화제 card is about, so the code can find a
@@ -1260,8 +1265,8 @@ const gen = await client.messages.stream({
       `  · 예: ${NEWS_GOOD.map((c) => `title "${c.title}"(${charLen(c.title)}자) / desc "${c.desc}"(${charLen(c.desc)}자) / opener "${c.opener}" / follow "${c.follow}"`).join(' ‖ ')}\n` +
       `- 카테고리: 연예·작품 → 문화(드라마/영화/음악/예능/공연·전시/웹툰·책 중 맞는 것), 신제품·가젯·자동차 공개 → 쇼핑 '신제품·테크', 스포츠 → 취미 '스포츠', 태풍 같은 날씨 사건 → 날씨 '태풍' 등 맞는 것, 동물 소식 → 일상 '동물', 해외 소식 → 일상 '해외소식', 그 밖의 가벼운 시사 → 가장 잘 맞는 카테고리.\n` +
       `- news 필드: 가장 강한 화제 카드에 "first", 두 번째에 "second"(각각 1장만), 나머지 화제 카드는 "more", 그 밖의 카드(시장 시그널·[경제] 줄로 만든 경제 카드 포함)는 모두 "none". 특별한 날 카드가 있으면 그게 덱 맨 앞, 없으면 "first" 카드가 맨 앞에 놓이고 그 제목이 아침 9시 알림 문구가 되니, 알림으로 받았을 때 가장 눌러 보고 싶을 소식을 "first"로 고르세요.\n` +
-      `- media 필드: 화제 카드(news가 "none"이 아닌 카드) 중 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다루는 카드만 채우세요 — 공식 포스터를 커버로 찾는 데 씁니다. 영화면 kind "movie", 드라마·예능이면 "tv". title은 헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호 ' ' " " 「 」 < > 만 빼고, 철자를 바꾸거나 번역하지 말고), year는 헤드라인에서 개봉·방영 연도가 드러나면 그 연도, 아니면 올해(${kst.getUTCFullYear()}). 신제품·스포츠·음악(앨범·컴백·공연)·인물 소식, 여러 작품을 묶은 소식, 화제 카드가 아닌 모든 카드는 kind "none", title "", year 0.\n` +
-      `- subjects 필드: 화제 카드의 헤드라인이 실존하는 구체적인 인물·그룹·팀·기업(브랜드)·제품·장소를 다룰 때 채우세요 — 스톡 사진으로는 누구 얘긴지 알 수 없어서, 그 대상의 실제 사진을 커버로 찾는 데 씁니다. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에 쓰고, 헤드라인에 함께 나온 다른 구체적 대상이 있으면 두 번째로(최대 2개). 예: "BTS가 스포티파이 연간 100억 스트리밍을 넘겼다" → [방탄소년단(group), 스포티파이(brand)] / "머스크가 어린이에게 스페이스X 주식을 준다" → [일론 머스크(person), 스페이스X(brand)] / "현대차가 아반떼 N 모노크롬을 공개" → [현대 아반떼 N(product), 현대자동차(brand)] / "손흥민 해트트릭" → [손흥민(person)]. name_ko·name_en은 각 언어 위키백과 문서 제목처럼 정식 표기로 쓰세요(BTS → "방탄소년단"/"BTS", "삼성"이 아니라 "삼성전자"/"Samsung Electronics", 신차는 한정판·색상명을 뺀 모델명 → "현대 아반떼 N"/"Hyundai Elantra N"). 헤드라인에 없는 대상을 지어내지 말고, 영화·드라마·예능 한 편이 중심인 카드(media를 채운 카드), 여러 대상을 뭉뚱그린 소식, 화제 카드가 아닌 모든 카드는 빈 배열 [].\n` +
+      `- media 필드: 화제 카드(news가 "none"이 아닌 카드) 중 헤드라인에 제목이 나온 영화 한 편이나 TV 프로그램(드라마·예능) 하나를 다루는 카드만 채우세요 — 공식 포스터를 커버로 찾는 데 씁니다. 영화면 kind "movie", 드라마·예능이면 "tv". title은 헤드라인에 적힌 한국어 제목 그대로(제목을 감싼 따옴표·괄호 ' ' " " 「 」 < > 만 빼고, 철자를 바꾸거나 번역하지 말고), year는 헤드라인에서 개봉·방영 연도가 드러나면 그 연도, 아니면 올해(${kst.getUTCFullYear()}). title_en은 그 작품의 영어 제목(공식 영문 제목, 없으면 흔히 쓰이는 로마자·영어 표기)을 쓰세요 — 신작이라 TMDB에 한국어 제목이 없을 때 이걸로 다시 찾습니다. 확실하지 않으면 빈 문자열 "". 신제품·스포츠·음악(앨범·컴백·공연)·인물 소식, 여러 작품을 묶은 소식, 화제 카드가 아닌 모든 카드는 kind "none", title "", year 0, title_en "".\n` +
+      `- subjects 필드: 화제 카드의 헤드라인이 실존하는 구체적인 인물·그룹·팀·기업(브랜드)·제품·장소를 다룰 때 채우세요 — 스톡 사진으로는 누구 얘긴지 알 수 없어서, 그 대상의 실제 사진을 커버로 찾는 데 씁니다. 사진으로 가장 잘 알아볼 수 있는 대상을 맨 앞에 쓰고, 헤드라인에 함께 나온 다른 구체적 대상이 있으면 두 번째로(최대 2개). 예: "BTS가 스포티파이 연간 100억 스트리밍을 넘겼다" → [방탄소년단(group), 스포티파이(brand)] / "머스크가 어린이에게 스페이스X 주식을 준다" → [일론 머스크(person), 스페이스X(brand)] / "현대차가 아반떼 N 모노크롬을 공개" → [현대 아반떼 N(product), 현대자동차(brand)] / "손흥민 해트트릭" → [손흥민(person)]. name_ko·name_en은 각 언어 위키백과 문서 제목처럼 정식 표기로 쓰세요(BTS → "방탄소년단"/"BTS", "삼성"이 아니라 "삼성전자"/"Samsung Electronics", 신차는 한정판·색상명을 뺀 모델명 → "현대 아반떼 N"/"Hyundai Elantra N"). 헤드라인에 없는 대상을 지어내지 말고, 여러 대상을 뭉뚱그린 소식과 화제 카드가 아닌 모든 카드는 빈 배열 []. 단 영화·드라마·예능 한 편이 중심인 카드(media를 채운 카드)는 포스터를 못 찾을 때의 대비로 그 작품의 주연 배우를 subjects에(kind person, 최대 2명, 주연이 두 명이면 둘 다) 쓰세요 — 포스터는 TMDB에 아직 없거나 제목이 안 맞아 못 찾는 일이 있고, 그러면 배우 사진이 커버가 됩니다. 헤드라인이나 desc에 이름이 나온 배우를 우선하고, 확실히 아는 주연만 쓰고 지어내지 마세요. 작품명 자체는 subjects에 넣지 않습니다(예: "굿파트너2" 카드 → [장나라(person), 남지현(person)]).\n` +
       `■ 이름과 날짜\n` +
       `- ★특정 작품·영화·드라마·인물을 소재로 쓸 거면 반드시 그 제목/이름을 구체적으로 밝히세요. "화제의 한국 영화가 베일을 벗었다", "여름 극장가 기대작", "뜨거운 관심을 모은 그 드라마"처럼 무엇을 말하는지 알 수 없는 두루뭉술한 표현은 금지예요 — 알맹이가 없어 대화가 안 이어져요. 브리프에 구체적 제목이 없어 무엇인지 특정할 수 없으면 그 소재는 아예 쓰지 말고 "요즘 극장에서 뭐 보셨어요?", "요새 정주행하는 드라마 있으세요?"처럼 작품을 특정하지 않는 완전 보편 질문으로 바꾸세요. 브리프에 없는 제목·이름을 지어내는 건 금지.\n` +
       `- ★★행사·공연·경기가 "오늘" 열린다고 절대 단정하지 마세요. 헤드라인의 '오늘 저녁', '오늘 밤', '1시간 뒤'는 그 기사 발행일 기준이라 오늘과 다릅니다 — 어제 끝난 불꽃축제를 오늘 아침에 "오늘 밤 열린다"고 안내한 사고가 있었습니다. 날짜가 확실한 건 [한국의 특별한 날] 표뿐이에요. 지난 행사는 "어제 ~했다던데 다녀오셨어요?"처럼 지난 일로 쓰거나, 시점을 빼고 "불꽃축제 좋아하세요?"처럼 취향 질문으로 바꾸세요. 시작 시각·남은 시간을 지어내는 것도 금지.\n` +
@@ -1396,7 +1401,7 @@ if (DRY_RUN) {
   const n = (s) => `(${charLen(s)}자)`;
   console.log(`\n--- dry run deck (${data.topics.length} cards, effort ${EFFORT || 'default'}) ---`);
   data.topics.forEach((t, i) => {
-    const media = t.media?.kind && t.media.kind !== 'none' ? ` · media ${t.media.kind} "${t.media.title}" ${t.media.year}` : '';
+    const media = t.media?.kind && t.media.kind !== 'none' ? ` · media ${t.media.kind} "${t.media.title}"${t.media.title_en ? ` / "${t.media.title_en}"` : ''} ${t.media.year}` : '';
     const subj = (t.subjects || []).length ? ` · subjects ${t.subjects.map((s) => `${s.name_ko}/${s.name_en}(${s.kind})`).join(', ')}` : '';
     const lint = left.get(t);
     console.log(
@@ -2334,7 +2339,60 @@ function startsWithTitle(raw, want) {
 //     is the headline's — a Korean headline's '올드보이' is the 2003 film, not
 //     the 2013 US remake that is merely translated that way. Otherwise no
 //     poster — a wrong poster is worse than a stock photo.
-async function findPoster(media, { token, today }) {
+//
+// Seasons, and the English title (added 2026-11-12 after two wrong covers):
+//  - TMDB files a show ONCE; "굿파트너2" is season 2 of "굿파트너" and the 2 is
+//    not in any title. findPoster tries the headline's own title first (exactly
+//    as above), and only if that finds nothing and the title ends in a season
+//    marker does it retry the BASE title and then use that season's own poster
+//    (GET /tv/{id}/season/{n}), else the show's poster. Same exactness rules —
+//    the base title must still equal a TMDB title; nothing fuzzy.
+//  - A brand-new series can have no Korean title on TMDB at all ('재혼황후' →
+//    0 results). The model's `media.title_en` is then searched (en-US, so the
+//    English name exists to match) with the same exact / subtitle-boundary
+//    rules, preferring a Korean work (origin_country KR) and then the newest.
+//    Order: Korean title → Korean base title → English title → English base title.
+async function findPoster(media, ctx) {
+  const kind = media?.kind;
+  const attempts = [{ title: media?.title, why: 'title' }];
+  const sp = kind === 'tv' ? splitSeason(media.title) : null;
+  if (sp) attempts.push({ title: sp.base, season: sp.season, why: `base title (season ${sp.season})` });
+  const en = String(media?.title_en ?? '').trim();
+  if (kind && en && normTitle(en) !== normTitle(media.title)) {
+    attempts.push({ title: en, language: 'en-US', preferKR: true, why: 'English title' });
+    const spEn = kind === 'tv' ? splitSeason(en) : null;
+    if (spEn) attempts.push({ title: spEn.base, season: spEn.season, language: 'en-US', preferKR: true, why: `English base title (season ${spEn.season})` });
+    else if (sp) attempts.push({ title: en, season: sp.season, language: 'en-US', preferKR: true, why: 'English title' });
+  }
+  const whys = [];
+  for (const a of attempts) {
+    const res = await findPosterOnce({ ...media, title: a.title }, { ...ctx, ...a });
+    if (res.url) {
+      if (a.why !== 'title') res.note = `${res.note} [via ${a.why}: "${a.title}"]`;
+      return res;
+    }
+    whys.push(res.why);
+  }
+  return { why: whys.length > 1 ? whys.join(' | then ') : whys[0] };
+}
+
+// "굿파트너2" / "굿파트너 2" / "굿파트너 시즌2" / "Squid Game Season 2" / "…2부" →
+// { base, season }. TV only, season 2–20 (a "1" is the show itself), and the
+// base must not end in a digit or be empty. Movies are skipped by the caller:
+// "범죄도시2" IS a film of its own on TMDB and is found by the exact pass first.
+function splitSeason(title) {
+  const t = String(title ?? '').normalize('NFC').trim();
+  const m = t.match(/^(.*\S)\s*(?:시즌|season)\s*(\d{1,2})$/iu)
+    || t.match(/^(.*\S)\s*(\d{1,2})\s*부$/u)
+    || t.match(/^(.*[^\d\s])\s*(\d{1,2})$/u);
+  if (!m) return null;
+  const season = Number(m[2]);
+  const base = m[1].trim();
+  if (season < 2 || season > 20 || !normTitle(base)) return null;
+  return { base, season };
+}
+
+async function findPosterOnce(media, { token, today, season = null, language = 'ko-KR', preferKR = false }) {
   const kind = media?.kind;
   if (kind !== 'movie' && kind !== 'tv') return { why: 'not about one film/TV programme' };
   const want = normTitle(media.title);
@@ -2343,7 +2401,7 @@ async function findPoster(media, { token, today }) {
   const orig = (it) => (kind === 'movie' ? it.original_title : it.original_name) || '';
   const date = (it) => (kind === 'movie' ? it.release_date : it.first_air_date) || '';
 
-  const params = { query: String(media.title).trim(), language: 'ko-KR', include_adult: 'false' };
+  const params = { query: String(media.title).trim(), language, include_adult: 'false' };
   if (kind === 'movie') params.region = 'KR';
   const results = (await tmdbGet(`/search/${kind}`, params, token)).results || [];
   // An exact match always beats a short-title match, so the second pool is only
@@ -2371,14 +2429,14 @@ async function findPoster(media, { token, today }) {
   const stub = (it) => !it.vote_count && date(it) && (Date.parse(today) - Date.parse(date(it))) / 86400e3 > 60;
   const inWindow = usable.filter((it) => date(it) >= lo && date(it) <= hi && !stub(it));
   // Short-title matches only: for a Korean headline a Korean work comes first.
-  const korean = rule !== 'exact' && /\p{Script=Hangul}/u.test(media.title);
+  const korean = preferKR || (rule !== 'exact' && /\p{Script=Hangul}/u.test(media.title));
   const isKorean = (it) => it.original_language === 'ko' || (it.origin_country || []).includes('KR');
   const koreanFirst = (it) => (korean && isKorean(it) ? 0 : 1);
   let pick;
   let note = rule === 'exact' ? '' : ' [prefix+subtitle]';
   if (inWindow.length) {
     pick = rule === 'exact'
-      ? inWindow.sort((a, b) => yearGap(a) - yearGap(b) || pop(b) - pop(a))[0]
+      ? inWindow.sort((a, b) => koreanFirst(a) - koreanFirst(b) || yearGap(a) - yearGap(b) || pop(b) - pop(a))[0]
       : inWindow.sort((a, b) => koreanFirst(a) - koreanFirst(b) || date(b).localeCompare(date(a)) || pop(b) - pop(a))[0];
     if (inWindow.length > 1) {
       note += rule === 'exact'
@@ -2411,11 +2469,24 @@ async function findPoster(media, { token, today }) {
     note += ` [nothing recent and rated in ${lo}…${hi}; ${c.why}]`;
   }
 
+  // A season marker was stripped off the title: that season's own poster if
+  // TMDB has one, else the show's. A season lookup failure is not fatal.
+  let posterPath = pick.poster_path;
+  if (season && kind === 'tv') {
+    try {
+      const sd = await tmdbGet(`/tv/${pick.id}/season/${season}`, { language }, token);
+      if (sd?.poster_path) { posterPath = sd.poster_path; note += ` [season ${season} poster]`; }
+      else note += ` [season ${season} has no poster of its own — show poster]`;
+    } catch (e) {
+      note += ` [season ${season} lookup failed (${e.message}) — show poster]`;
+    }
+  }
+
   // `original` unless it is oversized or its size is unknown; then w780.
-  let url = `${TMDB_IMG}original${pick.poster_path}`;
+  let url = `${TMDB_IMG}original${posterPath}`;
   let probe = await probeImage(url);
   if (!probe.ok || probe.bytes == null || probe.bytes > TMDB_POSTER_MAX_BYTES) {
-    const small = `${TMDB_IMG}w780${pick.poster_path}`;
+    const small = `${TMDB_IMG}w780${posterPath}`;
     const p2 = await probeImage(small);
     if (p2.ok) {
       note += ` [w780: original ${probe.ok ? `${probe.bytes == null ? 'size unknown' : `${(probe.bytes / 1048576).toFixed(1)} MB`}` : probe.why}]`;

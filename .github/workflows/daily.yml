@@ -36,7 +36,7 @@ on:
       # secret): "<title>|<tv|movie>|<year>", e.g. 닥터X|tv|2026. Runs only the
       # poster search — no Claude call, nothing generated, committed or synced.
       poster_test:
-        description: "Poster lookup test only, '<title>|<tv|movie>|<year>' (empty = normal run)"
+        description: "Poster lookup test only, '<title>|<tv|movie>|<year>[|<title_en>]' (empty = normal run)"
         type: string
         default: ''
 
