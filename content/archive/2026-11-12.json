@@ -1,0 +1,291 @@
+{
+  "date": "2026-11-12",
+  "dateLabel": "11월 12일 목요일",
+  "generatedAt": "2026-11-12T01:41:41.791Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "임윤찬",
+      "color": "#1F3A5F",
+      "title": "임윤찬이 애플뮤직 클래식 올해의 앨범에 뽑혔대요",
+      "desc": "글로벌 클래식 차트에서 16주 연속 1위를 지켰대요.",
+      "reason": "늦가을 저녁엔 차분한 음악이 생각나는 11월이에요.",
+      "questions": [
+        "요즘 자주 듣는 클래식이나 연주곡 있으세요?",
+        "일할 때는 가사 있는 노래가 좋으세요, 없는 노래가 좋으세요?",
+        "올해 가장 많이 들은 노래가 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "임윤찬이 애플뮤직 클래식 올해의 앨범이래요. 16주 연속 1위라는데 대단하네요.",
+          "follow": "BTS 노래도 애플뮤직 올해 베스트 송에 들어갔대요.",
+          "caution": "연주 실력을 평가하거나 클래식 지식을 겨루지 않기"
+        },
+        "friend": {
+          "opener": "임윤찬 애플뮤직 올해의 앨범 됐다더라. 들어 봤어?",
+          "follow": "16주 연속 1위래. 너는 요즘 뭐 들어?",
+          "caution": "취향 다르다고 깎아내리지 않기"
+        },
+        "date": {
+          "opener": "임윤찬이 애플뮤직 올해의 앨범에 뽑혔대요. 클래식 자주 들으세요?",
+          "follow": "평소 어떤 음악 들으시는지, 공연 가 보신 적 있는지 여쭤봐요.",
+          "caution": "클래식 아는 척 길게 설명하지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Yunchan_Lim.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t7",
+      "cat": "여행",
+      "subtopic": "해외여행",
+      "label": "환율",
+      "color": "#00838F",
+      "title": "환율이 어제보다 0.6% 내려 1,334원이래요",
+      "desc": "원화 강세라 해외여행이나 직구에 유리해졌어요.",
+      "reason": "연말 휴가 계획을 슬슬 세우는 11월 중순이에요.",
+      "questions": [
+        "겨울에 가 보고 싶은 해외 도시 있으세요?",
+        "여행 가면 꼭 사 오는 게 있으세요?",
+        "추운 겨울엔 따뜻한 곳과 눈 오는 곳 중 어디 가고 싶으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "환율이 1,334원으로 내렸대요. 연말 휴가 계획 있으세요?",
+          "follow": "가 보고 싶은 도시가 있으신지 물어봐요.",
+          "caution": "휴가 일정 캐묻지 않기"
+        },
+        "friend": {
+          "opener": "환율 1,334원으로 내렸대. 겨울 여행 가고 싶지 않아?",
+          "follow": "어디가 땡겨? 따뜻한 데야, 눈 오는 데야?",
+          "caution": "예산 얘기로 부담 주지 않기"
+        },
+        "date": {
+          "opener": "환율이 좀 내렸다던데, 가 보고 싶은 여행지 있으세요?",
+          "follow": "여행 스타일이 계획형인지 즉흥형인지 물어봐요.",
+          "caution": "같이 가자는 말 서두르지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Sky_Aerial_View_From_Airplane_Window_%28Rome_to_Addis_Ababa%29_in_2025.01.jpg/1280px-Sky_Aerial_View_From_Airplane_Window_%28Rome_to_Addis_Ababa%29_in_2025.01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t4",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "펭귄",
+      "color": "#00695C",
+      "title": "자카스펭귄 11마리가 광주 우치동물원에 왔대요",
+      "desc": "아프리카에 사는 펭귄이 새 보금자리를 마련했대요.",
+      "reason": "맑고 쌀쌀한 날씨라 나들이 얘기가 나오기 쉬워요.",
+      "questions": [
+        "동물원 마지막으로 간 게 언제예요?",
+        "동물원에서 제일 오래 보게 되는 동물이 뭐예요?",
+        "펭귄 보러 가 보실래요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "광주 우치동물원에 자카스펭귄 11마리가 왔대요.",
+          "follow": "아프리카에 사는 펭귄이래요. 동물원 가 보셨어요?",
+          "caution": "동물 처우 논쟁으로 번지지 않게 하기"
+        },
+        "friend": {
+          "opener": "우치동물원에 아프리카 펭귄 11마리 왔대. 귀엽겠다.",
+          "follow": "우리도 날 풀리면 동물원 갈래?",
+          "caution": "가기 싫다는 친구 설득하지 않기"
+        },
+        "date": {
+          "opener": "광주 동물원에 아프리카 펭귄이 왔대요. 동물원 좋아하세요?",
+          "follow": "좋아하는 동물이 뭔지 물어봐요.",
+          "caution": "첫 만남에 약속을 서두르지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Little_blue_penguin_standing_on_rock%2C_looking_down.jpg/1280px-Little_blue_penguin_standing_on_rock%2C_looking_down.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t2",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "APBC",
+      "color": "#0B5D3B",
+      "title": "야구 대표팀이 APBC 호주전으로 우승 도전을 시작했대요",
+      "desc": "고졸 루키 김민준이 태극마크를 달고 첫 등판을 했대요.",
+      "reason": "이번 주 내내 대표팀 경기가 이어져 화제가 끊기지 않아요.",
+      "questions": [
+        "야구 대표팀 경기 챙겨 보세요?",
+        "국가대표 경기는 누구랑 같이 보면 재밌어요?",
+        "경기 볼 때 꼭 먹는 야식 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "야구 대표팀이 APBC 호주전 했대요. 고졸 루키가 선발이라던데요.",
+          "follow": "김도영 선수가 중심이라는데 경기 보셨어요?",
+          "caution": "응원팀 얘기로 편 가르지 않기"
+        },
+        "friend": {
+          "opener": "APBC 호주전 봤어? 고졸 루키가 선발로 나왔다던데.",
+          "follow": "우승 도전이래. 다음 경기 같이 볼래?",
+          "caution": "결과 모르는 사람한테 스포하지 않기"
+        },
+        "date": {
+          "opener": "야구 대표팀 APBC 시작했대요. 야구 좋아하세요?",
+          "follow": "직관 가 보신 적 있는지 물어봐요.",
+          "caution": "규칙 설명을 길게 하지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Baseball_TeamKorea_IncheonAsianGames_08.jpg/1280px-Baseball_TeamKorea_IncheonAsianGames_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Korea.net / Korean Culture and Information Service",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baseball_TeamKorea_IncheonAsianGames_08.jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "코스피",
+      "color": "#B71C1C",
+      "title": "코스피가 화요일보다 2.0% 올라 5,344가 됐대요",
+      "desc": "삼성전자는 어제보다 1.1% 올라 20만 8,250원이에요.",
+      "reason": "오늘 종가까지 나온 목요일이라 장 얘기가 나오기 쉬워요.",
+      "questions": [
+        "요즘 주식이나 재테크 하세요?",
+        "투자 얘기는 주변에서 많이 들리세요?",
+        "월급 들어오면 제일 먼저 하는 게 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "코스피가 화요일보다 2% 올랐다던데 들으셨어요?",
+          "follow": "삼성전자도 20만 원대라던데 체감 되세요?",
+          "caution": "종목 추천이나 수익률 자랑 피하기"
+        },
+        "friend": {
+          "opener": "코스피 5,344래. 화요일보다 2% 올랐대. 너 주식 해?",
+          "follow": "요즘 뭐가 제일 많이 들려?",
+          "caution": "손익 캐묻지 않기"
+        },
+        "date": {
+          "opener": "요즘 주식 얘기 많던데, 재테크 하세요?",
+          "follow": "저축이나 소비 습관을 물어봐요.",
+          "caution": "수익이나 자산 규모 묻지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "t3",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "AI",
+      "color": "#4527A0",
+      "title": "구글이 제미나이 4 카본을 전면 공개했대요",
+      "desc": "보안 취약점을 2시간 만에 찾아냈다는 소식이에요.",
+      "reason": "아침 9°에서 낮 15°로 오르는 맑은 목요일이에요.",
+      "questions": [
+        "요즘 AI 도구 어떤 걸 쓰세요?",
+        "AI한테 가장 많이 시키는 일이 뭐예요?",
+        "AI가 대신 해 줬으면 하는 일 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "구글이 제미나이 4 카본을 공개했대요. 취약점을 2시간 만에 찾았다네요.",
+          "follow": "혹시 업무에 AI 쓰는 거 있으세요?",
+          "caution": "일자리 불안을 부추기는 얘기는 피하기"
+        },
+        "friend": {
+          "opener": "구글이 제미나이 4 카본 공개했대. 들었어?",
+          "follow": "너는 요즘 AI 뭐 써?",
+          "caution": "기술 용어를 길게 늘어놓지 않기"
+        },
+        "date": {
+          "opener": "구글이 새 AI를 공개했다던데, AI 도구 써 보세요?",
+          "follow": "어떤 걸 시켜 보셨는지 물어봐요.",
+          "caution": "전문 용어를 쏟아내지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Man_typing_on_laptop_%28Unsplash%29.jpg/1280px-Man_typing_on_laptop_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Googleplex_HQ_%28cropped%29.jpg/1280px-Googleplex_HQ_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Asoundd",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Googleplex_HQ_(cropped).jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "김장",
+      "color": "#C62828",
+      "title": "김장철인데, 올해 김치 직접 담그세요, 사 드세요?",
+      "desc": "11월 중순이라 배추 시세 이야기가 슬슬 들려요.",
+      "reason": "서울 최저 6°에 맑아 김장하기 좋은 날씨예요.",
+      "questions": [
+        "김장하는 날 꼭 먹는 음식 있으세요?",
+        "김치 말고 겨울에 담가 두는 반찬 있으세요?",
+        "갓 담근 김치엔 뭐가 제일 잘 어울려요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "김장철인데 올해는 김치 담그세요, 사 드세요?",
+          "follow": "갓 담근 김치에 수육 드시나요?",
+          "caution": "가사 분담 얘기로 번지지 않게 하기"
+        },
+        "friend": {
+          "opener": "올해 김장해? 아니면 사 먹어?",
+          "follow": "김장하는 날 뭐 먹는지 궁금해.",
+          "caution": "직접 담그는지 여부로 평가하지 않기"
+        },
+        "date": {
+          "opener": "김장철인데 집에서 김치 담그는 편이세요?",
+          "follow": "좋아하는 김치 종류를 물어봐요.",
+          "caution": "요리 실력 평가하지 않기"
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/KIMCHI.jpg/1280px-KIMCHI.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Charles Haynes Nate Beaty",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:KIMCHI.jpg"
+      }
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "반려동물",
+      "label": "진료비",
+      "color": "#6D4C41",
+      "title": "동물병원 진료비를 병원별로 공개한대요",
+      "desc": "11개 항목부터 단계적으로 전수 공개할 가닥이래요.",
+      "reason": "가을 끝자락, 반려동물 건강 챙기는 분이 많아요.",
+      "questions": [
+        "반려동물 키우세요, 키워 보고 싶으세요?",
+        "동물병원 갈 때 제일 걱정되는 게 뭐예요?",
+        "어릴 때 키워 본 동물 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "동물병원 진료비를 병원별로 공개한대요. 들으셨어요?",
+          "follow": "반려동물 키우세요?",
+          "caution": "병원 불만 토로로 흐르지 않기"
+        },
+        "friend": {
+          "opener": "동물병원 진료비 전부 공개한대. 11개 항목부터래.",
+          "follow": "병원 갈 때 비용 부담됐어?",
+          "caution": "키우지 않는 친구에게 강요하지 않기"
+        },
+        "date": {
+          "opener": "동물병원 진료비 공개한다던데, 반려동물 좋아하세요?",
+          "follow": "키워 본 동물이나 키우고 싶은 동물을 물어봐요.",
+          "caution": "반려동물 없는 사람 평가하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/379th_EMDS_perform_root_canal_procedure_on_military_working_dog_%288940851%29.jpg/1280px-379th_EMDS_perform_root_canal_procedure_on_military_working_dog_%288940851%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    }
+  ]
+}
