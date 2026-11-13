@@ -1,0 +1,317 @@
+{
+  "date": "2026-11-13",
+  "dateLabel": "11월 13일 금요일",
+  "generatedAt": "2026-11-13T00:42:50.667Z",
+  "topics": [
+    {
+      "id": "d1113-glasses",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "AI안경",
+      "color": "#0F766E",
+      "title": "삼성이 AI 안경 30종을 공개했대요",
+      "desc": "12월 10일 국내에 출시된대요.",
+      "reason": "겨울 직전 연말 선물을 고민하는 시기와 맞닿아 있어요.",
+      "questions": [
+        "안경에 통역이나 길 안내 기능이 있으면 써 보실래요?",
+        "평소에 안경이나 선글라스 자주 쓰세요?",
+        "요즘 써 본 신기한 기기 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성이 AI 안경을 공개했대요. 통역부터 길 안내까지 된다던데요.",
+          "follow": "12월 10일에 국내 출시라던데, 써 보고 싶으세요?",
+          "caution": "가격이나 성능은 모르는 건 말하지 마세요."
+        },
+        "friend": {
+          "opener": "삼성이 AI 안경 공개했대. 통역도 된다더라.",
+          "follow": "젠틀몬스터랑 협업도 있대, 써 볼래?",
+          "caution": "안 나온 가격은 추측하지 마."
+        },
+        "date": {
+          "opener": "삼성이 AI 안경을 공개했다던데, 안경 쓰세요?",
+          "follow": "평소 즐겨 쓰는 스타일을 물어보세요.",
+          "caution": "외모 품평은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Wall_art_of_a_pug_wearing_sunglasses_at_The_Burger_Company.jpg/1280px-Wall_art_of_a_pug_wearing_sunglasses_at_The_Burger_Company.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Samsung_headquarters.jpg/1280px-Samsung_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Oskar Alexanderson",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg"
+      }
+    },
+    {
+      "id": "d1113-samsung",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "우승공약",
+      "color": "#1D4ED8",
+      "title": "삼성이 17일 에버랜드에서 우승 공약을 지킨대요",
+      "desc": "팬 2천 명을 초청한대요.",
+      "reason": "우승 뒤 첫 주말을 앞둔 금요일이라 야구 얘기가 이어져요.",
+      "questions": [
+        "우승 공약 중에 기억나는 거 있으세요?",
+        "에버랜드는 마지막으로 언제 가 보셨어요?",
+        "야구장 직관 가면 꼭 먹는 간식 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성이 17일에 에버랜드로 팬 2천 명을 초청한대요.",
+          "follow": "우승 공약을 지키는 거라던데, 가 보고 싶으세요?",
+          "caution": "응원 팀 얘기로 편을 가르지 마세요."
+        },
+        "friend": {
+          "opener": "삼성이 에버랜드에 팬 2천 명 초청한대. 들었어?",
+          "follow": "우승 공약 지키는 거래, 신기하지 않아?",
+          "caution": "다른 팀 팬 놀리지 마."
+        },
+        "date": {
+          "opener": "삼성이 우승 공약으로 에버랜드에 팬을 초청한대요.",
+          "follow": "에버랜드 가 보신 적 있는지 물어보세요.",
+          "caution": "응원팀을 따지지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/A_Crowd_at_Tim_McCarver_Stadium_%281978%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WiiWii",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(5).jpg"
+      }
+    },
+    {
+      "id": "d1113-robotdog",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "로봇개",
+      "color": "#475569",
+      "title": "미국 목장에 '로봇 개'가 첫 출근했대요",
+      "desc": "소들이 관심을 보였대요.",
+      "reason": "금요일이라 가벼운 영상 얘기 꺼내기 좋아요.",
+      "questions": [
+        "로봇이 대신해 줬으면 하는 일 있으세요?",
+        "강아지 산책 로봇이 있으면 쓰실 거예요?",
+        "동물이랑 로봇이 만나는 영상 보신 적 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "미국 목장에 로봇 개가 첫 출근했대요. 소들이 관심을 보였다네요.",
+          "follow": "산책 로봇 개도 포착됐다던데 신기하더라고요.",
+          "caution": "AI에 일자리 뺏긴다는 식의 불안한 말은 피하세요."
+        },
+        "friend": {
+          "opener": "미국 목장에 로봇 개 첫 출근했대. 소들이 구경했다더라.",
+          "follow": "강아지 산책시키는 로봇 개도 있대, 똥은 치우냐고 난리야.",
+          "caution": "진지하게 논쟁하지 마."
+        },
+        "date": {
+          "opener": "미국 목장에 로봇 개가 출근했대요. 신기하죠?",
+          "follow": "반려동물 키우시는지 물어보세요.",
+          "caution": "사생활 캐묻기는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Grass_Field_of_FlyingCow_Ranch.jpg/1280px-Grass_Field_of_FlyingCow_Ranch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Jeffreyjhang",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grass_Field_of_FlyingCow_Ranch.jpg"
+      }
+    },
+    {
+      "id": "d1113-kimchi",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "굴보쌈",
+      "color": "#9A3412",
+      "title": "찬바람 불면 굴이랑 보쌈 생각나지 않으세요?",
+      "desc": "늦가을 김장철이 시작되는 때예요.",
+      "reason": "금요일 저녁 메뉴 고민하는 시간이 다가와요.",
+      "questions": [
+        "김장 때 먹는 수육에 뭐 곁들이세요?",
+        "겨울 제철 음식 중 제일 좋아하는 게 뭐예요?",
+        "금요일 저녁엔 뭐 드실 거예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "찬바람 부니까 굴보쌈 생각나더라고요.",
+          "follow": "점심에 같이 먹으러 가실래요?",
+          "caution": "호불호 있는 음식은 강권하지 마세요."
+        },
+        "friend": {
+          "opener": "날 추워지니까 굴보쌈 땡기지 않아?",
+          "follow": "오늘 저녁에 같이 먹을래?",
+          "caution": "굴 못 먹는 친구 배려해."
+        },
+        "date": {
+          "opener": "겨울 제철 음식 중에 좋아하는 거 있으세요?",
+          "follow": "굴이나 보쌈 좋아하는지 물어보세요.",
+          "caution": "음식 취향을 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/A_rich_plate_of_Native_soup.jpg/1280px-A_rich_plate_of_Native_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Kobo Medlyn",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_rich_plate_of_Native_soup.jpg"
+      }
+    },
+    {
+      "id": "d1113-etus",
+      "cat": "문화",
+      "subtopic": "웹툰·책",
+      "label": "하루키",
+      "color": "#8B5E3C",
+      "title": "하루키 신작 '가호'가 3주 연속 1위래요",
+      "desc": "'트렌드 코리아 2027'이 2위에 올랐대요.",
+      "reason": "단풍이 지는 늦가을이라 책 한 권 펴기 좋은 금요일 밤이 다가와요.",
+      "questions": [
+        "요즘 읽고 있는 책 있으세요?",
+        "하루키 소설 중에 제일 좋았던 건 뭐예요?",
+        "주말에 책 읽을 때 어디서 읽는 걸 좋아하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "하루키 신작 '가호'가 3주째 1위래요. 읽어 보셨어요?",
+          "follow": "트렌드 코리아 2027도 2위라던데, 그건 보셨어요?",
+          "caution": "책 취향을 평가하거나 줄거리 스포일러는 피하세요."
+        },
+        "friend": {
+          "opener": "하루키 신작 가호가 3주째 1위래. 읽어 봤어?",
+          "follow": "너는 하루키 책 중에 뭐가 제일 좋았어?",
+          "caution": "안 읽은 사람한테 결말을 말하지 마."
+        },
+        "date": {
+          "opener": "하루키 신작이 3주 연속 1위라던데, 책 좋아하세요?",
+          "follow": "요즘 읽고 있는 책이 있는지 물어보세요.",
+          "caution": "독서량을 비교하거나 아는 척하지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/SM_Cinema_Theatre%2C_SM_City_Bacolod.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Murakami_Haruki_%282009%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Galoren.com",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Murakami_Haruki_(2009).jpg"
+      }
+    },
+    {
+      "id": "d1113-suneung",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "수능한파",
+      "color": "#3B82F6",
+      "title": "19일 수능 당일부터 영하권 추위래요",
+      "desc": "금요일부터 주말까지 비가 오고 6년 만의 수능 한파가 온대요.",
+      "reason": "수능을 일주일 앞두고 두꺼운 옷을 꺼낼 때예요.",
+      "questions": [
+        "수능 때 날씨 기억나세요?",
+        "추워지면 제일 먼저 꺼내는 겉옷이 뭐예요?",
+        "수능 날 먹은 도시락 기억나세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "19일 수능 날부터 영하권 한파가 온다던데요.",
+          "follow": "6년 만의 수능 한파래요, 겉옷 꺼내셨어요?",
+          "caution": "수험생 가족 사정은 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "수능 날부터 영하로 떨어진대. 6년 만의 수능 한파래.",
+          "follow": "너 수능 때 날씨 기억나?",
+          "caution": "점수 얘기는 꺼내지 마."
+        },
+        "date": {
+          "opener": "수능 날 영하권 추위래요. 수능 때 날씨 기억나세요?",
+          "follow": "추울 때 좋아하는 따뜻한 음식을 물어보세요.",
+          "caution": "성적 얘기는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Frosty_Raftsundet_landscape_with_Trolltindan_in_morning%2C_2012_October.JPG/1280px-Frosty_Raftsundet_landscape_with_Trolltindan_in_morning%2C_2012_October.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Ximonic (Simo Räsänen)",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frosty_Raftsundet_landscape_with_Trolltindan_in_morning,_2012_October.JPG"
+      }
+    },
+    {
+      "id": "d1113-chiikawa",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "치이카와",
+      "color": "#E57A9A",
+      "title": "극장판 '치이카와'가 300만 눈앞이래요",
+      "desc": "'최종면접'을 밀어내고 1위를 되찾았대요.",
+      "reason": "금요일 퇴근 뒤 극장 가기 좋은 주말 전날이에요.",
+      "questions": [
+        "요즘 극장에서 뭐 보셨어요?",
+        "주말에 영화 보러 간다면 어떤 장르 고르세요?",
+        "애니메이션 영화 중에 기억에 남는 거 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "극장판 치이카와가 300만을 앞두고 있대요. 보셨어요?",
+          "follow": "최종면접을 밀어내고 1위를 되찾았대요.",
+          "caution": "관람 취향을 가볍게 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "치이카와 극장판 300만 눈앞이래. 봤어?",
+          "follow": "주말에 영화 하나 볼까?",
+          "caution": "스포일러는 하지 마."
+        },
+        "date": {
+          "opener": "요즘 극장에서 뭐 보셨어요? 치이카와 극장판이 1위래요.",
+          "follow": "애니메이션 좋아하는지 물어보세요.",
+          "caution": "취향을 단정하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Sylvan_Theater_Building%2C_Sylva%2C_NC_%2832764629778%29.jpg/1280px-Sylvan_Theater_Building%2C_Sylva%2C_NC_%2832764629778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/David_Minor_Theater_%26_Pub_Marquee_Sign.jpg/1280px-David_Minor_Theater_%26_Pub_Marquee_Sign.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Rick Obst",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:David_Minor_Theater_%26_Pub_Marquee_Sign.jpg"
+      }
+    },
+    {
+      "id": "d1113-stock",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "삼전닉스",
+      "color": "#B91C1C",
+      "title": "삼성전자가 어제 3.0% 올랐다던데, 주식 하세요?",
+      "desc": "SK하이닉스도 4.0% 올라 130만 4천 원이에요.",
+      "reason": "비트코인은 70,835달러로 4.2% 내려서 시장이 엇갈려요.",
+      "questions": [
+        "요즘 주식이나 재테크 관심 있으세요?",
+        "주변에서 주식 얘기 많이 하세요?",
+        "처음 투자해 본 게 뭐였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성전자가 어제 3.0% 올랐다던데, 주식 하세요?",
+          "follow": "코스피가 5,478까지 올랐대요.",
+          "caution": "종목 추천이나 수익 자랑은 피하세요."
+        },
+        "friend": {
+          "opener": "삼성전자 어제 3% 올랐대. 너 주식 해?",
+          "follow": "하이닉스도 4% 올랐다더라.",
+          "caution": "손익 캐묻지 마."
+        },
+        "date": {
+          "opener": "요즘 주식 얘기 많던데, 관심 있으세요?",
+          "follow": "재테크 방법을 가볍게 물어보세요.",
+          "caution": "종목 추천은 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    }
+  ]
+}
