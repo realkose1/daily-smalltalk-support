@@ -1,0 +1,47 @@
+{
+  "note": "Files a maintainer removed by hand. The generator never picks these again.",
+  "files": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Les_melons_01.jpg/1280px-Les_melons_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "date": "2026-11-14",
+      "topic": "AI가 부른 노래가 멜론 1위를 했대요",
+      "reason": "Melon the fruit; topic is the Korean music streaming service"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Magnavox-Odyssey-Console-Set.jpg/1280px-Magnavox-Odyssey-Console-Set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "date": "2026-11-14",
+      "topic": "GTA 6가 사전 예약 매출 10억 달러를 넘겼대요",
+      "reason": "1972 Magnavox Odyssey console; topic is a modern game"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "date": "2026-11-14",
+      "topic": "이슬비 오는 토요일 점심, 뭐 해 드실 거예요?",
+      "reason": "Thai night-market stall; topic is Korean rainy-day food"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg/1280px-Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "date": "2026-11-14",
+      "topic": "비트코인이 4.3% 내렸다던데, 투자 하세요?",
+      "reason": "Hong Kong bar with banknotes on walls; topic is bitcoin"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg/1280px-Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "date": "2026-11-14",
+      "topic": "올겨울에 제일 가 보고 싶은 국내 여행지는 어디예요?",
+      "reason": "Norwegian cabins; topic is Korean domestic travel"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "date": "2026-11-14",
+      "topic": "오픈AI가 AI 에이전트용 '챗GPT 월렛'을 공개했대요",
+      "reason": "Random San Francisco building; topic is a payment wallet"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "date": "2026-11-14",
+      "topic": "내일부터 곳곳에서 겨울철 한파·대설 대응이 시작된대요",
+      "reason": "DOJ Epstein Files / FBI raid evidence photo"
+    }
+  ]
+}

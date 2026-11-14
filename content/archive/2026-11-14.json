@@ -34,7 +34,10 @@
           "caution": "취향을 평가하는 말투는 피하세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Les_melons_01.jpg/1280px-Les_melons_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Shure_SM7.jpg/1280px-Shure_SM7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageReplaced": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Les_melons_01.jpg/1280px-Les_melons_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ]
     },
     {
       "id": "20261114-gta6",
@@ -67,7 +70,10 @@
           "caution": "게임 시간을 캐묻지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Magnavox-Odyssey-Console-Set.jpg/1280px-Magnavox-Odyssey-Console-Set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Playstation_5_base_edition_with_controller_%28original%29.jpg/1280px-Playstation_5_base_edition_with_controller_%28original%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageReplaced": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Magnavox-Odyssey-Console-Set.jpg/1280px-Magnavox-Odyssey-Console-Set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ]
     },
     {
       "id": "20261114-rainy-lunch",
@@ -100,13 +106,10 @@
           "caution": "요리 실력 평가는 하지 마세요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "PattayaPatrol",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg"
-      }
+      "imageReplaced": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Pajeon.jpg/1280px-Pajeon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
       "id": "20261114-bitcoin",
@@ -139,7 +142,10 @@
           "caution": "투자 규모를 묻지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg/1280px-Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/2014_Pure_Gold_Physical_Bitcoin_China_Mint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageReplaced": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg/1280px-Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ]
     },
     {
       "id": "20261114-winter-trip",
@@ -172,7 +178,16 @@
           "caution": "같이 가자는 말은 서두르지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg/1280px-Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "imageReplaced": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg/1280px-Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ],
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg/1280px-%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Sohyeon Bak",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg"
+      }
     },
     {
       "id": "20261114-rainy-sat",
@@ -239,13 +254,16 @@
         }
       },
       "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/How_mobile_payment_tokenization_works.png/1280px-How_mobile_payment_tokenization_works.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Apple-payment-square.jpg/1280px-Apple-payment-square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "HaeB",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pioneer_Building,_San_Francisco_(2019)_-1.jpg"
-      }
+        "author": "Mybloodtypeiscoffee",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple-payment-square.jpg"
+      },
+      "imageReplaced": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      ]
     },
     {
       "id": "20261114-winter-prep",
@@ -278,7 +296,10 @@
           "caution": "추위 때문에 힘든 얘기만 하지 마세요."
         }
       },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Snow_in_Seoul_20201213.jpg/1280px-Snow_in_Seoul_20201213.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageReplaced": [
+        "https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      ]
     }
   ]
 }
