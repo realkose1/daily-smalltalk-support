@@ -21,11 +21,12 @@ on:
         description: "Regenerate even if today's deck already exists"
         type: boolean
         default: true
-      # A/B a prompt or effort change without shipping it: the model is called
-      # and the copy lint/repair runs, the deck and its cost go to the log, and
-      # nothing is committed, archived or synced to Supabase.
+      # A/B a prompt or effort change without shipping it: the model is called,
+      # the copy lint/repair runs and the covers are picked (cover judge
+      # included); the deck, its covers and the cost go to the log, and nothing
+      # is committed, archived or synced to Supabase.
       dry_run:
-        description: "Dry run: print the deck and cost only (no commit, no Supabase sync)"
+        description: "Dry run: print the deck, its covers and the cost only (no commit, no Supabase sync)"
         type: boolean
         default: false
       effort:

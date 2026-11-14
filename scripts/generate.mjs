@@ -31,6 +31,12 @@
 //     table cover_reports). Read back at the start of a run: reported files are
 //     never picked again, recent reports become a few lines of the prompt, and
 //     content/cover-reports.md lists them — see scripts/cover-reports.mjs.
+//     content/cover-blocklist.json (covers pulled by hand) joins the same blocklist.
+//   - Cover judge: every photo search above picks by keyword overlap on file
+//     names, so before a deck ships one cheap Haiku call LOOKS at the top few
+//     candidates of every card (330px thumbnails) next to its Korean title and
+//     keeps the one a Korean reader would accept — or none (gradient). TMDB
+//     posters are not judged. Fail-soft: any error keeps the keyword picks.
 // Writes today.json (served via GitHub Pages) + an archive copy.
 //
 // Requires env: ANTHROPIC_API_KEY (not needed for --brief-only)
@@ -40,9 +46,10 @@
 //                 get, and exit — no API call, no files written.
 //   FORCE=1       regenerate even if today.json is already from today (KST).
 //   DRY_RUN=1     call the model and run the copy lint/repair as usual, print
-//                 the whole deck and the cost, then stop: no covers, nothing
-//                 written to the repo, no Supabase sync (the deck goes to a
-//                 temp file). Skips the run guard, like FORCE.
+//                 the whole deck, pick its covers (cover judge included) and
+//                 print them with the cost, then stop: nothing written to the
+//                 repo, no Supabase sync (the deck goes to a temp file). Skips
+//                 the run guard, like FORCE.
 //   EFFORT=<lvl>  main call's output_config.effort for this run (low|medium|
 //                 high|xhigh|max); unset = DEFAULT_EFFORT below.
 //   POSTER_TEST="<title>|<tv|movie>|<year>[|<title_en>]"  run only the TMDB poster lookup for
@@ -55,6 +62,8 @@ import { join } from 'node:path';
 import {
   COVER_REPORT_DAYS, loadCoverReports, shippedCovers, groupCoverReports, coverBlocklist,
   isCoverBlocked, usableCandidates, coverLessonsPrompt, coverReportsMarkdown,
+  HAND_BLOCKLIST_PATH, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
+  coverFileKey, coverFileLabel, wikimediaThumb, judgeCandidates, coverFromVerdict, mediaTitleCore,
 } from './cover-reports.mjs';
 
 const MODEL = 'claude-sonnet-5-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
@@ -79,9 +88,15 @@ if (EFFORT && !EFFORTS.includes(EFFORT)) {
 }
 // claude-sonnet-5-5, $ per 1M tokens. Output includes thinking.
 const PRICE = { in: 2, cacheWrite: 2.5, cacheRead: 0.2, out: 10 };
-const costOf = (u) => ((u?.input_tokens || 0) * PRICE.in + (u?.cache_creation_input_tokens || 0) * PRICE.cacheWrite
-  + (u?.cache_read_input_tokens || 0) * PRICE.cacheRead + (u?.output_tokens || 0) * PRICE.out) / 1e6;
-const spend = { main: 0, repair: 0 };
+const costOf = (u, p = PRICE) => ((u?.input_tokens || 0) * p.in + (u?.cache_creation_input_tokens || 0) * p.cacheWrite
+  + (u?.cache_read_input_tokens || 0) * p.cacheRead + (u?.output_tokens || 0) * p.out) / 1e6;
+// The cover judge (see "cover judge" near the bottom): claude-haiku-5-5, $ per
+// 1M tokens for prompts of ≤100K tokens (the judge's is ~10K).
+const JUDGE_MODEL = 'claude-haiku-5-5';
+const JUDGE_PRICE = { in: 0.1, cacheWrite: 0.125, cacheRead: 0.01, out: 0.5 };
+const spend = { main: 0, repair: 0, judge: 0 };
+const spendLine = () =>
+  `main $${spend.main.toFixed(4)} + repair $${spend.repair.toFixed(4)} + cover judge $${spend.judge.toFixed(4)} = $${(spend.main + spend.repair + spend.judge).toFixed(4)}`;
 
 const now = new Date();
 const kst = new Date(now.getTime() + 9 * 3600 * 1000);
@@ -1170,7 +1185,7 @@ const topic = {
     // minItems/maxItems here (a 3/3 constraint 400'd the whole run on
     // 2026-07-12). "Exactly 3" lives in the description + slice(0,3) below.
     // The one place the image-query rules live (the prompt only points here).
-    imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic\'s cover photo search, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns; Korean dishes and places in generic English (삼계탕 → "chicken soup bowl", 냉면 → "cold noodles bowl"). For a news card, shoot the generic thing the story is about — a car launch → "red electric sports car road", "electric car charging station"; a drama → "tv remote sofa living room"; baseball → "baseball stadium night crowd"; a music record → "headphones listening music"; avoid showrooms, shops, expos and signage — they usually show another company logo; never a celebrity, athlete or any real person. Fill these on news cards with subjects too — they are the fallback when no photo of the subject is found.' },
+    imageQueries: { type: 'array', items: { type: 'string' }, description: 'EXACTLY 3 DIFFERENT concrete, photographable scenes for this topic\'s cover photo search, each 2-5 generic English words — a real object, food, weather phenomenon, or visible action/place a stock photographer could literally shoot. Vary the subject across the 3 (e.g. for sleeping in: "cat sleeping blanket", "unmade bed pillows", "alarm clock nightstand"). Never an abstract mood, time-of-day, or feeling. Good: "chicken soup bowl", "rainy street umbrella", "person relaxing sofa blanket". Bad (too abstract, will fail): "weekend afternoon", "cozy feeling". No Korean, no brand/proper nouns; Korean dishes and places in generic English (삼계탕 → "korean chicken soup bowl", 냉면 → "korean cold noodles bowl"). A brand or service whose name is also an ordinary word is never translated literally — 멜론 is a music app, not the fruit ("phone earphones music app"); likewise 애플, 당근, 배민, 쿠팡: shoot someone using the service. A domestic topic (Korean weather, 수능, 국내 여행, Korean food, local news) puts "korea", "seoul" or "korean" — the only proper nouns allowed — in at least 2 of the 3 ("snowy street seoul", "korean students exam hall"). For a news card, shoot the generic thing the story is about — a product launch → the product type itself ("smart glasses wearing", "red electric sports car road"), never the company, its logo or headquarters; a drama → "tv remote sofa living room"; a game → "people playing video game", "modern game controller", never a retro console; sports → modern generic action ("baseball batter swing", "baseball stadium night crowd"), never a named event, a year or an old match; a music record → "headphones listening music"; avoid showrooms, shops, expos and signage — they usually show another company logo; never a celebrity, athlete or any real person. Fill these on news cards with subjects too — they are the fallback when no photo of the subject is found.' },
   },
   required: ['id', 'cat', 'subtopic', 'label', 'color', 'title', 'desc', 'reason', 'special', 'news', 'media', 'subjects', 'questions', 'tips', 'imageQueries'],
 };
@@ -1197,15 +1212,25 @@ const client = new Anthropic();
 // groupCoverReports): the table is anon-writable.
 const coverReports = await loadCoverReports({ url: process.env.SUPABASE_URL, key: process.env.SUPABASE_SERVICE_ROLE_KEY });
 const coverReportGroups = coverReports.ok ? groupCoverReports(coverReports.reports, shippedCovers()) : { groups: [], ignored: 0 };
-const coverBlocked = coverBlocklist(coverReportGroups.groups);
+// Covers pulled by hand (content/cover-blocklist.json) join the reader-reported
+// ones: one set, consulted everywhere coverBlocked is. It is a repo file, so a
+// dry run (no Supabase env) still gets this part.
+const handBlocklist = loadHandBlocklist();
+const reportBlocked = coverBlocklist(coverReportGroups.groups);
+const coverBlocked = mergeBlocklists(reportBlocked, handBlocklist.keys);
+console.log(
+  handBlocklist.ok
+    ? `cover blocklist (hand): ${handBlocklist.missing ? `no ${HAND_BLOCKLIST_PATH}` : `${handBlocklist.keys.size} file(s) from ${handBlocklist.entries} entr${handBlocklist.entries === 1 ? 'y' : 'ies'} in ${HAND_BLOCKLIST_PATH}`}`
+    : `cover blocklist (hand): ${HAND_BLOCKLIST_PATH} ignored — ${handBlocklist.why}`,
+);
 const coverLessons = coverLessonsPrompt(coverReportGroups.groups);
 if (coverReports.ok) {
   console.log(
-    `cover reports: ${coverReports.reports.length} loaded, ${coverBlocked.size} blocklisted files, ${coverLessons.count} lessons in prompt` +
+    `cover reports: ${coverReports.reports.length} loaded, ${reportBlocked.size} reported files blocklisted (${coverBlocked.size} with the hand list), ${coverLessons.count} lessons in prompt` +
     (coverReportGroups.ignored ? ` (${coverReportGroups.ignored} ignored — not a cover the deck shipped)` : ''),
   );
 } else {
-  console.log(`cover reports: none loaded (${coverReports.why}) — 0 blocklisted files, 0 lessons in prompt`);
+  console.log(`cover reports: none loaded (${coverReports.why}) — 0 reported files blocklisted (${coverBlocked.size} with the hand list), 0 lessons in prompt`);
 }
 // The rules, once each. Until 2026-10-26 the prompt asked the model to count
 // every title/desc/reason after writing it and to keep each stock word to one
@@ -1392,10 +1417,11 @@ for (const t of data.topics) if (!t.special) delete t.special;
     (econ.length ? `; 경제 card from a headline: ${econ.join(', ')}` : ''),
   );
 }
-// DRY_RUN=1: the deck in final order with its copy settled, the lint left after
-// the repair, and what the run cost — then stop before covers, today.json, the
-// archive and the Supabase headline. The JSON goes to the runner's temp dir,
-// outside the checkout, so the workflow's commit step couldn't see it anyway.
+// DRY_RUN=1: the deck in final order with its copy settled and the lint left
+// after the repair. The covers are then picked as on a real run (cover judge
+// included, so a prompt or judge change can be A/B'd from the log), and the
+// run stops before today.json, the archive and the Supabase headline — see
+// the end of the script.
 if (DRY_RUN) {
   const left = lintCopy(data.topics);
   const n = (s) => `(${charLen(s)}자)`;
@@ -1414,11 +1440,7 @@ if (DRY_RUN) {
     );
   });
   console.log(`\nlint after repair: ${left.size ? `${left.size} card(s) still flagged` : 'clean'}`);
-  console.log(`cost: main $${spend.main.toFixed(4)} + repair $${spend.repair.toFixed(4)} = $${(spend.main + spend.repair).toFixed(4)} (effort ${EFFORT || 'default'})`);
-  const path = join(process.env.RUNNER_TEMP || tmpdir(), `dry-run-${isoDate}.json`);
-  writeFileSync(path, JSON.stringify({ date: isoDate, dateLabel, generatedAt: now.toISOString(), effort: EFFORT || 'default', spend, topics: data.topics }, null, 2));
-  console.log(`DRY_RUN=1 — deck written to ${path} only; no covers, no today.json/archive, no headline sync`);
-  process.exit(0);
+  console.log(`cost so far: main $${spend.main.toFixed(4)} + repair $${spend.repair.toFixed(4)} (effort ${EFFORT || 'default'}) — covers next\n`);
 }
 
 // Remembered past the delete below: only these cards may take a TMDB poster.
@@ -1626,9 +1648,22 @@ async function searchOpenverse(query) {
       .map((it) => {
         const lic = String(it.license || '').toLowerCase();
         const free = lic === 'cc0' || lic === 'pdm';
+        const s = score(hay(it));
+        if (s <= 0) return null;
+        // Checked on keyword hits only, so the log names files that would
+        // otherwise have been candidates (see sensitiveProvenance).
+        const unsafe = sensitiveProvenance(hay(it), it.creator, it.source, it.attribution);
+        if (unsafe) {
+          console.log(`provenance: rejected openverse "${String(it.title || it.url).slice(0, 80)}" — ${unsafe}`);
+          return null;
+        }
         return {
           url: it.url,
-          s: score(hay(it)),
+          // Openverse's own small thumbnail — the cover judge looks at this, not
+          // at the (often multi-MB) original.
+          thumb: it.thumbnail || null,
+          name: it.title || '',
+          s,
           q: photoScore(hay(it)),
           free,
           credit: free ? null : {
@@ -1639,7 +1674,7 @@ async function searchOpenverse(query) {
           },
         };
       })
-      .filter((c) => c.s > 0)
+      .filter(Boolean)
       // Photo-likeness first, then relevance. Attribution-free no longer wins
       // outright — it was pulling old public-domain scans to the top.
       .sort((a, b) => b.q - a.q || b.s - a.s);
@@ -1657,6 +1692,7 @@ let lastCommonsCall = 0;
 // 1.2s still drew 429s once the cascade (correctly) kept going past
 // artwork-only results — more Commons calls per run. 2s keeps it under.
 const COMMONS_GAP_MS = 2000;
+const WIKI_UA = 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)';
 // Every Wikimedia API call — Commons, Wikidata, Wikipedia — goes through here
 // and shares ONE pacing clock, so the subject-photo lookups (see below) add
 // calls but never a burst. Wikidata 429'd a 2 s-spaced loop of ~8 searches too.
@@ -1672,7 +1708,7 @@ async function wikiJson(host, params, timeoutMs = 10000) {
     if (wait > 0) await new Promise((res) => setTimeout(res, wait));
     lastCommonsCall = Date.now();
     const r = await fetch(`https://${host}/w/api.php?${params}`, {
-      headers: { 'User-Agent': 'daily-smalltalk-content/1.0 (github.com/realkose1/daily-smalltalk-support)' },
+      headers: { 'User-Agent': WIKI_UA },
       signal: AbortSignal.timeout(timeoutMs),
     });
     const txt = await r.text();
@@ -1736,12 +1772,21 @@ async function searchCommons(query) {
         // description alone. The filename itself must carry a keyword.
         if (titleHit(p.title) <= 0) return null;
         const cats = (p.categories || []).map((c) => c.title || '').join(' | ');
+        // extmetadata's Categories also lists the hidden ones ("Media by the
+        // Federal Bureau of Investigation"); Artist/Credit name the source.
+        const unsafe = sensitiveProvenance(hay, cats, ii.extmetadata?.Categories?.value,
+          plain(ii.extmetadata?.Artist?.value), plain(ii.extmetadata?.Credit?.value));
+        if (unsafe) {
+          console.log(`provenance: rejected ${p.title} — ${unsafe}`);
+          return null;
+        }
         const author = creditName(ii.extmetadata?.Artist?.value);
         // An attributed file with no usable author line can't be credited
         // properly, so treat it as unusable rather than crediting "unknown".
         if (!free && !author) return null;
         return {
           url: ii.thumburl || ii.url,
+          name: String(p.title || '').replace(/^File:/, ''),
           s,
           q: photoScore(hay, cats),
           free,
@@ -1922,6 +1967,9 @@ async function subjectFiles(kind, names) {
     if (!/^image\/(jpeg|png|webp|tiff)$/.test(ii.mime || '')) { no(ii.mime || 'unknown type'); continue; }
     const stem = name.replace(/\.[a-z0-9]+$/i, '');
     const cats = (p.categories || []).map((c) => c.title || '').join(' | ');
+    const unsafe = sensitiveProvenance(stem, plain(ii.extmetadata?.ImageDescription?.value), cats, ii.extmetadata?.Categories?.value,
+      plain(ii.extmetadata?.Artist?.value), plain(ii.extmetadata?.Credit?.value));
+    if (unsafe) { console.log(`provenance: rejected File:${name} — ${unsafe}`); no(`sensitive provenance: ${unsafe}`); continue; }
     if (SUBJECT_FILE_NOT_PHOTO.test(stem)) { no('logo/map/poster-like name'); continue; }
     if (SUBJECT_BAD_CATEGORY.test(cats)) { no('logo/map/poster-like category'); continue; }
     const lic = plain(ii.extmetadata?.LicenseShortName?.value);
@@ -2128,7 +2176,7 @@ async function coverFromSubject(t, isNews) {
         `subject: '${t.id}' ← ${names(s)} → ${r.qid} File:${p.name} (${p.lic}, ${p.w}×${p.h})${r.note || ''}` +
         (misses.length ? `; first ${misses.join('; ')}` : ''),
       );
-      return { url: p.url, free: p.free, credit: p.credit };
+      return { url: p.url, free: p.free, credit: p.credit, name: p.name, subject: names(s) };
     }
     misses.push(`${names(s)} → none (${r.why})`);
   }
@@ -2146,7 +2194,7 @@ async function coverFromSubject(t, isNews) {
     if (r.photo) {
       const p = r.photo;
       console.log(`subject: '${t.id}' ← ${names(s)} → File:${p.name} (${p.lic}, ${p.w}×${p.h})${r.note || ''}; first ${misses.join('; ')}`);
-      return { url: p.url, free: p.free, credit: p.credit };
+      return { url: p.url, free: p.free, credit: p.credit, name: p.name, subject: names(s) };
     }
     misses.push(`${names(s)} → name search: ${r.why}`);
   }
@@ -2161,15 +2209,24 @@ async function coverFromSubject(t, isNews) {
 const subjectCovers = new Map();
 for (const t of data.topics) subjectCovers.set(t, await coverFromSubject(t, newsCards.has(t)));
 
+// What the cover judge (after the posters, below) needs per card: today's
+// picks and the candidates they came from. Filled by the loop below.
+const judgePlans = [];
+
 for (const t of data.topics) {
   // A real photo of the news card's own subject beats any mood photo. Free
-  // (CC0/PD) → it IS the cover for every app version and the generic search is
-  // skipped; attributed (CC BY / BY-SA) → it goes to imageAttributed, and the
-  // generic search still runs below to give builds that predate credit lines
-  // their CC0 `image`. No subject / nothing usable → null, cascade as before.
+  // (CC0/PD) → it IS the cover for every app version; attributed (CC BY /
+  // BY-SA) → it goes to imageAttributed, and the generic search below gives
+  // builds that predate credit lines their CC0 `image`. No subject / nothing
+  // usable → null, cascade as before.
+  // The model's own queries run for a free subject photo too (until 2026-11-14
+  // they were skipped): the cover judge may turn the subject photo down —
+  // 멜론 the music service got a photo of melons from the Commons name search —
+  // and then needs something else to pick. Only the category fallback, a mood
+  // photo of the category, stays skipped for those cards.
   const subj = subjectCovers.get(t);
-  const skipGeneric = !!subj?.free;
-  const queries = skipGeneric ? [] : (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
+  const skipFallback = !!subj?.free;
+  const queries = (Array.isArray(t.imageQueries) ? t.imageQueries : []).filter(Boolean).slice(0, 3);
   // Cascade: the model's own queries on Openverse, then on Commons, then the
   // shuffled category fallback on both. Stop at the first query that yields
   // candidates. Gradient only if the whole cascade misses.
@@ -2184,7 +2241,7 @@ for (const t of data.topics) {
   let usable = [];
   for (const q of queries) { usable = usableOnly(await searchOpenverse(q)); if (usable.length) break; }
   if (!usable.length) for (const q of queries) { usable = usableOnly(await searchCommons(q)); if (usable.length) break; }
-  if (!usable.length && !skipGeneric) {
+  if (!usable.length && !skipFallback) {
     // At most three fallbacks per topic — a hard topic used to walk every
     // phrase on both sources and exhaust the rate budget for the topics after it.
     for (const q of shuffled(CAT_FALLBACK_QUERIES[t.cat] || ['lifestyle']).slice(0, 3)) {
@@ -2222,6 +2279,12 @@ for (const t of data.topics) {
     t.imageCredit = best.credit;
     recentImages.add(best.url);
   }
+  // Today's picks in slot order (attributed slot first: newer builds show it),
+  // for the judge to see first.
+  const shipped = subj
+    ? (subj.free ? [subj] : [subj, free])
+    : [best && !best.free ? best : null, free];
+  judgePlans.push({ t, subj, free, pool: usable, shipped: shipped.filter(Boolean), subjects: cleanSubjects(t.subjects) });
 
   delete t.imageQueries; // internal only — not part of the app's Topic shape
   delete t.subjects; // internal only
@@ -2299,13 +2362,16 @@ async function probeImage(url) {
 // the very punctuation that marks the boundary: "닥터 X ~외과의 다이몬 미치코~"
 // → head "닥터 X " → "닥터x". A boundary needs a title before it, and "-" only
 // counts with a space in front, so "스파이더-맨" is not "스파이더" + subtitle.
+// The head before the boundary may also carry a "극장판" / "the Movie" marker
+// ("극장판 치이카와: 인어 섬의 비밀", "Chiikawa the Movie: …") — see mediaTitleCore.
 function startsWithTitle(raw, want) {
   const text = String(raw ?? '').normalize('NFC');
   // Defined here, not at module level: POSTER_TEST calls this before the script's
   // other top-level consts exist.
   const boundary = /[:：–—~～〜(（]| -/gu;
   for (const m of text.matchAll(boundary)) {
-    if (normTitle(text.slice(0, m.index)) === want) return true;
+    const head = text.slice(0, m.index);
+    if (normTitle(head) === want || normTitle(mediaTitleCore(head)) === want) return true;
   }
   return false;
 }
@@ -2352,9 +2418,18 @@ function startsWithTitle(raw, want) {
 //    English name exists to match) with the same exact / subtitle-boundary
 //    rules, preferring a Korean work (origin_country KR) and then the newest.
 //    Order: Korean title → Korean base title → English title → English base title.
+//  - "극장판" / "the Movie" (2026-11-14): TMDB files the 치이카와 film as "극장판
+//    치이카와: 인어 섬의 비밀" / "Chiikawa the Movie: The Secret of the Mermaid
+//    Island", and the headline says '치이카와' — no exact and no title+subtitle
+//    match, three box-office cards in a row without their poster. Each pass
+//    now also compares the titles with those markers off (mediaTitleCore,
+//    scripts/cover-reports.mjs); the rest must still match exactly.
 async function findPoster(media, ctx) {
   const kind = media?.kind;
   const attempts = [{ title: media?.title, why: 'title' }];
+  // "극장판 치이카와" → also search plain "치이카와" (TMDB may file it bare).
+  const bare = mediaTitleCore(media?.title);
+  if (kind && normTitle(bare) && normTitle(bare) !== normTitle(media.title)) attempts.push({ title: bare, why: 'title without 극장판/the Movie' });
   const sp = kind === 'tv' ? splitSeason(media.title) : null;
   if (sp) attempts.push({ title: sp.base, season: sp.season, why: `base title (season ${sp.season})` });
   const en = String(media?.title_en ?? '').trim();
@@ -2405,11 +2480,21 @@ async function findPosterOnce(media, { token, today, season = null, language = '
   if (kind === 'movie') params.region = 'KR';
   const results = (await tmdbGet(`/search/${kind}`, params, token)).results || [];
   // An exact match always beats a short-title match, so the second pool is only
-  // looked at when the first one is empty.
+  // looked at when the first one is empty. Between the two: exact once the
+  // "극장판" / "the Movie" markers are off both titles (mediaTitleCore) — TMDB's
+  // Korean title for the 치이카와 film is "극장판 치이카와: 인어 섬의 비밀".
+  const core = (s) => normTitle(mediaTitleCore(s));
+  const wantCore = core(media.title) || want;
   let matches = results.filter((it) => normTitle(name(it)) === want || normTitle(orig(it)) === want);
   let rule = 'exact';
+  let affix = false;
   if (!matches.length) {
-    matches = results.filter((it) => startsWithTitle(name(it), want) || startsWithTitle(orig(it), want));
+    matches = results.filter((it) => core(name(it)) === wantCore || core(orig(it)) === wantCore);
+    affix = matches.length > 0;
+  }
+  if (!matches.length) {
+    const starts = (raw) => startsWithTitle(raw, want) || (wantCore !== want && startsWithTitle(raw, wantCore));
+    matches = results.filter((it) => starts(name(it)) || starts(orig(it)));
     rule = 'prefix+subtitle';
   }
   if (!matches.length) {
@@ -2433,7 +2518,7 @@ async function findPosterOnce(media, { token, today, season = null, language = '
   const isKorean = (it) => it.original_language === 'ko' || (it.origin_country || []).includes('KR');
   const koreanFirst = (it) => (korean && isKorean(it) ? 0 : 1);
   let pick;
-  let note = rule === 'exact' ? '' : ' [prefix+subtitle]';
+  let note = rule === 'exact' ? (affix ? ' [exact without 극장판/the Movie]' : '') : ' [prefix+subtitle]';
   if (inWindow.length) {
     pick = rule === 'exact'
       ? inWindow.sort((a, b) => koreanFirst(a) - koreanFirst(b) || yearGap(a) - yearGap(b) || pop(b) - pop(a))[0]
@@ -2452,7 +2537,7 @@ async function findPosterOnce(media, { token, today, season = null, language = '
       }
       return null;
     };
-    const own = usable.filter((it) => normTitle(orig(it)) === want);
+    const own = usable.filter((it) => normTitle(orig(it)) === want || core(orig(it)) === wantCore);
     // Short-title matches outside the window: a Korean headline narrows to the
     // Korean works first (when there are any), then the same "clearly the one" test.
     const korean1 = korean && usable.some(isKorean) ? usable.filter(isKorean) : usable;
@@ -2534,6 +2619,222 @@ async function findPosterOnce(media, { token, today, season = null, language = '
   for (const t of data.topics) delete t.media; // internal only — not part of the app's Topic shape
 }
 
+// --- cover judge: a cheap vision model LOOKS at the covers before they ship ---
+// Every search above picks by keyword overlap on file names and descriptions;
+// nothing ever looked at a picture. That is how 멜론 (the music service) got a
+// photo of melons, a 수능 cold-snap card a Norwegian fjord, Samsung's smart
+// glasses the Samsung HQ building and GTA 6 a 1972 console (2026-11). So before
+// the deck ships, ONE batched call shows claude-haiku-5-5 up to four distinct
+// candidates per card — today's picks first, then the next best of the same
+// search — as 330px thumbnails, downloaded here (Wikimedia through the shared
+// pacing clock) and sent as base64, never as URLs for the API to fetch, next to
+// the card's Korean title and desc. Per card it answers which candidates a
+// Korean reader would accept, best first, or none; the verdict fills both slots
+// (coverFromVerdict). None → no photo and the app draws its gradient: an
+// unrelated photo is worse than none. TMDB posters are not judged — on a poster
+// card only the CC0 `image` that older builds show is.
+// FAIL-SOFT: an API error, timeout, refusal or unreadable answer keeps today's
+// keyword picks on every card; a card whose picks could not be downloaded, or
+// that the answer skips, keeps them too. ~8-12K input tokens ≈ $0.002 a run.
+const JUDGE_MAX_CANDS = 4;
+const JUDGE_MAX_IMAGES = 40; // well under the API's per-request image limit
+const JUDGE_IMAGE_MAX_BYTES = 1.5 * 1024 * 1024; // a 330px thumb is ~20-60 KB
+const JUDGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp']);
+const JUDGE_RULES =
+  `You choose cover photos for the cards of a Korean small-talk app. Each card's Korean title and description are printed over its photo. ` +
+  `For every card below, look at its numbered candidate photos and list the ones a Korean reader would accept as the cover for that title, best first — or none.\n` +
+  `A photo fits only if it shows what the title is about, in the sense the title means:\n` +
+  `- Brands and services in their brand sense: 멜론 = the music-streaming app (not the fruit), 애플 = Apple, 당근 = the second-hand market app, 배민 = food delivery, 쿠팡 = online shopping. A story about a company's product shows the product or someone using it — not the company's headquarters, offices, store or logo.\n` +
+  `- Domestic topics (Korean weather, 수능, 국내 여행, Korean food, Korean news) need a scene that could be in Korea: no recognisably foreign landscape, city, signage or cuisine.\n` +
+  `- Food: the right dish, or at least the right cuisine.\n` +
+  `- Current, not dated: no vintage or retro objects (an old console for a new game), no old event photos (a visible past year, old banners), no black-and-white archive shots — unless the title is about the past.\n` +
+  `- A plain everyday scene is fine for an everyday topic when it clearly matches the title (a rainy street for a rainy-day card).\n` +
+  `Reject anything sad, violent, criminal, medical or disturbing; prominent foreign-language signs, other brands' logos or watermarks; a close-up of an unrelated person.\n` +
+  `When unsure, leave it out: no photo (a plain colour cover) is better than a wrong one. The file name under a photo hints at its source; it is not proof of what the photo shows.\n`;
+const judgeSchema = {
+  type: 'object', additionalProperties: false,
+  properties: {
+    cards: {
+      type: 'array',
+      items: {
+        type: 'object', additionalProperties: false,
+        properties: { card: { type: 'string' }, fits: { type: 'array', items: { type: 'integer' } }, why: { type: 'string' } },
+        required: ['card', 'fits', 'why'],
+      },
+    },
+  },
+  required: ['cards'],
+};
+
+// One candidate's 330px thumbnail → { media_type, data } | { why }. Never throws.
+async function judgeThumb(c) {
+  const url = wikimediaThumb(c.url) || c.thumb || null;
+  if (!url) return { why: 'no thumbnail URL' };
+  const wiki = /^https:\/\/[a-z]+\.wikimedia\.org\//i.test(url);
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (wiki) {
+      const wait = lastCommonsCall + COMMONS_GAP_MS - Date.now();
+      if (wait > 0) await new Promise((res) => setTimeout(res, wait));
+      lastCommonsCall = Date.now();
+    }
+    try {
+      const r = await fetch(url, { headers: { 'User-Agent': WIKI_UA }, signal: AbortSignal.timeout(10000) });
+      if ((r.status === 429 || r.status >= 500) && attempt === 0) {
+        r.body?.cancel().catch(() => {});
+        await new Promise((res) => setTimeout(res, 10000));
+        continue;
+      }
+      if (!r.ok) {
+        r.body?.cancel().catch(() => {});
+        return { why: `HTTP ${r.status}` };
+      }
+      const type = (r.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+      if (!JUDGE_TYPES.has(type)) {
+        r.body?.cancel().catch(() => {});
+        return { why: `type ${type || 'unknown'}` };
+      }
+      const buf = Buffer.from(await r.arrayBuffer());
+      if (buf.length > JUDGE_IMAGE_MAX_BYTES) return { why: `${(buf.length / 1024).toFixed(0)} KB` };
+      return { media_type: type, data: buf.toString('base64') };
+    } catch (e) {
+      if (attempt === 1) return { why: e.message };
+    }
+  }
+  return { why: 'rate-limited' };
+}
+
+const judgeLabel = (c) => String(c?.name || coverFileLabel(c?.url) || '').replace(/\s+/g, ' ').slice(0, 70);
+// What a card shows: the attributed slot on builds with credit lines, else `image`.
+function coverSummary(t) {
+  const main = t.imageAttributed
+    ? (t.imageKind === 'poster' ? 'TMDB poster' : `${coverFileLabel(t.imageAttributed)} [${t.imageCredit?.license || 'attributed'}]`)
+    : t.image ? `${coverFileLabel(t.image)} [cc0]` : 'none → gradient';
+  const old = t.imageAttributed ? `; old builds: ${t.image ? coverFileLabel(t.image) : 'gradient'}` : '';
+  return main + old;
+}
+
+async function judgeCovers(plans) {
+  const posterCards = new Set(plans.filter((p) => p.t.imageKind === 'poster').map((p) => p.t));
+  // A file another card ships today is never offered as this card's alternative.
+  const shippedKey = new Map();
+  for (const p of plans) for (const c of p.shipped) { const k = coverFileKey(c.url); if (k && !shippedKey.has(k)) shippedKey.set(k, p); }
+  const cards = [];
+  let images = 0;
+  for (const p of plans) {
+    const poster = posterCards.has(p.t);
+    const picks = poster ? p.shipped.filter((c) => c.free) : p.shipped;
+    const exclude = new Set([...shippedKey].filter(([, q]) => q !== p).map(([k]) => k));
+    const cands = judgeCandidates(picks, p.subj ? [p.subj, ...p.pool] : p.pool, {
+      max: poster ? 3 : JUDGE_MAX_CANDS, freeOnly: poster, recent: recentImages, exclude,
+    });
+    if (!cands.length) { p.judge = { status: 'unjudged', why: 'no photo to judge' }; continue; }
+    const shown = [];
+    let missed = null;
+    for (const c of cands) {
+      if (images >= JUDGE_MAX_IMAGES) break;
+      const img = await judgeThumb(c);
+      if (img.data) { shown.push({ ...c, img }); images++; continue; }
+      if (picks.includes(c)) { missed = `${judgeLabel(c)}: ${img.why}`; break; }
+    }
+    // The judge can only overrule a pick it has seen.
+    if (missed || !picks.every((c) => shown.some((s) => s.url === c.url))) {
+      p.judge = { status: 'unjudged', why: `today's pick not downloaded (${missed || 'image cap'}) — kept` };
+      continue;
+    }
+    cards.push({ p, id: `C${cards.length + 1}`, poster, shown });
+  }
+  if (!cards.length) return { ok: false, why: 'nothing to judge' };
+
+  const content = [{ type: 'text', text: JUDGE_RULES }];
+  for (const c of cards) {
+    const t = c.p.t;
+    const named = c.p.subjects.length ? `\nnamed in the story: ${c.p.subjects.map((s) => `${s.name_ko}${s.name_en ? ` (${s.name_en})` : ''}`).join(', ')}` : '';
+    content.push({
+      type: 'text',
+      text: `\nCard ${c.id} — category ${t.cat}\ntitle: ${t.title}\ndesc: ${t.desc}${named}` +
+        (c.poster ? '\n(the card shows a film poster; judge these photos as a fallback cover)' : ''),
+    });
+    c.shown.forEach((s, i) => {
+      content.push({ type: 'text', text: `${c.id} photo ${i + 1} — ${judgeLabel(s)}${s === c.shown.find((x) => x.url === c.p.subj?.url) ? ' (a photo of the named subject)' : ''}` });
+      content.push({ type: 'image', source: { type: 'base64', media_type: s.img.media_type, data: s.img.data } });
+    });
+  }
+  content.push({
+    type: 'text',
+    text: `\nAnswer with one entry for EVERY card: card = its id ("C1"…), fits = the numbers of the photos that fit, best first ([] when none fits), why = at most 12 English words on what decided it.`,
+  });
+
+  let res;
+  try {
+    res = await client.messages.create({
+      model: JUDGE_MODEL,
+      max_tokens: 6000, // thinking included; the answer itself is ~400 tokens
+      output_config: { effort: 'medium', format: { type: 'json_schema', schema: judgeSchema } },
+      messages: [{ role: 'user', content }],
+    }, { timeout: 120000, maxRetries: 1 });
+  } catch (e) {
+    return { ok: false, why: `API error: ${e.message}`, cards };
+  }
+  spend.judge = costOf(res.usage, JUDGE_PRICE);
+  console.log(`cover judge: ${cards.length} card(s), ${images} photo(s) → tokens in ${res.usage?.input_tokens} / out ${res.usage?.output_tokens} (stop=${res.stop_reason}) → ~$${spend.judge.toFixed(4)}`);
+  if (res.stop_reason !== 'end_turn') return { ok: false, why: `stop_reason ${res.stop_reason}`, cards };
+  let verdicts;
+  try {
+    verdicts = JSON.parse(res.content.filter((b) => b.type === 'text').map((b) => b.text).join('').trim()).cards;
+    if (!Array.isArray(verdicts)) throw new Error('no cards array');
+  } catch (e) {
+    return { ok: false, why: `unreadable answer: ${e.message}`, cards };
+  }
+  const byId = new Map(verdicts.map((v) => [String(v?.card || '').trim().toUpperCase(), v]));
+  for (const c of cards) {
+    const v = byId.get(c.id);
+    const t = c.p.t;
+    if (!v || !Array.isArray(v.fits)) { c.p.judge = { status: 'unjudged', why: 'missing from the answer — kept' }; continue; }
+    const before = `${t.image || ''}|${t.imageAttributed || ''}`;
+    const pick = coverFromVerdict(c.shown, v.fits, { poster: c.poster });
+    if (pick.image) t.image = pick.image.url; else delete t.image;
+    if (!c.poster) {
+      if (pick.attributed) { t.imageAttributed = pick.attributed.url; t.imageCredit = pick.attributed.credit; }
+      else { delete t.imageAttributed; delete t.imageCredit; }
+    }
+    const after = `${t.image || ''}|${t.imageAttributed || ''}`;
+    const status = after === before ? 'kept' : (!t.image && (c.poster || !t.imageAttributed)) ? 'rejected' : 'changed';
+    c.p.judge = { status, why: String(v.why || '').replace(/\s+/g, ' ').slice(0, 120), fits: v.fits, of: c.shown.length };
+  }
+  return { ok: true, cards };
+}
+
+{
+  let r;
+  try {
+    r = await judgeCovers(judgePlans);
+  } catch (e) {
+    r = { ok: false, why: `failed: ${e.message}` };
+  }
+  if (!r.ok) console.log(`cover judge: skipped — ${r.why}; every card keeps its keyword pick`);
+  for (const p of judgePlans) {
+    const j = r.ok ? p.judge : { status: 'unjudged', why: r.why };
+    p.judge = j;
+    console.log(`judge: '${p.t.id}' ${j?.status || 'unjudged'}${j?.fits ? ` [fits ${JSON.stringify(j.fits)} of ${j.of}]` : ''} — "${p.t.title}" → ${coverSummary(p.t)}${j?.why ? ` (${j.why})` : ''}`);
+  }
+}
+
+// DRY_RUN=1: the covers the deck would ship, then stop — no today.json, archive,
+// digest or headline sync. The JSON goes to the runner's temp dir, outside the
+// checkout, so the workflow's commit step couldn't see it anyway.
+if (DRY_RUN) {
+  console.log(`\n--- dry run covers (${data.topics.length} cards) ---`);
+  data.topics.forEach((t, i) => {
+    const j = judgePlans.find((p) => p.t === t)?.judge;
+    console.log(`[${i + 1}] ${t.title}\n    → ${coverSummary(t)}\n    judge: ${j?.status || 'unjudged'}${j?.why ? ` — ${j.why}` : ''}`);
+  });
+  console.log(`\ncost: ${spendLine()} (effort ${EFFORT || 'default'})`);
+  const path = join(process.env.RUNNER_TEMP || tmpdir(), `dry-run-${isoDate}.json`);
+  writeFileSync(path, JSON.stringify({ date: isoDate, dateLabel, generatedAt: now.toISOString(), effort: EFFORT || 'default', spend, topics: data.topics }, null, 2));
+  console.log(`DRY_RUN=1 — deck written to ${path} only; no today.json/archive, no headline sync`);
+  process.exit(0);
+}
+
 const out = { date: isoDate, dateLabel, generatedAt: now.toISOString(), topics: data.topics };
 mkdirSync('content/archive', { recursive: true });
 writeFileSync('today.json', JSON.stringify(out, null, 2));
@@ -2569,4 +2870,4 @@ if (SB_URL && SB_KEY) {
   }
 }
 console.log(`gen tokens: in=${gen.usage.input_tokens} out=${gen.usage.output_tokens} (${MODEL}, effort ${EFFORT || 'default'})`);
-console.log(`cost: main $${spend.main.toFixed(4)} + repair $${spend.repair.toFixed(4)} = $${(spend.main + spend.repair).toFixed(4)}`);
+console.log(`cost: ${spendLine()}`);
