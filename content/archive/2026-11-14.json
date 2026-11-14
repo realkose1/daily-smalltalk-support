@@ -1,0 +1,284 @@
+{
+  "date": "2026-11-14",
+  "dateLabel": "11월 14일 토요일",
+  "generatedAt": "2026-11-14T00:29:06.788Z",
+  "topics": [
+    {
+      "id": "20261114-ai-singer",
+      "cat": "문화",
+      "subtopic": "음악",
+      "label": "AI가수",
+      "color": "#6A1B9A",
+      "title": "AI가 부른 노래가 멜론 1위를 했대요",
+      "desc": "리센느를 제치고 사상 처음 멜론 톱 100 1위래요.",
+      "reason": "이슬비 내리는 토요일이라 음악 듣는 시간이 길어져요.",
+      "questions": [
+        "AI가 만든 노래, 사람 노래랑 구분될 것 같으세요?",
+        "요즘 플레이리스트 맨 위에 있는 노래가 뭐예요?",
+        "비 오는 날엔 어떤 노래 들으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "AI가 부른 노래가 멜론 1위 했대요. 사람이 아닌데 통했다네요.",
+          "follow": "리센느도 제쳤대요. 혹시 들어 보셨어요?",
+          "caution": "AI가 음악을 망친다는 식의 단정은 피하세요."
+        },
+        "friend": {
+          "opener": "야 AI가 부른 노래가 멜론 1위래. 신기하지 않아?",
+          "follow": "너 요즘 많이 듣는 노래는 뭐야?",
+          "caution": "취향 갖고 훈수 두지 마."
+        },
+        "date": {
+          "opener": "AI가 만든 노래가 멜론 1위를 했대요. 들어 보셨어요?",
+          "follow": "평소엔 어떤 노래를 즐겨 들으세요?",
+          "caution": "취향을 평가하는 말투는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Les_melons_01.jpg/1280px-Les_melons_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261114-gta6",
+      "cat": "취미",
+      "subtopic": "게임",
+      "label": "GTA6",
+      "color": "#1B5E20",
+      "title": "GTA 6가 사전 예약 매출 10억 달러를 넘겼대요",
+      "desc": "사전예약만으로 1000만 장을 돌파했대요.",
+      "reason": "비 오는 주말엔 집에서 게임하는 시간이 늘어요.",
+      "questions": [
+        "요즘 즐겨 하는 게임 있으세요?",
+        "출시되면 바로 해 보고 싶으세요?",
+        "어릴 때 제일 오래 한 게임이 뭐였어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "GTA 6 사전 예약이 10억 달러 넘었대요. 규모가 상상이 안 되네요.",
+          "follow": "1000만 장이라는데 혹시 하세요?",
+          "caution": "게임 시간 얘기로 가볍게 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "GTA 6 사전예약이 1000만 장 넘었대. 너 할 거야?",
+          "follow": "나오면 같이 해 볼래?",
+          "caution": "안 하는 친구한테 강요하지 마."
+        },
+        "date": {
+          "opener": "GTA 6 사전 예약이 10억 달러 넘었다던데 들어 보셨어요?",
+          "follow": "게임 좋아하세요, 아니면 영상으로 보는 편이세요?",
+          "caution": "게임 시간을 캐묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Magnavox-Odyssey-Console-Set.jpg/1280px-Magnavox-Odyssey-Console-Set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261114-rainy-lunch",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "비오는점심",
+      "color": "#8D6E63",
+      "title": "이슬비 오는 토요일 점심, 뭐 해 드실 거예요?",
+      "desc": "오늘 서울은 9°C에 강수확률이 100%예요.",
+      "reason": "밖에 나가기 귀찮은 날씨라 집밥 고민이 길어져요.",
+      "questions": [
+        "비 오는 날 생각나는 집밥이 뭐예요?",
+        "냉장고 털어서 만든 최고의 한 끼가 있어요?",
+        "쌀쌀할 때 끓여 먹는 국물요리 뭐 좋아하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 오는데 주말 점심은 뭐 해 드세요?",
+          "follow": "국물 있는 걸로 하실 것 같아요.",
+          "caution": "식습관 평가는 피하세요."
+        },
+        "friend": {
+          "opener": "오늘 비 오는데 점심 뭐 해 먹을 거야?",
+          "follow": "나 라면에 계란 풀까 고민 중이야, 넌?",
+          "caution": "요리 못한다고 놀리지 마."
+        },
+        "date": {
+          "opener": "비 오는 토요일엔 어떤 음식이 생각나세요?",
+          "follow": "직접 해 먹는 요리 중에 자신 있는 거 있으세요?",
+          "caution": "요리 실력 평가는 하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "PattayaPatrol",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg"
+      }
+    },
+    {
+      "id": "20261114-bitcoin",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "비트코인",
+      "color": "#E65100",
+      "title": "비트코인이 4.3% 내렸다던데, 투자 하세요?",
+      "desc": "11월 12일보다 내려 6만 8,246달러가 됐어요.",
+      "reason": "주식장이 쉬는 토요일에도 코인 시세는 움직여요.",
+      "questions": [
+        "요즘 재테크 하는 거 있으세요?",
+        "비트코인 얘기, 주변에서 많이 들으세요?",
+        "돈 아끼려고 하는 습관 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "비트코인이 4.3% 내렸다던데 보셨어요?",
+          "follow": "코스피도 한 달 사이 많이 빠졌대요.",
+          "caution": "매수·매도 의견은 말하지 마세요."
+        },
+        "friend": {
+          "opener": "비트코인 4.3% 내렸대. 너 코인 해?",
+          "follow": "요즘 재테크 뭐 해?",
+          "caution": "수익·손실을 캐묻지 마."
+        },
+        "date": {
+          "opener": "비트코인이 4.3% 내렸다던데 들어 보셨어요?",
+          "follow": "평소 재테크에 관심 있으세요?",
+          "caution": "투자 규모를 묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg/1280px-Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261114-winter-trip",
+      "cat": "여행",
+      "subtopic": "국내여행",
+      "label": "겨울여행",
+      "color": "#00838F",
+      "title": "올겨울에 제일 가 보고 싶은 국내 여행지는 어디예요?",
+      "desc": "제주는 내일부터 제설체계를 가동한대요.",
+      "reason": "늦가을에서 초겨울로 넘어가는 시기라 여행 계획을 세울 때예요.",
+      "questions": [
+        "겨울에 가 보고 싶은 곳 있으세요?",
+        "온천이랑 눈 구경 중에 뭐가 끌리세요?",
+        "이번 겨울 여행 계획 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "올겨울에 가 보고 싶은 데 있으세요?",
+          "follow": "저는 눈 오는 곳이 궁금해요.",
+          "caution": "휴가 일정 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "겨울에 어디 가고 싶어?",
+          "follow": "같이 갈 만한 데 찾아볼까?",
+          "caution": "비용 얘기는 조심해."
+        },
+        "date": {
+          "opener": "겨울에 가 보고 싶은 곳 있으세요?",
+          "follow": "다녀와서 좋았던 곳은 어디예요?",
+          "caution": "같이 가자는 말은 서두르지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg/1280px-Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261114-rainy-sat",
+      "cat": "일상",
+      "subtopic": "주말계획",
+      "label": "비오는토요일",
+      "color": "#455A64",
+      "title": "비 오는 토요일, 오늘 계획 있으세요?",
+      "desc": "이슬비가 하루 종일 내리고 낮 최고가 11°C예요.",
+      "reason": "수능을 앞둔 토요일이라 집에서 쉬는 분도 많아요.",
+      "questions": [
+        "비 오는 날 집에서 제일 하고 싶은 일이 뭐예요?",
+        "빗소리 들으며 하면 좋은 일이 있어요?",
+        "이번 주말에 꼭 하고 싶은 게 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "주말에 비 오네요. 계획 있으세요?",
+          "follow": "저는 집에서 쉴까 해요.",
+          "caution": "사생활 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 비 오는데 뭐 할 거야?",
+          "follow": "영화나 볼까?",
+          "caution": "약속 강요 금지."
+        },
+        "date": {
+          "opener": "비 오는 토요일엔 보통 뭐 하세요?",
+          "follow": "집이 좋으세요, 카페가 좋으세요?",
+          "caution": "너무 자세히 묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Project_365_-202_210723_The_Rainy_City_%2853061937253%29.jpg/1280px-Project_365_-202_210723_The_Rainy_City_%2853061937253%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261114-chatgpt-wallet",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "AI월렛",
+      "color": "#00695C",
+      "title": "오픈AI가 AI 에이전트용 '챗GPT 월렛'을 공개했대요",
+      "desc": "카드 3사와 손잡았다고 해요.",
+      "reason": "주말 장보기나 온라인 주문을 앞둔 때라 결제 얘기가 와닿아요.",
+      "questions": [
+        "AI가 대신 결제해 주면 맡기고 싶으세요?",
+        "요즘 AI로 뭐 해 보셨어요?",
+        "쇼핑할 때 제일 귀찮은 단계가 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오픈AI가 AI 에이전트용 월렛을 공개했대요. 카드 3사와 손잡았다네요.",
+          "follow": "AI가 결제까지 하는 건 좀 신기하더라고요.",
+          "caution": "특정 서비스 추천처럼 들리지 않게 하세요."
+        },
+        "friend": {
+          "opener": "챗GPT 월렛이라는 게 나왔대. AI가 대신 결제하는 거래.",
+          "follow": "넌 이런 거 맡길 수 있겠어?",
+          "caution": "보안 걱정을 너무 몰아붙이지 마."
+        },
+        "date": {
+          "opener": "오픈AI가 AI용 월렛을 공개했대요. 들어 보셨어요?",
+          "follow": "요즘 AI 쓰는 거 있으세요?",
+          "caution": "기술 지식 자랑은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/How_mobile_payment_tokenization_works.png/1280px-How_mobile_payment_tokenization_works.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "HaeB",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pioneer_Building,_San_Francisco_(2019)_-1.jpg"
+      }
+    },
+    {
+      "id": "20261114-winter-prep",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "한파대비",
+      "color": "#1565C0",
+      "title": "내일부터 곳곳에서 겨울철 한파·대설 대응이 시작된대요",
+      "desc": "제주는 15일부터 제설체계를, 경남소방은 16일부터 한파구급대를 가동해요.",
+      "reason": "오늘 서울은 9°C에 이슬비가 내려요.",
+      "questions": [
+        "올겨울 제일 먼저 꺼낼 월동 아이템이 뭐예요?",
+        "첫눈 오면 뭐 하고 싶으세요?",
+        "겨울 출근길 필수템 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일부터 지자체들이 겨울철 한파·대설 대응에 들어간대요. 벌써 겨울이네요.",
+          "follow": "출근길 겉옷은 바꾸셨어요?",
+          "caution": "재난 걱정을 부추기지 마세요."
+        },
+        "friend": {
+          "opener": "내일부터 겨울철 한파 대응 시작한대. 벌써 그럴 때야.",
+          "follow": "너 패딩 꺼냈어?",
+          "caution": "날씨 불평만 길게 늘어놓지 마."
+        },
+        "date": {
+          "opener": "내일부터 곳곳에서 겨울 한파 대응이 시작된대요.",
+          "follow": "겨울 좋아하세요, 싫어하세요?",
+          "caution": "추위 때문에 힘든 얘기만 하지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    }
+  ]
+}
