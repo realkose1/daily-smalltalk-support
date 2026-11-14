@@ -63,7 +63,7 @@ import {
   COVER_REPORT_DAYS, loadCoverReports, shippedCovers, groupCoverReports, coverBlocklist,
   isCoverBlocked, usableCandidates, coverLessonsPrompt, coverReportsMarkdown,
   HAND_BLOCKLIST_PATH, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
-  coverFileKey, coverFileLabel, wikimediaThumb, judgeCandidates, coverFromVerdict, mediaTitleCore,
+  coverFileKey, coverFileLabel, wikimediaThumb, judgeCandidates, coverFromVerdict, judgeStatus, mediaTitleCore,
 } from './cover-reports.mjs';
 
 const MODEL = 'claude-sonnet-5-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
@@ -2790,15 +2790,14 @@ async function judgeCovers(plans) {
     const v = byId.get(c.id);
     const t = c.p.t;
     if (!v || !Array.isArray(v.fits)) { c.p.judge = { status: 'unjudged', why: 'missing from the answer — kept' }; continue; }
-    const before = `${t.image || ''}|${t.imageAttributed || ''}`;
+    const before = { image: t.image, attributed: t.imageAttributed };
     const pick = coverFromVerdict(c.shown, v.fits, { poster: c.poster });
     if (pick.image) t.image = pick.image.url; else delete t.image;
     if (!c.poster) {
       if (pick.attributed) { t.imageAttributed = pick.attributed.url; t.imageCredit = pick.attributed.credit; }
       else { delete t.imageAttributed; delete t.imageCredit; }
     }
-    const after = `${t.image || ''}|${t.imageAttributed || ''}`;
-    const status = after === before ? 'kept' : (!t.image && (c.poster || !t.imageAttributed)) ? 'rejected' : 'changed';
+    const status = judgeStatus(before, { image: t.image, attributed: t.imageAttributed });
     c.p.judge = { status, why: String(v.why || '').replace(/\s+/g, ' ').slice(0, 120), fits: v.fits, of: c.shown.length };
   }
   return { ok: true, cards };

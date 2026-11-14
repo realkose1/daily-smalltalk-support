@@ -420,3 +420,14 @@ export function mediaTitleCore(s) {
   }
   return t || raw;
 }
+
+// One word for the log: what the judge did to a card. `before`/`after` are
+// { image, attributed } URLs. The main cover is what builds with credit lines
+// show (attributed, else image); `image` alone is what older builds show.
+export function judgeStatus(before, after) {
+  const main = (s) => s?.attributed || s?.image || '';
+  if ((before?.image || '') === (after?.image || '') && (before?.attributed || '') === (after?.attributed || '')) return 'kept';
+  if (!main(after)) return 'rejected';
+  if (main(after) === main(before)) return after?.image ? 'kept (old-build photo changed)' : 'kept (old-build photo dropped)';
+  return 'changed';
+}

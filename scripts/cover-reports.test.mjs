@@ -9,7 +9,7 @@ import { join } from 'node:path';
 import {
   coverFileKey, coverBlocklist, isCoverBlocked, shippedCovers, groupCoverReports,
   handBlocklistKeys, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
-  wikimediaThumb, judgeCandidates, coverFromVerdict, mediaTitleCore,
+  wikimediaThumb, judgeCandidates, coverFromVerdict, judgeStatus, mediaTitleCore,
 } from './cover-reports.mjs';
 
 const EFTA_THUMB = 'https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled';
@@ -178,4 +178,14 @@ test('mediaTitleCore: 극장판 / the Movie markers off, the title itself untouc
   assert.equal(mediaTitleCore('Bee Movie'), 'Bee Movie', 'a bare "Movie" is part of the title');
   assert.equal(mediaTitleCore('치이카와'), '치이카와');
   assert.equal(mediaTitleCore(null), '');
+});
+
+test('judgeStatus: names what the visible cover did', () => {
+  const P = 'https://image.tmdb.org/t/p/original/p.jpg';
+  assert.equal(judgeStatus({ image: 'a', attributed: 'b' }, { image: 'a', attributed: 'b' }), 'kept');
+  assert.equal(judgeStatus({ image: 'a', attributed: 'b' }, { image: undefined, attributed: undefined }), 'rejected');
+  assert.equal(judgeStatus({ image: 'a', attributed: P }, { image: undefined, attributed: P }), 'kept (old-build photo dropped)', 'poster card');
+  assert.equal(judgeStatus({ image: 'a', attributed: 'b' }, { image: 'c', attributed: 'b' }), 'kept (old-build photo changed)');
+  assert.equal(judgeStatus({ image: 'a', attributed: 'b' }, { image: 'a', attributed: undefined }), 'changed');
+  assert.equal(judgeStatus({ image: 'a' }, { image: 'c' }), 'changed');
 });
