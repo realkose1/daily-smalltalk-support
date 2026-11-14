@@ -2,10 +2,14 @@
 
 Readers' "cover doesn't match the topic" reports from the app (last 180 days), one row per reported cover, newest first (max 50). Rewritten by scripts/generate.mjs on every run — don't edit by hand. Every file listed here is blocklisted: the generator never picks it again.
 
-Updated 2026-11-14T00:29:06.788Z. 9 reported cover(s).
+Updated 2026-11-14T23:25:16.998Z. 13 reported cover(s).
 
 | date | topic | file | reporters | notes |
 |---|---|---|---|---|
+| 2026-11-14 | 오픈AI가 AI 에이전트용 챗GPT 월렛 을 공개했대요 | [Pioneer Building, San Francisco (2019) -1.jpg](https://commons.wikimedia.org/wiki/File:Pioneer_Building%2C_San_Francisco_(2019)_-1.jpg) | 1 | — |
+| 2026-11-14 | 비트코인이 4.3% 내렸다던데, 투자 하세요? | [Bar in Hong Kong with walls plastered with currency from all over the world.jpg](https://commons.wikimedia.org/wiki/File:Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg) | 1 | — |
+| 2026-11-14 | GTA 6가 사전 예약 매출 10억 달러를 넘겼대요 | [Magnavox-Odyssey-Console-Set.jpg](https://commons.wikimedia.org/wiki/File:Magnavox-Odyssey-Console-Set.jpg) | 1 | — |
+| 2026-11-14 | AI가 부른 노래가 멜론 1위를 했대요 | [Les melons 01.jpg](https://commons.wikimedia.org/wiki/File:Les_melons_01.jpg) | 1 | — |
 | 2026-11-13 | 삼성이 AI 안경 30종을 공개했대요 | [Samsung headquarters.jpg](https://commons.wikimedia.org/wiki/File:Samsung_headquarters.jpg) | 1 | — |
 | 2026-11-13 | 극장판 치이카와 가 300만 눈앞이래요 | [David Minor Theater & Pub Marquee Sign.jpg](https://commons.wikimedia.org/wiki/File:David_Minor_Theater_%26_Pub_Marquee_Sign.jpg) | 1 | — |
 | 2026-11-13 | 19일 수능 당일부터 영하권 추위래요 | [Frosty Raftsundet landscape with Trolltindan in morning, 2012 October.JPG](https://commons.wikimedia.org/wiki/File:Frosty_Raftsundet_landscape_with_Trolltindan_in_morning%2C_2012_October.JPG) | 1 | — |

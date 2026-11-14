@@ -1,305 +1,293 @@
 {
-  "date": "2026-11-14",
-  "dateLabel": "11월 14일 토요일",
-  "generatedAt": "2026-11-14T00:29:06.788Z",
+  "date": "2026-11-15",
+  "dateLabel": "11월 15일 일요일",
+  "generatedAt": "2026-11-14T23:25:16.998Z",
   "topics": [
     {
-      "id": "20261114-ai-singer",
-      "cat": "문화",
-      "subtopic": "음악",
-      "label": "AI가수",
-      "color": "#6A1B9A",
-      "title": "AI가 부른 노래가 멜론 1위를 했대요",
-      "desc": "리센느를 제치고 사상 처음 멜론 톱 100 1위래요.",
-      "reason": "이슬비 내리는 토요일이라 음악 듣는 시간이 길어져요.",
-      "questions": [
-        "AI가 만든 노래, 사람 노래랑 구분될 것 같으세요?",
-        "요즘 플레이리스트 맨 위에 있는 노래가 뭐예요?",
-        "비 오는 날엔 어떤 노래 들으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "AI가 부른 노래가 멜론 1위 했대요. 사람이 아닌데 통했다네요.",
-          "follow": "리센느도 제쳤대요. 혹시 들어 보셨어요?",
-          "caution": "AI가 음악을 망친다는 식의 단정은 피하세요."
-        },
-        "friend": {
-          "opener": "야 AI가 부른 노래가 멜론 1위래. 신기하지 않아?",
-          "follow": "너 요즘 많이 듣는 노래는 뭐야?",
-          "caution": "취향 갖고 훈수 두지 마."
-        },
-        "date": {
-          "opener": "AI가 만든 노래가 멜론 1위를 했대요. 들어 보셨어요?",
-          "follow": "평소엔 어떤 노래를 즐겨 들으세요?",
-          "caution": "취향을 평가하는 말투는 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Shure_SM7.jpg/1280px-Shure_SM7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageReplaced": [
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Les_melons_01.jpg/1280px-Les_melons_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-      ]
-    },
-    {
-      "id": "20261114-gta6",
+      "id": "jamsil-farewell",
       "cat": "취미",
-      "subtopic": "게임",
-      "label": "GTA6",
-      "color": "#1B5E20",
-      "title": "GTA 6가 사전 예약 매출 10억 달러를 넘겼대요",
-      "desc": "사전예약만으로 1000만 장을 돌파했대요.",
-      "reason": "비 오는 주말엔 집에서 게임하는 시간이 늘어요.",
+      "subtopic": "스포츠",
+      "label": "잠실",
+      "color": "#1B4F8F",
+      "title": "잠실구장에서 전설들이 빗속 작별을 했대요",
+      "desc": "니퍼트는 잠실에서 뛴 자신을 행운아라고 했대요.",
+      "reason": "비가 내린 일요일이라 빗속 작별 장면이 더 와닿아요.",
       "questions": [
-        "요즘 즐겨 하는 게임 있으세요?",
-        "출시되면 바로 해 보고 싶으세요?",
-        "어릴 때 제일 오래 한 게임이 뭐였어요?"
+        "잠실구장에서 제일 기억에 남는 경기가 있어요?",
+        "야구장에 가면 꼭 먹는 음식이 뭐예요?",
+        "돔구장이 생기면 가 보고 싶으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "GTA 6 사전 예약이 10억 달러 넘었대요. 규모가 상상이 안 되네요.",
-          "follow": "1000만 장이라는데 혹시 하세요?",
-          "caution": "게임 시간 얘기로 가볍게 평가하지 마세요."
+          "opener": "잠실구장에서 전설들이 비 맞으며 작별했대요. 보셨어요?",
+          "follow": "니퍼트가 돔구장은 싫다고 했다던데요.",
+          "caution": "응원팀 얘기로 편을 가르지 마세요."
         },
         "friend": {
-          "opener": "GTA 6 사전예약이 1000만 장 넘었대. 너 할 거야?",
-          "follow": "나오면 같이 해 볼래?",
-          "caution": "안 하는 친구한테 강요하지 마."
+          "opener": "잠실구장 마지막 행사 봤어? 빗속에서 하더라.",
+          "follow": "2032년엔 꼭 만나자고 했대. 너는 잠실 추억 뭐 있어?",
+          "caution": "특정 선수 평가는 빼자."
         },
         "date": {
-          "opener": "GTA 6 사전 예약이 10억 달러 넘었다던데 들어 보셨어요?",
-          "follow": "게임 좋아하세요, 아니면 영상으로 보는 편이세요?",
-          "caution": "게임 시간을 캐묻지 마세요."
+          "opener": "야구장 가 보신 적 있어요? 잠실구장에서 작별 행사를 했대요.",
+          "follow": "직관 가면 뭐 먹는 걸 좋아하세요?",
+          "caution": "응원팀을 따지듯 묻지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Playstation_5_base_edition_with_controller_%28original%29.jpg/1280px-Playstation_5_base_edition_with_controller_%28original%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageReplaced": [
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Magnavox-Odyssey-Console-Set.jpg/1280px-Magnavox-Odyssey-Console-Set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-      ]
-    },
-    {
-      "id": "20261114-rainy-lunch",
-      "cat": "음식",
-      "subtopic": "집밥·요리",
-      "label": "비오는점심",
-      "color": "#8D6E63",
-      "title": "이슬비 오는 토요일 점심, 뭐 해 드실 거예요?",
-      "desc": "오늘 서울은 9°C에 강수확률이 100%예요.",
-      "reason": "밖에 나가기 귀찮은 날씨라 집밥 고민이 길어져요.",
-      "questions": [
-        "비 오는 날 생각나는 집밥이 뭐예요?",
-        "냉장고 털어서 만든 최고의 한 끼가 있어요?",
-        "쌀쌀할 때 끓여 먹는 국물요리 뭐 좋아하세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오늘 비 오는데 주말 점심은 뭐 해 드세요?",
-          "follow": "국물 있는 걸로 하실 것 같아요.",
-          "caution": "식습관 평가는 피하세요."
-        },
-        "friend": {
-          "opener": "오늘 비 오는데 점심 뭐 해 먹을 거야?",
-          "follow": "나 라면에 계란 풀까 고민 중이야, 넌?",
-          "caution": "요리 못한다고 놀리지 마."
-        },
-        "date": {
-          "opener": "비 오는 토요일엔 어떤 음식이 생각나세요?",
-          "follow": "직접 해 먹는 요리 중에 자신 있는 거 있으세요?",
-          "caution": "요리 실력 평가는 하지 마세요."
-        }
-      },
-      "imageReplaced": [
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/DZ6_1774_Busy_night_market_cooks_prepare_and_serve_hot_bowls_of_street_food_from_a_compact_roadside_stall_ladling_soup_and_arranging_fresh_ingredients_for_hungry_customers.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-      ],
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Pajeon.jpg/1280px-Pajeon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "20261114-bitcoin",
-      "cat": "경제",
-      "subtopic": "주식·투자",
-      "label": "비트코인",
-      "color": "#E65100",
-      "title": "비트코인이 4.3% 내렸다던데, 투자 하세요?",
-      "desc": "11월 12일보다 내려 6만 8,246달러가 됐어요.",
-      "reason": "주식장이 쉬는 토요일에도 코인 시세는 움직여요.",
-      "questions": [
-        "요즘 재테크 하는 거 있으세요?",
-        "비트코인 얘기, 주변에서 많이 들으세요?",
-        "돈 아끼려고 하는 습관 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "비트코인이 4.3% 내렸다던데 보셨어요?",
-          "follow": "코스피도 한 달 사이 많이 빠졌대요.",
-          "caution": "매수·매도 의견은 말하지 마세요."
-        },
-        "friend": {
-          "opener": "비트코인 4.3% 내렸대. 너 코인 해?",
-          "follow": "요즘 재테크 뭐 해?",
-          "caution": "수익·손실을 캐묻지 마."
-        },
-        "date": {
-          "opener": "비트코인이 4.3% 내렸다던데 들어 보셨어요?",
-          "follow": "평소 재테크에 관심 있으세요?",
-          "caution": "투자 규모를 묻지 마세요."
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/2014_Pure_Gold_Physical_Bitcoin_China_Mint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageReplaced": [
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg/1280px-Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-      ]
-    },
-    {
-      "id": "20261114-winter-trip",
-      "cat": "여행",
-      "subtopic": "국내여행",
-      "label": "겨울여행",
-      "color": "#00838F",
-      "title": "올겨울에 제일 가 보고 싶은 국내 여행지는 어디예요?",
-      "desc": "제주는 내일부터 제설체계를 가동한대요.",
-      "reason": "늦가을에서 초겨울로 넘어가는 시기라 여행 계획을 세울 때예요.",
-      "questions": [
-        "겨울에 가 보고 싶은 곳 있으세요?",
-        "온천이랑 눈 구경 중에 뭐가 끌리세요?",
-        "이번 겨울 여행 계획 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "올겨울에 가 보고 싶은 데 있으세요?",
-          "follow": "저는 눈 오는 곳이 궁금해요.",
-          "caution": "휴가 일정 캐묻지 마세요."
-        },
-        "friend": {
-          "opener": "겨울에 어디 가고 싶어?",
-          "follow": "같이 갈 만한 데 찾아볼까?",
-          "caution": "비용 얘기는 조심해."
-        },
-        "date": {
-          "opener": "겨울에 가 보고 싶은 곳 있으세요?",
-          "follow": "다녀와서 좋았던 곳은 어디예요?",
-          "caution": "같이 가자는 말은 서두르지 마세요."
-        }
-      },
-      "imageReplaced": [
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg/1280px-Strynefjellet%27s_snowy_cabins_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-      ],
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg/1280px-%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Jamsil_Baseball_Stadium_Seoul.jpg/1280px-Jamsil_Baseball_Stadium_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "Sohyeon Bak",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg"
+        "author": "Arne Müseler",
+        "license": "CC BY-SA 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jamsil_Baseball_Stadium_Seoul.jpg"
       }
     },
     {
-      "id": "20261114-rainy-sat",
-      "cat": "일상",
-      "subtopic": "주말계획",
-      "label": "비오는토요일",
-      "color": "#455A64",
-      "title": "비 오는 토요일, 오늘 계획 있으세요?",
-      "desc": "이슬비가 하루 종일 내리고 낮 최고가 11°C예요.",
-      "reason": "수능을 앞둔 토요일이라 집에서 쉬는 분도 많아요.",
+      "id": "munmu-drama",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "문무",
+      "color": "#7A1F2B",
+      "title": "300억 들인 드라마 '문무'가 첫 방송을 했대요",
+      "desc": "장혁 연기가 미쳤다는 반응이 나왔대요.",
+      "reason": "일요일 저녁이라 이번 주 볼 드라마를 정하기 좋아요.",
       "questions": [
-        "비 오는 날 집에서 제일 하고 싶은 일이 뭐예요?",
-        "빗소리 들으며 하면 좋은 일이 있어요?",
-        "이번 주말에 꼭 하고 싶은 게 뭐예요?"
+        "요즘 챙겨 보는 드라마 있으세요?",
+        "사극은 좋아하는 편이에요?",
+        "몇 부작 정도가 보기 딱 좋으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "주말에 비 오네요. 계획 있으세요?",
-          "follow": "저는 집에서 쉴까 해요.",
-          "caution": "사생활 캐묻지 마세요."
+          "opener": "'문무' 첫 방송 보셨어요? 300억 들었대요.",
+          "follow": "인물관계도가 좀 복잡하다던데 보신 분 계세요?",
+          "caution": "스포일러는 조심하세요."
         },
         "friend": {
-          "opener": "오늘 비 오는데 뭐 할 거야?",
-          "follow": "영화나 볼까?",
-          "caution": "약속 강요 금지."
+          "opener": "'문무' 첫방 봤어? 제작비가 300억이래.",
+          "follow": "장혁 연기가 대단하다던데 너는 어땠어?",
+          "caution": "안 본 친구한테 결말 말하지 말자."
         },
         "date": {
-          "opener": "비 오는 토요일엔 보통 뭐 하세요?",
-          "follow": "집이 좋으세요, 카페가 좋으세요?",
-          "caution": "너무 자세히 묻지 마세요."
+          "opener": "요즘 보시는 드라마 있어요? '문무'가 첫 방송을 했대요.",
+          "follow": "사극 좋아하세요, 현대물이 더 좋으세요?",
+          "caution": "취향을 평가하듯 말하지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Project_365_-202_210723_The_Rainy_City_%2853061937253%29.jpg/1280px-Project_365_-202_210723_The_Rainy_City_%2853061937253%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "20261114-chatgpt-wallet",
-      "cat": "쇼핑",
-      "subtopic": "신제품·테크",
-      "label": "AI월렛",
-      "color": "#00695C",
-      "title": "오픈AI가 AI 에이전트용 '챗GPT 월렛'을 공개했대요",
-      "desc": "카드 3사와 손잡았다고 해요.",
-      "reason": "주말 장보기나 온라인 주문을 앞둔 때라 결제 얘기가 와닿아요.",
-      "questions": [
-        "AI가 대신 결제해 주면 맡기고 싶으세요?",
-        "요즘 AI로 뭐 해 보셨어요?",
-        "쇼핑할 때 제일 귀찮은 단계가 뭐예요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오픈AI가 AI 에이전트용 월렛을 공개했대요. 카드 3사와 손잡았다네요.",
-          "follow": "AI가 결제까지 하는 건 좀 신기하더라고요.",
-          "caution": "특정 서비스 추천처럼 들리지 않게 하세요."
-        },
-        "friend": {
-          "opener": "챗GPT 월렛이라는 게 나왔대. AI가 대신 결제하는 거래.",
-          "follow": "넌 이런 거 맡길 수 있겠어?",
-          "caution": "보안 걱정을 너무 몰아붙이지 마."
-        },
-        "date": {
-          "opener": "오픈AI가 AI용 월렛을 공개했대요. 들어 보셨어요?",
-          "follow": "요즘 AI 쓰는 거 있으세요?",
-          "caution": "기술 지식 자랑은 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/How_mobile_payment_tokenization_works.png/1280px-How_mobile_payment_tokenization_works.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Apple-payment-square.jpg/1280px-Apple-payment-square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/wVpTtPknLaYCeXnRKO6p2dQle5Z.jpg",
       "imageCredit": {
-        "author": "Mybloodtypeiscoffee",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple-payment-square.jpg"
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/tv/301354"
       },
-      "imageReplaced": [
-        "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg/1280px-Pioneer_Building%2C_San_Francisco_%282019%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-      ]
+      "imageKind": "poster"
     },
     {
-      "id": "20261114-winter-prep",
+      "id": "monday-commute",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "출근길",
+      "color": "#4B4E6D",
+      "title": "월요일 출근길엔 어떤 노래나 영상 들으세요?",
+      "desc": "출근 시간에 한 가지 정해 두는 분들이 많아요.",
+      "reason": "내일이 월요일이라 출근길 준비를 앞두고 있어요.",
+      "questions": [
+        "출근길에 꼭 하는 루틴이 있어요?",
+        "지하철이나 버스에서 주로 뭐 하세요?",
+        "월요일 아침을 버티는 방법이 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "출근길에 뭐 들으세요? 저는 요즘 찾는 중이에요.",
+          "follow": "월요일엔 어떤 노래가 잘 맞아요?",
+          "caution": "출근 시간 불평으로 흐르지 않게 하세요."
+        },
+        "friend": {
+          "opener": "너 출근길에 뭐 들어? 추천 좀 해 줘.",
+          "follow": "월요일엔 뭐 들으면 덜 힘들어?",
+          "caution": "회사 흉은 길게 보지 말자."
+        },
+        "date": {
+          "opener": "평소에 이동할 때 뭐 들으세요?",
+          "follow": "요즘 자주 듣는 노래 하나만 알려 주세요.",
+          "caution": "회사 얘기는 피하세요."
+        }
+      }
+    },
+    {
+      "id": "mississippi-ship",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "유람선",
+      "color": "#1F6F78",
+      "title": "미시시피강에서 유람선이 옆으로 누웠다는데 전원 생존했대요",
+      "desc": "선박 충돌로 넘어졌는데 197명이 모두 살았대요.",
+      "reason": "일요일이라 해외 소식 하나 더하기 좋아요.",
+      "questions": [
+        "유람선이나 배 타 본 적 있으세요?",
+        "여행 가서 제일 좋았던 배 타기는 뭐였어요?",
+        "'기적'이라 부를 만한 일 겪어 보셨어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "미시시피강 유람선이 옆으로 누웠는데 전원 생존했대요.",
+          "follow": "'미시시피강의 기적'이라고 부른다던데요.",
+          "caution": "사고 상황을 자세히 묘사하진 마세요."
+        },
+        "friend": {
+          "opener": "미시시피강에서 유람선이 완전히 넘어갔는데 다 살았대.",
+          "follow": "197명 전원 생존이래. 신기하지?",
+          "caution": "무서운 얘기로 몰아가지 말자."
+        },
+        "date": {
+          "opener": "배 타는 거 좋아하세요? 미국에서 유람선이 옆으로 누웠는데 전원 생존했대요.",
+          "follow": "유람선 여행 가 보신 곳 있어요?",
+          "caution": "사고 장면 묘사는 피하세요."
+        }
+      }
+    },
+    {
+      "id": "hynix-drop",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#B23A48",
+      "title": "SK하이닉스가 금요일에 3.0% 내렸다던데, 주식 하세요?",
+      "desc": "종가는 121만 6천 원이고 코스피도 1.0% 내렸어요.",
+      "reason": "금요일 마감 뒤 처음 맞는 일요일이에요.",
+      "questions": [
+        "요즘 주식이나 재테크 하세요?",
+        "주가 확인은 하루에 몇 번 하세요?",
+        "처음 주식 산 게 어떤 종목이었어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "SK하이닉스가 금요일에 3.0% 내렸다던데 보셨어요?",
+          "follow": "코스피도 1.0% 내렸대요. 요즘 주식 보세요?",
+          "caution": "종목 추천이나 전망은 하지 마세요."
+        },
+        "friend": {
+          "opener": "금요일에 하이닉스 3% 빠졌더라. 너 봤어?",
+          "follow": "넌 요즘 주식 하고 있어?",
+          "caution": "수익 얼마인지 캐묻지 말자."
+        },
+        "date": {
+          "opener": "요즘 재테크 관심 있으세요? 금요일에 하이닉스가 내렸다던데요.",
+          "follow": "저축이나 투자 중 뭐가 더 끌리세요?",
+          "caution": "손익 금액은 묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Stock_Exchange_Arcade%2C_Charters_Towers%2C_Australia_02.jpg/1280px-Stock_Exchange_Arcade%2C_Charters_Towers%2C_Australia_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/a/ad/New_Zealand_Stock_Exchange_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "PhillipC",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Zealand_Stock_Exchange_1.jpg"
+      }
+    },
+    {
+      "id": "bungeoppang",
+      "cat": "음식",
+      "subtopic": "디저트",
+      "label": "붕어빵",
+      "color": "#B8741A",
+      "title": "겨울 길거리 간식, 요즘 뭐 사 드세요?",
+      "desc": "붕어빵 하나에 군고구마까지 찾는 계절이에요.",
+      "reason": "19일 수능일 서울이 영하권이라는 예보가 나왔어요.",
+      "questions": [
+        "붕어빵은 팥파예요, 슈크림파예요?",
+        "올겨울 처음 먹은 간식이 뭐였어요?",
+        "추울 때 생각나는 군것질이 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "붕어빵 파는 곳 벌써 보이던데 드셔 보셨어요?",
+          "follow": "팥이랑 슈크림 중 뭐 좋아하세요?",
+          "caution": "호불호 논쟁으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "붕어빵 벌써 파더라. 너 팥이야 슈크림이야?",
+          "follow": "군고구마도 슬슬 생각나지 않아?",
+          "caution": "먹는 거 가지고 핀잔 주지 말자."
+        },
+        "date": {
+          "opener": "겨울 간식 중에 뭐 좋아하세요?",
+          "follow": "붕어빵 먹을 땐 머리부터 드세요, 꼬리부터 드세요?",
+          "caution": "다이어트 얘기는 피하세요."
+        }
+      }
+    },
+    {
+      "id": "boiler-cold",
       "cat": "날씨",
       "subtopic": "추위",
-      "label": "한파대비",
-      "color": "#1565C0",
-      "title": "내일부터 곳곳에서 겨울철 한파·대설 대응이 시작된대요",
-      "desc": "제주는 15일부터 제설체계를, 경남소방은 16일부터 한파구급대를 가동해요.",
-      "reason": "오늘 서울은 9°C에 이슬비가 내려요.",
+      "label": "보일러",
+      "color": "#3A6EA5",
+      "title": "올겨울 보일러는 언제부터 돌리실 거예요?",
+      "desc": "19일 수능일엔 서울이 영하 1도까지 내려간대요.",
+      "reason": "비가 지나간 뒤 6년 만의 영하권 수능 한파가 온대요.",
       "questions": [
-        "올겨울 제일 먼저 꺼낼 월동 아이템이 뭐예요?",
-        "첫눈 오면 뭐 하고 싶으세요?",
-        "겨울 출근길 필수템 있으세요?"
+        "집에서 추위 막는 비법 있으세요?",
+        "전기장판이랑 보일러 중 뭐가 더 좋아요?",
+        "겨울 이불은 언제 꺼내세요?"
       ],
       "tips": {
         "work": {
-          "opener": "내일부터 지자체들이 겨울철 한파·대설 대응에 들어간대요. 벌써 겨울이네요.",
-          "follow": "출근길 겉옷은 바꾸셨어요?",
-          "caution": "재난 걱정을 부추기지 마세요."
+          "opener": "수능날 영하권 한파래요. 보일러는 켜셨어요?",
+          "follow": "6년 만의 영하권 수능이라던데요.",
+          "caution": "난방비 얘기로 너무 깊게 들어가진 마세요."
         },
         "friend": {
-          "opener": "내일부터 겨울철 한파 대응 시작한대. 벌써 그럴 때야.",
-          "follow": "너 패딩 꺼냈어?",
-          "caution": "날씨 불평만 길게 늘어놓지 마."
+          "opener": "수능날 서울 영하 1도래. 너 집 보일러 틀었어?",
+          "follow": "난 전기장판부터 꺼내야겠어.",
+          "caution": "집 사정 캐묻지 말자."
         },
         "date": {
-          "opener": "내일부터 곳곳에서 겨울 한파 대응이 시작된대요.",
-          "follow": "겨울 좋아하세요, 싫어하세요?",
-          "caution": "추위 때문에 힘든 얘기만 하지 마세요."
+          "opener": "추위 많이 타세요? 수능날부터 영하권이래요.",
+          "follow": "겨울에 집에서 제일 좋아하는 시간이 언제예요?",
+          "caution": "난방비 같은 사생활은 묻지 마세요."
+        }
+      }
+    },
+    {
+      "id": "nvidia-ceo",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "엔비디아",
+      "color": "#2E7D32",
+      "title": "엔비디아가 젠슨 황 사임 뒤 임시 CEO 체제래요",
+      "desc": "임시 CEO 크레스가 실적 발표에서 5차례 답했대요.",
+      "reason": "월요일을 앞두고 이번 주 AI 소식을 챙겨 둘 만해요.",
+      "questions": [
+        "AI 서비스 요즘 어떤 거 쓰세요?",
+        "그래픽카드 바꿔 본 적 있으세요?",
+        "AI가 일상에서 제일 편했던 순간이 언제예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "엔비디아가 젠슨 황 사임 뒤 임시 CEO 체제래요.",
+          "follow": "크레스가 실적 발표에서 답변을 5차례 했대요.",
+          "caution": "주가 전망은 말하지 마세요."
+        },
+        "friend": {
+          "opener": "엔비디아 젠슨 황 사임한 거 들었어?",
+          "follow": "임시 CEO가 크레스래. 이제 어떻게 되려나.",
+          "caution": "종목 추천처럼 들리게 말하지 말자."
+        },
+        "date": {
+          "opener": "AI 서비스 자주 쓰세요? 엔비디아 CEO가 사임했다던데요.",
+          "follow": "요즘 AI로 해 본 것 중 재밌던 거 있으세요?",
+          "caution": "기업 분석을 늘어놓지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Snow_in_Seoul_20201213.jpg/1280px-Snow_in_Seoul_20201213.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageReplaced": [
-        "https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-      ]
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/NVIDIA_Headquarters.jpg/1280px-NVIDIA_Headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Coolcaesar",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:NVIDIA_Headquarters.jpg"
+      }
     }
   ]
 }
