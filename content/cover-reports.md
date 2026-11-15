@@ -2,10 +2,11 @@
 
 Readers' "cover doesn't match the topic" reports from the app (last 180 days), one row per reported cover, newest first (max 50). Rewritten by scripts/generate.mjs on every run — don't edit by hand. Every file listed here is blocklisted: the generator never picks it again.
 
-Updated 2026-11-14T23:25:16.998Z. 13 reported cover(s).
+Updated 2026-11-15T23:31:09.629Z. 14 reported cover(s).
 
 | date | topic | file | reporters | notes |
 |---|---|---|---|---|
+| 2026-11-15 | SK하이닉스가 금요일에 3.0% 내렸다던데, 주식 하세요? | [New Zealand Stock Exchange 1.jpg](https://commons.wikimedia.org/wiki/File:New_Zealand_Stock_Exchange_1.jpg) | 1 | — |
 | 2026-11-14 | 오픈AI가 AI 에이전트용 챗GPT 월렛 을 공개했대요 | [Pioneer Building, San Francisco (2019) -1.jpg](https://commons.wikimedia.org/wiki/File:Pioneer_Building%2C_San_Francisco_(2019)_-1.jpg) | 1 | — |
 | 2026-11-14 | 비트코인이 4.3% 내렸다던데, 투자 하세요? | [Bar in Hong Kong with walls plastered with currency from all over the world.jpg](https://commons.wikimedia.org/wiki/File:Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg) | 1 | — |
 | 2026-11-14 | GTA 6가 사전 예약 매출 10억 달러를 넘겼대요 | [Magnavox-Odyssey-Console-Set.jpg](https://commons.wikimedia.org/wiki/File:Magnavox-Odyssey-Console-Set.jpg) | 1 | — |
