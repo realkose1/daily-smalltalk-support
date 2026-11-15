@@ -24,7 +24,9 @@
 // The generator's other pure cover helpers live at the bottom for the same
 // reason (tests: scripts/cover-reports.test.mjs): the hand blocklist
 // (content/cover-blocklist.json), the sensitive-provenance filter, the cover
-// judge's candidate choice and verdict, and the TMDB title core.
+// judge's candidate choice and verdict, its second round (retry queries, the
+// hand-vetted pool in content/cover-pool.json, the merge into the cover
+// fields), and the TMDB title core.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -387,14 +389,259 @@ export function judgeCandidates(picks, pool, { max = 4, freeOnly = false, recent
 //   attributed — the best fitting photo when it needs a credit, or null: when
 //                the best fit is free, `image` carries it. Untouched (undefined)
 //                on a poster card, whose attributed slot is the poster.
+// A hand-vetted pool photo (`pool: true`) that fits ranks behind every fresh
+// search result that fits, whatever order the judge gave: the pool is the
+// safety net for a card the search can't serve, and letting it win whenever it
+// fits would put the same few pool photos in the deck every day.
 export function coverFromVerdict(shown, fits, { poster = false } = {}) {
-  const ok = [...new Set(Array.isArray(fits) ? fits : [])]
+  const fit = [...new Set(Array.isArray(fits) ? fits : [])]
     .map((i) => (Number.isInteger(i) ? shown[i - 1] : null))
     .filter(Boolean);
+  const ok = [...fit.filter((c) => !c.pool), ...fit.filter((c) => c.pool)];
   const image = ok.find((c) => c.free) || null;
   if (poster) return { image, attributed: undefined };
   const top = ok[0] || null;
   return { image, attributed: top && !top.free ? top : null };
+}
+
+// The card's two slots as candidate-shaped objects, for mergeRetryCover.
+export function coverSlotsOf(t) {
+  return {
+    image: t?.image ? { url: t.image, free: true } : null,
+    attributed: t?.imageAttributed ? { url: t.imageAttributed, free: false, credit: t.imageCredit } : null,
+  };
+}
+
+// THE way a verdict reaches the card, in both judge rounds: `image` takes an
+// attribution-free photo; `imageAttributed` + `imageCredit` are set or removed
+// strictly as a pair (the app shows them only together). A poster card keeps
+// its attributed slot — the poster — untouched. Mutates and returns `t`.
+export function applyCoverSlots(t, { image, attributed } = {}, { poster = false } = {}) {
+  if (image?.url) t.image = image.url; else delete t.image;
+  if (poster) return t;
+  if (attributed?.url && attributed.credit) {
+    t.imageAttributed = attributed.url;
+    t.imageCredit = attributed.credit;
+  } else {
+    delete t.imageAttributed;
+    delete t.imageCredit;
+  }
+  return t;
+}
+
+// --- cover judge, round 2: a second search for the cards round 1 turned down --
+// Round 1 can only choose among what the keyword search found; on 2026-11-15 it
+// rightly turned down 4 of 8 cards (붕어빵 → foreign dishes, a Mississippi
+// riverboat story → the Nile, Hue and London). Having just seen why, the judge
+// also writes 1–2 better Commons queries per card it rejects or accepts only
+// weakly; the generator runs them, adds matching pool photos, and asks once
+// more for just those cards.
+
+// The judge's `retry` → at most `max` plain Commons queries. Commons search
+// syntax is stripped (quotes, `intitle:`, a leading `-` = NOT, `*`, `|`): the
+// query lands in `filetype:bitmap <query>` and must stay a list of words.
+// Hangul goes too — the keyword rule matches file names on ASCII word
+// boundaries, so a Korean word never counts as a hit. Lower-case (no `OR`
+// operator), ≤ RETRY_MAX_WORDS words (Commons ANDs them, long phrases find
+// nothing), at least one keyword the relevance rule can use (> 2 letters),
+// distinct, and not one of `skip` (the card's own imageQueries, already run).
+export const RETRY_MAX_QUERIES = 2;
+export const RETRY_MAX_WORDS = 5;
+const RETRY_STOPWORDS = new Set(['a', 'an', 'the', 'with', 'of', 'in', 'on', 'at']);
+const retryNorm = (s) => String(s ?? '')
+  .normalize('NFKD').replace(/[̀-ͯ]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9' -]+/g, ' ')
+  .split(/\s+/)
+  .map((w) => w.replace(/^[-']+|[-']+$/g, ''))
+  .filter(Boolean)
+  .slice(0, RETRY_MAX_WORDS)
+  .join(' ');
+export function cleanRetryQueries(raw, { max = RETRY_MAX_QUERIES, skip = [] } = {}) {
+  const done = new Set((skip || []).map(retryNorm).filter(Boolean));
+  const out = [];
+  for (const r of Array.isArray(raw) ? raw : []) {
+    if (out.length >= max) break;
+    if (typeof r !== 'string') continue;
+    // "intitle:foo" → "foo": drop search keywords before the colon goes.
+    const q = retryNorm(r.replace(/\b[a-z]+:/gi, ' '));
+    if (!q || done.has(q)) continue;
+    if (!q.split(' ').some((w) => w.length > 2 && !RETRY_STOPWORDS.has(w))) continue;
+    done.add(q);
+    out.push(q);
+  }
+  return out;
+}
+
+// Round-robin merge of per-query candidate lists (best first each), so the
+// second query's best result is not buried under the first query's tenth.
+export function interleave(...lists) {
+  const out = [];
+  const n = Math.max(0, ...lists.map((l) => (Array.isArray(l) ? l.length : 0)));
+  for (let i = 0; i < n; i++) for (const l of lists) if (Array.isArray(l) && i < l.length) out.push(l[i]);
+  return out;
+}
+
+// Which round-1 cards get a second look, most needed first, ≤ `max` (the Commons
+// budget: each costs up to RETRY_MAX_QUERIES searches + a few thumbnails).
+// `cards`: [{ poster, verdict, hasCover, fits, retry, poolCount, … }]
+//   kind 'none' — no photo after round 1 (the app would draw its gradient) and
+//                 something to try: retry queries or a matching pool photo.
+//   kind 'weak' — round 1 accepted a photo but still wrote retry queries.
+// Poster cards (the poster is the cover) and cards the judge never answered
+// for are left alone. → { picked, skipped }
+export const RETRY_MAX_CARDS = 4;
+export function retryTargets(cards, { max = RETRY_MAX_CARDS } = {}) {
+  const none = [];
+  const weak = [];
+  for (const c of cards || []) {
+    if (!c || c.poster || !c.verdict) continue;
+    const queries = Array.isArray(c.retry) ? c.retry.length : 0;
+    if (!c.hasCover) {
+      if (queries || c.poolCount > 0) none.push({ ...c, kind: 'none' });
+    } else if (queries && Array.isArray(c.fits) && c.fits.length) {
+      weak.push({ ...c, kind: 'weak' });
+    }
+  }
+  const all = [...none, ...weak];
+  return { picked: all.slice(0, max), skipped: all.slice(max) };
+}
+
+// Round 2's verdict on top of round 1's slots (both from coverSlotsOf /
+// coverFromVerdict). Round 2 only ever adds: nothing fitting → round 1 stands
+// (a weak cover is not dropped for having been questioned). Something fitting
+// → it becomes the main cover; when that photo needs a credit and round 2 had
+// no attribution-free fit, older builds keep round 1's `image`.
+// → { image, attributed, changed }
+export function mergeRetryCover(before, pick) {
+  const image = before?.image || null;
+  const attributed = before?.attributed || null;
+  if (!pick?.attributed && !pick?.image) return { image, attributed, changed: false };
+  return { image: pick.image || image, attributed: pick.attributed || null, changed: true };
+}
+
+// --- hand-vetted cover pool: content/cover-pool.json ------------------------
+// Photos picked and checked by hand for topics the keyword search keeps
+// missing (붕어빵, 보일러, a Seoul commute), as
+//   { note, photos: [{ url, file, free, credit, tags, desc, added }] }
+// with `url` a 1280px Commons thumb, `credit` { author, license, licenseUrl,
+// sourceUrl } or null when `free`, `tags` Korean and English words.
+// A pool photo is never a cover on its own: when its tags appear on a card, the
+// best 1–2 go in front of the cover judge as extra candidates (round 1 when
+// the search found fewer than four, round 2 next to the retry results) and
+// only the judge's yes ships one — behind any fresh search result that also
+// fits (coverFromVerdict). Pre-vetted, so no licence / provenance / size
+// checks; still skipped when blocklisted or shown in the last days.
+// Missing file → empty pool; unreadable / invalid → one log line, empty pool.
+// Never throws.
+export const COVER_POOL_PATH = 'content/cover-pool.json';
+export const POOL_MAX_OFFER = 2;
+const HANGUL = /[ᄀ-ᇿ㄰-㆏가-힯]/;
+const poolText = (s) => String(s ?? '').normalize('NFC').replace(/\s+/g, ' ').trim().toLowerCase();
+// A repo file a human wrote, not an anonymous report: one line, capped, but
+// apostrophes and brackets survive ("O'Neil", "Pajeon (Korean pancake).jpg").
+const poolLine = (s, max) => (typeof s === 'string' ? s : '').normalize('NFC').replace(/[\u0000-\u001f\u007f]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
+
+function poolCredit(c, file) {
+  const author = poolLine(c?.author, 80);
+  const license = poolLine(c?.license, 40);
+  if (!author || !license) return null;
+  const credit = { author, license };
+  if (typeof c.licenseUrl === 'string' && /^https?:\/\//i.test(c.licenseUrl.trim())) credit.licenseUrl = c.licenseUrl.trim();
+  const src = typeof c.sourceUrl === 'string' && /^https?:\/\//i.test(c.sourceUrl.trim()) ? c.sourceUrl.trim()
+    : file ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file.replace(/ /g, '_'))}` : '';
+  if (src) credit.sourceUrl = src;
+  return credit;
+}
+
+// Tags kept for matching: Korean ones of ≥ 2 syllables ("비", "눈", "밤" would
+// substring-match 비트코인 / 눈치 / 밤새 — write "비 오는 날", "첫눈"),
+// English ones of ≥ 2 letters ("tv", "ai").
+function poolTags(tags) {
+  const out = new Set();
+  for (const raw of Array.isArray(tags) ? tags : []) {
+    const t = poolText(raw);
+    if (!t) continue;
+    if (HANGUL.test(t) ? [...t.replace(/\s/g, '')].length < 2 : t.replace(/[^a-z0-9]/g, '').length < 2) continue;
+    out.add(t);
+  }
+  return [...out];
+}
+
+// → { photos, dropped }: well-formed, distinct entries as judge candidates.
+export function parseCoverPool(json) {
+  const photos = [];
+  const seen = new Set();
+  let dropped = 0;
+  for (const p of Array.isArray(json?.photos) ? json.photos : []) {
+    const url = typeof p?.url === 'string' ? p.url.trim() : '';
+    const key = /^https:\/\/\S+$/i.test(url) ? coverFileKey(url) : null;
+    const tags = poolTags(p?.tags);
+    const free = p?.free === true;
+    const file = poolLine(p?.file, 200).replace(/^File:/i, '') || coverFileLabel(url);
+    const credit = free ? null : poolCredit(p?.credit, file);
+    if (!key || seen.has(key) || !tags.length || (!free && !credit)) { dropped++; continue; }
+    seen.add(key);
+    photos.push({ url, thumb: url, name: file, free, credit, tags, desc: poolLine(p?.desc, 120), added: poolLine(p?.added, 10), pool: true });
+  }
+  return { photos, dropped };
+}
+
+// → { ok: true, photos, dropped, missing? } | { ok: false, photos: [], why }
+export function loadCoverPool(path = COVER_POOL_PATH) {
+  let txt;
+  try {
+    txt = readFileSync(path, 'utf8');
+  } catch (e) {
+    if (e?.code === 'ENOENT') return { ok: true, photos: [], dropped: 0, missing: true };
+    return { ok: false, photos: [], why: e.message };
+  }
+  try {
+    const j = JSON.parse(txt);
+    if (!Array.isArray(j?.photos)) return { ok: false, photos: [], why: 'no "photos" array' };
+    return { ok: true, ...parseCoverPool(j) };
+  } catch (e) {
+    return { ok: false, photos: [], why: `invalid JSON: ${e.message}` };
+  }
+}
+
+const reEscape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// Korean tag: a substring of the text ("붕어빵" in "붕어빵에"), spaces optional
+// ("비 오는 날" ~ "비오는 날"). English tag: whole words, a plural or -y
+// allowed ("rain" ~ "rainy street", not "rainbow").
+function poolTagHit(tag, hay, hayTight) {
+  if (HANGUL.test(tag)) return hay.includes(tag) || (tag.includes(' ') && hayTight.includes(tag.replace(/\s/g, '')));
+  return new RegExp(`(^|[^a-z0-9])${reEscape(tag).replace(/ /g, '[\\s-]+')}(s|es|y)?(?![a-z0-9])`).test(hay);
+}
+
+// The best `max` pool photos for one card, best first. `texts` = what the card
+// says: its Korean title and desc, plus English text (its imageQueries, the
+// judge's retry queries, subject names). Score = tag hits, a Korean hit
+// counting double — it is the card's own words, where an English hit is the
+// model's guess at a photo. Any hit qualifies: the judge is the gate, and at
+// most `max` photos per card are offered. Skipped: `blocked` files (reader reports + hand
+// list), `recent` (URLs shown in the last days — any URL shape of the file),
+// `exclude` (file keys: another card's cover, or already shown to this card),
+// and non-free photos when `freeOnly` (a poster card's spare slot).
+export function poolMatches(photos, { texts = [], blocked = null, recent = [], exclude = new Set(), freeOnly = false, max = POOL_MAX_OFFER } = {}) {
+  const hay = poolText((texts || []).filter(Boolean).join(' | '));
+  if (!hay || max <= 0) return [];
+  const hayTight = hay.replace(/\s/g, '');
+  const recentKeys = new Set([...(recent || [])].map(coverFileKey).filter(Boolean));
+  const out = [];
+  (photos || []).forEach((p, i) => {
+    if (!p?.url || (freeOnly && !p.free)) return;
+    const k = coverFileKey(p.url);
+    if (!k || exclude?.has(k) || recentKeys.has(k) || isCoverBlocked(blocked, p.url)) return;
+    const hits = (p.tags || []).filter((t) => poolTagHit(t, hay, hayTight));
+    if (!hits.length) return;
+    const score = hits.reduce((n, t) => n + (HANGUL.test(t) ? 2 : 1), 0);
+    const span = hits.reduce((n, t) => n + [...t].length, 0);
+    out.push({ p: { ...p, poolScore: score, poolHits: hits }, score, span, i });
+  });
+  // Ties: the longer matched tags win — "보일러" says more than "겨울" (which
+  // also sits inside "올겨울") — then file order.
+  return out.sort((a, b) => b.score - a.score || b.span - a.span || a.i - b.i).slice(0, max).map((x) => x.p);
 }
 
 // --- TMDB titles: the work's name without "극장판" / "the Movie" -----------------

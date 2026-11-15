@@ -10,6 +10,8 @@ import {
   coverFileKey, coverBlocklist, isCoverBlocked, shippedCovers, groupCoverReports,
   handBlocklistKeys, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
   wikimediaThumb, judgeCandidates, coverFromVerdict, judgeStatus, mediaTitleCore,
+  coverSlotsOf, applyCoverSlots, cleanRetryQueries, interleave, retryTargets, mergeRetryCover,
+  parseCoverPool, loadCoverPool, poolMatches,
 } from './cover-reports.mjs';
 
 const EFTA_THUMB = 'https://upload.wikimedia.org/wikipedia/commons/a/a1/EFTA00000980_-_Wooden_closet_holds_several_winter_coats_hanging_on_hooks_with_folded_blankets_on_the_shelf_above.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled';
@@ -188,4 +190,182 @@ test('judgeStatus: names what the visible cover did', () => {
   assert.equal(judgeStatus({ image: 'a', attributed: 'b' }, { image: 'c', attributed: 'b' }), 'kept (old-build photo changed)');
   assert.equal(judgeStatus({ image: 'a', attributed: 'b' }, { image: 'a', attributed: undefined }), 'changed');
   assert.equal(judgeStatus({ image: 'a' }, { image: 'c' }), 'changed');
+});
+
+// --- cover pool + judge round 2 ---------------------------------------------
+// A small sample of content/cover-pool.json (same format as the real file).
+const T = (name) => `https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/${name}/1280px-${name}`;
+const SAMPLE_POOL = {
+  note: 'test fixture',
+  photos: [
+    { url: T('Bungeoppang.jpg'), file: 'Bungeoppang.jpg', free: true, credit: null,
+      tags: ['붕어빵', '길거리 간식', 'bungeoppang', 'street food'], desc: 'Fish-shaped pastries on a street stall grill in Seoul', added: '2026-11-15' },
+    { url: T('Pajeon.jpg'), file: 'Pajeon.jpg', free: false,
+      credit: { author: "Jane O'Neil", license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0' },
+      tags: ['파전', '비 오는 날', '막걸리', 'pajeon', 'rain'], desc: 'Seafood pajeon with makgeolli', added: '2026-11-15' },
+    { url: T('Goguma_street_vendor.jpg'), file: 'Goguma street vendor.jpg', free: true, credit: null,
+      tags: ['군고구마', '길거리 간식', '겨울', 'sweet potato'], desc: 'Roasted sweet potatoes sold from a drum stove', added: '2026-11-15' },
+    { url: T('Boiler_room_dial.jpg'), file: 'Boiler room dial.jpg', free: true, credit: null,
+      tags: ['보일러', '난방', '비', 'heating'], desc: 'Korean home heating controller', added: '2026-11-15' },
+    // Malformed: dropped at load.
+    { url: T('No_credit.jpg'), file: 'No credit.jpg', free: false, credit: null, tags: ['파전'] },
+    { url: 'http://example.org/insecure.jpg', free: true, tags: ['붕어빵'] },
+    { url: T('No_tags.jpg'), free: true, tags: [] },
+    { url: T('Bungeoppang.jpg').replace('1280px', '640px'), file: 'Bungeoppang.jpg', free: true, tags: ['붕어빵'] }, // same file again
+    'not an object',
+  ],
+};
+
+test('cover pool: load fail-soft, malformed entries dropped, tags normalised', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'cover-pool-'));
+  const missing = loadCoverPool(join(dir, 'nope.json'));
+  assert.deepEqual([missing.ok, missing.missing, missing.photos.length], [true, true, 0]);
+  writeFileSync(join(dir, 'bad.json'), '{ "photos": [');
+  const bad = loadCoverPool(join(dir, 'bad.json'));
+  assert.equal(bad.ok, false);
+  assert.equal(bad.photos.length, 0);
+  writeFileSync(join(dir, 'shape.json'), JSON.stringify({ files: [] }));
+  assert.equal(loadCoverPool(join(dir, 'shape.json')).ok, false);
+
+  writeFileSync(join(dir, 'pool.json'), JSON.stringify(SAMPLE_POOL));
+  const pool = loadCoverPool(join(dir, 'pool.json'));
+  assert.equal(pool.ok, true);
+  assert.deepEqual(pool.photos.map((p) => p.name), ['Bungeoppang.jpg', 'Pajeon.jpg', 'Goguma street vendor.jpg', 'Boiler room dial.jpg']);
+  assert.equal(pool.dropped, 5);
+  assert.ok(pool.photos.every((p) => p.pool === true));
+  const pajeon = pool.photos[1];
+  assert.equal(pajeon.free, false);
+  assert.deepEqual(pajeon.credit, {
+    author: "Jane O'Neil", license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Pajeon.jpg',
+  }, 'credit kept as given, source page filled in');
+  assert.equal(pool.photos[0].credit, null);
+  // A one-syllable Korean tag would substring-match 비트코인 / 준비: dropped.
+  assert.deepEqual(pool.photos[3].tags, ['보일러', '난방', 'heating']);
+  assert.deepEqual(parseCoverPool(null), { photos: [], dropped: 0 });
+});
+
+test('cover pool: Korean substring + English word matching, scored, recent / blocked / taken skipped', () => {
+  const { photos } = parseCoverPool(SAMPLE_POOL);
+  const card = (title, desc, queries = []) => [title, desc, ...queries];
+  // 2026-11-15's street-snack card: 붕어빵 inside "붕어빵 하나에", 군고구마 inside "군고구마까지".
+  const snack = poolMatches(photos, { texts: card('겨울 길거리 간식, 요즘 뭐 사 드세요?', '붕어빵 하나에 군고구마까지 찾는 계절이에요.') });
+  assert.deepEqual(snack.map((p) => p.name), ['Goguma street vendor.jpg', 'Bungeoppang.jpg'], '3 Korean hits beat 2; max 2');
+  assert.deepEqual(snack[0].poolHits, ['군고구마', '길거리 간식', '겨울']);
+  assert.equal(snack[0].poolScore, 6);
+  // Spaces optional inside a Korean tag; an English tag matches a plural / -y form, not a longer word.
+  assert.equal(poolMatches(photos, { texts: card('비오는 날엔 뭐 드세요?', '') })[0]?.name, 'Pajeon.jpg');
+  assert.equal(poolMatches(photos, { texts: card('', '', ['rainy street seoul']) })[0]?.name, 'Pajeon.jpg');
+  assert.equal(poolMatches(photos, { texts: card('', '', ['rainbow over hills']) }).length, 0);
+  assert.equal(poolMatches(photos, { texts: card('', '', ['korean street foods market']) })[0]?.name, 'Bungeoppang.jpg');
+  // The dropped one-syllable tag no longer fires on 비트코인.
+  assert.equal(poolMatches(photos, { texts: card('비트코인이 4.3% 내렸대요', '') }).length, 0);
+  assert.deepEqual(poolMatches(photos, { texts: card('올겨울 보일러는 언제부터 돌리실 거예요?', '') }).map((p) => p.name), ['Boiler room dial.jpg', 'Goguma street vendor.jpg']);
+  // Recently shown (any URL shape of the file, query string included), blocked, or taken → skipped.
+  const bungeo = photos[0];
+  const recentShape = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Bungeoppang.jpg/1280px-Bungeoppang.jpg?utm_source=commons.wikimedia.org';
+  const texts = card('붕어빵 철이에요', '');
+  assert.equal(poolMatches(photos, { texts }).length, 1);
+  assert.equal(poolMatches(photos, { texts, recent: new Set([recentShape]) }).length, 0, 'recent');
+  assert.equal(poolMatches(photos, { texts, blocked: new Set([coverFileKey(bungeo.url)]) }).length, 0, 'blocked');
+  assert.equal(poolMatches(photos, { texts, exclude: new Set([coverFileKey(bungeo.url)]) }).length, 0, 'taken by another card');
+  // A poster card's spare slot takes free photos only.
+  assert.equal(poolMatches(photos, { texts: card('파전에 막걸리', '') }).length, 1);
+  assert.equal(poolMatches(photos, { texts: card('파전에 막걸리', ''), freeOnly: true }).length, 0);
+  assert.deepEqual(poolMatches(photos, { texts: [] }), []);
+  assert.deepEqual(poolMatches([], { texts }), []);
+});
+
+test('cleanRetryQueries: ≤2 plain, short, new queries', () => {
+  assert.deepEqual(cleanRetryQueries(['bungeoppang street stall Seoul', 'Korean street food stall', 'third one']), ['bungeoppang street stall seoul', 'korean street food stall']);
+  assert.deepEqual(
+    cleanRetryQueries(['"Mississippi River" paddlewheel riverboat', 'intitle:riverboat -Nile OR cruise*'], { max: 2 }),
+    ['mississippi river paddlewheel riverboat', 'riverboat nile or cruise'],
+    'quotes, keywords, leading - and * stripped; lower-case so OR is a word',
+  );
+  assert.deepEqual(cleanRetryQueries(['붕어빵', '붕어빵 bungeoppang', 'Huế riverboat']), ['bungeoppang', 'hue riverboat'], 'Hangul dropped, diacritics folded');
+  assert.deepEqual(cleanRetryQueries(['one two three four five six seven']), ['one two three four five']);
+  assert.deepEqual(cleanRetryQueries(['on a', '', 42, null, 'TV', 'tv sofa']), ['tv sofa'], 'needs a keyword the relevance rule can use');
+  assert.deepEqual(cleanRetryQueries(['Rainy street Seoul', 'rainy  street  seoul', 'umbrella seoul'], { skip: ['rainy street seoul'] }), ['umbrella seoul'], 'skips the queries the cascade already ran');
+  assert.deepEqual(cleanRetryQueries(null), []);
+  assert.deepEqual(cleanRetryQueries('bungeoppang'), []);
+});
+
+test('interleave: round-robin, uneven lengths', () => {
+  assert.deepEqual(interleave([1, 2, 3], ['a'], [], null, ['x', 'y']), [1, 'a', 'x', 2, 'y', 3]);
+  assert.deepEqual(interleave(), []);
+});
+
+test('retryTargets: photo-less cards first, then weak fits; posters and unanswered cards skipped; capped', () => {
+  const v = { fits: [] };
+  const cards = [
+    { id: 'kept', verdict: { fits: [1] }, fits: [1], hasCover: true, retry: [] },
+    { id: 'weak', verdict: { fits: [2] }, fits: [2], hasCover: true, retry: ['korea exchange seoul'] },
+    { id: 'none-q', verdict: v, fits: [], hasCover: false, retry: ['bungeoppang'] },
+    { id: 'none-pool', verdict: v, fits: [], hasCover: false, retry: [], poolCount: 1 },
+    { id: 'none-nothing', verdict: v, fits: [], hasCover: false, retry: [], poolCount: 0 },
+    { id: 'poster', poster: true, verdict: v, fits: [], hasCover: true, retry: ['tv drama'] },
+    { id: 'unanswered', fits: [], hasCover: false, retry: ['x y z'] },
+  ];
+  const { picked, skipped } = retryTargets(cards);
+  assert.deepEqual(picked.map((c) => [c.id, c.kind]), [['none-q', 'none'], ['none-pool', 'none'], ['weak', 'weak']]);
+  assert.deepEqual(skipped, []);
+  const capped = retryTargets(cards, { max: 2 });
+  assert.deepEqual(capped.picked.map((c) => c.id), ['none-q', 'none-pool']);
+  assert.deepEqual(capped.skipped.map((c) => c.id), ['weak']);
+  assert.deepEqual(retryTargets(null), { picked: [], skipped: [] });
+});
+
+test('coverFromVerdict: a fresh search result beats a pool photo when both fit; the pool fills when it alone fits', () => {
+  const { photos } = parseCoverPool(SAMPLE_POOL);
+  const [poolFree, poolPaid] = photos;
+  const [a1, f1] = [C(1, false), C(2, true)];
+  const shown = [f1, a1, poolFree, poolPaid];
+  assert.deepEqual(coverFromVerdict(shown, [3, 1]), { image: f1, attributed: null }, 'judge ranked the pool photo first; fresh wins');
+  assert.deepEqual(coverFromVerdict(shown, [4, 2]), { image: null, attributed: a1 });
+  assert.deepEqual(coverFromVerdict(shown, [3]), { image: poolFree, attributed: null }, 'free pool photo → image');
+  assert.deepEqual(coverFromVerdict(shown, [4]), { image: null, attributed: poolPaid }, 'non-free pool photo → attributed');
+  assert.deepEqual(coverFromVerdict(shown, [4, 3]), { image: poolFree, attributed: poolPaid }, 'judge order kept among pool photos');
+});
+
+test('round 2 merge: fills a photo-less card with the same field rules as round 1, never drops round 1', () => {
+  const { photos } = parseCoverPool(SAMPLE_POOL);
+  const [poolFree, poolPaid] = photos;
+  const credit = { author: 'A9', license: 'CC BY 4.0' };
+  const apply = (t, shown, fits) => {
+    const m = mergeRetryCover(coverSlotsOf(t), coverFromVerdict(shown, fits));
+    if (m.changed) applyCoverSlots(t, m);
+    return { t, changed: m.changed };
+  };
+
+  // Rejected in round 1 (no fields) → a free pool photo fills `image` only.
+  let r = apply({ id: 'bungeoppang' }, [poolFree], [1]);
+  assert.equal(r.changed, true);
+  assert.deepEqual(r.t, { id: 'bungeoppang', image: poolFree.url });
+  // → a non-free pool photo fills imageAttributed + imageCredit with ITS credit.
+  r = apply({ id: 'pajeon' }, [poolPaid], [1]);
+  assert.deepEqual(r.t, { id: 'pajeon', imageAttributed: poolPaid.url, imageCredit: poolPaid.credit });
+  assert.equal(r.t.imageCredit.author, "Jane O'Neil");
+  // → nothing fits: still nothing (gradient), no stray fields.
+  r = apply({ id: 'boiler' }, [poolFree], []);
+  assert.deepEqual([r.changed, r.t], [false, { id: 'boiler' }]);
+
+  // A weak round-1 cover is kept when round 2 finds nothing better…
+  const weak = () => ({ id: 'hynix', image: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Old.jpg', imageAttributed: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Weak.jpg', imageCredit: credit });
+  r = apply(weak(), [C(3, false), C(4, true)], []);
+  assert.deepEqual([r.changed, r.t], [false, weak()]);
+  // …replaced by a better attributed one (older builds keep round 1's free photo)…
+  const better = C(3, false);
+  r = apply(weak(), [better], [1]);
+  assert.deepEqual(r.t, { ...weak(), imageAttributed: better.url, imageCredit: better.credit });
+  // …or by a better free one, which then is the cover for every build.
+  const betterFree = C(4, true);
+  r = apply(weak(), [betterFree], [1]);
+  assert.deepEqual(r.t, { id: 'hynix', image: betterFree.url });
+
+  // applyCoverSlots: attributed only as a pair; a poster card's slot untouched.
+  assert.deepEqual(applyCoverSlots({ image: 'x', imageAttributed: 'y', imageCredit: credit }, { image: null, attributed: { url: 'z' } }), {});
+  const P = 'https://image.tmdb.org/t/p/original/p.jpg';
+  assert.deepEqual(applyCoverSlots({ image: 'x', imageAttributed: P, imageCredit: credit }, { image: poolFree, attributed: undefined }, { poster: true }), { image: poolFree.url, imageAttributed: P, imageCredit: credit });
+  assert.deepEqual(coverSlotsOf({}), { image: null, attributed: null });
 });
