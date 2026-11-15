@@ -308,6 +308,18 @@ const SENSITIVE_PROVENANCE = [
   [/\bprisons?\b|\bprisoners?\b|\bjails?\b|penitentiary|\binmates?\b|incarcerat|detention (center|centre|camp)|\bgulag/i, 'prison'],
   [/\bdisasters?\b|aftermath|wreckage|\brubble\b|earthquake|tsunami|(hurricane|typhoon|storm|tornado|flood|fire) damage|burned[- ]out|\barson\b|(traffic|car|road|train|plane|air) (accident|crash)|\bcar crash|crash site|refugee camp/i, 'disaster'],
   [/world war|\bwar ?zone\b|battlefield|firearms?\b|handguns?\b|assault rifle/i, 'war / weapons'],
+  [/sexual (harassment|assault|misconduct|abuse)|\bharass(ment|ed|ing)?\b|\bscandals?\b|public apology/i, 'scandal'],
+  // Korean file names, descriptions and categories. Wikidata's P18 for 김윤석
+  // was "(TV10) 김윤석 무릎 담요 성희롱 발언 공개 사과 (…언론시사회) 58s.jpg" — a
+  // still from a public apology over harassment remarks — and every pattern
+  // above is English (2026-11-15). Plain substrings: \b means nothing next to
+  // Hangul. 사과 only in its apology sense (사과 과수원, 사과나무 = the fruit);
+  // 법정 not as 法定 (법정 공휴일); 경찰 / 사고 only as an investigation or an
+  // accident scene (a police car, 사고방식 stay allowed).
+  [/성희롱|성추행|성폭[력행]|성범죄|성착취|불법\s?촬영/, '성범죄·성희롱'],
+  [/(공개|대국민|공식)\s?사과|사과\s?(문|기자회견|발언|성명|영상)|사과(하는|했|드리|드립|합니다|의 뜻)|사죄|논란|해명|물의|구설|학폭|학교\s?폭력|갑질|음주\s?운전|마약|도박/, '논란·사과'],
+  [/사건|사고\s?현장|교통\s?사고|(열차|항공|선박|추락|붕괴|폭발)\s?사고|피해자|희생자|유족|폭행|살인|살해|흉기|범죄|피의자|용의자|혐의|체포|구속|기소|재판|법정(?!\s?(공휴일|기념일|휴일|단위|최저|최고))|검찰|경찰\s?(조사|수사|출석|소환)|압수\s?수색|교도소|수감/, '사건·수사·재판'],
+  [/사망|별세|시신|빈소|장례|추모|영결식|참사|재난|화재|붕괴|실종|테러|폭격|전쟁/, '사망·재난'],
 ];
 
 // → the reason (for the log) or null. Pass any number of text fields.
@@ -536,6 +548,7 @@ export function mergeRetryCover(before, pick) {
 // Never throws.
 export const COVER_POOL_PATH = 'content/cover-pool.json';
 export const POOL_MAX_OFFER = 2;
+export const POOL_MIN_SCORE = 2; // see poolMatches
 const HANGUL = /[ᄀ-ᇿ㄰-㆏가-힯]/;
 const poolText = (s) => String(s ?? '').normalize('NFC').replace(/\s+/g, ' ').trim().toLowerCase();
 // A repo file a human wrote, not an anonymous report: one line, capped, but
@@ -616,10 +629,12 @@ function poolTagHit(tag, hay, hayTight) {
 
 // The best `max` pool photos for one card, best first. `texts` = what the card
 // says: its Korean title and desc, plus English text (its imageQueries, the
-// judge's retry queries, subject names). Score = tag hits, a Korean hit
-// counting double — it is the card's own words, where an English hit is the
-// model's guess at a photo. Any hit qualifies: the judge is the gate, and at
-// most `max` photos per card are offered. Skipped: `blocked` files (reader reports + hand
+// judge's retry queries, subject names). Score = tag hits: a Korean hit counts
+// 2 (the card's own words), an English phrase 2 ("street food", "seoul
+// subway"), a single English word 1 — and a photo needs POOL_MIN_SCORE = 2.
+// One English word alone is sense-blind: the 2026-11-15 SK하이닉스 card
+// ("stock market chart screen") was offered a bungeoppang-at-a-market photo
+// through its tag "market". Skipped: `blocked` files (reader reports + hand
 // list), `recent` (URLs shown in the last days — any URL shape of the file),
 // `exclude` (file keys: another card's cover, or already shown to this card),
 // and non-free photos when `freeOnly` (a poster card's spare slot).
@@ -634,8 +649,8 @@ export function poolMatches(photos, { texts = [], blocked = null, recent = [], e
     const k = coverFileKey(p.url);
     if (!k || exclude?.has(k) || recentKeys.has(k) || isCoverBlocked(blocked, p.url)) return;
     const hits = (p.tags || []).filter((t) => poolTagHit(t, hay, hayTight));
-    if (!hits.length) return;
-    const score = hits.reduce((n, t) => n + (HANGUL.test(t) ? 2 : 1), 0);
+    const score = hits.reduce((n, t) => n + (HANGUL.test(t) || t.includes(' ') ? 2 : 1), 0);
+    if (score < POOL_MIN_SCORE) return;
     const span = hits.reduce((n, t) => n + [...t].length, 0);
     out.push({ p: { ...p, poolScore: score, poolHits: hits }, score, span, i });
   });

@@ -255,8 +255,10 @@ test('cover pool: Korean substring + English word matching, scored, recent / blo
   assert.equal(snack[0].poolScore, 6);
   // Spaces optional inside a Korean tag; an English tag matches a plural / -y form, not a longer word.
   assert.equal(poolMatches(photos, { texts: card('비오는 날엔 뭐 드세요?', '') })[0]?.name, 'Pajeon.jpg');
-  assert.equal(poolMatches(photos, { texts: card('', '', ['rainy street seoul']) })[0]?.name, 'Pajeon.jpg');
-  assert.equal(poolMatches(photos, { texts: card('', '', ['rainbow over hills']) }).length, 0);
+  // One English word is not enough on its own (score 1 < 2); two are; "rainbow" is not "rain".
+  assert.equal(poolMatches(photos, { texts: card('', '', ['rainy street seoul']) }).length, 0);
+  assert.equal(poolMatches(photos, { texts: card('', '', ['rainy street seoul', 'pajeon plate']) })[0]?.name, 'Pajeon.jpg');
+  assert.equal(poolMatches(photos, { texts: card('', '', ['rainbow over hills', 'pajeon plate']) }).length, 0);
   assert.equal(poolMatches(photos, { texts: card('', '', ['korean street foods market']) })[0]?.name, 'Bungeoppang.jpg');
   // The dropped one-syllable tag no longer fires on 비트코인.
   assert.equal(poolMatches(photos, { texts: card('비트코인이 4.3% 내렸대요', '') }).length, 0);
@@ -274,6 +276,41 @@ test('cover pool: Korean substring + English word matching, scored, recent / blo
   assert.equal(poolMatches(photos, { texts: card('파전에 막걸리', ''), freeOnly: true }).length, 0);
   assert.deepEqual(poolMatches(photos, { texts: [] }), []);
   assert.deepEqual(poolMatches([], { texts }), []);
+});
+
+test('cover pool: a single sense-blind English word ("market" in "stock market") offers nothing', () => {
+  // 2026-11-15 dry run: the SK하이닉스 card was shown a bungeoppang photo whose
+  // only hit was its tag "market" — from the imageQuery "stock market chart screen".
+  const { photos } = parseCoverPool({ photos: [
+    { url: T('시장_2.jpg'), file: '시장_2.jpg', free: true, credit: null,
+      tags: ['붕어빵', '시장', '재래시장', '붕어빵 굽기', '길거리 간식', '겨울 간식', '간식', 'bungeoppang', 'market', 'street food'] },
+  ] });
+  const hynix = ['SK하이닉스가 금요일에 3.0% 내렸다던데요', '종가는 121만 6천 원이고, 코스피도 1.0% 내렸어요.',
+    'stock market chart screen', 'smartphone stock app', 'korean investor looking phone'];
+  assert.deepEqual(poolMatches(photos, { texts: hynix }), []);
+  // The same photo still reaches the card it is for.
+  const m = poolMatches(photos, { texts: ['겨울 길거리 간식, 요즘 뭐 사 드세요?', '붕어빵 하나에 군고구마까지 찾는 계절이에요.'] });
+  assert.equal(m[0]?.name, '시장_2.jpg');
+  assert.ok(m[0].poolHits.includes('붕어빵'));
+  // An English phrase tag counts like a Korean one.
+  assert.equal(poolMatches(photos, { texts: ['', '', 'korean street food stall'] })[0]?.poolScore, 2);
+});
+
+test('provenance: Korean scandal / apology / crime / death file names are rejected; 사과 the fruit is not', () => {
+  // The Wikidata P18 photo of 김윤석 the 2026-11-15 dry run picked for a film card.
+  assert.ok(sensitiveProvenance('File:(TV10) 김윤석 무릎 담요 성희롱 발언 공개 사과 (영화 당신, 거기 있어줄래요 언론시사회) 김윤석 58s.jpg'));
+  for (const s of [
+    '배우 OOO 성추행 의혹 해명.jpg', '대국민 사과 기자회견.jpg', '사과문 발표하는 대표.jpg', '고개 숙여 사과하는 가수.jpg',
+    '음주운전 논란 후 첫 공식석상.jpg', '학폭 의혹', '법정 출석하는 OOO.jpg', '검찰 압수수색 현장.jpg', '경찰 조사 출석.jpg',
+    '구속 영장 심사.jpg', '교통사고 현장.jpg', '사고 현장 사진.jpg', '피해자 기자회견.jpg', '빈소 조문.jpg', '영결식.jpg',
+    '이태원 참사 추모 공간.jpg', '화재 진압 중인 소방관.jpg', '마약 투약 혐의.jpg', '불법 도박 사이트.jpg', 'Category:재난',
+    'Kim at a public apology over a scandal', 'sexual harassment allegations',
+  ]) assert.ok(sensitiveProvenance(s), s);
+  for (const s of [
+    '사과 과수원.jpg', '사과.jpg', '빨간 사과 한 바구니.jpg', '사과나무 꽃.jpg', '청송 사과 축제.jpg', 'Apple fruit on a tree.jpg',
+    '법정 공휴일 한글날 광화문.jpg', '경찰차 강남.jpg', '김윤석 언론시사회.jpg', '폭설 내린 기차역.jpg', '폭포 설악산.jpg',
+    '부산 해운대 사진.jpg', '사고방식', '서울 시장 풍경.jpg', '붕어빵 노점.jpg',
+  ]) assert.equal(sensitiveProvenance(s), null, s);
 });
 
 test('cleanRetryQueries: ≤2 plain, short, new queries', () => {

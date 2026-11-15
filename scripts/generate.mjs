@@ -2766,6 +2766,11 @@ const poolTexts = (p, extra = []) => [
   p.t.title, p.t.desc, ...(p.queries || []), ...p.subjects.flatMap((s) => [s.name_ko, s.name_en]), ...extra,
 ];
 
+// Log text for the pool photos offered to a card, with the tags that hit.
+const poolOffered = (list) => (list.length
+  ? list.map((x) => `${x.name} [${x.poolHits.join(', ')}] score ${x.poolScore}`).join('; ')
+  : 'no pool photo matched');
+
 // The prompt for one batch of cards. A card with no photos goes as text only.
 function judgeContent(cards, { rules, intro = '', answer }) {
   const content = [{ type: 'text', text: rules + intro }];
@@ -2839,6 +2844,7 @@ async function judgeCovers(plans) {
         max: Math.min(POOL_MAX_OFFER, max - cands.length),
       });
       for (const x of extra) { poolClaimed.add(coverFileKey(x.url)); cands.push(x); }
+      console.log(`pool: '${p.t.id}' round 1 (${cands.length - extra.length} search candidate(s)) ← ${poolOffered(extra)}`);
     }
     if (!cands.length) {
       // No photo to judge — but the judge can still say what to search for.
@@ -2921,6 +2927,7 @@ async function retryCovers(r1) {
     }
     const fresh = judgeCandidates([], interleave(...lists), { max: JUDGE_MAX_CANDS, recent: recentImages, exclude });
     const pool = poolFor(c, new Set([...exclude, ...fresh.map((x) => coverFileKey(x.url))]));
+    if (coverPool.photos.length) console.log(`pool: '${c.p.t.id}' round 2 ← ${poolOffered(pool)}`);
     const shown = [];
     for (const x of [...fresh, ...pool]) {
       if (images >= JUDGE_RETRY_MAX_IMAGES) break;
