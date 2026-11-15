@@ -112,7 +112,8 @@
           "follow": "요즘 자주 듣는 노래 하나만 알려 주세요.",
           "caution": "회사 얘기는 피하세요."
         }
-      }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Seoul_Metro_Line_2_train_interior_13_Jan_2024.jpg/1280px-Seoul_Metro_Line_2_train_interior_13_Jan_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
       "id": "mississippi-ship",
@@ -144,6 +145,13 @@
           "follow": "유람선 여행 가 보신 곳 있어요?",
           "caution": "사고 장면 묘사는 피하세요."
         }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/New_Orleans%2C_LA_%28Mississippi_River%29_February_2011_-_20.jpg/1280px-New_Orleans%2C_LA_%28Mississippi_River%29_February_2011_-_20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "JasonParis",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Orleans,_LA_(Mississippi_River)_February_2011_-_20.jpg"
       }
     },
     {
@@ -216,7 +224,8 @@
           "follow": "붕어빵 먹을 땐 머리부터 드세요, 꼬리부터 드세요?",
           "caution": "다이어트 얘기는 피하세요."
         }
-      }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/28/Bungeoppang-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     },
     {
       "id": "boiler-cold",
@@ -248,6 +257,13 @@
           "follow": "겨울에 집에서 제일 좋아하는 시간이 언제예요?",
           "caution": "난방비 같은 사생활은 묻지 마세요."
         }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg/1280px-Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg"
       }
     },
     {
