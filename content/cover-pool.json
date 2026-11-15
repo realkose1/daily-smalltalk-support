@@ -1,0 +1,981 @@
+{
+  "note": "Hand-vetted cover photos. The generator may offer these to the cover judge as candidates when a card's tags match. Every file was looked at by a person or agent before being added.",
+  "photos": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Seoul_Metro_Line_2_train_interior_13_Jan_2024.jpg/1280px-Seoul_Metro_Line_2_train_interior_13_Jan_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Seoul_Metro_Line_2_train_interior_13_Jan_2024.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "출근길",
+        "지하철",
+        "지하철 출근",
+        "대중교통",
+        "통근",
+        "서울 지하철",
+        "subway",
+        "commute",
+        "seoul metro"
+      ],
+      "desc": "Inside a Seoul Metro Line 2 train with commuters on their phones",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/New_Orleans%2C_LA_%28Mississippi_River%29_February_2011_-_20.jpg/1280px-New_Orleans%2C_LA_%28Mississippi_River%29_February_2011_-_20.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "New_Orleans,_LA_(Mississippi_River)_February_2011_-_20.jpg",
+      "free": false,
+      "credit": {
+        "author": "JasonParis",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Orleans,_LA_(Mississippi_River)_February_2011_-_20.jpg"
+      },
+      "tags": [
+        "미시시피강",
+        "유람선",
+        "증기선",
+        "외륜선",
+        "크루즈",
+        "리버보트",
+        "riverboat",
+        "paddle steamer",
+        "mississippi river"
+      ],
+      "desc": "Paddle-wheel riverboat Natchez on the Mississippi River",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Bungeoppang-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "file": "Bungeoppang-01.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "붕어빵",
+        "길거리 간식",
+        "겨울 간식",
+        "간식",
+        "군것질",
+        "붕어빵 노점",
+        "bungeoppang",
+        "street food",
+        "taiyaki"
+      ],
+      "desc": "Bungeoppang fish-shaped pastries on a street stall grill (Korean)",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg/1280px-Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg",
+      "free": false,
+      "credit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Temperature_control_device_showing_room_temperature_in_Celsius_at_23_degrees_during_evening_time.jpg"
+      },
+      "tags": [
+        "보일러",
+        "난방",
+        "난방비",
+        "실내 온도",
+        "온도조절기",
+        "보일러 켜기",
+        "thermostat",
+        "heating",
+        "boiler"
+      ],
+      "desc": "Hand holding a room thermostat controller showing 23 C",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Snow_in_Seoul_20201213.jpg/1280px-Snow_in_Seoul_20201213.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Snow_in_Seoul_20201213.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "눈 오는 날",
+        "첫눈",
+        "서울 눈",
+        "폭설",
+        "한파",
+        "대설",
+        "겨울",
+        "snow",
+        "seoul",
+        "winter"
+      ],
+      "desc": "Snow-covered street in Seoul",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Shure_SM7.jpg/1280px-Shure_SM7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Shure_SM7.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "마이크",
+        "팟캐스트",
+        "녹음",
+        "방송",
+        "멜론",
+        "음악 감상",
+        "microphone",
+        "podcast",
+        "audio"
+      ],
+      "desc": "Shure SM7 broadcast microphone",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Playstation_5_base_edition_with_controller_%28original%29.jpg/1280px-Playstation_5_base_edition_with_controller_%28original%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Playstation_5_base_edition_with_controller_(original).jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "플레이스테이션",
+        "플스",
+        "콘솔 게임",
+        "게임기",
+        "게임",
+        "신작 게임",
+        "playstation",
+        "console",
+        "video game"
+      ],
+      "desc": "PlayStation 5 console with controller",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg/1280px-%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "눈내린_설악산_풍경.jpg",
+      "free": false,
+      "credit": {
+        "author": "Sohyeon Bak",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EB%88%88%EB%82%B4%EB%A6%B0_%EC%84%A4%EC%95%85%EC%82%B0_%ED%92%8D%EA%B2%BD.jpg"
+      },
+      "tags": [
+        "설악산",
+        "눈 쌓인 산",
+        "겨울 산",
+        "겨울 여행",
+        "국내 여행",
+        "눈 내린 산",
+        "등산",
+        "snowy mountain",
+        "seoraksan",
+        "korea travel"
+      ],
+      "desc": "Snow-covered Seoraksan mountain landscape",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Pajeon.jpg/1280px-Pajeon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Pajeon.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "파전",
+        "비 오는 날",
+        "막걸리",
+        "전 부침개",
+        "부침개",
+        "비 오는 날 음식",
+        "pajeon",
+        "korean food",
+        "rain"
+      ],
+      "desc": "Seafood-and-scallion pajeon on a plate (Korean)",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/2014_Pure_Gold_Physical_Bitcoin_China_Mint.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "file": "2014_Pure_Gold_Physical_Bitcoin_China_Mint.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "비트코인",
+        "가상자산",
+        "암호화폐",
+        "코인",
+        "금화",
+        "투자",
+        "bitcoin",
+        "crypto",
+        "gold coin"
+      ],
+      "desc": "Physical gold bitcoin coin",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Apple-payment-square.jpg/1280px-Apple-payment-square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Apple-payment-square.jpg",
+      "free": false,
+      "credit": {
+        "author": "Mybloodtypeiscoffee",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apple-payment-square.jpg"
+      },
+      "tags": [
+        "애플페이",
+        "간편결제",
+        "모바일 결제",
+        "결제",
+        "카드 결제",
+        "페이",
+        "apple pay",
+        "mobile payment",
+        "contactless"
+      ],
+      "desc": "Contactless mobile payment with a phone at a terminal",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/So-meori-ttaro-gukbap.jpg/1280px-So-meori-ttaro-gukbap.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "So-meori-ttaro-gukbap.jpg",
+      "free": false,
+      "credit": {
+        "author": "lazy fri13th",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:So-meori-ttaro-gukbap.jpg"
+      },
+      "tags": [
+        "국밥",
+        "소머리국밥",
+        "따로국밥",
+        "점심 메뉴",
+        "점심",
+        "해장",
+        "해장국",
+        "국물 요리",
+        "gukbap",
+        "korean soup"
+      ],
+      "desc": "Beef-head ttaro-gukbap soup with rice and banchan",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Korean_stew-Kimchi_jjigae-02.jpg/1280px-Korean_stew-Kimchi_jjigae-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Korean_stew-Kimchi_jjigae-02.jpg",
+      "free": false,
+      "credit": {
+        "author": "Alpha",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean_stew-Kimchi_jjigae-02.jpg"
+      },
+      "tags": [
+        "김치찌개",
+        "찌개",
+        "점심 메뉴",
+        "백반",
+        "저녁 메뉴",
+        "집밥",
+        "한식",
+        "kimchi jjigae",
+        "korean stew"
+      ],
+      "desc": "Kimchi jjigae in a stone pot with rice (Korean set meal)",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Kimchi_jjigae_-_San_Francisco%2C_CA.jpg/1280px-Kimchi_jjigae_-_San_Francisco%2C_CA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Kimchi_jjigae_-_San_Francisco,_CA.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "김치찌개",
+        "순두부찌개",
+        "찌개",
+        "한식",
+        "점심 메뉴",
+        "저녁 메뉴",
+        "kimchi jjigae",
+        "korean food",
+        "tofu stew"
+      ],
+      "desc": "Bubbling kimchi jjigae stew in a stone pot",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/2014_%EB%86%8D%EC%8B%AC_%EC%8B%A0%EB%9D%BC%EB%A9%B4.jpg/1280px-2014_%EB%86%8D%EC%8B%AC_%EC%8B%A0%EB%9D%BC%EB%A9%B4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "2014_농심_신라면.jpg",
+      "free": false,
+      "credit": {
+        "author": "Beboldtlsfkaus",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2014_%EB%86%8D%EC%8B%AC_%EC%8B%A0%EB%9D%BC%EB%A9%B4.jpg"
+      },
+      "tags": [
+        "라면",
+        "신라면",
+        "라면 끓이기",
+        "야식",
+        "컵라면",
+        "인스턴트",
+        "한국 라면",
+        "ramyeon",
+        "instant noodles"
+      ],
+      "desc": "Bowl of Korean ramyeon with egg and toppings",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Korean.noodle-Kalguksu-01.jpg/1280px-Korean.noodle-Kalguksu-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Korean.noodle-Kalguksu-01.jpg",
+      "free": false,
+      "credit": {
+        "author": "jslander",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean.noodle-Kalguksu-01.jpg"
+      },
+      "tags": [
+        "칼국수",
+        "닭칼국수",
+        "수제비",
+        "국수",
+        "점심 메뉴",
+        "비 오는 날 음식",
+        "따뜻한 국물",
+        "kalguksu",
+        "noodle soup"
+      ],
+      "desc": "Bowl of dak-kalguksu knife-cut noodle soup",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Korean.snacks-Tteokbokki-08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "file": "Korean.snacks-Tteokbokki-08.jpg",
+      "free": false,
+      "credit": {
+        "author": "jetalone",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean.snacks-Tteokbokki-08.jpg"
+      },
+      "tags": [
+        "떡볶이",
+        "분식",
+        "간식",
+        "매운 음식",
+        "분식집",
+        "학교 앞 간식",
+        "tteokbokki",
+        "korean snack",
+        "street food"
+      ],
+      "desc": "Plate of tteokbokki with spicy sauce",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Korean_fried_chicken_240206.jpg/1280px-Korean_fried_chicken_240206.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Korean_fried_chicken_240206.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "치킨",
+        "후라이드",
+        "야식",
+        "배달 음식",
+        "한국 치킨",
+        "치킨 시켜먹기",
+        "fried chicken",
+        "korean fried chicken",
+        "delivery food"
+      ],
+      "desc": "Crispy Korean fried chicken pieces",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Iksan_City_48_Korean_Style_Fried_chicken.jpg/1280px-Iksan_City_48_Korean_Style_Fried_chicken.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Iksan_City_48_Korean_Style_Fried_chicken.jpg",
+      "free": false,
+      "credit": {
+        "author": "KOREA.NET",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Iksan_City_48_Korean_Style_Fried_chicken.jpg"
+      },
+      "tags": [
+        "치맥",
+        "치킨 맥주",
+        "맥주",
+        "호프",
+        "야식",
+        "주말 저녁",
+        "치킨",
+        "chimaek",
+        "chicken and beer"
+      ],
+      "desc": "Korean fried chicken with a glass of beer (chimaek)",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/The_making_of_Kimchi.jpg/1280px-The_making_of_Kimchi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "The_making_of_Kimchi.jpg",
+      "free": false,
+      "credit": {
+        "author": "Manju Shakya",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_making_of_Kimchi.jpg"
+      },
+      "tags": [
+        "김장",
+        "김장철",
+        "김치 담그기",
+        "배추",
+        "김치",
+        "겨울 준비",
+        "월동 준비",
+        "gimjang",
+        "kimchi making"
+      ],
+      "desc": "Neighbors preparing napa cabbage for gimjang kimchi-making",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Gun-goguma_3.jpg/1280px-Gun-goguma_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Gun-goguma_3.jpg",
+      "free": false,
+      "credit": {
+        "author": "촉촉지구",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gun-goguma_3.jpg"
+      },
+      "tags": [
+        "군고구마",
+        "고구마",
+        "겨울 간식",
+        "간식",
+        "길거리 간식",
+        "겨울 길거리",
+        "roasted sweet potato",
+        "winter snack",
+        "goguma"
+      ],
+      "desc": "Roasted sweet potatoes on a plate (gun-goguma)",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Kkochi-eomuk.jpg/1280px-Kkochi-eomuk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Kkochi-eomuk.jpg",
+      "free": false,
+      "credit": {
+        "author": "anokarina",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kkochi-eomuk.jpg"
+      },
+      "tags": [
+        "어묵",
+        "오뎅",
+        "어묵탕",
+        "꼬치 어묵",
+        "겨울 간식",
+        "길거리 음식",
+        "국물",
+        "eomuk",
+        "fish cake",
+        "odeng"
+      ],
+      "desc": "Eomuk fish cake skewers in broth",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Hotteok.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "file": "Hotteok.jpg",
+      "free": false,
+      "credit": {
+        "author": "Korea.net / Korean Culture and Information Service",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hotteok.jpg"
+      },
+      "tags": [
+        "호떡",
+        "길거리 간식",
+        "겨울 간식",
+        "씨앗호떡",
+        "간식",
+        "군것질",
+        "hotteok",
+        "korean pancake",
+        "street food"
+      ],
+      "desc": "Stack of freshly griddled hotteok sweet pancakes",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Busan_20241221_131804.jpg/1280px-Busan_20241221_131804.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Busan_20241221_131804.jpg",
+      "free": false,
+      "credit": {
+        "author": "Ka23 13",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Busan_20241221_131804.jpg"
+      },
+      "tags": [
+        "호떡",
+        "호떡 굽기",
+        "길거리 음식",
+        "부산 간식",
+        "겨울 길거리",
+        "시장 간식",
+        "hotteok",
+        "street food",
+        "busan"
+      ],
+      "desc": "Hotteok being pressed on a griddle at a Busan stall",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/%EC%8B%9C%EC%9E%A5_2.jpg/1280px-%EC%8B%9C%EC%9E%A5_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "시장_2.jpg",
+      "free": false,
+      "credit": {
+        "author": "Chae Ji-young",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EC%8B%9C%EC%9E%A5_2.jpg"
+      },
+      "tags": [
+        "붕어빵",
+        "시장",
+        "재래시장",
+        "붕어빵 굽기",
+        "길거리 간식",
+        "겨울 간식",
+        "간식",
+        "bungeoppang",
+        "market",
+        "street food"
+      ],
+      "desc": "Bungeoppang cooling on a rack at a Korean market",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg/1280px-Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg",
+      "free": false,
+      "credit": {
+        "author": "hojusaram from Seoul",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg"
+      },
+      "tags": [
+        "비 오는 날",
+        "빗길",
+        "우산",
+        "빈대떡",
+        "막걸리",
+        "파전",
+        "인사동",
+        "rain",
+        "umbrella",
+        "makgeolli"
+      ],
+      "desc": "Umbrellas over rainy-day tables with bindaetteok and makgeolli in Insadong",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Umbrellas_outside_a_colorful_shop_in_Seoul_%2855621713301%29.jpg/1280px-Umbrellas_outside_a_colorful_shop_in_Seoul_%2855621713301%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Umbrellas_outside_a_colorful_shop_in_Seoul_(55621713301).jpg",
+      "free": false,
+      "credit": {
+        "author": "Sergiy Galyonkin",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Umbrellas_outside_a_colorful_shop_in_Seoul_(55621713301).jpg"
+      },
+      "tags": [
+        "비 오는 날",
+        "빗길",
+        "우산",
+        "장마",
+        "비 오는 거리",
+        "서울 거리",
+        "rainy day",
+        "umbrella",
+        "seoul street"
+      ],
+      "desc": "People with umbrellas on a wet Seoul street outside a shop",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Autumn_%28126656567%29.jpeg/1280px-Autumn_%28126656567%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Autumn_(126656567).jpeg",
+      "free": false,
+      "credit": {
+        "author": "Jaeseop An",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_(126656567).jpeg"
+      },
+      "tags": [
+        "단풍",
+        "가을",
+        "은행나무",
+        "가을 산책",
+        "가을 나들이",
+        "낙엽",
+        "가을 풍경",
+        "autumn leaves",
+        "ginkgo",
+        "korea autumn"
+      ],
+      "desc": "Yellow ginkgo trees beside a stone wall in autumn Korea",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Acer_palmatum_20220506_124731_%E3%83%8E%E3%83%A0%E3%83%A9%E3%82%AB%E3%82%A8%E3%83%87.jpg/1280px-Acer_palmatum_20220506_124731_%E3%83%8E%E3%83%A0%E3%83%A9%E3%82%AB%E3%82%A8%E3%83%87.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Acer_palmatum_20220506_124731_ノムラカエデ.jpg",
+      "free": false,
+      "credit": {
+        "author": "Ka23 13",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acer_palmatum_20220506_124731_%E3%83%8E%E3%83%A0%E3%83%A9%E3%82%AB%E3%82%A8%E3%83%87.jpg"
+      },
+      "tags": [
+        "단풍",
+        "단풍잎",
+        "단풍 구경",
+        "가을",
+        "가을 단풍",
+        "붉은 단풍",
+        "maple leaves",
+        "autumn foliage",
+        "red maple"
+      ],
+      "desc": "Red maple leaves against the sky",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Han_River_and_Han_River_Park_from_Jamsil_Bridge_%2814219133434%29.jpg/1280px-Han_River_and_Han_River_Park_from_Jamsil_Bridge_%2814219133434%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Han_River_and_Han_River_Park_from_Jamsil_Bridge_(14219133434).jpg",
+      "free": false,
+      "credit": {
+        "author": "Teddy Cross from Seoul, South Korea",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Han_River_and_Han_River_Park_from_Jamsil_Bridge_(14219133434).jpg"
+      },
+      "tags": [
+        "한강",
+        "한강 공원",
+        "한강 산책",
+        "주말 나들이",
+        "서울 나들이",
+        "강변",
+        "산책",
+        "han river",
+        "seoul park",
+        "riverside"
+      ],
+      "desc": "Han River and riverside park in Seoul seen from Jamsil Bridge",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Cherry_Blossom_in_Yeouido_Park_-_panoramio_%281%29.jpg/1280px-Cherry_Blossom_in_Yeouido_Park_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Cherry_Blossom_in_Yeouido_Park_-_panoramio_(1).jpg",
+      "free": false,
+      "credit": {
+        "author": "Alexey Komarov",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cherry_Blossom_in_Yeouido_Park_-_panoramio_(1).jpg"
+      },
+      "tags": [
+        "벚꽃",
+        "벚꽃 구경",
+        "봄 나들이",
+        "여의도",
+        "벚꽃놀이",
+        "봄꽃",
+        "꽃구경",
+        "cherry blossom",
+        "spring",
+        "yeouido"
+      ],
+      "desc": "Cherry blossoms in Yeouido Park, Seoul",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Haeundae_Beach_in_Busan.jpg/1280px-Haeundae_Beach_in_Busan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Haeundae_Beach_in_Busan.jpg",
+      "free": false,
+      "credit": {
+        "author": "StephNurnberg",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Haeundae_Beach_in_Busan.jpg"
+      },
+      "tags": [
+        "해운대",
+        "부산",
+        "바다",
+        "여름 휴가",
+        "해수욕장",
+        "피서",
+        "휴가",
+        "haeundae",
+        "busan beach",
+        "summer"
+      ],
+      "desc": "Haeundae Beach in Busan with red-and-white parasols",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Two_Hands_Cafe_latte_art_%28Unsplash%29.jpg/1280px-Two_Hands_Cafe_latte_art_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Two_Hands_Cafe_latte_art_(Unsplash).jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "카페",
+        "커피",
+        "라떼",
+        "카페 가기",
+        "커피 한잔",
+        "아메리카노",
+        "디저트 카페",
+        "cafe",
+        "coffee",
+        "latte art"
+      ],
+      "desc": "Latte with heart latte art in a cafe cup",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Coffee-desk-laptop-notebook_%2824244320481%29.jpg/1280px-Coffee-desk-laptop-notebook_%2824244320481%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Coffee-desk-laptop-notebook_(24244320481).jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "사무실",
+        "업무",
+        "재택근무",
+        "노트북",
+        "책상",
+        "야근",
+        "직장 생활",
+        "office",
+        "laptop",
+        "desk work"
+      ],
+      "desc": "Laptop on a white desk with coffee cup and flowers",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Home-office-336377.jpg/1280px-Home-office-336377.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Home-office-336377.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "재택근무",
+        "업무",
+        "노트북",
+        "책상",
+        "커피 한잔",
+        "공부",
+        "직장인",
+        "home office",
+        "laptop",
+        "work from home"
+      ],
+      "desc": "Laptop, notebook and espresso on a wooden desk",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Jogging_couple_-_legs.jpg/1280px-Jogging_couple_-_legs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Jogging_couple_-_legs.jpg",
+      "free": false,
+      "credit": {
+        "author": "Ed Yourdon",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jogging_couple_-_legs.jpg"
+      },
+      "tags": [
+        "러닝",
+        "조깅",
+        "달리기",
+        "운동",
+        "건강 관리",
+        "마라톤",
+        "운동화",
+        "running",
+        "jogging",
+        "exercise"
+      ],
+      "desc": "Legs of two joggers on a park path",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Senior_person_reading_a_book_indoors_closeup.jpg/1280px-Senior_person_reading_a_book_indoors_closeup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Senior_person_reading_a_book_indoors_closeup.jpg",
+      "free": false,
+      "credit": {
+        "author": "Nenad Stojkovic",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Senior_person_reading_a_book_indoors_closeup.jpg"
+      },
+      "tags": [
+        "독서",
+        "책 읽기",
+        "책 추천",
+        "주말 독서",
+        "조용한 휴식",
+        "읽을 책",
+        "reading",
+        "book",
+        "relax"
+      ],
+      "desc": "Hand holding an open book in a cozy chair",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Open_book_with_apples_placed_on_a_wooden_table_in_a_bright_indoor_setting.jpg/1280px-Open_book_with_apples_placed_on_a_wooden_table_in_a_bright_indoor_setting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Open_book_with_apples_placed_on_a_wooden_table_in_a_bright_indoor_setting.jpg",
+      "free": false,
+      "credit": {
+        "author": "Shixart1985",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Open_book_with_apples_placed_on_a_wooden_table_in_a_bright_indoor_setting.jpg"
+      },
+      "tags": [
+        "독서",
+        "책 읽기",
+        "책 추천",
+        "독서 습관",
+        "가을 독서",
+        "읽는 책",
+        "book",
+        "reading",
+        "wooden table"
+      ],
+      "desc": "Open book with apples on a wooden table",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/KTX_in_Seoul.jpg/1280px-KTX_in_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "KTX_in_Seoul.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "KTX",
+        "기차",
+        "기차 여행",
+        "귀성길",
+        "귀향",
+        "명절 이동",
+        "서울역",
+        "ktx",
+        "train",
+        "holiday travel"
+      ],
+      "desc": "KTX high-speed train at a Seoul Station platform",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Beach_Picnic_%28Unsplash%29.jpg/1280px-Beach_Picnic_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Beach_Picnic_(Unsplash).jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "피크닉",
+        "소풍",
+        "주말 소풍",
+        "나들이",
+        "돗자리",
+        "주말 나들이",
+        "여름 간식",
+        "picnic",
+        "watermelon",
+        "weekend"
+      ],
+      "desc": "Watermelon halves on a striped picnic blanket",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Blue%2C_pink%2C_white%2C_purple_crochet_blanket_2.jpg/1280px-Blue%2C_pink%2C_white%2C_purple_crochet_blanket_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Blue,_pink,_white,_purple_crochet_blanket_2.jpg",
+      "free": true,
+      "credit": null,
+      "tags": [
+        "담요",
+        "이불",
+        "포근한",
+        "겨울 집콕",
+        "집콕",
+        "따뜻한 방",
+        "겨울밤",
+        "cozy blanket",
+        "crochet",
+        "winter at home"
+      ],
+      "desc": "Close-up of a soft crochet blanket",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Seoul_City_Bus_152.jpg/1280px-Seoul_City_Bus_152.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "file": "Seoul_City_Bus_152.jpg",
+      "free": false,
+      "credit": {
+        "author": "STA3816",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_City_Bus_152.jpg"
+      },
+      "tags": [
+        "버스",
+        "시내버스",
+        "버스 출근",
+        "출근길",
+        "서울 버스",
+        "정류장",
+        "대중교통",
+        "bus",
+        "seoul bus",
+        "commute"
+      ],
+      "desc": "Blue Seoul city bus on a downtown street",
+      "added": "2026-11-15"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Seoul_Metro_Line_2_interior.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "file": "Seoul_Metro_Line_2_interior.jpg",
+      "free": false,
+      "credit": {
+        "author": "Brit in Seoul",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_Metro_Line_2_interior.jpg"
+      },
+      "tags": [
+        "지하철",
+        "지하철 안",
+        "퇴근길",
+        "출퇴근",
+        "2호선",
+        "지하철 풍경",
+        "대중교통",
+        "seoul subway",
+        "train interior",
+        "commute"
+      ],
+      "desc": "Empty Seoul Metro Line 2 carriage interior",
+      "added": "2026-11-15"
+    }
+  ]
+}
