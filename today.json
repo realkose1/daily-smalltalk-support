@@ -1,301 +1,241 @@
 {
-  "date": "2026-11-16",
-  "dateLabel": "11월 16일 월요일",
-  "generatedAt": "2026-11-15T23:31:09.629Z",
+  "date": "2026-11-17",
+  "dateLabel": "11월 17일 화요일",
+  "generatedAt": "2026-11-17T02:36:57.115Z",
   "topics": [
     {
-      "id": "1116-bts-mma",
-      "cat": "문화",
-      "subtopic": "음악",
-      "label": "MMA",
-      "color": "#6a1b9a",
-      "title": "방탄소년단이 MMA 2026에서 6관왕을 했대요",
-      "desc": "대상 2개를 포함해 이번 시상식 최다 수상이래요.",
-      "reason": "월요일 출근길에 시상식 무대를 본 분이 많을 거예요.",
+      "id": "nov17-weeknight",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "퇴근",
+      "color": "#4A6741",
+      "title": "비 오는 화요일 퇴근길엔 뭘 하세요?",
+      "desc": "서울은 낮 최고 12°로 쌀쌀해요.",
+      "reason": "비가 올 확률이 82%라 저녁 계획이 달라져요.",
       "questions": [
-        "이번 시상식 무대 중에 제일 인상 깊었던 건 뭐예요?",
-        "요즘 자주 듣는 노래는 어떤 거예요?",
-        "시상식은 실시간으로 보는 편이에요, 다음 날 영상으로 보는 편이에요?"
+        "퇴근길에 즐겨 듣는 건 뭐예요?",
+        "퇴근 후 집에 가면 제일 먼저 뭐 하세요?",
+        "이런 날 저녁 루틴이 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "BTS가 MMA에서 6관왕 했대요. 보셨어요?",
-          "follow": "대상도 2개나 받았다더라고요.",
-          "caution": "특정 가수 팬덤을 비교하거나 깎아내리지 마세요."
+          "opener": "퇴근길에 뭐 들으세요?",
+          "follow": "요즘 즐겨 듣는 게 뭐예요?",
+          "caution": "업무 푸념으로 흐르지 마세요."
         },
         "friend": {
-          "opener": "BTS 이번 MMA에서 6관왕 했더라, 봤어?",
-          "follow": "코르티스랑 아이브, 에스파도 대상 받았대.",
-          "caution": "최애 우열 따지기는 피하기."
+          "opener": "퇴근하고 뭐 해?",
+          "follow": "요즘 보는 영상 있어?",
+          "caution": "야근 자랑은 하지 마."
         },
         "date": {
-          "opener": "BTS가 MMA에서 6관왕을 했대요. 시상식 같은 거 챙겨 보세요?",
-          "follow": "요즘 즐겨 듣는 노래가 있는지 물어보세요.",
-          "caution": "취향을 평가하는 말투는 피하세요."
+          "opener": "평일 저녁엔 보통 뭐 하세요?",
+          "follow": "쉬는 날 즐겨 하는 게 있으세요?",
+          "caution": "업무 얘기는 피하세요."
         }
       }
     },
     {
-      "id": "1116-ai-wiki",
-      "cat": "일상",
-      "subtopic": "해외소식",
-      "label": "생활비",
-      "color": "#37474f",
-      "title": "프랑스에서 생활비 문제로 5주째 주말 시위가 열렸대요",
-      "desc": "이번 주말엔 11만 명이 참여했대요.",
-      "reason": "월요일 점심 메뉴 가격이 먼저 보이는 때예요.",
+      "id": "nov17-semicon",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "AI안경",
+      "color": "#5B3FA0",
+      "title": "AI 안경을 빌려 시험 본다는 문의가 있대요",
+      "desc": "대여점에선 '절대 티 안 난다'고 안내한대요.",
+      "reason": "수능을 이틀 앞둔 주라 시험 얘기가 많아요.",
       "questions": [
-        "요즘 점심값 체감이 어때요?",
-        "생활비 중에 제일 크게 느껴지는 항목이 뭐예요?",
-        "외식비 아끼는 나름의 방법 있으세요?"
+        "AI 안경 써 보고 싶으세요?",
+        "스마트 기기 중에 제일 잘 쓰는 건 뭐예요?",
+        "시험 때 부정행위 얘기 들어본 적 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "프랑스에선 생활비 때문에 5주째 주말 시위래요.",
-          "follow": "포르투갈에선 월세 낮춰 달라는 집회도 30곳에서 열렸대요.",
-          "caution": "어느 쪽이 옳은지 편 들지 마세요."
+          "opener": "AI 안경 대여 문의가 많대요.",
+          "follow": "쓸 만한 용도가 뭘까요?",
+          "caution": "부정행위 옹호처럼 들리지 않게 하세요."
         },
         "friend": {
-          "opener": "프랑스는 생활비로 5주째 시위래, 들었어?",
-          "follow": "요즘 점심값은 어때?",
-          "caution": "정치 성향 몰아가지 않기."
+          "opener": "AI 안경 대여한다는데 들었어?",
+          "follow": "넌 써 보고 싶어?",
+          "caution": "시험 얘기로 무겁게 가지 마."
         },
         "date": {
-          "opener": "프랑스에서 생활비 때문에 주말 시위가 이어진대요.",
-          "follow": "요즘 물가 체감이 어떤지 물어보세요.",
-          "caution": "정치 견해를 캐묻지 마세요."
+          "opener": "요즘 AI 안경 얘기 들어보셨어요?",
+          "follow": "쓰는 웨어러블 있으세요?",
+          "caution": "기술 자랑은 피하세요."
         }
-      }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/IPS_Sandeep_Lamba_wearing_smart_AI_glasses_during_20th_July_2026_Sansad_Chalo_March.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     },
     {
-      "id": "1116-nvidia",
+      "id": "nov17-kospi",
       "cat": "경제",
       "subtopic": "주식·투자",
-      "label": "하이닉스",
-      "color": "#0d47a1",
-      "title": "SK하이닉스가 금요일에 3.0% 내렸다던데, 투자 하세요?",
-      "desc": "종가는 121만 6천 원이고 코스피도 1.0% 내렸어요.",
-      "reason": "금요일 마감 뒤 처음 장이 열린 월요일이에요.",
+      "label": "코스피",
+      "color": "#1F3A5F",
+      "title": "코스피가 어제보다 1.6% 내려 5,021이래요",
+      "desc": "삼성전자는 2.8% 내린 19만 1,300원에 마감했어요.",
+      "reason": "수능을 이틀 앞두고 증시도 눈에 띄게 출렁였어요.",
       "questions": [
         "요즘 주식이나 재테크 하세요?",
-        "투자 얘기는 주로 누구랑 나누세요?",
-        "월급 들어오면 제일 먼저 하는 게 뭐예요?"
+        "시장이 출렁일 때 주변에서 어떤 얘기가 나오던가요?",
+        "월급 관리는 어떤 방식으로 하세요?"
       ],
       "tips": {
         "work": {
-          "opener": "하이닉스가 금요일에 3.0% 내렸다던데요.",
-          "follow": "코스피도 1.0% 내렸대요. 투자 하세요?",
-          "caution": "종목 추천이나 전망은 하지 마세요."
+          "opener": "코스피가 어제 1.6% 내렸다던데 보셨어요?",
+          "follow": "삼성전자도 2.8% 내렸더라고요. 요즘 주식 보는 분 계세요?",
+          "caution": "종목 추천이나 전망 얘기는 피하세요."
         },
         "friend": {
-          "opener": "하이닉스 금요일에 3% 빠졌더라, 너 주식 해?",
-          "follow": "요즘 뭐 보고 있어?",
-          "caution": "수익률 캐묻기 금지."
+          "opener": "야 어제 코스피 1.6% 빠졌더라, 너 주식 해?",
+          "follow": "삼전도 2.8% 내렸던데 좀 봤어?",
+          "caution": "수익·손실 액수를 캐묻지 마."
         },
         "date": {
-          "opener": "요즘 주식이나 재테크 관심 있으세요?",
-          "follow": "저축 습관은 어떤지 물어보세요.",
-          "caution": "자산 규모는 묻지 마세요."
+          "opener": "어제 코스피가 좀 내렸다던데, 투자 관심 있으세요?",
+          "follow": "요즘 저축이랑 투자 중에 뭐에 더 마음이 가세요?",
+          "caution": "손익이나 자산 규모를 묻지 마세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Checking_stock_market_prices_%28Unsplash%29.jpg/1280px-Checking_stock_market_prices_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
     },
     {
-      "id": "1116-gimjang-stew",
-      "cat": "음식",
-      "subtopic": "집밥·요리",
-      "label": "국물",
-      "color": "#bf360c",
-      "title": "쌀쌀한 월요일, 저녁에 어떤 국물 드시고 싶어요?",
-      "desc": "서울은 아침 6°에서 낮 16°까지 올라가요.",
-      "reason": "아침 기온이 한 자릿수라 따뜻한 게 당기는 날씨예요.",
-      "questions": [
-        "겨울 되면 꼭 해 먹는 국물 요리가 있어요?",
-        "집에서 제일 자신 있는 찌개는 뭐예요?",
-        "국물 요리에 꼭 넣는 재료가 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오늘 아침 6°라 국물이 당기네요.",
-          "follow": "점심에 뭐 드셨는지 물어보세요.",
-          "caution": "메뉴 취향을 평가하지 마세요."
-        },
-        "friend": {
-          "opener": "오늘 쌀쌀해서 국물 땡기는데 넌 뭐 먹고 싶어?",
-          "follow": "같이 먹으러 갈까?",
-          "caution": "메뉴 고르기를 떠넘기지 않기."
-        },
-        "date": {
-          "opener": "추운 날엔 어떤 국물 요리를 좋아하세요?",
-          "follow": "집에서 만들어 본 요리도 물어보세요.",
-          "caution": "음식 취향을 평가하지 마세요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Korean_stew-Kimchi_jjigae-02.jpg/1280px-Korean_stew-Kimchi_jjigae-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Alpha",
-        "license": "CC BY-SA 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean_stew-Kimchi_jjigae-02.jpg"
-      }
-    },
-    {
-      "id": "1116-kdh-tour",
-      "cat": "문화",
-      "subtopic": "공연·전시",
-      "label": "케데헌",
-      "color": "#c2185b",
-      "title": "'케이팝 데몬 헌터스'가 50개 도시 월드투어를 한대요",
-      "desc": "전 세계 떼창으로 '혼문'을 봉인한다는 콘셉트래요.",
-      "reason": "월요일 아침이라 주말에 뭘 봤는지 묻기 좋아요.",
-      "questions": [
-        "케데헌 노래 중에 제일 자주 들은 곡이 뭐예요?",
-        "콘서트에서 떼창해 본 적 있으세요?",
-        "애니메이션 중에 두 번 이상 본 작품 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "케데헌이 50개 도시 월드투어 한대요. 들으셨어요?",
-          "follow": "전 세계 떼창으로 혼문을 봉인한다는 콘셉트래요.",
-          "caution": "작품 호불호를 단정 짓지 마세요."
-        },
-        "friend": {
-          "opener": "케데헌 월드투어 50개 도시래, 들었어?",
-          "follow": "우리도 떼창하러 가 볼까?",
-          "caution": "티켓 얘기로 부담 주기 금지."
-        },
-        "date": {
-          "opener": "케데헌이 50개 도시 월드투어를 한대요. 보신 적 있으세요?",
-          "follow": "좋아하는 애니메이션이 뭔지 물어보세요.",
-          "caution": "덕질 정도를 캐묻지 마세요."
-        }
-      },
-      "imageAttributed": "https://image.tmdb.org/t/p/original/5fqcLmrgVDicMuGLOa9PKErFP72.jpg",
-      "imageCredit": {
-        "author": "TMDB",
-        "license": "포스터",
-        "text": "포스터: TMDB",
-        "sourceUrl": "https://www.themoviedb.org/movie/803796"
-      },
-      "imageKind": "poster"
-    },
-    {
-      "id": "1116-doomsday",
-      "cat": "문화",
-      "subtopic": "영화",
-      "label": "둠스데이",
-      "color": "#1b5e20",
-      "title": "'어벤져스: 둠스데이' 보도스틸이 공개됐대요",
-      "desc": "닥터 둠이 토르를 한 손으로 제압하는 장면이래요.",
-      "reason": "월요일이라 이번 주 볼 영화를 고르는 분이 많아요.",
-      "questions": [
-        "마블 영화 중에 제일 좋아하는 작품이 뭐예요?",
-        "극장에서 마지막으로 본 영화는 뭐였어요?",
-        "시리즈물은 몰아서 보세요, 개봉마다 보세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "어벤져스 둠스데이 스틸 공개됐대요. 보셨어요?",
-          "follow": "닥터 둠이 토르를 한 손으로 제압한대요.",
-          "caution": "스포일러 얘기는 조심하세요."
-        },
-        "friend": {
-          "opener": "어벤져스 신작 스틸 떴더라, 봤어?",
-          "follow": "마블 중에 뭐가 제일 재밌었어?",
-          "caution": "취향 무시하지 않기."
-        },
-        "date": {
-          "opener": "어벤져스: 둠스데이 스틸이 공개됐대요. 마블 좋아하세요?",
-          "follow": "최근에 본 영화가 뭔지 물어보세요.",
-          "caution": "영화 지식 겨루기는 피하세요."
-        }
-      },
-      "imageAttributed": "https://image.tmdb.org/t/p/original/z0JdEEe4SyR1OGJRbe0ckZ1jvoU.jpg",
-      "imageCredit": {
-        "author": "TMDB",
-        "license": "포스터",
-        "text": "포스터: TMDB",
-        "sourceUrl": "https://www.themoviedb.org/movie/1003596"
-      },
-      "imageKind": "poster"
-    },
-    {
-      "id": "1116-weekend-heater",
+      "id": "nov17-pneumonia",
       "cat": "건강",
       "subtopic": "컨디션·피로",
-      "label": "월요병",
-      "color": "#00695c",
-      "title": "월요일 아침, 몸 깨우려고 하는 습관 있으세요?",
-      "desc": "오늘 서울은 아침 6°에서 낮 16°까지 올라요.",
-      "reason": "일교차가 10° 가까이 나서 몸이 무거울 수 있어요.",
+      "label": "폐렴",
+      "color": "#2E7D6B",
+      "title": "독감 뒤 기침이 길면 폐렴 신호일 수 있대요",
+      "desc": "고열 없이 식욕·기력부터 떨어지는 폐렴도 있대요.",
+      "reason": "기온이 9°에서 12°로 낮아 기침 소리가 늘어요.",
       "questions": [
-        "아침에 눈 뜨자마자 제일 먼저 뭐 하세요?",
-        "피곤한 날 기운 내는 나만의 방법 있어요?",
-        "요즘 스트레칭이나 운동 따로 하세요?"
+        "올겨울 독감 주사 맞으셨어요?",
+        "감기 걸리면 제일 먼저 챙기는 게 뭐예요?",
+        "부모님께 챙겨 드리는 건강 습관 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "월요일이라 그런지 몸이 좀 무겁네요.",
-          "follow": "다들 아침에 뭐 하시는지 물어보세요.",
-          "caution": "건강 상태를 캐묻지 마세요."
+          "opener": "독감 뒤에 기침이 길면 폐렴일 수도 있대요.",
+          "follow": "예방접종은 챙기셨어요?",
+          "caution": "개인 병력은 묻지 마세요."
         },
         "friend": {
-          "opener": "월요일이라 몸이 무거운데 넌 아침에 뭐 해?",
-          "follow": "스트레칭 같은 거 해?",
-          "caution": "훈수 두지 않기."
+          "opener": "독감 나은 뒤 기침 오래가면 폐렴 신호일 수도 있대.",
+          "follow": "너 올해 예방접종 했어?",
+          "caution": "증상 진단하듯 말하지 마."
         },
         "date": {
-          "opener": "아침에 몸 깨우는 습관 있으세요?",
-          "follow": "요즘 하는 운동도 물어보세요.",
-          "caution": "몸매나 체중 얘기는 피하세요."
+          "opener": "요즘 환절기라 기침하는 분들 많던데 건강은 잘 챙기세요?",
+          "follow": "겨울엔 어떤 걸로 몸을 챙기세요?",
+          "caution": "병력 질문은 피하세요."
         }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Young_woman_enjoying_coffee_and_talking_on_phone_in_cozy_room_with_sunny_window_in_the_morning.jpg/1280px-Young_woman_enjoying_coffee_and_talking_on_phone_in_cozy_room_with_sunny_window_in_the_morning.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Shixart1985",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Young_woman_enjoying_coffee_and_talking_on_phone_in_cozy_room_with_sunny_window_in_the_morning.jpg"
       }
     },
     {
-      "id": "1116-suneung",
+      "id": "nov17-suneung",
       "cat": "시즌",
       "subtopic": "기념일",
       "label": "수능",
-      "color": "#e65100",
-      "title": "수능이 사흘 앞인데, 수능 날 어떻게 보내셨어요?",
-      "desc": "수능 아침엔 영하 3도라는 예보도 있어요.",
-      "reason": "3일 뒤가 수능이고 서울은 오늘 최저 6°예요.",
+      "color": "#C0392B",
+      "title": "수능이 이틀 앞이라는데, 그날 기억나세요?",
+      "desc": "수능일이 이틀 뒤로 다가왔어요.",
+      "reason": "모레가 수능이라 동네가 조용히 긴장해요.",
       "questions": [
-        "수능 날 제일 기억나는 장면이 뭐예요?",
-        "수능 끝나고 뭐 하셨어요?",
-        "수험생 때 먹던 간식 기억나세요?"
+        "수능 날 점심 도시락 뭐였어요?",
+        "시험 끝나고 제일 먼저 한 일은요?",
+        "수험생 응원 간식 뭐가 떠오르세요?"
       ],
       "tips": {
         "work": {
-          "opener": "수능이 사흘 남았대요. 그날 기억나세요?",
-          "follow": "그날 점심 도시락은 뭐였는지 물어보세요.",
-          "caution": "성적 얘기는 꺼내지 마세요."
+          "opener": "모레가 수능이래요.",
+          "follow": "수능 날 출근 시간이 바뀌는 건 기억나세요?",
+          "caution": "성적 얘기는 피하세요."
         },
         "friend": {
-          "opener": "수능 3일 남았다, 그날 뭐 했는지 기억나?",
-          "follow": "끝나고 제일 먼저 한 게 뭐였어?",
-          "caution": "점수 비교 금지."
+          "opener": "수능 이틀 남았다는데 너 그날 뭐 했는지 기억나?",
+          "follow": "끝나고 뭐 먹었어?",
+          "caution": "점수는 묻지 마."
         },
         "date": {
-          "opener": "수능 날 어떻게 보내셨는지 기억나세요?",
-          "follow": "끝나고 뭐 했는지 물어보세요.",
-          "caution": "학벌 얘기는 피하세요."
+          "opener": "수능 날 기억나세요?",
+          "follow": "그때 힘이 된 간식 있으세요?",
+          "caution": "학벌 질문은 피하세요."
+        }
+      }
+    },
+    {
+      "id": "nov17-rain",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "겨울비",
+      "color": "#3F5E7A",
+      "title": "오늘 비 소식 있던데, 퇴근길은 어떠세요?",
+      "desc": "서울 강수확률이 82%인데 낮 최고는 12°예요.",
+      "reason": "기온이 11°라 비까지 오면 한층 쌀쌀해요.",
+      "questions": [
+        "비 오는 날 퇴근길엔 뭐 들으세요?",
+        "쌀쌀한 비 오는 저녁엔 뭐 드세요?",
+        "비 오는 날 가장 좋아하는 장소는요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 온다던데 퇴근길 괜찮으세요?",
+          "follow": "이런 날 점심은 뭐 드셨어요?",
+          "caution": "출근 불평으로 흐르지 않게 하세요."
+        },
+        "friend": {
+          "opener": "오늘 비 오고 쌀쌀한데 저녁 뭐 먹을래?",
+          "follow": "이런 날 생각나는 메뉴 있어?",
+          "caution": "푸념만 하지 마."
+        },
+        "date": {
+          "opener": "비 오는 날 좋아하세요?",
+          "follow": "이런 날 가고 싶은 카페 있으세요?",
+          "caution": "날씨 불평은 피하세요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Students_returning_from_the_exam_location_%28Puhung_High_School%29_after_taking_South_Korea_College_Scholastic_Ability_Test%2C_2018_%282%29.jpg/1280px-Students_returning_from_the_exam_location_%28Puhung_High_School%29_after_taking_South_Korea_College_Scholastic_Ability_Test%2C_2018_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg/1280px-Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "고려",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Students_returning_from_the_exam_location_(Puhung_High_School)_after_taking_South_Korea_College_Scholastic_Ability_Test,_2018_(2).jpg"
+        "author": "hojusaram from Seoul",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg"
       }
+    },
+    {
+      "id": "nov17-kimjang",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "굴국",
+      "color": "#B5532A",
+      "title": "쌀쌀한 날엔 어떤 뜨끈한 음식이 생각나세요?",
+      "desc": "서울 아침 최저는 9°, 낮에도 12°에 그쳐요.",
+      "reason": "김장철이라 겨울 반찬 이야기도 오가요.",
+      "questions": [
+        "겨울이면 꼭 먹는 음식 있으세요?",
+        "집에서 해 먹는 국물 요리는요?",
+        "김장 김치로 해 먹는 요리 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "날이 쌀쌀해서 뜨끈한 게 땡기네요.",
+          "follow": "점심에 뭐 드셨어요?",
+          "caution": "메뉴 논쟁은 피하세요."
+        },
+        "friend": {
+          "opener": "요즘 뜨끈한 거 땡기지 않아?",
+          "follow": "너 겨울 최애 메뉴 뭐야?",
+          "caution": "다이어트 얘기는 피해."
+        },
+        "date": {
+          "opener": "쌀쌀한 날엔 어떤 음식이 생각나세요?",
+          "follow": "좋아하는 국물 요리 있으세요?",
+          "caution": "음식 취향 평가는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Kimchi_jjigae_-_San_Francisco%2C_CA.jpg/1280px-Kimchi_jjigae_-_San_Francisco%2C_CA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     }
   ]
 }

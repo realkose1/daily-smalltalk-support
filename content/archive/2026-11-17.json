@@ -1,0 +1,241 @@
+{
+  "date": "2026-11-17",
+  "dateLabel": "11월 17일 화요일",
+  "generatedAt": "2026-11-17T02:36:57.115Z",
+  "topics": [
+    {
+      "id": "nov17-weeknight",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "퇴근",
+      "color": "#4A6741",
+      "title": "비 오는 화요일 퇴근길엔 뭘 하세요?",
+      "desc": "서울은 낮 최고 12°로 쌀쌀해요.",
+      "reason": "비가 올 확률이 82%라 저녁 계획이 달라져요.",
+      "questions": [
+        "퇴근길에 즐겨 듣는 건 뭐예요?",
+        "퇴근 후 집에 가면 제일 먼저 뭐 하세요?",
+        "이런 날 저녁 루틴이 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "퇴근길에 뭐 들으세요?",
+          "follow": "요즘 즐겨 듣는 게 뭐예요?",
+          "caution": "업무 푸념으로 흐르지 마세요."
+        },
+        "friend": {
+          "opener": "퇴근하고 뭐 해?",
+          "follow": "요즘 보는 영상 있어?",
+          "caution": "야근 자랑은 하지 마."
+        },
+        "date": {
+          "opener": "평일 저녁엔 보통 뭐 하세요?",
+          "follow": "쉬는 날 즐겨 하는 게 있으세요?",
+          "caution": "업무 얘기는 피하세요."
+        }
+      }
+    },
+    {
+      "id": "nov17-semicon",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "AI안경",
+      "color": "#5B3FA0",
+      "title": "AI 안경을 빌려 시험 본다는 문의가 있대요",
+      "desc": "대여점에선 '절대 티 안 난다'고 안내한대요.",
+      "reason": "수능을 이틀 앞둔 주라 시험 얘기가 많아요.",
+      "questions": [
+        "AI 안경 써 보고 싶으세요?",
+        "스마트 기기 중에 제일 잘 쓰는 건 뭐예요?",
+        "시험 때 부정행위 얘기 들어본 적 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "AI 안경 대여 문의가 많대요.",
+          "follow": "쓸 만한 용도가 뭘까요?",
+          "caution": "부정행위 옹호처럼 들리지 않게 하세요."
+        },
+        "friend": {
+          "opener": "AI 안경 대여한다는데 들었어?",
+          "follow": "넌 써 보고 싶어?",
+          "caution": "시험 얘기로 무겁게 가지 마."
+        },
+        "date": {
+          "opener": "요즘 AI 안경 얘기 들어보셨어요?",
+          "follow": "쓰는 웨어러블 있으세요?",
+          "caution": "기술 자랑은 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/IPS_Sandeep_Lamba_wearing_smart_AI_glasses_during_20th_July_2026_Sansad_Chalo_March.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "nov17-kospi",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "코스피",
+      "color": "#1F3A5F",
+      "title": "코스피가 어제보다 1.6% 내려 5,021이래요",
+      "desc": "삼성전자는 2.8% 내린 19만 1,300원에 마감했어요.",
+      "reason": "수능을 이틀 앞두고 증시도 눈에 띄게 출렁였어요.",
+      "questions": [
+        "요즘 주식이나 재테크 하세요?",
+        "시장이 출렁일 때 주변에서 어떤 얘기가 나오던가요?",
+        "월급 관리는 어떤 방식으로 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "코스피가 어제 1.6% 내렸다던데 보셨어요?",
+          "follow": "삼성전자도 2.8% 내렸더라고요. 요즘 주식 보는 분 계세요?",
+          "caution": "종목 추천이나 전망 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "야 어제 코스피 1.6% 빠졌더라, 너 주식 해?",
+          "follow": "삼전도 2.8% 내렸던데 좀 봤어?",
+          "caution": "수익·손실 액수를 캐묻지 마."
+        },
+        "date": {
+          "opener": "어제 코스피가 좀 내렸다던데, 투자 관심 있으세요?",
+          "follow": "요즘 저축이랑 투자 중에 뭐에 더 마음이 가세요?",
+          "caution": "손익이나 자산 규모를 묻지 마세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "nov17-pneumonia",
+      "cat": "건강",
+      "subtopic": "컨디션·피로",
+      "label": "폐렴",
+      "color": "#2E7D6B",
+      "title": "독감 뒤 기침이 길면 폐렴 신호일 수 있대요",
+      "desc": "고열 없이 식욕·기력부터 떨어지는 폐렴도 있대요.",
+      "reason": "기온이 9°에서 12°로 낮아 기침 소리가 늘어요.",
+      "questions": [
+        "올겨울 독감 주사 맞으셨어요?",
+        "감기 걸리면 제일 먼저 챙기는 게 뭐예요?",
+        "부모님께 챙겨 드리는 건강 습관 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "독감 뒤에 기침이 길면 폐렴일 수도 있대요.",
+          "follow": "예방접종은 챙기셨어요?",
+          "caution": "개인 병력은 묻지 마세요."
+        },
+        "friend": {
+          "opener": "독감 나은 뒤 기침 오래가면 폐렴 신호일 수도 있대.",
+          "follow": "너 올해 예방접종 했어?",
+          "caution": "증상 진단하듯 말하지 마."
+        },
+        "date": {
+          "opener": "요즘 환절기라 기침하는 분들 많던데 건강은 잘 챙기세요?",
+          "follow": "겨울엔 어떤 걸로 몸을 챙기세요?",
+          "caution": "병력 질문은 피하세요."
+        }
+      }
+    },
+    {
+      "id": "nov17-suneung",
+      "cat": "시즌",
+      "subtopic": "기념일",
+      "label": "수능",
+      "color": "#C0392B",
+      "title": "수능이 이틀 앞이라는데, 그날 기억나세요?",
+      "desc": "수능일이 이틀 뒤로 다가왔어요.",
+      "reason": "모레가 수능이라 동네가 조용히 긴장해요.",
+      "questions": [
+        "수능 날 점심 도시락 뭐였어요?",
+        "시험 끝나고 제일 먼저 한 일은요?",
+        "수험생 응원 간식 뭐가 떠오르세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "모레가 수능이래요.",
+          "follow": "수능 날 출근 시간이 바뀌는 건 기억나세요?",
+          "caution": "성적 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "수능 이틀 남았다는데 너 그날 뭐 했는지 기억나?",
+          "follow": "끝나고 뭐 먹었어?",
+          "caution": "점수는 묻지 마."
+        },
+        "date": {
+          "opener": "수능 날 기억나세요?",
+          "follow": "그때 힘이 된 간식 있으세요?",
+          "caution": "학벌 질문은 피하세요."
+        }
+      }
+    },
+    {
+      "id": "nov17-rain",
+      "cat": "날씨",
+      "subtopic": "비·장마",
+      "label": "겨울비",
+      "color": "#3F5E7A",
+      "title": "오늘 비 소식 있던데, 퇴근길은 어떠세요?",
+      "desc": "서울 강수확률이 82%인데 낮 최고는 12°예요.",
+      "reason": "기온이 11°라 비까지 오면 한층 쌀쌀해요.",
+      "questions": [
+        "비 오는 날 퇴근길엔 뭐 들으세요?",
+        "쌀쌀한 비 오는 저녁엔 뭐 드세요?",
+        "비 오는 날 가장 좋아하는 장소는요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 비 온다던데 퇴근길 괜찮으세요?",
+          "follow": "이런 날 점심은 뭐 드셨어요?",
+          "caution": "출근 불평으로 흐르지 않게 하세요."
+        },
+        "friend": {
+          "opener": "오늘 비 오고 쌀쌀한데 저녁 뭐 먹을래?",
+          "follow": "이런 날 생각나는 메뉴 있어?",
+          "caution": "푸념만 하지 마."
+        },
+        "date": {
+          "opener": "비 오는 날 좋아하세요?",
+          "follow": "이런 날 가고 싶은 카페 있으세요?",
+          "caution": "날씨 불평은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg/1280px-Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "hojusaram from Seoul",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul-Insadong-Bindaetteok_and_makgeolli-01.jpg"
+      }
+    },
+    {
+      "id": "nov17-kimjang",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "굴국",
+      "color": "#B5532A",
+      "title": "쌀쌀한 날엔 어떤 뜨끈한 음식이 생각나세요?",
+      "desc": "서울 아침 최저는 9°, 낮에도 12°에 그쳐요.",
+      "reason": "김장철이라 겨울 반찬 이야기도 오가요.",
+      "questions": [
+        "겨울이면 꼭 먹는 음식 있으세요?",
+        "집에서 해 먹는 국물 요리는요?",
+        "김장 김치로 해 먹는 요리 뭐예요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "날이 쌀쌀해서 뜨끈한 게 땡기네요.",
+          "follow": "점심에 뭐 드셨어요?",
+          "caution": "메뉴 논쟁은 피하세요."
+        },
+        "friend": {
+          "opener": "요즘 뜨끈한 거 땡기지 않아?",
+          "follow": "너 겨울 최애 메뉴 뭐야?",
+          "caution": "다이어트 얘기는 피해."
+        },
+        "date": {
+          "opener": "쌀쌀한 날엔 어떤 음식이 생각나세요?",
+          "follow": "좋아하는 국물 요리 있으세요?",
+          "caution": "음식 취향 평가는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Kimchi_jjigae_-_San_Francisco%2C_CA.jpg/1280px-Kimchi_jjigae_-_San_Francisco%2C_CA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    }
+  ]
+}
