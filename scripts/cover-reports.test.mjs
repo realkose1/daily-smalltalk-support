@@ -9,7 +9,8 @@ import { join } from 'node:path';
 import {
   coverFileKey, coverBlocklist, isCoverBlocked, shippedCovers, groupCoverReports,
   handBlocklistKeys, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
-  wikimediaThumb, judgeCandidates, coverFromVerdict, judgeStatus, mediaTitleCore,
+  wikimediaThumb, judgeCandidates, judgeStatus, mediaTitleCore,
+  rankByLevel, photoLevels, coverFromLevels, slotCandidates, poolFallbacks, fallbackTags,
   coverSlotsOf, applyCoverSlots, cleanRetryQueries, interleave, retryTargets, mergeRetryCover,
   parseCoverPool, loadCoverPool, poolMatches,
 } from './cover-reports.mjs';
@@ -154,18 +155,31 @@ test('judgeCandidates: today\'s picks first, then alternating free / attributed,
   assert.deepEqual(judgeCandidates([s1], [s1, s2, s3, f2], { max: 3 }).map((c) => c.url), [s1, f2, s2].map((c) => c.url));
 });
 
-test('coverFromVerdict: fills both slots from the ranked fits, none → gradient', () => {
+test('coverFromLevels: fills both slots from good, then ok; all wrong → gradient', () => {
   const [a1, f1, a2, f2] = [C(1, false), C(2, true), C(3, false), C(4, true)];
   const shown = [a1, f1, a2, f2];
-  assert.deepEqual(coverFromVerdict(shown, [1, 2]), { image: f1, attributed: a1 });
-  assert.deepEqual(coverFromVerdict(shown, [4, 1]), { image: f2, attributed: null }, 'best fit is free → image carries it');
-  assert.deepEqual(coverFromVerdict(shown, [3]), { image: null, attributed: a2 }, 'only an attributed photo fits');
-  assert.deepEqual(coverFromVerdict(shown, []), { image: null, attributed: null }, 'nothing fits → gradient');
-  assert.deepEqual(coverFromVerdict(shown, [9, 0, -1, 2.5, '2']), { image: null, attributed: null }, 'out-of-range / malformed indices ignored');
-  assert.deepEqual(coverFromVerdict(shown, [2, 2, 1]), { image: f1, attributed: null });
-  assert.deepEqual(coverFromVerdict([f1, f2], [2], { poster: true }), { image: f2, attributed: undefined });
-  assert.deepEqual(coverFromVerdict([f1], [], { poster: true }), { image: null, attributed: undefined });
-  assert.deepEqual(coverFromVerdict(shown, null), { image: null, attributed: null });
+  const L = (good = [], ok = []) => ({ good, ok });
+  assert.deepEqual(coverFromLevels(shown, L([1, 2])), { image: f1, attributed: a1, level: 'good' });
+  assert.deepEqual(coverFromLevels(shown, L([4, 1])), { image: f2, attributed: null, level: 'good' }, 'best is free → image carries it');
+  assert.deepEqual(coverFromLevels(shown, L([3])), { image: null, attributed: a2, level: 'good' }, 'only an attributed photo is good');
+  // ok ships when nothing is good — the 2026-11-15..17 judge sent these cards to the gradient.
+  assert.deepEqual(coverFromLevels(shown, L([], [3, 2])), { image: f1, attributed: a2, level: 'ok' });
+  assert.deepEqual(coverFromLevels(shown, L([2], [1])), { image: f1, attributed: null, level: 'good' }, 'a good free photo beats an ok attributed one');
+  assert.deepEqual(coverFromLevels(shown, L([3], [4])), { image: f2, attributed: a2, level: 'good' }, 'old builds still get the ok free photo');
+  assert.deepEqual(coverFromLevels(shown, L()), { image: null, attributed: null, level: null }, 'all wrong → gradient');
+  assert.deepEqual(coverFromLevels(shown, L([9, 0, -1, 2.5, '2'], [7])), { image: null, attributed: null, level: null }, 'out-of-range / malformed numbers ignored');
+  assert.deepEqual(coverFromLevels(shown, L([2, 2], [2, 1])), { image: f1, attributed: null, level: 'good' }, 'a number in both lists counts as good');
+  assert.deepEqual(coverFromLevels([f1, f2], L([], [2]), { poster: true }), { image: f2, attributed: undefined, level: 'ok' });
+  assert.deepEqual(coverFromLevels([f1], L(), { poster: true }), { image: null, attributed: undefined, level: null });
+  assert.deepEqual(coverFromLevels(shown, null), { image: null, attributed: null, level: null });
+  assert.deepEqual(coverFromLevels(shown, { good: null, ok: 'x' }), { image: null, attributed: null, level: null });
+});
+
+test('photoLevels: one level per shown photo, for the log', () => {
+  assert.deepEqual(photoLevels(4, { good: [3], ok: [1, 3] }), ['ok', 'wrong', 'good', 'wrong']);
+  assert.deepEqual(photoLevels(2, { good: [], ok: [] }), ['wrong', 'wrong']);
+  assert.deepEqual(photoLevels(0, { good: [1], ok: [] }), []);
+  assert.deepEqual(photoLevels(2, null), ['wrong', 'wrong']);
 });
 
 test('mediaTitleCore: 극장판 / the Movie markers off, the title itself untouched', () => {
@@ -333,36 +347,88 @@ test('interleave: round-robin, uneven lengths', () => {
   assert.deepEqual(interleave(), []);
 });
 
-test('retryTargets: photo-less cards first, then weak fits; posters and unanswered cards skipped; capped', () => {
-  const v = { fits: [] };
+test('retryTargets: only cards with no good / ok photo and something to try; searches capped, the rest still get pool / fallbacks', () => {
+  const v = { good: [], ok: [] };
   const cards = [
-    { id: 'kept', verdict: { fits: [1] }, fits: [1], hasCover: true, retry: [] },
-    { id: 'weak', verdict: { fits: [2] }, fits: [2], hasCover: true, retry: ['korea exchange seoul'] },
-    { id: 'none-q', verdict: v, fits: [], hasCover: false, retry: ['bungeoppang'] },
-    { id: 'none-pool', verdict: v, fits: [], hasCover: false, retry: [], poolCount: 1 },
-    { id: 'none-nothing', verdict: v, fits: [], hasCover: false, retry: [], poolCount: 0 },
-    { id: 'poster', poster: true, verdict: v, fits: [], hasCover: true, retry: ['tv drama'] },
-    { id: 'unanswered', fits: [], hasCover: false, retry: ['x y z'] },
+    { id: 'kept', verdict: { good: [1], ok: [] }, hasCover: true, retry: [] },
+    { id: 'ok-with-retry', verdict: { good: [], ok: [2] }, hasCover: true, retry: ['korea exchange seoul'] },
+    { id: 'none-q', verdict: v, hasCover: false, retry: ['bungeoppang'] },
+    { id: 'none-pool', verdict: v, hasCover: false, retry: [], poolCount: 1 },
+    { id: 'none-fallback', verdict: v, hasCover: false, retry: [], poolCount: 0, fallbackCount: 2 },
+    { id: 'none-nothing', verdict: v, hasCover: false, retry: [], poolCount: 0, fallbackCount: 0 },
+    { id: 'none-q2', verdict: v, hasCover: false, retry: ['students exam hall'] },
+    { id: 'poster', poster: true, verdict: v, hasCover: true, retry: ['tv drama'] },
+    { id: 'unanswered', hasCover: false, retry: ['x y z'] },
   ];
-  const { picked, skipped } = retryTargets(cards);
-  assert.deepEqual(picked.map((c) => [c.id, c.kind]), [['none-q', 'none'], ['none-pool', 'none'], ['weak', 'weak']]);
-  assert.deepEqual(skipped, []);
-  const capped = retryTargets(cards, { max: 2 });
-  assert.deepEqual(capped.picked.map((c) => c.id), ['none-q', 'none-pool']);
-  assert.deepEqual(capped.skipped.map((c) => c.id), ['weak']);
-  assert.deepEqual(retryTargets(null), { picked: [], skipped: [] });
+  assert.deepEqual(retryTargets(cards).map((c) => [c.id, c.search]),
+    [['none-q', true], ['none-pool', false], ['none-fallback', false], ['none-q2', true]]);
+  assert.deepEqual(retryTargets(cards, { searchMax: 1 }).map((c) => [c.id, c.search]),
+    [['none-q', true], ['none-pool', false], ['none-fallback', false], ['none-q2', false]], 'over the search cap: still a target, no search');
+  assert.deepEqual(retryTargets(null), []);
 });
 
-test('coverFromVerdict: a fresh search result beats a pool photo when both fit; the pool fills when it alone fits', () => {
+test('rankByLevel: good before ok; fresh search before pool within a level; category fallbacks last', () => {
   const { photos } = parseCoverPool(SAMPLE_POOL);
-  const [poolFree, poolPaid] = photos;
+  const [poolFree, poolPaid, poolGoguma] = photos;
+  const fbFree = { ...poolGoguma, fallback: true };
   const [a1, f1] = [C(1, false), C(2, true)];
-  const shown = [f1, a1, poolFree, poolPaid];
-  assert.deepEqual(coverFromVerdict(shown, [3, 1]), { image: f1, attributed: null }, 'judge ranked the pool photo first; fresh wins');
-  assert.deepEqual(coverFromVerdict(shown, [4, 2]), { image: null, attributed: a1 });
-  assert.deepEqual(coverFromVerdict(shown, [3]), { image: poolFree, attributed: null }, 'free pool photo → image');
-  assert.deepEqual(coverFromVerdict(shown, [4]), { image: null, attributed: poolPaid }, 'non-free pool photo → attributed');
-  assert.deepEqual(coverFromVerdict(shown, [4, 3]), { image: poolFree, attributed: poolPaid }, 'judge order kept among pool photos');
+  const shown = [f1, a1, poolFree, poolPaid, fbFree];
+  const order = (levels) => rankByLevel(shown, levels).map((x) => `${x.n}:${x.level}`);
+  assert.deepEqual(order({ good: [3, 1], ok: [] }), ['1:good', '3:good'], 'judge put the pool photo first; fresh wins the tie');
+  assert.deepEqual(order({ good: [5, 4], ok: [2, 3] }), ['4:good', '2:ok', '3:ok', '5:good'], 'a good pool photo beats ok search; a good fallback comes last');
+  assert.deepEqual(order({ good: [], ok: [5, 4, 2] }), ['2:ok', '4:ok', '5:ok']);
+  // The slots, through coverFromLevels.
+  assert.deepEqual(coverFromLevels(shown, { good: [3, 1], ok: [] }), { image: f1, attributed: null, level: 'good' });
+  assert.deepEqual(coverFromLevels(shown, { good: [], ok: [4, 2] }), { image: null, attributed: a1, level: 'ok' });
+  assert.deepEqual(coverFromLevels(shown, { good: [3], ok: [] }), { image: poolFree, attributed: null, level: 'good' }, 'free pool photo → image');
+  assert.deepEqual(coverFromLevels(shown, { good: [4], ok: [] }), { image: null, attributed: poolPaid, level: 'good' }, 'non-free pool photo → attributed');
+  assert.deepEqual(coverFromLevels(shown, { good: [], ok: [5] }), { image: fbFree, attributed: null, level: 'ok' }, 'the last resort ships when it is all there is');
+});
+
+test('slotCandidates: pool matches get reserved slots (2 of 4) and are never crowded out', () => {
+  const s = [C(1, false), C(2, true), C(3, false), C(4, true), C(5, true)];
+  const { photos } = parseCoverPool(SAMPLE_POOL);
+  const [q1, q2, q3] = photos;
+  const ids = (list) => list.map((c) => c.name);
+  // 2026-11-17 퇴근길: four search results and one pool match → the pool match is shown.
+  assert.deepEqual(ids(slotCandidates({ search: s, pool: [q1], max: 4 })), [s[0].name, s[1].name, s[2].name, q1.name]);
+  assert.deepEqual(ids(slotCandidates({ search: s, pool: [q1, q2, q3], max: 4 })), [s[0].name, s[1].name, q1.name, q2.name], 'two reserved, no more while search can fill');
+  assert.deepEqual(ids(slotCandidates({ search: [s[0]], pool: [q1, q2, q3], max: 4 })), [s[0].name, q1.name, q2.name, q3.name], 'search short → more pool');
+  assert.deepEqual(ids(slotCandidates({ search: s, pool: [], max: 4 })), ids(s.slice(0, 4)), 'no pool → all search');
+  // Today's picks always come first and count against the max.
+  assert.deepEqual(ids(slotCandidates({ picks: [s[4], s[3]], search: s, pool: [q1, q2], max: 4 })), [s[4].name, s[3].name, q1.name, q2.name]);
+  assert.deepEqual(ids(slotCandidates({ picks: [s[4]], search: s, pool: [q1, q2], max: 3 })), [s[4].name, q1.name, q2.name], 'poster card (max 3)');
+  // Distinct files: a pool photo that is also a search result appears once.
+  const same = { ...s[0], pool: true };
+  assert.equal(slotCandidates({ search: s, pool: [same], max: 4 }).length, 4);
+  assert.deepEqual(slotCandidates({}), []);
+});
+
+test('poolFallbacks: generic pool photos for the card\'s category, exact tags, fresh before recent, skips taken / blocked', () => {
+  const pool = parseCoverPool({ photos: [
+    { url: T('Metro.jpg'), file: 'Metro.jpg', free: true, tags: ['출근길', '지하철', '대중교통'] },
+    { url: T('Bus.jpg'), file: 'Bus.jpg', free: false, credit: { author: 'B', license: 'CC BY 2.0' }, tags: ['버스', '대중교통', '출근길'] },
+    { url: T('Desk.jpg'), file: 'Desk.jpg', free: true, tags: ['업무', '재택근무', '노트북'] },
+    { url: T('Coffee.jpg'), file: 'Coffee.jpg', free: true, tags: ['커피', '카페', '커피 한잔'] },
+    { url: T('Coin.jpg'), file: 'Coin.jpg', free: true, tags: ['비트코인', '투자'] },
+  ] }).photos;
+  const ids = (list) => list.map((c) => c.name);
+  assert.deepEqual(fallbackTags('커리어', '출퇴근'), ['출근길', '퇴근길', '대중교통', '출퇴근', '업무']);
+  assert.deepEqual(fallbackTags('음식', '커피·음료').slice(0, 4), ['커피', '카페', '음료', '한식']);
+  assert.deepEqual(fallbackTags('없는카테고리', ''), []);
+  const commute = poolFallbacks(pool, { cat: '커리어', subtopic: '출퇴근' });
+  assert.deepEqual(ids(commute), ['Metro.jpg', 'Bus.jpg']);
+  assert.ok(commute.every((c) => c.fallback && c.pool));
+  assert.deepEqual(commute[0].poolHits, ['출근길']);
+  // A recently shown one waits behind a fresh one; taken / blocked never appear.
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '커리어', subtopic: '출퇴근', recent: new Set([T('Metro.jpg')]) })), ['Bus.jpg', 'Desk.jpg']);
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '커리어', subtopic: '출퇴근', recent: new Set([T('Metro.jpg')]), max: 3 })), ['Bus.jpg', 'Desk.jpg', 'Metro.jpg'], 'recent only when nothing fresh is left');
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '커리어', subtopic: '출퇴근', exclude: new Set([coverFileKey(T('Metro.jpg'))]) })), ['Bus.jpg', 'Desk.jpg']);
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '커리어', subtopic: '출퇴근', blocked: new Set([coverFileKey(T('Bus.jpg'))]) })), ['Metro.jpg', 'Desk.jpg']);
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '커리어', subtopic: '출퇴근', freeOnly: true, max: 5 })), ['Metro.jpg', 'Desk.jpg']);
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '경제', subtopic: '주식·투자' })), ['Coin.jpg']);
+  assert.deepEqual(ids(poolFallbacks(pool, { cat: '취미', subtopic: '스포츠' })), [], 'nothing in the pool for this category');
+  assert.deepEqual(poolFallbacks([], { cat: '커리어', subtopic: '출퇴근' }), []);
 });
 
 test('round 2 merge: fills a photo-less card with the same field rules as round 1, never drops round 1', () => {
@@ -370,7 +436,7 @@ test('round 2 merge: fills a photo-less card with the same field rules as round 
   const [poolFree, poolPaid] = photos;
   const credit = { author: 'A9', license: 'CC BY 4.0' };
   const apply = (t, shown, fits) => {
-    const m = mergeRetryCover(coverSlotsOf(t), coverFromVerdict(shown, fits));
+    const m = mergeRetryCover(coverSlotsOf(t), coverFromLevels(shown, { good: [], ok: fits }));
     if (m.changed) applyCoverSlots(t, m);
     return { t, changed: m.changed };
   };
@@ -387,7 +453,7 @@ test('round 2 merge: fills a photo-less card with the same field rules as round 
   r = apply({ id: 'boiler' }, [poolFree], []);
   assert.deepEqual([r.changed, r.t], [false, { id: 'boiler' }]);
 
-  // A weak round-1 cover is kept when round 2 finds nothing better…
+  // A round-1 cover is kept when round 2 finds nothing good or ok…
   const weak = () => ({ id: 'hynix', image: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Old.jpg', imageAttributed: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Weak.jpg', imageCredit: credit });
   r = apply(weak(), [C(3, false), C(4, true)], []);
   assert.deepEqual([r.changed, r.t], [false, weak()]);

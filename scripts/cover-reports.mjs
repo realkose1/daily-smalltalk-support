@@ -394,26 +394,89 @@ export function judgeCandidates(picks, pool, { max = 4, freeOnly = false, recent
   return out;
 }
 
-// The judge's verdict → the card's two slots. `shown` are the candidates the
-// model saw (1-based in `fits`, best first; [] = none fits).
-//   image      — the best fitting attribution-free photo, or null (gradient on
-//                builds without credit lines)
-//   attributed — the best fitting photo when it needs a credit, or null: when
-//                the best fit is free, `image` carries it. Untouched (undefined)
-//                on a poster card, whose attributed slot is the poster.
-// A hand-vetted pool photo (`pool: true`) that fits ranks behind every fresh
-// search result that fits, whatever order the judge gave: the pool is the
-// safety net for a card the search can't serve, and letting it win whenever it
-// fits would put the same few pool photos in the deck every day.
-export function coverFromVerdict(shown, fits, { poster = false } = {}) {
-  const fit = [...new Set(Array.isArray(fits) ? fits : [])]
-    .map((i) => (Number.isInteger(i) ? shown[i - 1] : null))
-    .filter(Boolean);
-  const ok = [...fit.filter((c) => !c.pool), ...fit.filter((c) => c.pool)];
-  const image = ok.find((c) => c.free) || null;
-  if (poster) return { image, attributed: undefined };
-  const top = ok[0] || null;
-  return { image, attributed: top && !top.free ? top : null };
+// The judge rates every candidate good / ok / wrong (since 2026-11-18; the
+// yes/no "fits" bar left 2–4 of 8 cards a day on the gradient, rejecting a
+// BTS photo for a BTS award story and a campus gate for 수능). Its answer lists
+// the 1-based photo numbers it rates `good` and `ok`, best first within each;
+// every other photo is wrong. A number in both lists counts as good; numbers
+// out of range or repeated are ignored.
+// → the photos that may ship, best first: { c, level, n }[]
+//   good, fresh search result     (whatever the judge said, a fresh photo
+//   good, hand-vetted pool photo   beats a pool photo of the same level: the
+//   ok,   fresh search result      pool is the safety net, and letting it win
+//   ok,   pool photo               every tie would put the same few pool photos
+//   good, category fallback        in the deck every day)
+//   ok,   category fallback       — the last resort: a generic pool photo for
+//                                   the card's category (see poolFallbacks)
+export const LEVELS = ['good', 'ok', 'wrong'];
+export function rankByLevel(shown, levels) {
+  const { good = [], ok = [] } = levels || {};
+  const list = Array.isArray(shown) ? shown : [];
+  const seen = new Set();
+  const take = (nums, level) => {
+    const out = [];
+    for (const n of Array.isArray(nums) ? nums : []) {
+      if (!Number.isInteger(n) || n < 1 || n > list.length || seen.has(n) || !list[n - 1]) continue;
+      seen.add(n);
+      out.push({ c: list[n - 1], level, n });
+    }
+    return out;
+  };
+  const g = take(good, 'good');
+  const o = take(ok, 'ok');
+  const fresh = (x) => !x.c.pool && !x.c.fallback;
+  const pool = (x) => x.c.pool && !x.c.fallback;
+  const fb = (x) => !!x.c.fallback;
+  return [...g.filter(fresh), ...g.filter(pool), ...o.filter(fresh), ...o.filter(pool), ...g.filter(fb), ...o.filter(fb)];
+}
+
+// Per photo, in shown order: 'good' | 'ok' | 'wrong' — for the log.
+export function photoLevels(count, levels) {
+  const level = new Map();
+  for (const x of rankByLevel(Array.from({ length: count }, () => ({})), levels)) level.set(x.n, x.level);
+  return Array.from({ length: count }, (_, i) => level.get(i + 1) || 'wrong');
+}
+
+// The judge's levels → the card's two slots.
+//   image      — the best attribution-free photo that is not wrong, or null
+//                (gradient on builds without credit lines)
+//   attributed — the best photo when it needs a credit, or null: when the best
+//                is free, `image` carries it. Untouched (undefined) on a poster
+//                card, whose attributed slot is the poster.
+//   level      — the level of the card's main cover ('good' | 'ok'), or null
+export function coverFromLevels(shown, levels, { poster = false } = {}) {
+  const ranked = rankByLevel(shown, levels);
+  const image = ranked.find((x) => x.c.free)?.c || null;
+  if (poster) return { image, attributed: undefined, level: ranked.find((x) => x.c.free)?.level || null };
+  const top = ranked[0] || null;
+  return { image, attributed: top && !top.c.free ? top.c : null, level: top?.level || null };
+}
+
+// One card's candidate list: `picks` (today's keyword picks — the judge can only
+// overrule what it has seen) first, then RESERVED slots for the hand-vetted pool
+// matches — min(reserve, how many matched) of the `max`, so a pool photo can
+// no longer be crowded out by four search results (2026-11-17: the 퇴근길 card's
+// pool match, score 5, never reached the judge) — then search results, then
+// more pool photos if the search ran short. Distinct files only.
+// → [...picks, ...search, ...pool] in that display order.
+export function slotCandidates({ picks = [], search = [], pool = [], max = 4, reserve = 2 } = {}) {
+  const seen = new Set();
+  const P = [];
+  const S = [];
+  const Q = [];
+  const room = () => max - P.length - S.length - Q.length;
+  const add = (c, into) => {
+    const k = c?.url ? coverFileKey(c.url) : null;
+    if (!k || seen.has(k) || room() <= 0) return;
+    seen.add(k);
+    into.push(c);
+  };
+  for (const c of picks || []) add(c, P);
+  const keep = Math.min(reserve, (pool || []).length);
+  for (const c of pool || []) { if (Q.length >= keep) break; add(c, Q); }
+  for (const c of search || []) add(c, S);
+  for (const c of pool || []) add(c, Q);
+  return [...P, ...S, ...Q];
 }
 
 // The card's two slots as candidate-shaped objects, for mergeRetryCover.
@@ -441,13 +504,13 @@ export function applyCoverSlots(t, { image, attributed } = {}, { poster = false 
   return t;
 }
 
-// --- cover judge, round 2: a second search for the cards round 1 turned down --
-// Round 1 can only choose among what the keyword search found; on 2026-11-15 it
-// rightly turned down 4 of 8 cards (붕어빵 → foreign dishes, a Mississippi
-// riverboat story → the Nile, Hue and London). Having just seen why, the judge
-// also writes 1–2 better Commons queries per card it rejects or accepts only
-// weakly; the generator runs them, adds matching pool photos, and asks once
-// more for just those cards.
+// --- cover judge, round 2: a second search for the cards round 1 left empty --
+// Round 1 can only choose among what the keyword search found; on 2026-11-15
+// the search offered foreign dishes for 붕어빵 and the Nile, Hue and London for
+// a Mississippi riverboat story. Having just seen why, the judge also writes
+// 1–2 better Commons queries for each card with no good or ok photo; the
+// generator runs them, adds matching pool photos and category fallbacks, and
+// asks once more for just those cards.
 
 // The judge's `retry` → at most `max` plain Commons queries. Commons search
 // syntax is stripped (quotes, `intitle:`, a leading `-` = NOT, `*`, `|`): the
@@ -494,34 +557,33 @@ export function interleave(...lists) {
   return out;
 }
 
-// Which round-1 cards get a second look, most needed first, ≤ `max` (the Commons
-// budget: each costs up to RETRY_MAX_QUERIES searches + a few thumbnails).
-// `cards`: [{ poster, verdict, hasCover, fits, retry, poolCount, … }]
-//   kind 'none' — no photo after round 1 (the app would draw its gradient) and
-//                 something to try: retry queries or a matching pool photo.
-//   kind 'weak' — round 1 accepted a photo but still wrote retry queries.
-// Poster cards (the poster is the cover) and cards the judge never answered
-// for are left alone. → { picked, skipped }
+// Which round-1 cards get a second look: only cards with NO good or ok photo
+// (no photo at all after round 1 — the app would draw its gradient) and
+// something to try: retry queries, a matching pool photo or a category
+// fallback. Poster cards (the poster is the cover) and cards the judge never
+// answered for are left alone. All of them get round 2's pool photos and
+// fallbacks; only the first `searchMax` may spend Commons searches (each up to
+// RETRY_MAX_QUERIES searches + a few thumbnails). Input order is kept.
+// `cards`: [{ poster, verdict, hasCover, retry, poolCount, fallbackCount, … }]
+// → [{ …card, search: boolean }]
 export const RETRY_MAX_CARDS = 4;
-export function retryTargets(cards, { max = RETRY_MAX_CARDS } = {}) {
-  const none = [];
-  const weak = [];
+export function retryTargets(cards, { searchMax = RETRY_MAX_CARDS } = {}) {
+  const out = [];
+  let searches = 0;
   for (const c of cards || []) {
-    if (!c || c.poster || !c.verdict) continue;
+    if (!c || c.poster || !c.verdict || c.hasCover) continue;
     const queries = Array.isArray(c.retry) ? c.retry.length : 0;
-    if (!c.hasCover) {
-      if (queries || c.poolCount > 0) none.push({ ...c, kind: 'none' });
-    } else if (queries && Array.isArray(c.fits) && c.fits.length) {
-      weak.push({ ...c, kind: 'weak' });
-    }
+    if (!queries && !(c.poolCount > 0) && !(c.fallbackCount > 0)) continue;
+    const search = queries > 0 && searches < searchMax;
+    if (search) searches++;
+    out.push({ ...c, search });
   }
-  const all = [...none, ...weak];
-  return { picked: all.slice(0, max), skipped: all.slice(max) };
+  return out;
 }
 
 // Round 2's verdict on top of round 1's slots (both from coverSlotsOf /
-// coverFromVerdict). Round 2 only ever adds: nothing fitting → round 1 stands
-// (a weak cover is not dropped for having been questioned). Something fitting
+// coverFromLevels). Round 2 only ever adds: nothing good or ok → round 1
+// stands. Something good or ok
 // → it becomes the main cover; when that photo needs a credit and round 2 had
 // no attribution-free fit, older builds keep round 1's `image`.
 // → { image, attributed, changed }
@@ -539,11 +601,12 @@ export function mergeRetryCover(before, pick) {
 // with `url` a 1280px Commons thumb, `credit` { author, license, licenseUrl,
 // sourceUrl } or null when `free`, `tags` Korean and English words.
 // A pool photo is never a cover on its own: when its tags appear on a card, the
-// best 1–2 go in front of the cover judge as extra candidates (round 1 when
-// the search found fewer than four, round 2 next to the retry results) and
-// only the judge's yes ships one — behind any fresh search result that also
-// fits (coverFromVerdict). Pre-vetted, so no licence / provenance / size
-// checks; still skipped when blocklisted or shown in the last days.
+// best 1–2 go in front of the cover judge on reserved slots (slotCandidates,
+// both rounds), and only a good / ok rating ships one — behind any fresh search
+// result of the same level (rankByLevel). As a last resort, a card that has
+// nothing after round 1 is also offered generic pool photos for its category
+// (poolFallbacks). Pre-vetted, so no licence / provenance / size checks; still
+// skipped when blocklisted or shown in the last days.
 // Missing file → empty pool; unreadable / invalid → one log line, empty pool.
 // Never throws.
 export const COVER_POOL_PATH = 'content/cover-pool.json';
@@ -657,6 +720,85 @@ export function poolMatches(photos, { texts = [], blocked = null, recent = [], e
   // Ties: the longer matched tags win — "보일러" says more than "겨울" (which
   // also sits inside "올겨울") — then file order.
   return out.sort((a, b) => b.score - a.score || b.span - a.span || a.i - b.i).slice(0, max).map((x) => x.p);
+}
+
+// --- last resort: generic pool photos for the card's category ---------------
+// A card the judge left empty after round 1 and that no search or tag match
+// rescues still deserves a photo (the owner's bar: only a clearly WRONG photo
+// is worse than none). These are pool photos carrying a tag that suits the
+// card's category: FALLBACK_TAGS[subtopic], the subtopic's own words
+// ("커피·음료" → 커피, 음료), then FALLBACK_TAGS[cat] — exact tag matches,
+// tried in that order. They still need the judge's good / ok, and rank behind
+// every other candidate (rankByLevel). A fresh photo beats one shown in the
+// last days; a recently shown one is used only when nothing fresh is left.
+// Keys are the generator's cat / subtopic values (content/archive: 경제/주식·투자,
+// 쇼핑/신제품·테크, 취미/스포츠, 음식/제철음식 … most common).
+export const FALLBACK_TAGS = {
+  // subtopics
+  '출퇴근': ['출근길', '퇴근길', '대중교통'],
+  '업무방식': ['업무', '재택근무'],
+  '회사생활': ['직장 생활', '업무'],
+  '자기계발': ['공부', '독서'],
+  '커피·음료': ['커피', '카페'],
+  '디저트': ['디저트 카페', '카페'],
+  '집밥·요리': ['집밥', '찌개', '한식'],
+  '제철음식': ['겨울 간식', '김장'],
+  '배달·외식': ['배달 음식', '치킨', '야식'],
+  '맛집': ['국밥', '한식', '점심 메뉴'],
+  '웹툰·책': ['독서'],
+  '음악': ['음악 감상'],
+  '운동': ['운동', '러닝'],
+  '다이어트': ['운동', '러닝'],
+  '컨디션·피로': ['조용한 휴식', '담요', '따뜻한 방'],
+  '수면': ['담요', '이불'],
+  '잠·수면': ['담요', '이불'],
+  '주말계획': ['주말 나들이', '산책', '나들이'],
+  '국내여행': ['국내 여행', '기차 여행'],
+  '당일치기': ['기차 여행', '나들이'],
+  '여행준비': ['기차 여행'],
+  '명절': ['귀성길', '명절 이동'],
+  '주식·투자': ['투자'],
+  '월급·저축': ['결제'],
+  '소비습관': ['결제'],
+  '온라인쇼핑': ['결제', '모바일 결제'],
+  '세일·할인': ['결제'],
+  '추위': ['겨울 풍경', '담요', '한파'],
+  '눈': ['눈 오는 날'],
+  '비·장마': ['비 오는 날', '비 오는 거리'],
+  '일교차': ['가을 풍경', '단풍'],
+  // categories (after the subtopic's)
+  '시즌': ['가을 풍경', '겨울 풍경'],
+  '날씨': ['가을 풍경', '겨울 풍경', '비 오는 거리'],
+  '음식': ['한식', '찌개', '커피 한잔'],
+  '일상': ['커피 한잔', '산책', '집콕'],
+  '여행': ['국내 여행', '기차 여행'],
+  '문화': ['조용한 휴식', '음악 감상'],
+  '건강': ['운동', '조용한 휴식'],
+  '취미': ['독서', '게임'],
+  '쇼핑': ['결제'],
+  '경제': ['투자', '결제'],
+  '커리어': ['업무', '출근길'],
+  '관계': ['커피 한잔', '카페', '주말 나들이'],
+};
+export const FALLBACK_MAX = 2;
+export function fallbackTags(cat, subtopic, map = FALLBACK_TAGS) {
+  const own = String(subtopic ?? '').split('·').map((s) => s.trim()).filter((s) => [...s].length >= 2);
+  return [...new Set([...(map[subtopic] || []), ...own, ...(map[cat] || [])].map(poolText).filter(Boolean))];
+}
+export function poolFallbacks(photos, { cat, subtopic, map = FALLBACK_TAGS, blocked = null, recent = [], exclude = new Set(), freeOnly = false, max = FALLBACK_MAX } = {}) {
+  const want = fallbackTags(cat, subtopic, map);
+  if (!want.length || max <= 0) return [];
+  const recentKeys = new Set([...(recent || [])].map(coverFileKey).filter(Boolean));
+  const found = [];
+  (photos || []).forEach((p, i) => {
+    if (!p?.url || (freeOnly && !p.free)) return;
+    const k = coverFileKey(p.url);
+    if (!k || exclude?.has(k) || isCoverBlocked(blocked, p.url)) return;
+    const rank = want.findIndex((w) => (p.tags || []).includes(w));
+    if (rank < 0) return;
+    found.push({ p: { ...p, fallback: true, poolHits: [want[rank]] }, rank, stale: recentKeys.has(k) ? 1 : 0, i });
+  });
+  return found.sort((a, b) => a.stale - b.stale || a.rank - b.rank || a.i - b.i).slice(0, max).map((x) => x.p);
 }
 
 // --- TMDB titles: the work's name without "극장판" / "the Movie" -----------------
