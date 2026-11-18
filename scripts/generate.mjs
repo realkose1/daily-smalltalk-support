@@ -72,7 +72,7 @@ import {
   isCoverBlocked, usableCandidates, coverLessonsPrompt, coverReportsMarkdown,
   HAND_BLOCKLIST_PATH, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
   coverFileKey, coverFileLabel, wikimediaThumb, judgeCandidates, judgeStatus, mediaTitleCore,
-  LEVELS, rankByLevel, photoLevels, coverFromLevels, slotCandidates,
+  LEVELS, rankByLevel, photoLevels, coverFromLevels, coverWithUnseen, slotCandidates,
   coverSlotsOf, applyCoverSlots, cleanRetryQueries, interleave, retryTargets, mergeRetryCover,
   COVER_POOL_PATH, loadCoverPool, poolMatches, poolFallbacks,
 } from './cover-reports.mjs';
@@ -2746,25 +2746,54 @@ async function judgeThumb(c) {
   return { why: why.join(' / ') };
 }
 
+// Thumbnail pacing. On the 2026-11-18 dry run upload.wikimedia.org answered
+// HTTP 429 to the picks of 3 of 8 cards, each retried 10 s later straight into
+// another 429 while the next thumbnail went out 2 s after that. So thumbnails
+// run on the shared Commons clock with a wider gap, and ONE 429 holds back
+// every next Wikimedia request from this path ≥ 10 s (20 s, then 30 s while
+// they keep coming; a success resets it) — the way wikiJson backs off. The
+// waits are capped per run (JUDGE_THUMB_BACKOFF_BUDGET_MS): a hard block costs
+// a few minutes and some unseen picks, never a stalled deck.
+const JUDGE_THUMB_GAP_MS = 3000;
+const JUDGE_THUMB_BACKOFF_MS = [10000, 20000, 30000];
+const JUDGE_THUMB_BACKOFF_BUDGET_MS = 180000;
+const thumbPace = { until: 0, strikes: 0, waited: 0, limited: 0 };
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+async function thumbSlot() {
+  const wait = Math.max(lastCommonsCall + JUDGE_THUMB_GAP_MS, thumbPace.until) - Date.now();
+  if (wait > 0) await sleep(wait);
+  lastCommonsCall = Date.now();
+}
+// A 429 / 5xx from Wikimedia: hold back the next thumbnail. → false once the
+// run's backoff budget is spent (then: no retry, just the normal gap).
+function thumbLimited() {
+  thumbPace.limited++;
+  const back = JUDGE_THUMB_BACKOFF_MS[Math.min(thumbPace.strikes, JUDGE_THUMB_BACKOFF_MS.length - 1)];
+  thumbPace.strikes++;
+  if (thumbPace.waited + back > JUDGE_THUMB_BACKOFF_BUDGET_MS) return false;
+  thumbPace.waited += back;
+  thumbPace.until = Date.now() + back;
+  return true;
+}
+
 async function fetchJudgeImage(url) {
   const wiki = /^https:\/\/[a-z]+\.wikimedia\.org\//i.test(url);
   for (let attempt = 0; attempt < 2; attempt++) {
-    if (wiki) {
-      const wait = lastCommonsCall + COMMONS_GAP_MS - Date.now();
-      if (wait > 0) await new Promise((res) => setTimeout(res, wait));
-      lastCommonsCall = Date.now();
-    }
+    if (wiki) await thumbSlot();
     try {
       const r = await fetch(url, { headers: { 'User-Agent': WIKI_UA }, signal: AbortSignal.timeout(10000) });
-      if ((r.status === 429 || r.status >= 500) && attempt === 0) {
+      if (r.status === 429 || r.status >= 500) {
         r.body?.cancel().catch(() => {});
-        await new Promise((res) => setTimeout(res, 10000));
-        continue;
+        // Wikimedia: the next request waits (thumbSlot); elsewhere a plain 10 s.
+        const again = wiki ? thumbLimited() : (await sleep(10000), true);
+        if (attempt === 0 && again) continue;
+        return { why: `HTTP ${r.status}` };
       }
       if (!r.ok) {
         r.body?.cancel().catch(() => {});
         return { why: `HTTP ${r.status}` };
       }
+      if (wiki) thumbPace.strikes = 0;
       const type = (r.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
       if (!JUDGE_TYPES.has(type)) {
         r.body?.cancel().catch(() => {});
@@ -2806,22 +2835,18 @@ function levelsText(levels) {
     .filter(([, n]) => n.length).map(([l, n]) => `${l} ${n.join(',')}`).join('; ');
 }
 // Download a card's candidates (≤ the shared image budget); failures are
-// logged. Stops at the first of `must` (today's picks) that fails or doesn't
-// fit the budget: the judge can only overrule a pick it has seen, so the rest
-// would be downloads for nothing. → { shown, missed }
-async function downloadShown(id, cands, budget, must = []) {
+// logged. → { shown, missed: [{ c, why }] }
+async function downloadShown(id, cands, budget) {
   const shown = [];
+  const missed = [];
   for (const c of cands) {
-    if (budget.left <= 0) {
-      if (must.includes(c)) return { shown, missed: `${judgeLabel(c)}: image cap` };
-      continue;
-    }
+    if (budget.left <= 0) { missed.push({ c, why: 'image cap' }); continue; }
     const img = await judgeThumb(c);
     if (img.data) { shown.push({ ...c, img }); budget.left--; continue; }
+    missed.push({ c, why: img.why });
     console.log(`judge: '${id}' could not download ${judgeLabel(c)}${c.pool ? ' (pool)' : ''} — ${img.why}`);
-    if (must.includes(c)) return { shown, missed: `${judgeLabel(c)}: ${img.why}` };
   }
-  return { shown, missed: null };
+  return { shown, missed };
 }
 
 // The prompt for one batch of cards. A card with no photos goes as text only.
@@ -2915,13 +2940,16 @@ async function judgeCovers(plans) {
       else cards.push({ p, id: `C${cards.length + 1}`, poster, shown: [], note: '(no candidate photo was found for this card: good and ok are [] — write retry)' });
       continue;
     }
-    const { shown, missed } = await downloadShown(p.t.id, cands, budget, shownPicks);
-    // The judge can only overrule a pick it has seen.
-    if (missed || !picks.every((c) => shown.some((s) => s.url === c.url))) {
-      p.judge = { status: 'unjudged', why: `today's pick not downloaded (${missed || 'not a candidate'}) — kept` };
+    const { shown, missed } = await downloadShown(p.t.id, cands, budget);
+    // A pick the judge never saw can't be rated — but the candidates it does
+    // see still decide (coverWithUnseen). Nothing seen at all → keep the picks.
+    const unseen = picks.filter((c) => !shown.some((s) => s.url === c.url));
+    const unseenWhy = unseen.map((c) => `${judgeLabel(c)}: ${missed.find((m) => m.c === c)?.why || 'not a candidate'}`).join('; ');
+    if (!shown.length && unseen.length) {
+      p.judge = { status: 'unjudged', why: `no candidate downloaded (${unseenWhy}) — pick kept` };
       continue;
     }
-    cards.push({ p, id: `C${cards.length + 1}`, poster, shown });
+    cards.push({ p, id: `C${cards.length + 1}`, poster, shown, unseen, unseenWhy });
   }
   if (!cards.length) return { ok: false, why: 'nothing to judge' };
 
@@ -2940,10 +2968,13 @@ async function judgeCovers(plans) {
     const why = String(v.why || '').replace(/\s+/g, ' ').slice(0, 120);
     if (!c.shown.length) { c.p.judge = { status: 'unjudged', why: `no photo to judge${why ? ` — ${why}` : ''}`, retry: c.retry }; continue; }
     const before = { image: t.image, attributed: t.imageAttributed };
-    const pick = coverFromLevels(c.shown, v, { poster: c.poster });
+    const pick = coverWithUnseen(c.shown, v, c.unseen, { poster: c.poster });
     applyCoverSlots(t, pick, { poster: c.poster });
     const status = judgeStatus(before, { image: t.image, attributed: t.imageAttributed });
-    c.p.judge = { status, why, levels: photoLevels(c.shown.length, v), level: pick.level, retry: c.retry };
+    const note = c.unseen?.length
+      ? (pick.keptUnseen ? `unseen pick kept, nothing else good/ok (${c.unseenWhy}); ` : `pick not downloaded (${c.unseenWhy}), judged the rest; `)
+      : '';
+    c.p.judge = { status, why: note + why, levels: photoLevels(c.shown.length, v), level: pick.level, retry: c.retry, unseen: c.unseen?.length || 0, keptUnseen: pick.keptUnseen };
   }
   return { ok: true, cards };
 }
@@ -3075,7 +3106,12 @@ async function retryCovers(r1) {
     }
   }
   const bare = data.topics.filter((t) => !t.image && !t.imageAttributed).length;
-  console.log(`covers: ${data.topics.length - bare} of ${data.topics.length} card(s) with a photo, ${bare} on the gradient`);
+  const unjudged = judgePlans.filter((p) => !p.judge?.levels).length;
+  const unseenKept = judgePlans.filter((p) => p.judge?.keptUnseen).length;
+  console.log(
+    `covers: ${data.topics.length - bare} of ${data.topics.length} card(s) with a photo, ${bare} on the gradient; ` +
+    `${unjudged} card(s) not judged, ${unseenKept} kept an unseen pick; thumbnails rate-limited ${thumbPace.limited}× (backoff ${Math.round(thumbPace.waited / 1000)} s)`,
+  );
 }
 
 // DRY_RUN=1: the covers the deck would ship, then stop — no today.json, archive,

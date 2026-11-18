@@ -452,6 +452,23 @@ export function coverFromLevels(shown, levels, { poster = false } = {}) {
   return { image, attributed: top && !top.c.free ? top.c : null, level: top?.level || null };
 }
 
+// The judge's levels when some of today's keyword picks never reached it — their
+// thumbnails were rate-limited (3 of 8 cards on the 2026-11-18 dry run, which
+// until then skipped the judge and shipped the unseen pick). The other
+// candidates it did see decide: the best good / ok one ships, exactly as
+// coverFromLevels. Only when none of them is good or ok does an unseen pick
+// stay, in its own slot — it may be fine, and "wrong" was never said about it;
+// a pick the judge saw and rated wrong goes. `unseen` = picks not shown.
+// → coverFromLevels' result + keptUnseen
+export function coverWithUnseen(shown, levels, unseen = [], { poster = false } = {}) {
+  const pick = coverFromLevels(shown, levels, { poster });
+  const left = (unseen || []).filter((c) => c?.url);
+  if (pick.level || !left.length) return { ...pick, keptUnseen: false };
+  const image = left.find((c) => c.free) || null;
+  if (poster) return { image, attributed: undefined, level: null, keptUnseen: !!image };
+  return { image, attributed: left.find((c) => !c.free) || null, level: null, keptUnseen: true };
+}
+
 // One card's candidate list: `picks` (today's keyword picks — the judge can only
 // overrule what it has seen) first, then RESERVED slots for the hand-vetted pool
 // matches — min(reserve, how many matched) of the `max`, so a pool photo can

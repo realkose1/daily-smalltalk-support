@@ -10,7 +10,7 @@ import {
   coverFileKey, coverBlocklist, isCoverBlocked, shippedCovers, groupCoverReports,
   handBlocklistKeys, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
   wikimediaThumb, judgeCandidates, judgeStatus, mediaTitleCore,
-  rankByLevel, photoLevels, coverFromLevels, slotCandidates, poolFallbacks, fallbackTags,
+  rankByLevel, photoLevels, coverFromLevels, coverWithUnseen, slotCandidates, poolFallbacks, fallbackTags,
   coverSlotsOf, applyCoverSlots, cleanRetryQueries, interleave, retryTargets, mergeRetryCover,
   parseCoverPool, loadCoverPool, poolMatches,
 } from './cover-reports.mjs';
@@ -173,6 +173,29 @@ test('coverFromLevels: fills both slots from good, then ok; all wrong → gradie
   assert.deepEqual(coverFromLevels([f1], L(), { poster: true }), { image: null, attributed: undefined, level: null });
   assert.deepEqual(coverFromLevels(shown, null), { image: null, attributed: null, level: null });
   assert.deepEqual(coverFromLevels(shown, { good: null, ok: 'x' }), { image: null, attributed: null, level: null });
+});
+
+test('coverWithUnseen: a pick that never downloaded does not stop the judge; it stays only when nothing else is good / ok', () => {
+  // 2026-11-18: three cards' picks hit HTTP 429 and skipped the judge entirely.
+  const unseenPaid = C(1, false, 'Michael Ligon Stock Market Conference 2023');
+  const unseenFree = C(2, true, 'Korean cuisine Salted baechu');
+  const [s3, s4] = [C(3, true), C(4, false)];
+  const { photos } = parseCoverPool(SAMPLE_POOL);
+  const poolFree = photos[0];
+  const shown = [s3, s4, poolFree];
+  // Something seen is good / ok → it ships, the unseen pick goes.
+  assert.deepEqual(coverWithUnseen(shown, { good: [], ok: [2] }, [unseenPaid]), { image: null, attributed: s4, level: 'ok', keptUnseen: false });
+  assert.deepEqual(coverWithUnseen(shown, { good: [3], ok: [] }, [unseenPaid, unseenFree]), { image: poolFree, attributed: null, level: 'good', keptUnseen: false }, 'a pool photo counts too');
+  // Nothing seen is good / ok → the unseen picks stay in their own slots; seen-and-wrong ones don't.
+  assert.deepEqual(coverWithUnseen(shown, { good: [], ok: [] }, [unseenPaid]), { image: null, attributed: unseenPaid, level: null, keptUnseen: true });
+  assert.deepEqual(coverWithUnseen(shown, { good: [], ok: [] }, [unseenPaid, unseenFree]), { image: unseenFree, attributed: unseenPaid, level: null, keptUnseen: true });
+  assert.deepEqual(coverWithUnseen(shown, { good: [], ok: [] }, [unseenFree]), { image: unseenFree, attributed: null, level: null, keptUnseen: true });
+  // No unseen pick → plain coverFromLevels (all wrong = gradient).
+  assert.deepEqual(coverWithUnseen(shown, { good: [], ok: [] }, []), { image: null, attributed: null, level: null, keptUnseen: false });
+  assert.deepEqual(coverWithUnseen(shown, { good: [1], ok: [] }), { image: s3, attributed: null, level: 'good', keptUnseen: false });
+  // Poster card: only the free slot is judged; an unseen free pick stays when nothing else is good / ok.
+  assert.deepEqual(coverWithUnseen([s3], { good: [], ok: [] }, [unseenFree], { poster: true }), { image: unseenFree, attributed: undefined, level: null, keptUnseen: true });
+  assert.deepEqual(coverWithUnseen([s3], { good: [], ok: [1] }, [unseenFree], { poster: true }), { image: s3, attributed: undefined, level: 'ok', keptUnseen: false });
 });
 
 test('photoLevels: one level per shown photo, for the log', () => {
