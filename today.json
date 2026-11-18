@@ -105,6 +105,13 @@
           "follow": "겨울에 좋아하는 따뜻한 거 있으세요?",
           "caution": "건강 상태 캐묻지 않기."
         }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Seoul-metro-425-Hoehyeon-station-entrance-2-20181124-080908.jpg/1280px-Seoul-metro-425-Hoehyeon-station-entrance-2-20181124-080908.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "LERK",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul-metro-425-Hoehyeon-station-entrance-2-20181124-080908.jpg"
       }
     },
     {
@@ -137,6 +144,13 @@
           "follow": "가보고 싶은 나라 있으세요?",
           "caution": "소비 수준 캐묻지 않기."
         }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/SK_Korea_tour_%E9%A6%96%E7%88%BE_%E6%9C%80%E4%BD%B3%E8%A5%BF%E6%96%B9_%E9%A6%96%E7%88%BE%E8%8A%B1%E5%9C%92%E9%85%92%E5%BA%97_Best_Western_Premier_Seoul_Garden_Hotel_money_Exchange_display_July-2013.JPG/1280px-SK_Korea_tour_%E9%A6%96%E7%88%BE_%E6%9C%80%E4%BD%B3%E8%A5%BF%E6%96%B9_%E9%A6%96%E7%88%BE%E8%8A%B1%E5%9C%92%E9%85%92%E5%BA%97_Best_Western_Premier_Seoul_Garden_Hotel_money_Exchange_display_July-2013.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Woodarelaisku",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:SK_Korea_tour_首爾_最佳西方_首爾花園酒店_Best_Western_Premier_Seoul_Garden_Hotel_money_Exchange_display_July-2013.JPG"
       }
     },
     {
@@ -248,7 +262,8 @@
           "follow": "별 보러 가본 적 있으세요?",
           "caution": "어려운 용어 줄이기."
         }
-      }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/An_artist%E2%80%99s_concept_of_the_Voyager_spacecraft.jpg/1280px-An_artist%E2%80%99s_concept_of_the_Voyager_spacecraft.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
     },
     {
       "id": "20261118-hynix",
