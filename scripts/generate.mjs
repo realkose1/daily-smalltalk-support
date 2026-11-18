@@ -35,14 +35,16 @@
 //   - Cover judge: every photo search above picks by keyword overlap on file
 //     names, so before a deck ships one cheap Haiku call LOOKS at the top few
 //     candidates of every card (330px thumbnails) next to its Korean title and
-//     keeps the one a Korean reader would accept — or none (gradient). TMDB
-//     posters are not judged. Fail-soft: any error keeps the keyword picks.
-//     Round 2: for the cards it turned down (or accepted only weakly) the
-//     judge also writes 1–2 better Commons queries; those are searched, and
-//     ONE more call judges the new candidates for just those cards.
+//     rates each good / ok / wrong; the best good, else ok, ships — only a card
+//     where everything is clearly wrong loses its photo. TMDB posters are not
+//     judged. Fail-soft: any error keeps the keyword picks.
+//     Round 2: for the cards with no good or ok photo the judge also writes 1–2
+//     better Commons queries; those are searched, and ONE more call rates the
+//     new candidates (plus generic pool photos for the card's category, as the
+//     last resort) for just those cards.
 //   - Cover pool: content/cover-pool.json, photos vetted by hand with Korean /
-//     English tags. Matching ones join the judge's candidates (round 1 when the
-//     search found few, round 2 always) — never a cover without its yes.
+//     English tags. Matching ones get reserved candidate slots in both judge
+//     rounds — never a cover without a good / ok rating.
 // Writes today.json (served via GitHub Pages) + an archive copy.
 //
 // Requires env: ANTHROPIC_API_KEY (not needed for --brief-only)
@@ -69,9 +71,10 @@ import {
   COVER_REPORT_DAYS, loadCoverReports, shippedCovers, groupCoverReports, coverBlocklist,
   isCoverBlocked, usableCandidates, coverLessonsPrompt, coverReportsMarkdown,
   HAND_BLOCKLIST_PATH, loadHandBlocklist, mergeBlocklists, sensitiveProvenance,
-  coverFileKey, coverFileLabel, wikimediaThumb, judgeCandidates, coverFromVerdict, judgeStatus, mediaTitleCore,
+  coverFileKey, coverFileLabel, wikimediaThumb, judgeCandidates, judgeStatus, mediaTitleCore,
+  LEVELS, rankByLevel, photoLevels, coverFromLevels, coverWithUnseen, slotCandidates,
   coverSlotsOf, applyCoverSlots, cleanRetryQueries, interleave, retryTargets, mergeRetryCover,
-  COVER_POOL_PATH, POOL_MAX_OFFER, loadCoverPool, poolMatches,
+  COVER_POOL_PATH, loadCoverPool, poolMatches, poolFallbacks,
 } from './cover-reports.mjs';
 
 const MODEL = 'claude-sonnet-5-5'; // reliable "exactly 5 + concise"; bump to opus for max quality
@@ -2643,59 +2646,63 @@ async function findPosterOnce(media, { token, today, season = null, language = '
 // glasses the Samsung HQ building and GTA 6 a 1972 console (2026-11). So before
 // the deck ships, ONE batched call shows claude-haiku-5-5 up to four distinct
 // candidates per card — today's picks first, then the next best of the same
-// search — as 330px thumbnails, downloaded here (Wikimedia through the shared
-// pacing clock) and sent as base64, never as URLs for the API to fetch, next to
-// the card's Korean title and desc. Per card it answers which candidates a
-// Korean reader would accept, best first, or none; the verdict fills both slots
-// (coverFromVerdict). None → a second search (round 2, below), and if that
-// finds nothing either, no photo and the app draws its gradient: an
-// unrelated photo is worse than none. TMDB posters are not judged — on a poster
-// card only the CC0 `image` that older builds show is.
+// search, with reserved slots for matching hand-vetted pool photos — as 330px
+// thumbnails, downloaded here (Wikimedia through the shared pacing clock) and
+// sent as base64, never as URLs for the API to fetch, next to the card's Korean
+// title and desc. It rates every candidate good / ok / wrong; the best good
+// photo ships, else the best ok one (coverFromLevels), and only a card where
+// everything is wrong goes on to round 2. TMDB posters are not judged — on a
+// poster card only the CC0 `image` that older builds show is.
+// The bar (2026-11-18): every card should have a photo. From 11-15 to 11-17 a
+// yes/no "does it fit" verdict left 2–4 of 8 cards a day on the gradient (0 a
+// day before the judge), turning down a BTS photo for a BTS award story, campus
+// gates for 수능, a Paris crowd for a French protest. Only a clearly WRONG photo
+// — melons for 멜론, an evidence photo, a 1972 console for GTA 6, 1950s black
+// and white, anything disturbing, text-heavy or of an unrelated subject — is
+// worse than the plain gradient.
 // FAIL-SOFT: an API error, timeout, refusal or unreadable answer keeps today's
 // keyword picks on every card; a card whose picks could not be downloaded, or
-// that the answer skips, keeps them too. ~8-12K input tokens ≈ $0.002 a run.
+// that the answer skips, keeps them too. ~5-8K input tokens ≈ $0.002 a run.
 //
-// Round 2 (retryCovers, below). The judge has just seen WHY a card's
-// candidates failed — foreign dishes for 붕어빵, the Nile, Hue and London for a
-// Mississippi riverboat story (4 of 8 cards on the gradient on 2026-11-15) — so
-// for every card it turns down, or accepts only weakly, it also writes 1–2
-// better English Commons queries (`retry`). Those run through the same
-// searchCommons + usableCandidates vetting (licence, provenance, photoScore,
-// blocklist) on the same pacing clock; up to four new distinct candidates per
-// card, plus its best 1–2 matches from the hand-vetted pool, go to ONE more
-// batched call for just those cards. A yes fills the card exactly like round 1
-// (applyCoverSlots); nothing fits → round 1 stands, gradient included.
-// Bounded: ≤ RETRY_MAX_CARDS cards, ≤ 2 searches each (the second only when
-// the first found too few), ≤ JUDGE_RETRY_MAX_IMAGES thumbnails in all — about
-// a minute of Commons pacing and ~$0.0005. Any error keeps round 1's result.
-//
-// The pool (content/cover-pool.json) helps round 1 too: a card whose search
-// found fewer than JUDGE_MAX_CANDS candidates gets its best 1–2 pool matches
-// after them, and a card with no candidate at all is still sent, as text, so
-// the judge can write its retry queries.
+// Round 2 (retryCovers, below), only for cards with no good or ok photo. The
+// judge has just seen why the candidates failed, so for those cards it also
+// writes 1–2 better English Commons queries (`retry`). Those run through the
+// same searchCommons + usableCandidates vetting (licence, provenance,
+// photoScore, blocklist) on the same pacing clock; new candidates (≥ 2 of 4
+// slots reserved for pool matches when there are any), plus up to two generic
+// pool photos for the card's category as the last resort (poolFallbacks), go
+// to ONE more batched call for just those cards. Good / ok fills the card
+// exactly like round 1 (applyCoverSlots); all wrong → gradient. Bounded:
+// searches for ≤ RETRY_MAX_CARDS cards, ≤ 2 each (the second only when the
+// first found too few), ≤ JUDGE_RETRY_MAX_IMAGES thumbnails in all — about a
+// minute of Commons pacing and ~$0.001. Any error keeps round 1's result.
 const JUDGE_MAX_CANDS = 4;
+const JUDGE_POOL_SLOTS = 2; // of JUDGE_MAX_CANDS, reserved for pool matches (slotCandidates)
 const JUDGE_MAX_IMAGES = 40; // well under the API's per-request image limit
-const JUDGE_RETRY_MAX_IMAGES = 20; // round 2's new thumbnails, all cards together
+const JUDGE_RETRY_MAX_IMAGES = 24; // round 2's new thumbnails, all cards together
 const JUDGE_IMAGE_MAX_BYTES = 1.5 * 1024 * 1024; // a 330px thumb is ~20-60 KB
 const JUDGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp']);
 const JUDGE_RULES =
   `You choose cover photos for the cards of a Korean small-talk app. Each card's Korean title and description are printed over its photo. ` +
-  `For every card below, look at its numbered candidate photos and list the ones a Korean reader would accept as the cover for that title, best first — or none.\n` +
-  `A photo fits only if it shows what the title is about, in the sense the title means:\n` +
-  `- Brands and services in their brand sense: 멜론 = the music-streaming app (not the fruit), 애플 = Apple, 당근 = the second-hand market app, 배민 = food delivery, 쿠팡 = online shopping. A story about a company's product shows the product or someone using it — not the company's headquarters, offices, store or logo.\n` +
-  `- Domestic topics (Korean weather, 수능, 국내 여행, Korean food, Korean news) need a scene that could be in Korea: no recognisably foreign landscape, city, signage or cuisine.\n` +
-  `- Food: the right dish, or at least the right cuisine.\n` +
-  `- Current, not dated: no vintage or retro objects (an old console for a new game), no old event photos (a visible past year, old banners), no black-and-white archive shots — unless the title is about the past.\n` +
-  `- A plain everyday scene is fine for an everyday topic when it clearly matches the title (a rainy street for a rainy-day card).\n` +
-  `Reject anything sad, violent, criminal, medical or disturbing; prominent foreign-language signs, other brands' logos or watermarks; a close-up of an unrelated person.\n` +
-  `When unsure, leave it out: no photo (a plain colour cover) is better than a wrong one. The file name under a photo hints at its source; it is not proof of what the photo shows.\n`;
-// Round 1 only: what to search for next. Examples deliberately NOT the
-// 2026-11-15 misses (붕어빵, Mississippi), so a dry run on a similar deck
-// measures the rule rather than echoing it.
+  `Every card should get a photo: only a clearly wrong photo is worse than none (the app then shows a plain colour).\n` +
+  `Rate EVERY numbered candidate of every card as good, ok or wrong:\n` +
+  `- good: shows what the title is about — the named person, group, team, brand or product (at any event, in any year), the very dish, object, place or weather.\n` +
+  `- ok: a reader would accept it as an illustration of the topic, even if generic or not this exact event. The same subject at another time or event; or the general theme: a rainy street or umbrellas for a rainy commute; students, a school or an exam hall for 수능; medicine, tea or someone resting sick for a cold or 폐렴; any protest crowd for a protest story; a Korean stew for a craving for hot food; a stock chart, trading screen or phone stock app for a stock story; a subway or bus for a commute.\n` +
+  `- wrong: only when it clearly does not belong:\n` +
+  `  - the wrong sense of a word: melons for 멜론 (the music app), an apple for 애플 (Apple), carrots for 당근 (the second-hand app), a delivery bike for nothing about 배민;\n` +
+  `  - an unrelated subject: a different person, brand, product or event than the story's, or a random object;\n` +
+  `  - dated things passed off as current (a 1970s console for a new game, old event banners with a past year), black-and-white archive photos — unless the title is about the past;\n` +
+  `  - sad, violent, criminal, gory or disturbing scenes, accidents, hospital emergencies, evidence or police photos;\n` +
+  `  - text-heavy images (posters, documents, screenshots, charts or signs full of text), prominent watermarks or another brand's logo as the subject.\n` +
+  `A photo of a person, group, brand or product the story names is at least ok unless it is disturbing — it is the best possible cover.\n` +
+  `Korean context is a tie-breaker, not a reason for wrong: list photos that could be in Korea first within a level, but a foreign street, crowd, campus or dish is still ok for a general theme. Only when the story's point is a Korean place (a Seoul landmark, a Korean city's festival) is a clearly foreign place wrong.\n` +
+  `The file name under a photo hints at its source; it is not proof of what the photo shows.\n`;
+// Round 1 only: what to search for next. Examples deliberately NOT a day's
+// misses, so a dry run on a similar deck measures the rule rather than echoing it.
 const JUDGE_RETRY_RULE =
-  `For a card where no photo fits, or where the best fit is only a weak match (wrong country or cuisine, merely related to the title), also write retry: 1–2 Wikimedia Commons search queries that WOULD find a fitting photo — plain English, 1–4 words each, the concrete subject first. ` +
-  `Name the specific thing: a Korean food or object by its romanised Korean name ("tteokbokki", "hotteok stall", "ondol floor"), a place by its name ("han river ferry", "busan haeundae beach"). ` +
-  `Commons matches every word against file names, so a few specific words beat a long phrase; no people's names. retry is [] when a good photo fits.\n`;
+  `For a card where NO photo is good or ok, also write retry: 1–2 Wikimedia Commons search queries that WOULD find a good or ok photo — plain English, 1–4 words each, the concrete subject first. ` +
+  `Name the specific thing: a Korean food or object by its romanised Korean name ("tteokbokki", "hotteok stall", "ondol floor"), a place by its name ("han river ferry", "busan haeundae beach"), or the general theme ("students exam hall", "street protest crowd"). ` +
+  `Commons matches every word against file names, so a few words beat a long phrase; no people's names. retry is [] when any photo is good or ok.\n`;
 const judgeSchema = {
   type: 'object', additionalProperties: false,
   properties: {
@@ -2703,38 +2710,90 @@ const judgeSchema = {
       type: 'array',
       items: {
         type: 'object', additionalProperties: false,
-        // No maxItems on retry: structured outputs reject array-size limits —
-        // cleanRetryQueries enforces "1–2, short, plain words" instead.
-        properties: { card: { type: 'string' }, fits: { type: 'array', items: { type: 'integer' } }, why: { type: 'string' }, retry: { type: 'array', items: { type: 'string' } } },
-        required: ['card', 'fits', 'why', 'retry'],
+        // No maxItems: structured outputs reject array-size limits —
+        // rankByLevel / cleanRetryQueries enforce ranges and "1–2" instead.
+        properties: {
+          card: { type: 'string' },
+          good: { type: 'array', items: { type: 'integer' } },
+          ok: { type: 'array', items: { type: 'integer' } },
+          why: { type: 'string' },
+          retry: { type: 'array', items: { type: 'string' } },
+        },
+        required: ['card', 'good', 'ok', 'why', 'retry'],
       },
     },
   },
   required: ['cards'],
 };
 
-// One candidate's 330px thumbnail → { media_type, data } | { why }. Never throws.
+// One candidate's thumbnail → { media_type, data } | { why }. Never throws.
+// The 330px step first; when Wikimedia won't serve it (a 429 that outlasts the
+// retry, or a thumbnail it won't render), the candidate's own URL — the 1280px
+// thumb or the original the deck would ship — if it is a Wikimedia file under
+// JUDGE_IMAGE_MAX_BYTES. A big image costs ~1.5K input tokens (~$0.0002), and
+// on 2026-11-17 the 퇴근길 card's best pool photo failed both rounds on its 330px.
 async function judgeThumb(c) {
-  const url = wikimediaThumb(c.url) || c.thumb || null;
-  if (!url) return { why: 'no thumbnail URL' };
+  const small = wikimediaThumb(c.url) || c.thumb || null;
+  const own = String(c.url || '').replace(/[?#].*$/, '');
+  const urls = [...new Set([small, /^https:\/\/[a-z]+\.wikimedia\.org\//i.test(own) ? own : null].filter(Boolean))];
+  if (!urls.length) return { why: 'no thumbnail URL' };
+  const why = [];
+  for (const url of urls) {
+    const r = await fetchJudgeImage(url);
+    if (r.data) return r;
+    why.push(r.why);
+  }
+  return { why: why.join(' / ') };
+}
+
+// Thumbnail pacing. On the 2026-11-18 dry run upload.wikimedia.org answered
+// HTTP 429 to the picks of 3 of 8 cards, each retried 10 s later straight into
+// another 429 while the next thumbnail went out 2 s after that. So thumbnails
+// run on the shared Commons clock with a wider gap, and ONE 429 holds back
+// every next Wikimedia request from this path ≥ 10 s (20 s, then 30 s while
+// they keep coming; a success resets it) — the way wikiJson backs off. The
+// waits are capped per run (JUDGE_THUMB_BACKOFF_BUDGET_MS): a hard block costs
+// a few minutes and some unseen picks, never a stalled deck.
+const JUDGE_THUMB_GAP_MS = 3000;
+const JUDGE_THUMB_BACKOFF_MS = [10000, 20000, 30000];
+const JUDGE_THUMB_BACKOFF_BUDGET_MS = 180000;
+const thumbPace = { until: 0, strikes: 0, waited: 0, limited: 0 };
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+async function thumbSlot() {
+  const wait = Math.max(lastCommonsCall + JUDGE_THUMB_GAP_MS, thumbPace.until) - Date.now();
+  if (wait > 0) await sleep(wait);
+  lastCommonsCall = Date.now();
+}
+// A 429 / 5xx from Wikimedia: hold back the next thumbnail. → false once the
+// run's backoff budget is spent (then: no retry, just the normal gap).
+function thumbLimited() {
+  thumbPace.limited++;
+  const back = JUDGE_THUMB_BACKOFF_MS[Math.min(thumbPace.strikes, JUDGE_THUMB_BACKOFF_MS.length - 1)];
+  thumbPace.strikes++;
+  if (thumbPace.waited + back > JUDGE_THUMB_BACKOFF_BUDGET_MS) return false;
+  thumbPace.waited += back;
+  thumbPace.until = Date.now() + back;
+  return true;
+}
+
+async function fetchJudgeImage(url) {
   const wiki = /^https:\/\/[a-z]+\.wikimedia\.org\//i.test(url);
   for (let attempt = 0; attempt < 2; attempt++) {
-    if (wiki) {
-      const wait = lastCommonsCall + COMMONS_GAP_MS - Date.now();
-      if (wait > 0) await new Promise((res) => setTimeout(res, wait));
-      lastCommonsCall = Date.now();
-    }
+    if (wiki) await thumbSlot();
     try {
       const r = await fetch(url, { headers: { 'User-Agent': WIKI_UA }, signal: AbortSignal.timeout(10000) });
-      if ((r.status === 429 || r.status >= 500) && attempt === 0) {
+      if (r.status === 429 || r.status >= 500) {
         r.body?.cancel().catch(() => {});
-        await new Promise((res) => setTimeout(res, 10000));
-        continue;
+        // Wikimedia: the next request waits (thumbSlot); elsewhere a plain 10 s.
+        const again = wiki ? thumbLimited() : (await sleep(10000), true);
+        if (attempt === 0 && again) continue;
+        return { why: `HTTP ${r.status}` };
       }
       if (!r.ok) {
         r.body?.cancel().catch(() => {});
         return { why: `HTTP ${r.status}` };
       }
+      if (wiki) thumbPace.strikes = 0;
       const type = (r.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
       if (!JUDGE_TYPES.has(type)) {
         r.body?.cancel().catch(() => {});
@@ -2765,11 +2824,30 @@ function coverSummary(t) {
 const poolTexts = (p, extra = []) => [
   p.t.title, p.t.desc, ...(p.queries || []), ...p.subjects.flatMap((s) => [s.name_ko, s.name_en]), ...extra,
 ];
-
 // Log text for the pool photos offered to a card, with the tags that hit.
 const poolOffered = (list) => (list.length
-  ? list.map((x) => `${x.name} [${x.poolHits.join(', ')}] score ${x.poolScore}`).join('; ')
+  ? list.map((x) => `${x.name} [${x.poolHits.join(', ')}]${x.fallback ? ' fallback' : ` score ${x.poolScore}`}`).join('; ')
   : 'no pool photo matched');
+// "good 1; ok 3; wrong 2,4" — the judge's rating of each photo shown, for the log.
+function levelsText(levels) {
+  if (!levels?.length) return 'no photos';
+  return LEVELS.map((l) => [l, levels.map((x, i) => (x === l ? i + 1 : 0)).filter(Boolean)])
+    .filter(([, n]) => n.length).map(([l, n]) => `${l} ${n.join(',')}`).join('; ');
+}
+// Download a card's candidates (≤ the shared image budget); failures are
+// logged. → { shown, missed: [{ c, why }] }
+async function downloadShown(id, cands, budget) {
+  const shown = [];
+  const missed = [];
+  for (const c of cands) {
+    if (budget.left <= 0) { missed.push({ c, why: 'image cap' }); continue; }
+    const img = await judgeThumb(c);
+    if (img.data) { shown.push({ ...c, img }); budget.left--; continue; }
+    missed.push({ c, why: img.why });
+    console.log(`judge: '${id}' could not download ${judgeLabel(c)}${c.pool ? ' (pool)' : ''} — ${img.why}`);
+  }
+  return { shown, missed };
+}
 
 // The prompt for one batch of cards. A card with no photos goes as text only.
 function judgeContent(cards, { rules, intro = '', answer }) {
@@ -2780,12 +2858,12 @@ function judgeContent(cards, { rules, intro = '', answer }) {
     content.push({
       type: 'text',
       text: `\nCard ${c.id} — category ${t.cat}\ntitle: ${t.title}\ndesc: ${t.desc}${named}` +
-        (c.poster ? '\n(the card shows a film poster; judge these photos as a fallback cover)' : '') +
+        (c.poster ? '\n(the card shows a film poster; rate these photos as a fallback cover)' : '') +
         (c.note ? `\n${c.note}` : ''),
     });
     c.shown.forEach((s, i) => {
       const what = s === c.shown.find((x) => x.url === c.p.subj?.url) ? ' (a photo of the named subject)'
-        : s.pool && s.desc ? ` — ${s.desc}` : '';
+        : s.pool && s.desc ? ` — library photo: ${s.desc}` : '';
       content.push({ type: 'text', text: `${c.id} photo ${i + 1} — ${judgeLabel(s)}${what}` });
       content.push({ type: 'image', source: { type: 'base64', media_type: s.img.media_type, data: s.img.data } });
     });
@@ -2793,6 +2871,10 @@ function judgeContent(cards, { rules, intro = '', answer }) {
   content.push({ type: 'text', text: answer });
   return content;
 }
+const JUDGE_ANSWER = (prefix, retry) =>
+  `\nAnswer with one entry for EVERY card: card = its id ("${prefix}1"…), good = the numbers of the photos rated good, best first; ok = the numbers rated ok, best first; ` +
+  `every photo in neither list counts as wrong (both [] when all are wrong); why = at most 12 English words on what decided it; ` +
+  (retry ? `retry = [] or 1–2 search queries as described above.` : `retry = [] (there is no third search).`);
 
 // One judge call → { ok, byId (card id → verdict), cost } | { ok: false, why, cost }. Never throws.
 async function askJudge(content, label) {
@@ -2819,6 +2901,7 @@ async function askJudge(content, label) {
     return { ok: false, cost, why: `unreadable answer: ${e.message}` };
   }
 }
+const isVerdict = (v) => v && Array.isArray(v.good) && Array.isArray(v.ok);
 
 async function judgeCovers(plans) {
   const posterCards = new Set(plans.filter((p) => p.t.imageKind === 'poster').map((p) => p.t));
@@ -2827,127 +2910,140 @@ async function judgeCovers(plans) {
   for (const p of plans) for (const c of p.shipped) { const k = coverFileKey(c.url); if (k && !shippedKey.has(k)) shippedKey.set(k, p); }
   const poolClaimed = new Set(); // a pool photo is offered to one card per round
   const cards = [];
-  let images = 0;
+  const budget = { left: JUDGE_MAX_IMAGES };
   for (const p of plans) {
     const poster = posterCards.has(p.t);
     const picks = poster ? p.shipped.filter((c) => c.free) : p.shipped;
     const exclude = new Set([...shippedKey].filter(([, q]) => q !== p).map(([k]) => k));
     const max = poster ? 3 : JUDGE_MAX_CANDS;
-    const cands = judgeCandidates(picks, p.subj ? [p.subj, ...p.pool] : p.pool, {
+    const searchCands = judgeCandidates(picks, p.subj ? [p.subj, ...p.pool] : p.pool, {
       max, freeOnly: poster, recent: recentImages, exclude,
     });
-    // Few search candidates: the best pool matches take the free places, last.
-    if (cands.length < max && coverPool.photos.length) {
-      const extra = poolMatches(coverPool.photos, {
+    const shownPicks = searchCands.filter((c) => picks.includes(c));
+    let pool = [];
+    if (coverPool.photos.length) {
+      pool = poolMatches(coverPool.photos, {
         texts: poolTexts(p), blocked: coverBlocked, recent: recentImages, freeOnly: poster,
-        exclude: new Set([...shippedKey.keys(), ...poolClaimed, ...cands.map((c) => coverFileKey(c.url))]),
-        max: Math.min(POOL_MAX_OFFER, max - cands.length),
+        exclude: new Set([...shippedKey.keys(), ...poolClaimed, ...searchCands.map((c) => coverFileKey(c.url))]),
+        max: max - shownPicks.length,
       });
-      for (const x of extra) { poolClaimed.add(coverFileKey(x.url)); cands.push(x); }
-      console.log(`pool: '${p.t.id}' round 1 (${cands.length - extra.length} search candidate(s)) ← ${poolOffered(extra)}`);
     }
+    const cands = slotCandidates({
+      picks: shownPicks, search: searchCands.filter((c) => !picks.includes(c)), pool, max, reserve: JUDGE_POOL_SLOTS,
+    });
+    const offered = cands.filter((c) => c.pool);
+    for (const x of offered) poolClaimed.add(coverFileKey(x.url));
+    if (coverPool.photos.length) console.log(`pool: '${p.t.id}' round 1 (${cands.length - offered.length} search candidate(s)) ← ${poolOffered(offered)}`);
     if (!cands.length) {
       // No photo to judge — but the judge can still say what to search for.
       if (poster) p.judge = { status: 'unjudged', why: 'no photo to judge' };
-      else cards.push({ p, id: `C${cards.length + 1}`, poster, shown: [], note: '(no candidate photo was found for this card: fits is [] — write retry)' });
+      else cards.push({ p, id: `C${cards.length + 1}`, poster, shown: [], note: '(no candidate photo was found for this card: good and ok are [] — write retry)' });
       continue;
     }
-    const shown = [];
-    let missed = null;
-    for (const c of cands) {
-      if (images >= JUDGE_MAX_IMAGES) break;
-      const img = await judgeThumb(c);
-      if (img.data) { shown.push({ ...c, img }); images++; continue; }
-      if (picks.includes(c)) { missed = `${judgeLabel(c)}: ${img.why}`; break; }
-    }
-    // The judge can only overrule a pick it has seen.
-    if (missed || !picks.every((c) => shown.some((s) => s.url === c.url))) {
-      p.judge = { status: 'unjudged', why: `today's pick not downloaded (${missed || 'image cap'}) — kept` };
+    const { shown, missed } = await downloadShown(p.t.id, cands, budget);
+    // A pick the judge never saw can't be rated — but the candidates it does
+    // see still decide (coverWithUnseen). Nothing seen at all → keep the picks.
+    const unseen = picks.filter((c) => !shown.some((s) => s.url === c.url));
+    const unseenWhy = unseen.map((c) => `${judgeLabel(c)}: ${missed.find((m) => m.c === c)?.why || 'not a candidate'}`).join('; ');
+    if (!shown.length && unseen.length) {
+      p.judge = { status: 'unjudged', why: `no candidate downloaded (${unseenWhy}) — pick kept` };
       continue;
     }
-    cards.push({ p, id: `C${cards.length + 1}`, poster, shown });
+    cards.push({ p, id: `C${cards.length + 1}`, poster, shown, unseen, unseenWhy });
   }
   if (!cards.length) return { ok: false, why: 'nothing to judge' };
 
   const ans = await askJudge(judgeContent(cards, {
     rules: JUDGE_RULES + JUDGE_RETRY_RULE,
-    answer: `\nAnswer with one entry for EVERY card: card = its id ("C1"…), fits = the numbers of the photos that fit, best first ([] when none fits), why = at most 12 English words on what decided it, retry = [] or 1–2 search queries as described above.`,
+    answer: JUDGE_ANSWER('C', true),
   }), `cover judge: ${cards.length} card(s)`);
   spend.judge = ans.cost || 0;
   if (!ans.ok) return { ok: false, why: ans.why, cards };
   for (const c of cards) {
     const v = ans.byId.get(c.id);
     const t = c.p.t;
-    if (!v || !Array.isArray(v.fits)) { c.p.judge = { status: 'unjudged', why: 'missing from the answer — kept' }; continue; }
+    if (!isVerdict(v)) { c.p.judge = { status: 'unjudged', why: 'missing from the answer — kept' }; continue; }
     c.verdict = v;
     c.retry = c.poster ? [] : cleanRetryQueries(v.retry, { skip: c.p.queries });
     const why = String(v.why || '').replace(/\s+/g, ' ').slice(0, 120);
     if (!c.shown.length) { c.p.judge = { status: 'unjudged', why: `no photo to judge${why ? ` — ${why}` : ''}`, retry: c.retry }; continue; }
     const before = { image: t.image, attributed: t.imageAttributed };
-    applyCoverSlots(t, coverFromVerdict(c.shown, v.fits, { poster: c.poster }), { poster: c.poster });
+    const pick = coverWithUnseen(c.shown, v, c.unseen, { poster: c.poster });
+    applyCoverSlots(t, pick, { poster: c.poster });
     const status = judgeStatus(before, { image: t.image, attributed: t.imageAttributed });
-    c.p.judge = { status, why, fits: v.fits, of: c.shown.length, retry: c.retry };
+    const note = c.unseen?.length
+      ? (pick.keptUnseen ? `unseen pick kept, nothing else good/ok (${c.unseenWhy}); ` : `pick not downloaded (${c.unseenWhy}), judged the rest; `)
+      : '';
+    c.p.judge = { status, why: note + why, levels: photoLevels(c.shown.length, v), level: pick.level, retry: c.retry, unseen: c.unseen?.length || 0, keptUnseen: pick.keptUnseen };
   }
   return { ok: true, cards };
 }
 
 // Round 2 for round 1's answered cards (`r1` = judgeCovers' cards). Writes
-// p.judge2 = { kind, status, queries, searched, shown, fits, of, why } on every
+// p.judge2 = { status, queries, searched, shown, levels, level, why } on every
 // card it considered. → { ok, cards, why? }
 async function retryCovers(r1) {
   // Files any card shows after round 1 are never offered to another card.
   const taken = new Set();
   for (const t of data.topics) for (const u of [t.image, t.imageAttributed]) { const k = coverFileKey(u); if (k) taken.add(k); }
-  // …nor again to the card that already saw (and turned down) them.
+  // …nor again to the card that already saw (and rated wrong) them.
   const seenBy = new Map(r1.map((c) => [c, new Set(c.shown.map((s) => coverFileKey(s.url)).filter(Boolean))]));
-  const poolFor = (c, exclude) => (coverPool.photos.length
-    ? poolMatches(coverPool.photos, { texts: poolTexts(c.p, c.retry || []), blocked: coverBlocked, recent: recentImages, exclude })
+  const has = coverPool.photos.length > 0;
+  const poolFor = (c, exclude) => (has
+    ? poolMatches(coverPool.photos, { texts: poolTexts(c.p, c.retry || []), blocked: coverBlocked, recent: recentImages, exclude, max: JUDGE_MAX_CANDS })
     : []);
-  const { picked, skipped } = retryTargets(r1.map((c) => ({
-    c, poster: c.poster, verdict: c.verdict, fits: c.verdict?.fits, retry: c.retry,
-    hasCover: !!(c.p.t.imageAttributed || c.p.t.image),
-    poolCount: c.verdict && !c.poster ? poolFor(c, new Set([...taken, ...seenBy.get(c)])).length : 0,
-  })));
-  for (const e of skipped) e.c.p.judge2 = { kind: e.kind, status: `skipped — over the ${picked.length}-card cap` };
-  if (!picked.length) return { ok: true, cards: [], why: 'no card needs a second look' };
+  const fallbacksFor = (c, exclude) => (has
+    ? poolFallbacks(coverPool.photos, { cat: c.p.t.cat, subtopic: c.p.t.subtopic, blocked: coverBlocked, recent: recentImages, exclude })
+    : []);
+  const targets = retryTargets(r1.map((c) => {
+    const ex = new Set([...taken, ...seenBy.get(c)]);
+    return {
+      c, poster: c.poster, verdict: c.verdict, retry: c.retry,
+      hasCover: !!(c.p.t.imageAttributed || c.p.t.image),
+      poolCount: c.verdict && !c.poster ? poolFor(c, ex).length : 0,
+      fallbackCount: c.verdict && !c.poster ? fallbacksFor(c, ex).length : 0,
+    };
+  }));
+  if (!targets.length) return { ok: true, cards: [], why: 'no card without a good or ok photo' };
 
   const claimed = new Set(taken);
   const cards = [];
-  let images = 0;
-  for (const e of picked) {
+  const budget = { left: JUDGE_RETRY_MAX_IMAGES };
+  for (const e of targets) {
     const { c } = e;
     const exclude = new Set([...claimed, ...seenBy.get(c)]);
     const lists = [];
     const searched = [];
-    for (const q of c.retry || []) {
-      const list = usableCandidates(await searchCommons(q), coverBlocked).filter((x) => !exclude.has(coverFileKey(x.url)));
-      lists.push(list);
-      searched.push(`"${q}" ${list.length}`);
-      if (list.length >= JUDGE_MAX_CANDS) break; // enough to fill the card: save a Commons call
+    if (e.search) {
+      for (const q of c.retry || []) {
+        const list = usableCandidates(await searchCommons(q), coverBlocked).filter((x) => !exclude.has(coverFileKey(x.url)));
+        lists.push(list);
+        searched.push(`"${q}" ${list.length}`);
+        if (list.length >= JUDGE_MAX_CANDS) break; // enough to fill the card: save a Commons call
+      }
     }
     const fresh = judgeCandidates([], interleave(...lists), { max: JUDGE_MAX_CANDS, recent: recentImages, exclude });
     const pool = poolFor(c, new Set([...exclude, ...fresh.map((x) => coverFileKey(x.url))]));
-    if (coverPool.photos.length) console.log(`pool: '${c.p.t.id}' round 2 ← ${poolOffered(pool)}`);
-    const shown = [];
-    for (const x of [...fresh, ...pool]) {
-      if (images >= JUDGE_RETRY_MAX_IMAGES) break;
-      const img = await judgeThumb(x);
-      if (img.data) { shown.push({ ...x, img }); images++; }
-    }
-    for (const x of [...fresh, ...pool]) claimed.add(coverFileKey(x.url));
-    const nPool = shown.filter((x) => x.pool).length;
-    c.p.judge2 = { kind: e.kind, queries: c.retry || [], searched, shown: `${shown.length - nPool} search + ${nPool} pool` };
-    if (!shown.length) { c.p.judge2.status = 'no new candidates — round 1 stands'; continue; }
+    const main = slotCandidates({ search: fresh, pool, max: JUDGE_MAX_CANDS, reserve: JUDGE_POOL_SLOTS });
+    const fallbacks = fallbacksFor(c, new Set([...exclude, ...main.map((x) => coverFileKey(x.url))]));
+    if (has) console.log(`pool: '${c.p.t.id}' round 2 ← ${poolOffered(main.filter((x) => x.pool))}; fallback ← ${fallbacks.length ? poolOffered(fallbacks) : 'none for this category'}`);
+    const { shown } = await downloadShown(c.p.t.id, [...main, ...fallbacks], budget);
+    for (const x of [...main, ...fallbacks]) claimed.add(coverFileKey(x.url));
+    const n = (f) => shown.filter(f).length;
+    c.p.judge2 = {
+      queries: c.retry || [], searched,
+      shown: `${n((x) => !x.pool)} search + ${n((x) => x.pool && !x.fallback)} pool + ${n((x) => x.fallback)} fallback`,
+    };
+    if (!shown.length) { c.p.judge2.status = 'no new candidates — gradient'; continue; }
     const first = c.p.judge?.why ? `first look: ${c.p.judge.why}` : '';
-    const weak = e.kind === 'weak' ? '\n(this card keeps its current cover unless one of these photos clearly fits)' : '';
-    cards.push({ p: c.p, id: `R${cards.length + 1}`, kind: e.kind, poster: false, shown, note: first + weak });
+    cards.push({ p: c.p, id: `R${cards.length + 1}`, poster: false, shown, note: first });
   }
   if (!cards.length) return { ok: true, cards, why: 'no new candidates' };
 
   const ans = await askJudge(judgeContent(cards, {
     rules: JUDGE_RULES,
-    intro: `\nSECOND LOOK. The first candidates for the cards below were turned down or only weakly accepted (the first verdict is quoted under each card). These are new candidates, from better searches or from a hand-picked library. Same rules, same bar.\n`,
-    answer: `\nAnswer with one entry for EVERY card: card = its id ("R1"…), fits = the numbers of the photos that fit, best first ([] when none fits), why = at most 12 English words on what decided it, retry = [] (there is no third search).`,
+    intro: `\nSECOND LOOK. Every earlier candidate for the cards below was rated wrong (the first verdict is quoted under each card). These are new candidates: better searches, hand-picked library photos, and generic library photos for the card's category. Same three levels, same rules.\n`,
+    answer: JUDGE_ANSWER('R', false),
   }), `cover judge round 2: ${cards.length} card(s)`);
   spend.judge2 = ans.cost || 0;
   if (!ans.ok) {
@@ -2957,13 +3053,15 @@ async function retryCovers(r1) {
   for (const c of cards) {
     const v = ans.byId.get(c.id);
     const j = c.p.judge2;
-    if (!v || !Array.isArray(v.fits)) { j.status = 'missing from the answer — round 1 stands'; continue; }
+    if (!isVerdict(v)) { j.status = 'missing from the answer — round 1 stands'; continue; }
     const t = c.p.t;
-    const merged = mergeRetryCover(coverSlotsOf(t), coverFromVerdict(c.shown, v.fits));
+    const pick = coverFromLevels(c.shown, v);
+    const merged = mergeRetryCover(coverSlotsOf(t), pick);
     if (merged.changed) applyCoverSlots(t, merged);
-    j.status = merged.changed ? (c.kind === 'none' ? 'filled' : 'replaced') : (c.kind === 'none' ? 'still none' : 'kept');
-    j.fits = v.fits;
-    j.of = c.shown.length;
+    const top = rankByLevel(c.shown, v)[0];
+    j.status = merged.changed ? `filled (${pick.level}${top?.c.fallback ? ', category fallback' : top?.c.pool ? ', pool' : ''})` : 'all wrong — gradient';
+    j.levels = photoLevels(c.shown.length, v);
+    j.level = pick.level;
     j.why = String(v.why || '').replace(/\s+/g, ' ').slice(0, 120);
   }
   return { ok: true, cards };
@@ -2980,7 +3078,7 @@ async function retryCovers(r1) {
   for (const p of judgePlans) {
     const j = r.ok ? p.judge : { status: 'unjudged', why: r.why };
     p.judge = j;
-    console.log(`judge: '${p.t.id}' ${j?.status || 'unjudged'}${j?.fits ? ` [fits ${JSON.stringify(j.fits)} of ${j.of}]` : ''} — "${p.t.title}" → ${coverSummary(p.t)}${j?.why ? ` (${j.why})` : ''}${j?.retry?.length ? ` retry ${JSON.stringify(j.retry)}` : ''}`);
+    console.log(`judge: '${p.t.id}' ${j?.status || 'unjudged'}${j?.levels ? ` [${levelsText(j.levels)}]${j.level ? ` → ${j.level}` : ''}` : ''} — "${p.t.title}" → ${coverSummary(p.t)}${j?.why ? ` (${j.why})` : ''}${j?.retry?.length ? ` retry ${JSON.stringify(j.retry)}` : ''}`);
   }
   // Round 2 — only after a round 1 that answered. Fail-soft: whatever goes
   // wrong, every card goes back to exactly what round 1 left.
@@ -3001,14 +3099,19 @@ async function retryCovers(r1) {
       const j = p.judge2;
       if (!j) continue;
       console.log(
-        `judge round 2: '${p.t.id}' (${j.kind === 'weak' ? 'weak fit' : 'no photo'}) ${j.status || 'not judged'}${j.fits ? ` [fits ${JSON.stringify(j.fits)} of ${j.of}]` : ''}` +
-        `${j.searched?.length ? ` — searched ${j.searched.join(', ')}` : j.queries ? ' — no queries' : ''}${j.shown ? `; shown ${j.shown}` : ''}` +
+        `judge round 2: '${p.t.id}' ${j.status || 'not judged'}${j.levels ? ` [${levelsText(j.levels)}]` : ''}` +
+        `${j.searched?.length ? ` — searched ${j.searched.join(', ')}` : ' — no search'}${j.shown ? `; shown ${j.shown}` : ''}` +
         ` → ${coverSummary(p.t)}${j.why ? ` (${j.why})` : ''}`,
       );
     }
   }
   const bare = data.topics.filter((t) => !t.image && !t.imageAttributed).length;
-  console.log(`covers: ${data.topics.length - bare} of ${data.topics.length} card(s) with a photo, ${bare} on the gradient`);
+  const unjudged = judgePlans.filter((p) => !p.judge?.levels).length;
+  const unseenKept = judgePlans.filter((p) => p.judge?.keptUnseen).length;
+  console.log(
+    `covers: ${data.topics.length - bare} of ${data.topics.length} card(s) with a photo, ${bare} on the gradient; ` +
+    `${unjudged} card(s) not judged, ${unseenKept} kept an unseen pick; thumbnails rate-limited ${thumbPace.limited}× (backoff ${Math.round(thumbPace.waited / 1000)} s)`,
+  );
 }
 
 // DRY_RUN=1: the covers the deck would ship, then stop — no today.json, archive,
@@ -3021,8 +3124,9 @@ if (DRY_RUN) {
     const j = plan?.judge;
     const j2 = plan?.judge2;
     console.log(
-      `[${i + 1}] ${t.title}\n    → ${coverSummary(t)}\n    judge: ${j?.status || 'unjudged'}${j?.why ? ` — ${j.why}` : ''}` +
-      (j2 ? `\n    round 2: ${j2.status || 'not judged'}${j2.queries?.length ? ` — queries ${JSON.stringify(j2.queries)}` : ''}${j2.shown ? `; shown ${j2.shown}` : ''}${j2.why ? ` — ${j2.why}` : ''}` : ''),
+      `[${i + 1}] ${t.id} · ${t.cat}/${t.subtopic} · ${t.title}\n    → ${coverSummary(t)}` +
+      `\n    judge: ${j?.status || 'unjudged'}${j?.levels ? ` [${levelsText(j.levels)}]${j.level ? ` → ${j.level}` : ''}` : ''}${j?.why ? ` — ${j.why}` : ''}` +
+      (j2 ? `\n    round 2: ${j2.status || 'not judged'}${j2.levels ? ` [${levelsText(j2.levels)}]` : ''}${j2.queries?.length ? ` — queries ${JSON.stringify(j2.queries)}` : ''}${j2.shown ? `; shown ${j2.shown}` : ''}${j2.why ? ` — ${j2.why}` : ''}` : ''),
     );
   });
   console.log(`\ncost: ${spendLine()} (effort ${EFFORT || 'default'})`);
