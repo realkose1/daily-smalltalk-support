@@ -1,0 +1,316 @@
+{
+  "date": "2026-11-19",
+  "dateLabel": "11월 19일 목요일",
+  "generatedAt": "2026-11-19T00:18:14.399Z",
+  "topics": [
+    {
+      "id": "수능일",
+      "cat": "시즌",
+      "subtopic": "기념일",
+      "label": "수능",
+      "color": "#1E3A8A",
+      "title": "수능 날 아침, 도시락 뭐 싸 가셨어요?",
+      "desc": "서울은 아침 최저 -1°, 낮 최고 5°까지 올라요.",
+      "reason": "올해 수능이 치러지는 날이고, 아침 공기가 영하예요.",
+      "special": true,
+      "questions": [
+        "수능 날 아침에 꼭 먹었던 음식 있으세요?",
+        "수능 끝나고 제일 먼저 뭐 하셨어요?",
+        "수험생 때 들었던 응원 한마디 기억나세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 수능이래요. 다들 수능 날 어떻게 보내셨어요?",
+          "follow": "그날 아침 메뉴나 가는 길 풍경이 기억나는 분 계세요?",
+          "caution": "성적이나 대학 얘기는 묻지 않는 게 좋아요."
+        },
+        "friend": {
+          "opener": "야 오늘 수능이다. 너 그날 뭐 먹고 갔는지 기억나?",
+          "follow": "끝나고 어디 갔는지도 생각나?",
+          "caution": "점수 비교는 하지 말자."
+        },
+        "date": {
+          "opener": "오늘 수능이래요. 수능 날 기억나는 장면 있으세요?",
+          "follow": "끝나고 제일 먼저 먹은 음식도 궁금해요.",
+          "caution": "출신 학교나 점수는 묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Convenience_Store_LunchBox_01.jpg/1280px-Convenience_Store_LunchBox_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Korea.net / Korean Culture and Information Service",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Convenience_Store_LunchBox_01.jpg"
+      }
+    },
+    {
+      "id": "폭설",
+      "cat": "문화",
+      "subtopic": "영화",
+      "label": "폭설",
+      "color": "#374151",
+      "title": "'폭설'이 개봉 첫날 박스오피스 1위를 했대요",
+      "desc": "2위는 '더 스타디움2'였고, 스포 피하자는 전략이 통했대요.",
+      "reason": "주말을 앞둔 목요일이라 볼 영화를 고를 때예요.",
+      "questions": [
+        "'폭설' 보셨어요, 볼 예정이세요?",
+        "스포 없이 보는 편이세요, 후기 찾아보고 가세요?",
+        "요즘 극장에서 본 영화 중 기억나는 거 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "'폭설' 개봉 첫날 1위 했대요. 보셨어요?",
+          "follow": "스포 피하자는 분위기가 흥행에 통했다던데요.",
+          "caution": "결말 얘기는 안 본 사람 앞에서 하지 마세요."
+        },
+        "friend": {
+          "opener": "'폭설' 개봉 첫날 1위래. 봤어?",
+          "follow": "김윤석이랑 구교환 조합이라던데 같이 볼래?",
+          "caution": "스포는 금물이야."
+        },
+        "date": {
+          "opener": "'폭설'이 개봉 첫날 1위 했대요. 영화 좋아하세요?",
+          "follow": "요즘 극장에서 본 영화가 있는지 궁금해요.",
+          "caution": "영화 취향을 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://image.tmdb.org/t/p/original/xiBYIFWBrLD7Z7jWrt0e7YLLmfC.jpg",
+      "imageCredit": {
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/movie/1244809"
+      },
+      "imageKind": "poster"
+    },
+    {
+      "id": "구자욱",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "스토브",
+      "color": "#B91C1C",
+      "title": "구자욱 쟁탈전에 최소 3개 팀이 붙었대요",
+      "desc": "역대 최고 152억 원을 넘길 수 있다는 얘기가 나와요.",
+      "reason": "야구 시즌이 끝나고 스토브리그가 한창이에요.",
+      "questions": [
+        "좋아하는 야구팀이 있으세요?",
+        "올겨울 영입 소식 중 눈에 띄는 거 있으세요?",
+        "야구 없는 겨울엔 뭐 하며 지내세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "구자욱 선수 쟁탈전이 붙었대요. 보셨어요?",
+          "follow": "최소 3개 팀이 경쟁하고 있다던데요.",
+          "caution": "응원팀 얘기로 언쟁하지 마세요."
+        },
+        "friend": {
+          "opener": "구자욱 쟁탈전 난리래. 어디 갈 것 같아?",
+          "follow": "SSG 최지훈은 4년 67억에 남았다더라.",
+          "caution": "팀 디스는 하지 말자."
+        },
+        "date": {
+          "opener": "야구 좋아하세요? 구자욱 선수 영입전이 뜨겁대요.",
+          "follow": "응원하는 팀이 있는지 궁금해요.",
+          "caution": "야구 지식 자랑은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Baseball_swing.jpg/1280px-Baseball_swing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%284%29.jpg/1280px-2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "WiiWii",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017_09_01_%EC%82%BC%EC%84%B1_vs_SK_%EA%B5%BF%EB%B0%94%EC%9D%B4_%EB%9D%BC%EC%9D%B4%EC%98%A8%ED%82%B9_1_(4).jpg"
+      }
+    },
+    {
+      "id": "하이닉스",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "주식",
+      "color": "#047857",
+      "title": "SK하이닉스가 어제 4.2% 올랐다던데, 주식 하세요?",
+      "desc": "종가는 114만 4천 원이고, 코스피는 화요일에 2.6% 내렸어요.",
+      "reason": "한 주 중반이라 장 얘기가 오가는 목요일이에요.",
+      "questions": [
+        "요즘 주식이나 재테크 하세요?",
+        "뉴스에서 본 종목 중 눈에 띈 거 있어요?",
+        "투자 얘기는 주변에서 많이 들으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "SK하이닉스가 어제 4.2% 올랐대요. 보셨어요?",
+          "follow": "코스피는 화요일에 2.6% 내렸다던데요.",
+          "caution": "종목 추천은 하지 마세요."
+        },
+        "friend": {
+          "opener": "하이닉스 어제 4.2% 올랐대. 너 주식 해?",
+          "follow": "삼성전자도 2.3% 올랐다더라.",
+          "caution": "수익 자랑은 자제하자."
+        },
+        "date": {
+          "opener": "요즘 주식이나 재테크 관심 있으세요?",
+          "follow": "하이닉스가 어제 올랐다는 뉴스를 봤어요.",
+          "caution": "수익률 같은 돈 얘기는 캐묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Qtstalker_candlestick_chart.png/1280px-Qtstalker_candlestick_chart.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "니트족",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "쉼",
+      "color": "#9A3412",
+      "title": "영국에서 일 안 하는 청년이 100만 명이래요",
+      "desc": "나라에서 돈을 주니 그냥 쉰다는 말까지 나온대요.",
+      "reason": "수능을 치른 청년들이 진로를 고민하는 날이에요.",
+      "questions": [
+        "잠깐 쉬어 가는 시간이 필요하다고 느낀 적 있으세요?",
+        "20대 땐 어떤 고민이 제일 컸어요?",
+        "주변에 쉬어 본 친구 얘기 들어 보셨어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "영국에서 쉬는 청년이 100만 명이래요. 들으셨어요?",
+          "follow": "복지를 줄이겠다는 얘기도 나온다던데요.",
+          "caution": "청년 세대를 평가하지 마세요."
+        },
+        "friend": {
+          "opener": "영국에 일 안 하는 청년이 100만 명이래.",
+          "follow": "너는 쉬어 간다면 뭐 하고 싶어?",
+          "caution": "훈계하듯 말하지 말자."
+        },
+        "date": {
+          "opener": "영국에 쉬는 청년이 100만 명이라던데 보셨어요?",
+          "follow": "쉬는 시간이 생기면 뭐 하고 싶으세요?",
+          "caution": "직업이나 소득은 캐묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Senior_person_reading_a_book_indoors_closeup.jpg/1280px-Senior_person_reading_a_book_indoors_closeup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Nenad Stojkovic",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Senior_person_reading_a_book_indoors_closeup.jpg"
+      }
+    },
+    {
+      "id": "김장국물",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "굴",
+      "color": "#0F766E",
+      "title": "영하권 아침엔 어떤 뜨끈한 국물이 당기세요?",
+      "desc": "서울 낮 최고가 5°라 한낮에도 쌀쌀해요.",
+      "reason": "올가을 들어 아침 기온이 처음 영하로 내려갔어요.",
+      "questions": [
+        "추운 날 꼭 찾는 국물 요리가 있어요?",
+        "집에서 끓이는 국물과 사 먹는 국물 중 어느 쪽이세요?",
+        "겨울에만 먹는 음식 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 영하라 뜨끈한 국물이 당기네요. 점심 뭐 드실래요?",
+          "follow": "겨울에만 찾는 메뉴가 있으세요?",
+          "caution": "메뉴 선택을 강요하지 마세요."
+        },
+        "friend": {
+          "opener": "추워서 국물 땡긴다. 뭐 먹을래?",
+          "follow": "너는 겨울 국물 하면 뭐가 떠올라?",
+          "caution": "먹기 싫어하는 음식은 존중하자."
+        },
+        "date": {
+          "opener": "추운 날엔 어떤 국물이 생각나세요?",
+          "follow": "좋아하는 겨울 음식이 궁금해요.",
+          "caution": "음식 취향을 평가하지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Kkochi-eomuk.jpg/1280px-Kkochi-eomuk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "anokarina",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kkochi-eomuk.jpg"
+      }
+    },
+    {
+      "id": "퇴근후",
+      "cat": "일상",
+      "subtopic": "주말계획",
+      "label": "주말",
+      "color": "#6D28D9",
+      "title": "내일이 금요일인데, 이번 주말엔 뭐 하실 거예요?",
+      "desc": "주말 서울 아침은 영하권 추위가 이어질 수 있어요.",
+      "reason": "수능 한파 뒤 첫 주말을 앞두고 있어요.",
+      "questions": [
+        "추운 주말엔 밖에 나가세요, 집에 계세요?",
+        "이번 주말에 꼭 하고 싶은 거 있어요?",
+        "주말에 보려고 아껴 둔 영상 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내일만 지나면 주말이네요. 계획 있으세요?",
+          "follow": "추운 날엔 어디 가세요?",
+          "caution": "사생활을 캐묻지 마세요."
+        },
+        "friend": {
+          "opener": "이번 주말에 뭐 해? 추운데 집에 있을래?",
+          "follow": "보고 싶은 영화나 가고 싶은 맛집 있어?",
+          "caution": "약속 강요는 하지 말자."
+        },
+        "date": {
+          "opener": "주말엔 주로 뭐 하며 보내세요?",
+          "follow": "추운 날 좋아하는 실내 활동이 있는지 궁금해요.",
+          "caution": "주말 일정을 꼬치꼬치 묻지 마세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Filet_crochet_sofa_blanket.jpg/1280px-Filet_crochet_sofa_blanket.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Durova",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Filet_crochet_sofa_blanket.jpg"
+      }
+    },
+    {
+      "id": "샤오미",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "샤오미",
+      "color": "#EA580C",
+      "title": "샤오미 18 프로 맥스가 국내에 출시됐대요",
+      "desc": "후면 화면과 2억 화소 카메라를 갖췄대요.",
+      "reason": "연말 선물이나 폰 교체를 고민할 시기예요.",
+      "questions": [
+        "폰은 보통 몇 년 쓰고 바꾸세요?",
+        "후면 화면으로 셀피 찍는 거 써 보고 싶으세요?",
+        "폰 고를 때 카메라와 배터리 중 뭘 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "샤오미 신형이 국내 출시됐대요. 보셨어요?",
+          "follow": "후면 화면으로 셀피를 찍는다던데 신기하네요.",
+          "caution": "브랜드 비교로 논쟁하지 마세요."
+        },
+        "friend": {
+          "opener": "샤오미 18 프로 맥스 나왔대. 봤어?",
+          "follow": "2억 화소 카메라라는데 폰 바꿀 생각 있어?",
+          "caution": "가격 자랑은 자제하자."
+        },
+        "date": {
+          "opener": "요즘 폰 카메라 많이 쓰세요?",
+          "follow": "샤오미 신형은 후면 화면으로 셀피를 찍는대요.",
+          "caution": "폰 기종 평가는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Xiaomi_18_Pro_Max.jpg/1280px-Xiaomi_18_Pro_Max.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "茅野ふたば",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Xiaomi_18_Pro_Max.jpg"
+      }
+    }
+  ]
+}
