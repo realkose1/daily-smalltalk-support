@@ -2,10 +2,12 @@
 
 Readers' "cover doesn't match the topic" reports from the app (last 180 days), one row per reported cover, newest first (max 50). Rewritten by scripts/generate.mjs on every run — don't edit by hand. Every file listed here is blocklisted: the generator never picks it again.
 
-Updated 2026-11-20T19:50:09.227Z. 14 reported cover(s).
+Updated 2026-11-21T19:50:09.835Z. 16 reported cover(s).
 
 | date | topic | file | reporters | notes |
 |---|---|---|---|---|
+| 2026-11-21 | 테슬라 FSD 국내 도입에 제동이 걸렸대요 | [Gigafactory Texas Building 1 June 2022.jpg](https://commons.wikimedia.org/wiki/File:Gigafactory_Texas_Building_1_June_2022.jpg) | 1 | — |
+| 2026-11-21 | GTA6가 첫날 매출 38억 달러를 냈대요 | [Girls playing video games in Japan.jpg](https://commons.wikimedia.org/wiki/File:Girls_playing_video_games_in_Japan.jpg) | 1 | — |
 | 2026-11-15 | SK하이닉스가 금요일에 3.0% 내렸다던데, 주식 하세요? | [New Zealand Stock Exchange 1.jpg](https://commons.wikimedia.org/wiki/File:New_Zealand_Stock_Exchange_1.jpg) | 1 | — |
 | 2026-11-14 | 오픈AI가 AI 에이전트용 챗GPT 월렛 을 공개했대요 | [Pioneer Building, San Francisco (2019) -1.jpg](https://commons.wikimedia.org/wiki/File:Pioneer_Building%2C_San_Francisco_(2019)_-1.jpg) | 1 | — |
 | 2026-11-14 | 비트코인이 4.3% 내렸다던데, 투자 하세요? | [Bar in Hong Kong with walls plastered with currency from all over the world.jpg](https://commons.wikimedia.org/wiki/File:Bar_in_Hong_Kong_with_walls_plastered_with_currency_from_all_over_the_world.jpg) | 1 | — |

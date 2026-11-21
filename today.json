@@ -1,303 +1,310 @@
 {
-  "date": "2026-11-21",
-  "dateLabel": "11월 21일 토요일",
-  "generatedAt": "2026-11-20T19:50:09.227Z",
+  "date": "2026-11-22",
+  "dateLabel": "11월 22일 일요일",
+  "generatedAt": "2026-11-21T19:50:09.835Z",
   "topics": [
     {
-      "id": "mama-kimhyesu",
+      "id": "chiikawa",
       "cat": "문화",
-      "subtopic": "음악",
-      "label": "MAMA",
-      "color": "#7B1FA2",
-      "title": "김혜수가 MAMA 레드카펫에서 시선을 모았대요",
-      "desc": "인어공주 느낌의 드레스에 설인아는 턱시도 차림이었대요.",
-      "reason": "토요일이라 어제오늘 본 시상식 사진 얘기가 나오기 쉬워요.",
+      "subtopic": "영화",
+      "label": "치이카와",
+      "color": "#E57399",
+      "title": "'치이카와'가 300만 명을 넘겼대요",
+      "desc": "'토이 스토리 5'를 꺾고 올해 애니 흥행 1위래요.",
+      "reason": "일요일 오후, 극장 갈지 고민하는 시간이에요.",
       "questions": [
-        "MAMA 레드카펫 사진 보셨어요?",
-        "시상식 중에 꼭 챙겨 보는 무대 있으세요?",
-        "올해 연말 무대 중 기대되는 게 있어요?"
+        "요즘 극장에서 본 영화 중 기억에 남는 거 있으세요?",
+        "애니메이션 극장판은 어떤 걸 제일 재밌게 보셨어요?",
+        "캐릭터 굿즈 중에 사 본 거 있으세요?"
       ],
       "tips": {
         "work": {
-          "opener": "MAMA 레드카펫에 김혜수 씨 드레스가 인어공주 같았대요. 보셨어요?",
-          "follow": "설인아 씨는 턱시도로 나와서 극과 극이었대요.",
-          "caution": "외모 품평은 피하세요."
+          "opener": "'치이카와'가 300만 명을 넘었대요. 보셨어요?",
+          "follow": "'토이 스토리 5'보다 올해 애니 흥행 1위라네요.",
+          "caution": "캐릭터 취향을 평가하지 마세요."
         },
         "friend": {
-          "opener": "MAMA 레드카펫 봤어? 김혜수 드레스 인어공주 같았대",
-          "follow": "설인아는 턱시도 입었다는데 그 사진도 봤어?",
-          "caution": "몸매나 나이 얘기는 하지 마."
+          "opener": "치이카와 300만 넘었대. 봤어?",
+          "follow": "토이 스토리 5 제치고 올해 애니 1위래.",
+          "caution": "안 본 사람한테 스포하지 않기."
         },
         "date": {
-          "opener": "시상식 보는 거 좋아하세요? MAMA 레드카펫 얘기가 한창이더라고요.",
-          "follow": "기억에 남는 시상식 무대 있으세요?",
-          "caution": "출연자 외모 평가는 피하세요."
+          "opener": "요즘 극장 가신 적 있으세요? 치이카와가 300만 넘었다던데요.",
+          "follow": "애니메이션 좋아하시는지 슬쩍 물어보세요.",
+          "caution": "취향을 유치하다고 단정하지 마세요."
         }
       },
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/8/82/Kim_Hye-Soo_%28%EA%B9%80%ED%98%9C%EC%88%98%29_%5E.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "imageCredit": {
-        "author": "Napim22",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kim_Hye-Soo_(%EA%B9%80%ED%98%9C%EC%88%98)_%5E.jpg"
-      }
-    },
-    {
-      "id": "tesla-fsd",
-      "cat": "쇼핑",
-      "subtopic": "신제품·테크",
-      "label": "FSD",
-      "color": "#C62828",
-      "title": "테슬라 FSD 국내 도입에 제동이 걸렸대요",
-      "desc": "안전성 판단 근거가 부족해서 자료 보완이 필요하대요.",
-      "reason": "운전대 잡는 주말 드라이브가 많은 토요일이라서요.",
-      "questions": [
-        "자율주행 차 타 보고 싶으세요?",
-        "운전 중 가장 귀찮은 순간은 언제예요?",
-        "차에 꼭 있었으면 하는 기능 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "테슬라 FSD 국내 도입이 보류됐대요. 보셨어요?",
-          "follow": "안전성 판단 근거가 부족하다고 했대요.",
-          "caution": "특정 브랜드 평가는 피하세요."
-        },
-        "friend": {
-          "opener": "테슬라 FSD 한국 도입 제동 걸렸대",
-          "follow": "너라면 자율주행 맡길 수 있겠어?",
-          "caution": "차 자랑으로 흘러가진 마."
-        },
-        "date": {
-          "opener": "자율주행 차 타 보고 싶으세요? 테슬라 FSD가 보류됐대요.",
-          "follow": "운전은 좋아하세요?",
-          "caution": "차 가격 얘기는 피하세요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Gigafactory_Texas_Building_1_June_2022.jpg/1280px-Gigafactory_Texas_Building_1_June_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Larry D. Moore",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gigafactory_Texas_Building_1_June_2022.jpg"
-      }
-    },
-    {
-      "id": "gta6-sales",
-      "cat": "취미",
-      "subtopic": "게임",
-      "label": "GTA6",
-      "color": "#1B5E20",
-      "title": "GTA6가 첫날 매출 38억 달러를 냈대요",
-      "desc": "엔터 사상 최대 기록이고 725만 명이 동시 시청했대요.",
-      "reason": "주말 저녁에 즐길 게임을 고르는 토요일이라서요.",
-      "questions": [
-        "GTA6 해 보실 생각 있으세요?",
-        "주말에 주로 어떤 게임 하세요?",
-        "요즘 가장 오래 붙잡은 게임은 뭐예요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "GTA6 첫날 매출이 38억 달러래요. 들어 보셨어요?",
-          "follow": "725만 명이 동시 시청했다고 하더라고요.",
-          "caution": "업무 시간 게임 얘기는 짧게 하세요."
-        },
-        "friend": {
-          "opener": "GTA6 첫날 매출이 38억 달러래, 대박이지?",
-          "follow": "이번 주말에 같이 게임할래?",
-          "caution": "스포일러는 조심해."
-        },
-        "date": {
-          "opener": "게임 좋아하세요? GTA6가 첫날 매출 기록을 세웠대요.",
-          "follow": "요즘 즐겨 하는 게임 있으세요?",
-          "caution": "게임 시간 추궁은 피하세요."
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/6/62/Girls_playing_video_games_in_Japan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "id": "cold-wave-sat",
-      "cat": "날씨",
-      "subtopic": "추위",
-      "label": "한파",
-      "color": "#1565C0",
-      "title": "토요일 서울이 영하 3도인데, 뭐 입고 나가세요?",
-      "desc": "최고 1도, 최저 영하 4도에 하늘은 맑대요.",
-      "reason": "비나 눈이 그친 뒤라 오늘이 가장 추운 날이에요.",
-      "questions": [
-        "이런 날 최애 겉옷은 뭐예요?",
-        "손발 시릴 때 어떻게 하세요?",
-        "추운 날 꼭 챙기는 물건 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "오늘 영하 3도래요. 주말인데 나가세요?",
-          "follow": "패딩 꺼내셨어요, 코트로 버티세요?",
-          "caution": "추위 불평만 길게 하진 마세요."
-        },
-        "friend": {
-          "opener": "오늘 영하 3도야, 뭐 입고 나가?",
-          "follow": "롱패딩 꺼냈어?",
-          "caution": "약속 취소 압박은 금물."
-        },
-        "date": {
-          "opener": "오늘 꽤 춥죠? 이런 날 뭐 드시고 싶으세요?",
-          "follow": "겨울 좋아하세요?",
-          "caution": "옷차림 평가는 피하세요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Rainy_clouds_over_Wild_Mans_Brother_Range%2C_Canterbury%2C_New_Zealand.jpg/1280px-Rainy_clouds_over_Wild_Mans_Brother_Range%2C_Canterbury%2C_New_Zealand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Michal Klajban",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rainy_clouds_over_Wild_Mans_Brother_Range,_Canterbury,_New_Zealand.jpg"
-      }
-    },
-    {
-      "id": "hynix-up",
-      "cat": "경제",
-      "subtopic": "주식·투자",
-      "label": "하이닉스",
-      "color": "#283593",
-      "title": "SK하이닉스가 목요일에 3.4% 올랐다던데, 주식 하세요?",
-      "desc": "종가는 118만 3천 원이고 코스피는 1.4% 올랐어요.",
-      "reason": "한 주를 마친 토요일이라 지난 장 얘기가 나와요.",
-      "questions": [
-        "요즘 주식 하세요?",
-        "재테크는 주로 뭐 하세요?",
-        "주식 앱은 자주 열어 보세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "SK하이닉스가 목요일에 3.4% 올랐다던데요.",
-          "follow": "코스피도 1.4% 올랐대요.",
-          "caution": "종목 추천은 하지 마세요."
-        },
-        "friend": {
-          "opener": "하이닉스 목요일에 3.4% 올랐대",
-          "follow": "너 주식 해?",
-          "caution": "수익 자랑은 조심해."
-        },
-        "date": {
-          "opener": "주식 관심 있으세요? 하이닉스가 올랐다더라고요.",
-          "follow": "재테크 뭐 하세요?",
-          "caution": "자산 규모는 묻지 마세요."
-        }
-      },
-      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
-    },
-    {
-      "id": "jaehon-webtoon",
-      "cat": "문화",
-      "subtopic": "웹툰·책",
-      "label": "재혼황후",
-      "color": "#AD1457",
-      "title": "'재혼황후' 웹툰 글로벌 조회수가 35배 늘었대요",
-      "desc": "이종석이 '퀸' 모습을 모르고 연기해 놀랐다고 했대요.",
-      "reason": "주말에 볼 만한 작품을 고르기 좋은 토요일이에요.",
-      "questions": [
-        "웹툰 원작 드라마 보세요?",
-        "원작을 먼저 보는 편이세요, 나중에 보는 편이세요?",
-        "요즘 챙겨 보는 웹툰 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "'재혼 황후' 웹툰 조회수가 35배 늘었대요. 아세요?",
-          "follow": "이종석 씨도 '퀸' 모습 보고 놀랐다던데요.",
-          "caution": "스포일러는 조심하세요."
-        },
-        "friend": {
-          "opener": "재혼황후 웹툰 조회수 35배 늘었대",
-          "follow": "드라마 먼저 볼래, 웹툰 먼저 볼래?",
-          "caution": "결말 말하지 마."
-        },
-        "date": {
-          "opener": "웹툰 보세요? '재혼 황후'가 요즘 인기래요.",
-          "follow": "웹툰 원작 드라마 좋아하세요?",
-          "caution": "취향 평가는 피하세요."
-        }
-      },
-      "imageAttributed": "https://image.tmdb.org/t/p/original/9mVhSAIZERTDw7dWbbGuJegCDjl.jpg",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/5TMyytCI5Pfc9c1eNsljiCdiB05.jpg",
       "imageCredit": {
         "author": "TMDB",
         "license": "포스터",
         "text": "포스터: TMDB",
-        "sourceUrl": "https://www.themoviedb.org/tv/279246"
+        "sourceUrl": "https://www.themoviedb.org/movie/1586876"
       },
       "imageKind": "poster"
     },
     {
-      "id": "kimjang-weekend",
-      "cat": "음식",
-      "subtopic": "제철음식",
-      "label": "김장",
-      "color": "#D84315",
-      "title": "주말에 김장하는 집이 많은데, 속은 어떻게 넣으세요?",
-      "desc": "늦가을 김장철이라 배추 사는 분이 늘어요.",
-      "reason": "영하권 날씨라 김장 하기 맞는 토요일이에요.",
+      "id": "weekend",
+      "cat": "여행",
+      "subtopic": "당일치기",
+      "label": "겨울여행",
+      "color": "#6A1B9A",
+      "title": "맑고 추운 겨울, 당일치기로 가고 싶은 곳 있으세요?",
+      "desc": "오늘 강수확률은 0%라 하늘이 맑아요.",
+      "reason": "일요일이라 다음 주말 계획 세우기 좋은 때예요.",
       "questions": [
-        "김장 때 제일 맛있는 건 뭐예요?",
-        "수육 곁들이세요?",
-        "김장 김치 어디서 받아 드세요?"
+        "겨울에 가 본 곳 중 제일 좋았던 데는 어디예요?",
+        "온천이랑 바다 중 어디가 끌려요?",
+        "당일치기로 갈 때 꼭 먹는 음식 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "이번 주말 김장하시는 분 많죠?",
-          "follow": "올해는 몇 포기 하세요?",
-          "caution": "가족 사정 캐묻지 마세요."
+          "opener": "다음 주말에 어디 다녀오실 계획 있으세요?",
+          "follow": "가까운 근교 추천을 물어보세요.",
+          "caution": "휴가 일정 캐묻지 마세요."
         },
         "friend": {
-          "opener": "올해 김장 했어?",
-          "follow": "갓김치 같은 거 좋아해?",
-          "caution": "음식 취향 강요 금지."
+          "opener": "겨울에 어디 당일치기 갈래?",
+          "follow": "맛집 하나 끼면 좋겠다.",
+          "caution": "일정 강요 금지."
         },
         "date": {
-          "opener": "김장 해 보신 적 있으세요?",
-          "follow": "좋아하는 김치 종류 있으세요?",
-          "caution": "요리 실력 평가는 피하세요."
+          "opener": "겨울 여행 좋아하세요?",
+          "follow": "가 보고 싶은 곳을 물어보세요.",
+          "caution": "숙박 얘기는 피하세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/MSC-K_Leaders_Participate_in_Kimchi-Making_Volunteer_Event_%289410256%29.jpg/1280px-MSC-K_Leaders_Participate_in_Kimchi-Making_Volunteer_Event_%289410256%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Korean_cuisine-Gimjang-Preparation_for_making_kimchi-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Snow_in_Seoul_20201213.jpg/1280px-Snow_in_Seoul_20201213.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/%C5%81upk%C3%B3w_%28%D0%9B%D1%83%D0%BF%D0%BA%D1%96%D0%B2%29_-_train_station_in_winter_02.jpg/1280px-%C5%81upk%C3%B3w_%28%D0%9B%D1%83%D0%BF%D0%BA%D1%96%D0%B2%29_-_train_station_in_winter_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "by Caroline Knox at flickr",
-        "license": "CC BY-SA 3.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean_cuisine-Gimjang-Preparation_for_making_kimchi-01.jpg"
+        "author": "Pudelek",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%C5%81upk%C3%B3w_(%D0%9B%D1%83%D0%BF%D0%BA%D1%96%D0%B2)_-_train_station_in_winter_02.jpg"
       }
     },
     {
-      "id": "weekend-hotsoup",
-      "cat": "일상",
-      "subtopic": "주말계획",
-      "label": "주말",
-      "color": "#455A64",
-      "title": "맑고 추운 토요일, 오늘 뭐 하실 계획이세요?",
-      "desc": "서울은 최고 1도에 강수확률 0%예요.",
-      "reason": "비는 그치고 하늘이 맑은 주말이라서요.",
+      "id": "minjung",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "쇼트트랙",
+      "color": "#1565C0",
+      "title": "최민정이 월드투어 1000m 3연속 금메달을 땄대요",
+      "desc": "여자 계주는 은메달을 땄대요.",
+      "reason": "겨울 스포츠 시즌이 막 시작되는 11월 말이에요.",
       "questions": [
-        "이런 날 어디 가고 싶으세요?",
-        "집에서 뭐 하며 보내세요?",
-        "주말 루틴 있으세요?"
+        "겨울 스포츠 중 보는 거 좋아하는 종목 있으세요?",
+        "스케이트 타 본 적 있으세요?",
+        "경기 보다가 소리 지른 적 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "주말 계획 있으세요?",
-          "follow": "날씨가 맑아서 나가기 좋겠어요.",
-          "caution": "사생활 캐묻지 마세요."
+          "opener": "최민정 선수가 월드투어 1000m에서 3연속 금 땄대요.",
+          "follow": "여자 계주는 은메달이었대요.",
+          "caution": "선수 평가는 삼가세요."
         },
         "friend": {
-          "opener": "오늘 뭐 해? 날씨 맑대",
-          "follow": "따뜻한 데서 밥 먹을래?",
-          "caution": "일정 강요는 금지."
+          "opener": "최민정 3연속 금메달 땄더라. 봤어?",
+          "follow": "계주는 은메달이래.",
+          "caution": "결과 모르는 사람에게 스포 주의."
         },
         "date": {
-          "opener": "주말에 보통 뭐 하세요?",
-          "follow": "겨울 나들이 좋아하세요?",
-          "caution": "다음 약속 재촉은 피하세요."
+          "opener": "겨울 스포츠 좋아하세요?",
+          "follow": "스케이트 타 본 경험을 물어보세요.",
+          "caution": "종목 지식 자랑은 피하세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Table_Rock_Morning_%2811424773345%29.jpg/1280px-Table_Rock_Morning_%2811424773345%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/JOJ_2020_Short_Track_Malley_2123.jpg/1280px-JOJ_2020_Short_Track_Malley_2123.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Johann Conus",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:JOJ_2020_Short_Track_Malley_2123.jpg"
+      }
+    },
+    {
+      "id": "huh",
+      "cat": "건강",
+      "subtopic": "다이어트",
+      "label": "감량",
+      "color": "#2E7D5B",
+      "title": "허각이 20kg을 감량했대요",
+      "desc": "다이어트 비법도 방송에서 공개됐대요.",
+      "reason": "영하 4도라 밖에서 운동하기 망설여지는 아침이에요.",
+      "questions": [
+        "겨울에 운동은 어떻게 이어가세요?",
+        "다이어트할 때 제일 참기 힘든 음식은 뭐예요?",
+        "실내에서 하는 운동 중 추천할 만한 거 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "허각 씨가 20kg 뺐다던데 보셨어요?",
+          "follow": "다이어트 비법도 공개했대요.",
+          "caution": "동료 몸매 얘기로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "허각 20kg 감량했대. 봤어?",
+          "follow": "비법이 뭔지 궁금하더라.",
+          "caution": "체중 얘기는 상대 반응 봐가며."
+        },
+        "date": {
+          "opener": "겨울엔 운동 어떻게 하세요?",
+          "follow": "좋아하는 운동이 뭔지 물어보세요.",
+          "caution": "외모나 체형 언급은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/National_Mall_%26_Memorial_Parks_%28742e755c-6145-4aea-bd66-c224a7130270%29.jpg/1280px-National_Mall_%26_Memorial_Parks_%28742e755c-6145-4aea-bd66-c224a7130270%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "kimjang",
+      "cat": "음식",
+      "subtopic": "집밥·요리",
+      "label": "귤",
+      "color": "#EF6C00",
+      "title": "추운 일요일 저녁, 뭐 끓여 드실 거예요?",
+      "desc": "영하 4도라 뜨끈한 전골이 생각나는 날씨예요.",
+      "reason": "일요일 저녁은 한 주 장보기 전에 메뉴 정하는 때예요.",
+      "questions": [
+        "겨울에 꼭 해 먹는 요리 있으세요?",
+        "전골이랑 찌개 중 뭐가 더 끌려요?",
+        "혼자 먹을 때 꼭 챙기는 반찬 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "일요일 저녁 메뉴는 정하셨어요?",
+          "follow": "추운 날 생각나는 음식을 물어보세요.",
+          "caution": "식성 평가는 피하세요."
+        },
+        "friend": {
+          "opener": "오늘 저녁 뭐 먹어? 추워서 전골 땡긴다.",
+          "follow": "같이 해 먹을까?",
+          "caution": "메뉴 강요 금지."
+        },
+        "date": {
+          "opener": "추운 날엔 어떤 음식 좋아하세요?",
+          "follow": "집밥 vs 외식 취향을 물어보세요.",
+          "caution": "가격이나 다이어트 언급은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Food_vendor_dishing_Seswaa_and_Dikgobe_dish_at_a_local_food_outlet.jpg/1280px-Food_vendor_dishing_Seswaa_and_Dikgobe_dish_at_a_local_food_outlet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "bukang",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "부캉이",
+      "color": "#00838F",
+      "title": "부산 북항 상어 '부캉이'가 공공브랜드대상을 받았대요",
+      "desc": "상어가 남긴 밈이 도시브랜드가 됐대요.",
+      "reason": "일요일이라 주말 나들이 얘기가 오가는 때예요.",
+      "questions": [
+        "동네에서 본 신기한 동물 있으세요?",
+        "부산 가면 꼭 가는 곳 있어요?",
+        "도시 마스코트 중 좋아하는 거 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "부산 북항 상어 '부캉이'가 상 받았대요.",
+          "follow": "밈이 도시브랜드가 됐다네요.",
+          "caution": "지역 비교는 피하세요."
+        },
+        "friend": {
+          "opener": "부산 부캉이 상 받았대. 알아?",
+          "follow": "상어 밈이 브랜드 됐대.",
+          "caution": "지역 감정 건드리지 않기."
+        },
+        "date": {
+          "opener": "부산 가 보셨어요?",
+          "follow": "좋아하는 장소를 물어보세요.",
+          "caution": "여행 일정 강요 금지."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Korea-Busan-Busan_Tower-01.jpg/1280px-Korea-Busan-Busan_Tower-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "by lwy",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea-Busan-Busan_Tower-01.jpg"
+      }
+    },
+    {
+      "id": "cold",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "영하",
+      "color": "#37474F",
+      "title": "서울이 영하 4도인데 햇살은 쨍하네요, 뭐 입고 나가세요?",
+      "desc": "최고 4도, 최저 영하 4도에 강수확률은 0%예요.",
+      "reason": "일요일이라 아침 늦게 나가는 분이 많아요.",
+      "questions": [
+        "겨울 외투 중 제일 아끼는 거 있으세요?",
+        "핫팩 쓰세요, 장갑 끼세요?",
+        "추운 날 나가고 싶어지는 곳 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 최저 영하 4도라는데 월요일엔 뭐 입으실 거예요?",
+          "follow": "출근길 따뜻하게 하는 팁 있으세요?",
+          "caution": "추위 불평만 길게 하지 마세요."
+        },
+        "friend": {
+          "opener": "오늘 영하 4도래. 뭐 입고 나가?",
+          "follow": "롱패딩 꺼냈어?",
+          "caution": "약속 취소 압박 주지 않기."
+        },
+        "date": {
+          "opener": "요즘 추운데 겨울 좋아하세요?",
+          "follow": "겨울에 하고 싶은 일을 물어보세요.",
+          "caution": "옷차림 평가는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Winter_Storm_Winds_Do_Blow.jpg/1280px-Winter_Storm_Winds_Do_Blow.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Carol (vanhookc)",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Winter_Storm_Winds_Do_Blow.jpg"
+      }
+    },
+    {
+      "id": "hynix",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "하이닉스",
+      "color": "#C62828",
+      "title": "SK하이닉스가 금요일에 5.9% 내렸다던데, 주식 하세요?",
+      "desc": "삼성전자도 7.0% 내렸고 코스피는 5.2% 내렸어요.",
+      "reason": "금요일 마감 뒤 처음 장이 열리는 월요일이 코앞이에요.",
+      "questions": [
+        "요즘 주식 얘기 주변에서 많이 들리세요?",
+        "투자 시작하게 된 계기가 뭐였어요?",
+        "장 열려 있을 때 앱 얼마나 자주 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "금요일에 하이닉스가 5.9% 내렸다더라고요.",
+          "follow": "삼성전자도 7.0% 내렸대요.",
+          "caution": "종목 추천이나 전망은 하지 마세요."
+        },
+        "friend": {
+          "opener": "금요일에 하이닉스 5.9% 빠졌더라. 너 주식해?",
+          "follow": "삼성전자도 7.0% 내렸대.",
+          "caution": "손실 금액은 캐묻지 않기."
+        },
+        "date": {
+          "opener": "요즘 재테크 관심 있으세요?",
+          "follow": "주식이나 적금 중 뭐가 익숙한지 물어보세요.",
+          "caution": "수익 자랑이나 추천은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/US_bond_market_cap_compared_to_stock_market_cap.webp/1280px-US_bond_market_cap_compared_to_stock_market_cap.webp?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg/1280px-Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "​中華民國總統府",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg"
+      }
     }
   ]
 }
