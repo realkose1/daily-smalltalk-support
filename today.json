@@ -1,309 +1,298 @@
 {
-  "date": "2026-11-22",
-  "dateLabel": "11월 22일 일요일",
-  "generatedAt": "2026-11-21T19:50:09.835Z",
+  "date": "2026-11-23",
+  "dateLabel": "11월 23일 월요일",
+  "generatedAt": "2026-11-22T19:50:10.235Z",
   "topics": [
     {
-      "id": "chiikawa",
+      "id": "1123-jeon-hyunmoo",
       "cat": "문화",
-      "subtopic": "영화",
-      "label": "치이카와",
-      "color": "#E57399",
-      "title": "'치이카와'가 300만 명을 넘겼대요",
-      "desc": "'토이 스토리 5'를 꺾고 올해 애니 흥행 1위래요.",
-      "reason": "일요일 오후, 극장 갈지 고민하는 시간이에요.",
+      "subtopic": "예능",
+      "label": "현무로드",
+      "color": "#9D174D",
+      "title": "'현무로드'에서 강미나가 일본 오카야마 식당 투어를 했대요",
+      "desc": "전현무는 사적으로 만나는 사람이 5명도 안 된다고 했대요.",
+      "reason": "월요일 아침이라 주말에 본 예능이 대화 소재가 돼요.",
       "questions": [
-        "요즘 극장에서 본 영화 중 기억에 남는 거 있으세요?",
-        "애니메이션 극장판은 어떤 걸 제일 재밌게 보셨어요?",
-        "캐릭터 굿즈 중에 사 본 거 있으세요?"
+        "요즘 챙겨 보는 예능 있으세요?",
+        "먹방 프로 보고 가 보고 싶었던 식당 있으세요?",
+        "일본 소도시 여행 가 보신 적 있어요?"
       ],
       "tips": {
         "work": {
-          "opener": "'치이카와'가 300만 명을 넘었대요. 보셨어요?",
-          "follow": "'토이 스토리 5'보다 올해 애니 흥행 1위라네요.",
-          "caution": "캐릭터 취향을 평가하지 마세요."
+          "opener": "현무로드에서 강미나가 오카야마 식당 투어 했대요, 보셨어요?",
+          "follow": "전현무가 사적으로 만나는 사람이 5명도 안 된다고 했다더라고요.",
+          "caution": "출연자 평가는 피하세요."
         },
         "friend": {
-          "opener": "치이카와 300만 넘었대. 봤어?",
-          "follow": "토이 스토리 5 제치고 올해 애니 1위래.",
-          "caution": "안 본 사람한테 스포하지 않기."
+          "opener": "현무로드에서 오카야마 식당 투어 했다던데 봤어?",
+          "follow": "일본 소도시 가고 싶어지더라.",
+          "caution": "스포일러 조심해."
         },
         "date": {
-          "opener": "요즘 극장 가신 적 있으세요? 치이카와가 300만 넘었다던데요.",
-          "follow": "애니메이션 좋아하시는지 슬쩍 물어보세요.",
-          "caution": "취향을 유치하다고 단정하지 마세요."
+          "opener": "예능 즐겨 보세요? 현무로드가 오카야마에 갔대요.",
+          "follow": "맛집 프로 보고 찾아간 곳이 있는지 물어보세요.",
+          "caution": "출연자 외모 품평은 피하세요."
         }
       },
-      "imageAttributed": "https://image.tmdb.org/t/p/original/5TMyytCI5Pfc9c1eNsljiCdiB05.jpg",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E6%B5%A6%E6%B7%BB%E5%B8%82_Urasoe-city_%E5%90%89%E9%87%8E%E5%AE%B6_Yoshinoya_Restaurant_interior_table_n_chairs_February_2026_N13P_02.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E6%B5%A6%E6%B7%BB%E5%B8%82_Urasoe-city_%E5%90%89%E9%87%8E%E5%AE%B6_Yoshinoya_Restaurant_interior_table_n_chairs_February_2026_N13P_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/904ugLoQib2bzEcD3jhRUwr1BfC.jpg",
       "imageCredit": {
         "author": "TMDB",
         "license": "포스터",
         "text": "포스터: TMDB",
-        "sourceUrl": "https://www.themoviedb.org/movie/1586876"
+        "sourceUrl": "https://www.themoviedb.org/tv/336181"
       },
       "imageKind": "poster"
     },
     {
-      "id": "weekend",
-      "cat": "여행",
-      "subtopic": "당일치기",
-      "label": "겨울여행",
-      "color": "#6A1B9A",
-      "title": "맑고 추운 겨울, 당일치기로 가고 싶은 곳 있으세요?",
-      "desc": "오늘 강수확률은 0%라 하늘이 맑아요.",
-      "reason": "일요일이라 다음 주말 계획 세우기 좋은 때예요.",
-      "questions": [
-        "겨울에 가 본 곳 중 제일 좋았던 데는 어디예요?",
-        "온천이랑 바다 중 어디가 끌려요?",
-        "당일치기로 갈 때 꼭 먹는 음식 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "다음 주말에 어디 다녀오실 계획 있으세요?",
-          "follow": "가까운 근교 추천을 물어보세요.",
-          "caution": "휴가 일정 캐묻지 마세요."
-        },
-        "friend": {
-          "opener": "겨울에 어디 당일치기 갈래?",
-          "follow": "맛집 하나 끼면 좋겠다.",
-          "caution": "일정 강요 금지."
-        },
-        "date": {
-          "opener": "겨울 여행 좋아하세요?",
-          "follow": "가 보고 싶은 곳을 물어보세요.",
-          "caution": "숙박 얘기는 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Snow_in_Seoul_20201213.jpg/1280px-Snow_in_Seoul_20201213.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/%C5%81upk%C3%B3w_%28%D0%9B%D1%83%D0%BF%D0%BA%D1%96%D0%B2%29_-_train_station_in_winter_02.jpg/1280px-%C5%81upk%C3%B3w_%28%D0%9B%D1%83%D0%BF%D0%BA%D1%96%D0%B2%29_-_train_station_in_winter_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Pudelek",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%C5%81upk%C3%B3w_(%D0%9B%D1%83%D0%BF%D0%BA%D1%96%D0%B2)_-_train_station_in_winter_02.jpg"
-      }
-    },
-    {
-      "id": "minjung",
-      "cat": "취미",
-      "subtopic": "스포츠",
-      "label": "쇼트트랙",
-      "color": "#1565C0",
-      "title": "최민정이 월드투어 1000m 3연속 금메달을 땄대요",
-      "desc": "여자 계주는 은메달을 땄대요.",
-      "reason": "겨울 스포츠 시즌이 막 시작되는 11월 말이에요.",
-      "questions": [
-        "겨울 스포츠 중 보는 거 좋아하는 종목 있으세요?",
-        "스케이트 타 본 적 있으세요?",
-        "경기 보다가 소리 지른 적 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "최민정 선수가 월드투어 1000m에서 3연속 금 땄대요.",
-          "follow": "여자 계주는 은메달이었대요.",
-          "caution": "선수 평가는 삼가세요."
-        },
-        "friend": {
-          "opener": "최민정 3연속 금메달 땄더라. 봤어?",
-          "follow": "계주는 은메달이래.",
-          "caution": "결과 모르는 사람에게 스포 주의."
-        },
-        "date": {
-          "opener": "겨울 스포츠 좋아하세요?",
-          "follow": "스케이트 타 본 경험을 물어보세요.",
-          "caution": "종목 지식 자랑은 피하세요."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/JOJ_2020_Short_Track_Malley_2123.jpg/1280px-JOJ_2020_Short_Track_Malley_2123.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "Johann Conus",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:JOJ_2020_Short_Track_Malley_2123.jpg"
-      }
-    },
-    {
-      "id": "huh",
-      "cat": "건강",
-      "subtopic": "다이어트",
-      "label": "감량",
-      "color": "#2E7D5B",
-      "title": "허각이 20kg을 감량했대요",
-      "desc": "다이어트 비법도 방송에서 공개됐대요.",
-      "reason": "영하 4도라 밖에서 운동하기 망설여지는 아침이에요.",
-      "questions": [
-        "겨울에 운동은 어떻게 이어가세요?",
-        "다이어트할 때 제일 참기 힘든 음식은 뭐예요?",
-        "실내에서 하는 운동 중 추천할 만한 거 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "허각 씨가 20kg 뺐다던데 보셨어요?",
-          "follow": "다이어트 비법도 공개했대요.",
-          "caution": "동료 몸매 얘기로 번지지 않게 하세요."
-        },
-        "friend": {
-          "opener": "허각 20kg 감량했대. 봤어?",
-          "follow": "비법이 뭔지 궁금하더라.",
-          "caution": "체중 얘기는 상대 반응 봐가며."
-        },
-        "date": {
-          "opener": "겨울엔 운동 어떻게 하세요?",
-          "follow": "좋아하는 운동이 뭔지 물어보세요.",
-          "caution": "외모나 체형 언급은 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/National_Mall_%26_Memorial_Parks_%28742e755c-6145-4aea-bd66-c224a7130270%29.jpg/1280px-National_Mall_%26_Memorial_Parks_%28742e755c-6145-4aea-bd66-c224a7130270%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "kimjang",
-      "cat": "음식",
-      "subtopic": "집밥·요리",
-      "label": "귤",
-      "color": "#EF6C00",
-      "title": "추운 일요일 저녁, 뭐 끓여 드실 거예요?",
-      "desc": "영하 4도라 뜨끈한 전골이 생각나는 날씨예요.",
-      "reason": "일요일 저녁은 한 주 장보기 전에 메뉴 정하는 때예요.",
-      "questions": [
-        "겨울에 꼭 해 먹는 요리 있으세요?",
-        "전골이랑 찌개 중 뭐가 더 끌려요?",
-        "혼자 먹을 때 꼭 챙기는 반찬 있어요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "일요일 저녁 메뉴는 정하셨어요?",
-          "follow": "추운 날 생각나는 음식을 물어보세요.",
-          "caution": "식성 평가는 피하세요."
-        },
-        "friend": {
-          "opener": "오늘 저녁 뭐 먹어? 추워서 전골 땡긴다.",
-          "follow": "같이 해 먹을까?",
-          "caution": "메뉴 강요 금지."
-        },
-        "date": {
-          "opener": "추운 날엔 어떤 음식 좋아하세요?",
-          "follow": "집밥 vs 외식 취향을 물어보세요.",
-          "caution": "가격이나 다이어트 언급은 피하세요."
-        }
-      },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Food_vendor_dishing_Seswaa_and_Dikgobe_dish_at_a_local_food_outlet.jpg/1280px-Food_vendor_dishing_Seswaa_and_Dikgobe_dish_at_a_local_food_outlet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-    },
-    {
-      "id": "bukang",
-      "cat": "일상",
-      "subtopic": "동물",
-      "label": "부캉이",
-      "color": "#00838F",
-      "title": "부산 북항 상어 '부캉이'가 공공브랜드대상을 받았대요",
-      "desc": "상어가 남긴 밈이 도시브랜드가 됐대요.",
-      "reason": "일요일이라 주말 나들이 얘기가 오가는 때예요.",
-      "questions": [
-        "동네에서 본 신기한 동물 있으세요?",
-        "부산 가면 꼭 가는 곳 있어요?",
-        "도시 마스코트 중 좋아하는 거 있으세요?"
-      ],
-      "tips": {
-        "work": {
-          "opener": "부산 북항 상어 '부캉이'가 상 받았대요.",
-          "follow": "밈이 도시브랜드가 됐다네요.",
-          "caution": "지역 비교는 피하세요."
-        },
-        "friend": {
-          "opener": "부산 부캉이 상 받았대. 알아?",
-          "follow": "상어 밈이 브랜드 됐대.",
-          "caution": "지역 감정 건드리지 않기."
-        },
-        "date": {
-          "opener": "부산 가 보셨어요?",
-          "follow": "좋아하는 장소를 물어보세요.",
-          "caution": "여행 일정 강요 금지."
-        }
-      },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Korea-Busan-Busan_Tower-01.jpg/1280px-Korea-Busan-Busan_Tower-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageCredit": {
-        "author": "by lwy",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korea-Busan-Busan_Tower-01.jpg"
-      }
-    },
-    {
-      "id": "cold",
+      "id": "1123-first-snow",
       "cat": "날씨",
       "subtopic": "추위",
-      "label": "영하",
-      "color": "#37474F",
-      "title": "서울이 영하 4도인데 햇살은 쨍하네요, 뭐 입고 나가세요?",
-      "desc": "최고 4도, 최저 영하 4도에 강수확률은 0%예요.",
-      "reason": "일요일이라 아침 늦게 나가는 분이 많아요.",
+      "label": "첫추위",
+      "color": "#2563EB",
+      "title": "소설인데 전국 아침이 영하권이었대요",
+      "desc": "서울은 최저 1°에 최고 12°로 일교차가 커요.",
+      "reason": "비 소식이 100%라 출근길 우산과 겉옷을 함께 챙기는 아침이에요.",
       "questions": [
-        "겨울 외투 중 제일 아끼는 거 있으세요?",
-        "핫팩 쓰세요, 장갑 끼세요?",
-        "추운 날 나가고 싶어지는 곳 있으세요?"
+        "출근길에 제일 먼저 꺼낸 겨울 아이템이 뭐예요?",
+        "첫눈 오면 생각나는 장소 있으세요?",
+        "추운 날 퇴근길엔 뭐 드시고 싶어요?"
       ],
       "tips": {
         "work": {
-          "opener": "오늘 최저 영하 4도라는데 월요일엔 뭐 입으실 거예요?",
-          "follow": "출근길 따뜻하게 하는 팁 있으세요?",
-          "caution": "추위 불평만 길게 하지 마세요."
+          "opener": "소설이라 그런지 아침에 영하권이라던데 춥지 않으셨어요?",
+          "follow": "행안부가 첫눈 대비 제설 점검도 했대요.",
+          "caution": "날씨 불평만 길게 하진 마세요."
         },
         "friend": {
-          "opener": "오늘 영하 4도래. 뭐 입고 나가?",
-          "follow": "롱패딩 꺼냈어?",
-          "caution": "약속 취소 압박 주지 않기."
+          "opener": "소설이라고 전국이 영하권이었대, 너 오늘 뭐 입고 나왔어?",
+          "follow": "첫눈 오면 뭐 먹을지 벌써 생각해 봤어?",
+          "caution": "옷차림 지적은 하지 마."
         },
         "date": {
-          "opener": "요즘 추운데 겨울 좋아하세요?",
-          "follow": "겨울에 하고 싶은 일을 물어보세요.",
-          "caution": "옷차림 평가는 피하세요."
+          "opener": "소설이라 아침이 많이 춥던데 겨울 좋아하세요?",
+          "follow": "겨울에 가보고 싶은 곳이 있는지 물어보세요.",
+          "caution": "추위 얘기만 늘어놓지 마세요."
         }
       },
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Winter_Storm_Winds_Do_Blow.jpg/1280px-Winter_Storm_Winds_Do_Blow.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Snowy_Sainte-Famille_Street_in_Quebec_City.jpg/1280px-Snowy_Sainte-Famille_Street_in_Quebec_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "1123-moon",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "두번째달",
+      "color": "#4338CA",
+      "title": "지구에 지름 2m 소행성이 두 번째 달처럼 붙었대요",
+      "desc": "지구 중력에 붙잡혀 12월까지 함께 돈대요.",
+      "reason": "흐리고 비 오는 밤이라 하늘 얘기가 궁금해지는 날이에요.",
+      "questions": [
+        "밤하늘 보며 별 찾아본 적 있으세요?",
+        "우주 관련 소식 중 가장 신기했던 게 뭐예요?",
+        "맑은 날 어디서 별 보고 싶으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "지구에 두 번째 달이 생겼다는 소식 들으셨어요?",
+          "follow": "지름 2m짜리 소행성이 12월까지 같이 돈대요.",
+          "caution": "과학 지식 자랑은 피하세요."
+        },
+        "friend": {
+          "opener": "지구에 두 번째 달 생겼대, 들었어?",
+          "follow": "12월까지만 같이 있는다더라.",
+          "caution": "괜히 겁주지 마."
+        },
+        "date": {
+          "opener": "우주 소식 좋아하세요? 지구에 두 번째 달이 생겼대요.",
+          "follow": "별 보러 가 본 곳이 있는지 물어보세요.",
+          "caution": "어려운 용어는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Full_Moon_in_the_night_sky%2C_Quebec_City.jpg/1280px-Full_Moon_in_the_night_sky%2C_Quebec_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "1123-suwon",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "승격",
+      "color": "#1D4ED8",
+      "title": "수원 삼성과 수원FC가 나란히 1부로 승격한대요",
+      "desc": "K리그2에서 수원 삼성은 우승, 수원FC는 2위로 확정했어요.",
+      "reason": "월요일 아침이라 주말 경기 결과가 자연스러운 첫 화제예요.",
+      "questions": [
+        "응원하는 축구팀 있으세요?",
+        "직접 경기장에서 본 가장 기억나는 경기는요?",
+        "내년 1부 리그 보면 어느 경기가 제일 궁금하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "수원 두 팀이 같이 1부로 올라간대요, 보셨어요?",
+          "follow": "이정효 감독이 우승 트로피 들어 올렸다더라고요.",
+          "caution": "응원팀 싸움으로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "수원 삼성이랑 수원FC 둘 다 승격했대!",
+          "follow": "서울 이랜드는 아직 승격 기회가 남았다더라.",
+          "caution": "팀 비하는 하지 마."
+        },
+        "date": {
+          "opener": "축구 좋아하세요? 수원 두 팀이 같이 승격했대요.",
+          "follow": "직관 가 본 적 있는지 물어보세요.",
+          "caution": "전문 용어로 몰아붙이지 마세요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Chisom_Suwon_FC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
       "imageCredit": {
-        "author": "Carol (vanhookc)",
-        "license": "CC BY-SA 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Winter_Storm_Winds_Do_Blow.jpg"
+        "author": "포모사",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chisom_Suwon_FC.jpg"
       }
     },
     {
-      "id": "hynix",
+      "id": "1123-samsung-drop",
       "cat": "경제",
       "subtopic": "주식·투자",
-      "label": "하이닉스",
-      "color": "#C62828",
-      "title": "SK하이닉스가 금요일에 5.9% 내렸다던데, 주식 하세요?",
-      "desc": "삼성전자도 7.0% 내렸고 코스피는 5.2% 내렸어요.",
-      "reason": "금요일 마감 뒤 처음 장이 열리는 월요일이 코앞이에요.",
+      "label": "주식",
+      "color": "#1E3A8A",
+      "title": "삼성전자가 금요일에 7.0% 내렸다던데, 주식 하세요?",
+      "desc": "종가는 18만 3,100원이고, 코스피도 5.2% 내렸어요.",
+      "reason": "금요일 마감 뒤 처음 장이 열리는 월요일이에요.",
       "questions": [
         "요즘 주식 얘기 주변에서 많이 들리세요?",
-        "투자 시작하게 된 계기가 뭐였어요?",
-        "장 열려 있을 때 앱 얼마나 자주 보세요?"
+        "주식 앱은 하루에 몇 번쯤 열어 보세요?",
+        "큰 하락 소식 들으면 제일 먼저 뭐 하세요?"
       ],
       "tips": {
         "work": {
-          "opener": "금요일에 하이닉스가 5.9% 내렸다더라고요.",
-          "follow": "삼성전자도 7.0% 내렸대요.",
-          "caution": "종목 추천이나 전망은 하지 마세요."
+          "opener": "금요일에 삼성전자가 7.0% 내렸다던데 보셨어요?",
+          "follow": "코스피도 5.2% 내렸다던데, 점심때 다들 그 얘기 하더라고요.",
+          "caution": "종목 추천이나 전망은 꺼내지 않는 게 좋아요."
         },
         "friend": {
-          "opener": "금요일에 하이닉스 5.9% 빠졌더라. 너 주식해?",
-          "follow": "삼성전자도 7.0% 내렸대.",
-          "caution": "손실 금액은 캐묻지 않기."
+          "opener": "야 금요일에 삼성전자 7.0% 빠진 거 봤어?",
+          "follow": "하이닉스도 5.9% 내렸다던데 너 주식 하는 거 있어?",
+          "caution": "손실 금액을 캐묻지 마."
         },
         "date": {
-          "opener": "요즘 재테크 관심 있으세요?",
-          "follow": "주식이나 적금 중 뭐가 익숙한지 물어보세요.",
-          "caution": "수익 자랑이나 추천은 피하세요."
+          "opener": "금요일에 주식 시장이 많이 내렸다던데 혹시 투자 하세요?",
+          "follow": "안 하신다면 요즘 관심 가는 재테크가 있는지 물어보세요.",
+          "caution": "수익률 자랑이나 손실 캐묻기는 피하세요."
         }
       },
-      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/US_bond_market_cap_compared_to_stock_market_cap.webp/1280px-US_bond_market_cap_compared_to_stock_market_cap.webp?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg/1280px-Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Financial_Charts_of_NGU_2015_2.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "1123-galaxywatch",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "워치",
+      "color": "#0F766E",
+      "title": "삼성전자가 내년엔 갤럭시 워치 신제품을 안 낸대요",
+      "desc": "갤럭시 S펜 기술 공급사 와콤 인수 소식도 같이 나왔어요.",
+      "reason": "연말 전에 스마트워치 바꿀지 고민하는 시기와 맞닿아요.",
+      "questions": [
+        "스마트워치 쓰세요?",
+        "워치로 제일 많이 쓰는 기능이 뭐예요?",
+        "다음에 바꾼다면 어떤 기능이 있었으면 해요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "내년엔 갤럭시 워치 신제품이 없대요, 들으셨어요?",
+          "follow": "와콤을 MBK가 인수 추진한다는 얘기도 있더라고요.",
+          "caution": "회사 주가 얘기로 번지지 않게 하세요."
+        },
+        "friend": {
+          "opener": "갤럭시 워치 내년엔 신제품 안 나온대.",
+          "follow": "너 지금 쓰는 워치 몇 년 됐어?",
+          "caution": "브랜드 비교로 싸우지 마."
+        },
+        "date": {
+          "opener": "스마트워치 쓰세요? 내년엔 갤럭시 워치 신제품이 없대요.",
+          "follow": "워치로 운동 기록하는지 물어보세요.",
+          "caution": "기기 스펙만 줄줄 말하지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/SAMSUNG_Galaxy_Watch.jpg/1280px-SAMSUNG_Galaxy_Watch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "1123-dolsot",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "군고구마",
+      "color": "#B45309",
+      "title": "추운 날 퇴근길, 군고구마 vs 호빵 뭐 고르세요?",
+      "desc": "비 소식이 있는 오늘, 서울 낮 최고는 12°예요.",
+      "reason": "월요일 퇴근길이 쌀쌀해서 손에 쥘 따뜻한 간식이 생각나는 날씨예요.",
+      "questions": [
+        "겨울 간식 중 제일 좋아하는 건 뭐예요?",
+        "어릴 때 먹던 겨울 간식 기억나세요?",
+        "집에서 해 먹는 겨울 간식 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "날이 추워지니 군고구마 생각나지 않으세요?",
+          "follow": "점심 먹고 편의점 호빵 사 오는 분도 있더라고요.",
+          "caution": "다이어트 얘기로 몰아가지 마세요."
+        },
+        "friend": {
+          "opener": "야 오늘 같은 날 군고구마 땡기지 않냐?",
+          "follow": "붕어빵 파는 데 아는 곳 있어?",
+          "caution": "가격 타박은 하지 마."
+        },
+        "date": {
+          "opener": "요즘 같은 날씨엔 어떤 간식이 생각나세요?",
+          "follow": "좋아하는 겨울 간식 하나씩 꼽아 보자고 해 보세요.",
+          "caution": "식성 평가는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Sweet_potato_rosti_-_Malt_Cafe_2026-01-14.jpg/1280px-Sweet_potato_rosti_-_Malt_Cafe_2026-01-14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/2015-05-01_mobile_roasted_sweet_potatoes_vendor_on_street_in_Tainan.jpg/1280px-2015-05-01_mobile_roasted_sweet_potatoes_vendor_on_street_in_Tainan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "imageCredit": {
-        "author": "​中華民國總統府",
-        "license": "CC BY 2.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Market_data_on_display_at_Taiwan_Stock_Exchange_20210208.jpg"
+        "author": "Sun Taro",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2015-05-01_mobile_roasted_sweet_potatoes_vendor_on_street_in_Tainan.jpg"
+      }
+    },
+    {
+      "id": "1123-kimjang-mon",
+      "cat": "일상",
+      "subtopic": "아침루틴",
+      "label": "월요일",
+      "color": "#7C3AED",
+      "title": "월요일 아침, 출근 전에 꼭 하는 루틴 있으세요?",
+      "desc": "오늘 서울 아침 최저는 1°라 집을 나서기 전부터 쌀쌀해요.",
+      "reason": "비 소식이 100%인 월요일 아침이에요.",
+      "questions": [
+        "월요일 아침 첫 메뉴는 뭐예요?",
+        "추운 날 일어나서 제일 먼저 뭐 하세요?",
+        "출근 준비에 걸리는 시간이 얼마나 되세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "월요일 아침엔 다들 뭐 하고 출근하세요?",
+          "follow": "전 따뜻한 음료부터 찾게 되더라고요.",
+          "caution": "피곤하다는 푸념만 하지 마세요."
+        },
+        "friend": {
+          "opener": "월요일 아침에 일어나서 제일 먼저 뭐 해?",
+          "follow": "추우면 이불 밖으로 나오기 힘들지 않아?",
+          "caution": "늦잠 자랑은 하지 마."
+        },
+        "date": {
+          "opener": "아침형이세요 저녁형이세요?",
+          "follow": "주말 아침엔 뭐 하는지 물어보세요.",
+          "caution": "수면 습관 캐묻지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Living_room_in_apartment_of_Condom%C3%ADnio_do_Edif%C3%ADcio_Zaher%2C_Le_Blond%2C_Rio_de_Janeiro%2C_Brazil.jpg/1280px-Living_room_in_apartment_of_Condom%C3%ADnio_do_Edif%C3%ADcio_Zaher%2C_Le_Blond%2C_Rio_de_Janeiro%2C_Brazil.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Living_Room_in_Henderson_House.jpg/1280px-Living_Room_in_Henderson_House.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Noah Wulf",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Living_Room_in_Henderson_House.jpg"
       }
     }
   ]

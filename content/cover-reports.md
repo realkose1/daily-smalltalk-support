@@ -2,10 +2,11 @@
 
 Readers' "cover doesn't match the topic" reports from the app (last 180 days), one row per reported cover, newest first (max 50). Rewritten by scripts/generate.mjs on every run — don't edit by hand. Every file listed here is blocklisted: the generator never picks it again.
 
-Updated 2026-11-21T19:50:09.835Z. 16 reported cover(s).
+Updated 2026-11-22T19:50:10.235Z. 17 reported cover(s).
 
 | date | topic | file | reporters | notes |
 |---|---|---|---|---|
+| 2026-11-22 | 부산 북항 상어 부캉이 가 공공브랜드대상을 받았대요 | [Korea-Busan-Busan Tower-01.jpg](https://commons.wikimedia.org/wiki/File:Korea-Busan-Busan_Tower-01.jpg) | 1 | — |
 | 2026-11-21 | 테슬라 FSD 국내 도입에 제동이 걸렸대요 | [Gigafactory Texas Building 1 June 2022.jpg](https://commons.wikimedia.org/wiki/File:Gigafactory_Texas_Building_1_June_2022.jpg) | 1 | — |
 | 2026-11-21 | GTA6가 첫날 매출 38억 달러를 냈대요 | [Girls playing video games in Japan.jpg](https://commons.wikimedia.org/wiki/File:Girls_playing_video_games_in_Japan.jpg) | 1 | — |
 | 2026-11-15 | SK하이닉스가 금요일에 3.0% 내렸다던데, 주식 하세요? | [New Zealand Stock Exchange 1.jpg](https://commons.wikimedia.org/wiki/File:New_Zealand_Stock_Exchange_1.jpg) | 1 | — |
