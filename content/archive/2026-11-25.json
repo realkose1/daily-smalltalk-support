@@ -1,0 +1,290 @@
+{
+  "date": "2026-11-25",
+  "dateLabel": "11월 25일 수요일",
+  "generatedAt": "2026-11-24T19:50:12.150Z",
+  "topics": [
+    {
+      "id": "20261125-dash",
+      "cat": "문화",
+      "subtopic": "드라마",
+      "label": "대시",
+      "color": "#1F3A5F",
+      "title": "박보경이 SBS 드라마 '대시'에 합류했대요",
+      "desc": "하차한 김서형 대신 긴급 투입됐다고 해요.",
+      "reason": "수요일 저녁, 퇴근 후 볼 드라마를 고르는 시간이에요.",
+      "questions": [
+        "요즘 챙겨 보는 드라마 있으세요?",
+        "중간에 배우가 바뀐 드라마 본 적 있으세요?",
+        "드라마는 본방으로 보세요, 몰아서 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "SBS 드라마 '대시'에 박보경 씨가 합류했대요. 들으셨어요?",
+          "follow": "김서형 씨가 하차해서 긴급 투입된 거래요. 요즘 보시는 드라마는 뭐예요?",
+          "caution": "배우 건강이나 하차 사유를 추측하지 않기"
+        },
+        "friend": {
+          "opener": "'대시'에 박보경이 합류했대. 들었어?",
+          "follow": "김서형 대신 긴급 투입이래. 너 요즘 뭐 봐?",
+          "caution": "하차 이유 추측하며 떠들지 않기"
+        },
+        "date": {
+          "opener": "요즘 드라마 뭐 보세요? 저는 '대시' 소식이 눈에 띄더라고요.",
+          "follow": "드라마는 주로 어디서 보세요? 최근에 정주행한 작품도 궁금해요.",
+          "caution": "배우 외모 품평하지 않기"
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/5/52/Kim_Seo-hyung_in_October_2022.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "월드비전 World Vision Korea",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kim_Seo-hyung_in_October_2022.png"
+      }
+    },
+    {
+      "id": "20261125-friend",
+      "cat": "관계",
+      "subtopic": "친구",
+      "label": "안부",
+      "color": "#4A148C",
+      "title": "올겨울 안 만난 친구, 한 명 떠오르세요?",
+      "desc": "11월도 막바지라 연말 약속이 슬슬 잡혀요.",
+      "reason": "수요일은 주말 약속을 잡기 좋은 때예요.",
+      "questions": [
+        "연말에 누구 제일 보고 싶으세요?",
+        "친구랑 모이면 뭐 하세요?",
+        "오랜 친구랑 만나는 장소 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "연말 약속 벌써 잡으셨어요?",
+          "follow": "모임은 어떤 걸 좋아하세요?",
+          "caution": "개인사 캐묻지 않기"
+        },
+        "friend": {
+          "opener": "우리 연말에 한번 보자. 언제 돼?",
+          "follow": "어디서 볼까? 먹고 싶은 거 있어?",
+          "caution": "약속 미루지 않기"
+        },
+        "date": {
+          "opener": "친구들 만나면 주로 뭐 하세요?",
+          "follow": "자주 가는 모임 장소 있으세요?",
+          "caution": "과거 연애 묻지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/A_table_in_The_Round_Table_Cafe_at_Winchester_Great_Hall_2026-07-12.jpg/1280px-A_table_in_The_Round_Table_Cafe_at_Winchester_Great_Hall_2026-07-12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261125-lpga",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "LPGA",
+      "color": "#1B5E20",
+      "title": "김민선·유현조·이다연이 LPGA에 간대요",
+      "desc": "이다연 선수는 7언더파를 몰아쳐 극적으로 합격했대요.",
+      "reason": "영하 3도로 야외 운동은 어려운 아침이에요.",
+      "questions": [
+        "골프 직접 쳐 보신 적 있으세요?",
+        "스포츠 중계 챙겨 보는 종목 있으세요?",
+        "겨울엔 어떤 운동을 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "김민선, 유현조, 이다연 선수가 LPGA에 간대요. 보셨어요?",
+          "follow": "이다연 선수는 7언더파로 극적 합격했대요. 골프 치세요?",
+          "caution": "선수 평가나 연봉 얘기는 피하기"
+        },
+        "friend": {
+          "opener": "한국 선수 셋이 LPGA 간대. 봤어?",
+          "follow": "이다연이 7언더파로 극적 합격했대. 너 골프 쳐 본 적 있어?",
+          "caution": "선수 품평하지 않기"
+        },
+        "date": {
+          "opener": "요즘 보는 스포츠 있으세요? 골프 소식이 있더라고요.",
+          "follow": "직접 해 본 운동 중에 제일 오래 한 건 뭐예요?",
+          "caution": "골프 실력 자랑하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Golfer_driving.jpg/1280px-Golfer_driving.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261125-whale",
+      "cat": "일상",
+      "subtopic": "동물",
+      "label": "고래",
+      "color": "#006064",
+      "title": "울산고래축제에 33만 명이 다녀갔대요",
+      "desc": "나흘간 107억 3100만 원을 썼다고 해요.",
+      "reason": "맑지만 영하 3도라 바다 구경은 따뜻하게 입어야 해요.",
+      "questions": [
+        "고래 실제로 본 적 있으세요?",
+        "겨울 바다 가 보셨어요?",
+        "축제 가면 뭐부터 드세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "울산고래축제에 33만 명이 갔대요. 들으셨어요?",
+          "follow": "나흘간 107억 원 넘게 썼대요. 축제 가 보신 적 있어요?",
+          "caution": "지역 비교나 평가는 피하기"
+        },
+        "friend": {
+          "opener": "울산고래축제에 33만 명 갔대. 들었어?",
+          "follow": "나흘 동안 107억 썼다더라. 너 고래 본 적 있어?",
+          "caution": "혼자 소비 규모 따지지 않기"
+        },
+        "date": {
+          "opener": "고래 보러 간 적 있으세요? 울산고래축제에 사람이 엄청 갔대요.",
+          "follow": "축제 가면 구경이랑 먹거리 중 뭘 먼저 하세요?",
+          "caution": "다음 약속 억지로 잡지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/A_massive_humpback_whale_glides_and_show_his_belly.jpg/1280px-A_massive_humpback_whale_glides_and_show_his_belly.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "20261125-moon",
+      "cat": "날씨",
+      "subtopic": "추위",
+      "label": "맑은추위",
+      "color": "#37474F",
+      "title": "맑은데 영하 3도예요, 뭐 입고 나가셨어요?",
+      "desc": "서울 낮 최고 6도까지 올라 일교차가 커요.",
+      "reason": "아침과 낮 기온 차가 9도예요.",
+      "questions": [
+        "겨울 외투 뭐 입으세요?",
+        "추위 타는 편이세요?",
+        "출근길 핫팩 쓰세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 아침 영하 3도였는데 어떻게 오셨어요?",
+          "follow": "겨울엔 패딩 일찍 꺼내세요?",
+          "caution": "옷차림 지적하지 않기"
+        },
+        "friend": {
+          "opener": "오늘 맑은데 엄청 춥더라. 뭐 입고 나왔어?",
+          "follow": "난 목도리 꺼냈어. 너는?",
+          "caution": "추위로 불평만 하지 않기"
+        },
+        "date": {
+          "opener": "추위 타는 편이세요?",
+          "follow": "겨울엔 뭘 입으면 제일 편해요?",
+          "caution": "옷 취향 평가하지 않기"
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Sky_with_lights.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "Koushikmadisetty 2004",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_with_lights.jpg"
+      }
+    },
+    {
+      "id": "20261125-dae",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "코스피",
+      "color": "#B71C1C",
+      "title": "코스피가 월요일에 3.3% 내렸다던데, 주식 하세요?",
+      "desc": "삼성전자는 17만 7,500원으로 3.1% 내렸어요.",
+      "reason": "비트코인도 어제 59,667달러로 2.5% 내렸어요.",
+      "questions": [
+        "주식이나 재테크 하세요?",
+        "월급 들어오면 제일 먼저 뭐 하세요?",
+        "적금이랑 투자 중 뭐가 더 맞으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "월요일에 코스피가 3.3% 내렸다던데 보셨어요?",
+          "follow": "삼성전자도 3.1% 내렸대요. 주식 해 보신 적 있으세요?",
+          "caution": "종목 추천이나 전망은 하지 않기"
+        },
+        "friend": {
+          "opener": "월요일에 코스피 3.3% 내렸더라. 봤어?",
+          "follow": "삼성전자도 3.1% 빠졌대. 너 주식 해?",
+          "caution": "수익·손실 캐묻지 않기"
+        },
+        "date": {
+          "opener": "요즘 재테크 하세요? 주식 얘기가 많더라고요.",
+          "follow": "저축이랑 투자 중 어느 쪽에 더 마음이 가세요?",
+          "caution": "자산 규모 묻지 않기"
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Michael_Ligon_Stock_Market_Conference_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+    },
+    {
+      "id": "20261125-kimjang",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "겨울간식",
+      "color": "#E65100",
+      "title": "영하 3도 아침, 따끈한 국물 뭐 생각나세요?",
+      "desc": "서울 낮 최고는 6도, 최저는 영하 4도예요.",
+      "reason": "강수확률 0%의 맑은 수요일이라 점심 먹으러 나가기 쉬워요.",
+      "questions": [
+        "추운 날 점심으로 뭐 드세요?",
+        "국물 요리 중 최애는 뭐예요?",
+        "겨울에만 먹는 음식 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "오늘 점심은 따끈한 국물 어떠세요?",
+          "follow": "추운 날 자주 가는 국밥집 있으세요?",
+          "caution": "메뉴 취향 강요하지 않기"
+        },
+        "friend": {
+          "opener": "오늘 영하라 국물 땡기지 않아?",
+          "follow": "뭐 먹을래? 순두부, 칼국수, 국밥 중에.",
+          "caution": "메뉴 결정 떠넘기지 않기"
+        },
+        "date": {
+          "opener": "추운 날엔 어떤 국물 요리 좋아하세요?",
+          "follow": "겨울에 꼭 먹는 음식 있으세요?",
+          "caution": "음식 취향 평가하지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/HK_cooking_%E8%BE%B2%E5%BF%83%E9%9D%9E%E6%B2%B9%E7%82%B8%E8%BE%9B%E6%8B%89%E9%BA%B5_Nongshim_Korean_%E8%BE%9B%E8%BE%A3%E5%8D%B3%E9%A3%9F%E9%BA%B5_Instant_Noodle_August_2026_N13P_02.jpg/1280px-HK_cooking_%E8%BE%B2%E5%BF%83%E9%9D%9E%E6%B2%B9%E7%82%B8%E8%BE%9B%E6%8B%89%E9%BA%B5_Nongshim_Korean_%E8%BE%9B%E8%BE%A3%E5%8D%B3%E9%A3%9F%E9%BA%B5_Instant_Noodle_August_2026_N13P_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Korean.noodle-Kalguksu-01.jpg/1280px-Korean.noodle-Kalguksu-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "jslander",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean.noodle-Kalguksu-01.jpg"
+      }
+    },
+    {
+      "id": "20261125-subway",
+      "cat": "커리어",
+      "subtopic": "출퇴근",
+      "label": "지하철",
+      "color": "#0D47A1",
+      "title": "서울 지하철 노사가 극적으로 타결했대요",
+      "desc": "서울교통공사 노사가 24일 막판 담판을 벌였대요.",
+      "reason": "영하 3도 아침이라 출근길 교통이 더 신경 쓰이는 날이에요.",
+      "questions": [
+        "출근길은 보통 얼마나 걸리세요?",
+        "출근길에 꼭 하는 게 있으세요?",
+        "최악의 출근길 경험 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "지하철 협상이 타결돼서 출근길 대란은 없대요. 오늘 괜찮으셨어요?",
+          "follow": "출근은 보통 몇 분 걸리세요? 지하철 안에서 뭐 하세요?",
+          "caution": "노사 양측 입장을 평가하지 않기"
+        },
+        "friend": {
+          "opener": "지하철 협상 타결됐대. 오늘 출근 괜찮았어?",
+          "follow": "넌 출근길에 뭐 해? 나는 아직도 고민이야.",
+          "caution": "파업 옳고 그름 따지지 않기"
+        },
+        "date": {
+          "opener": "출퇴근은 주로 뭐 타세요? 오늘 지하철 소식이 있더라고요.",
+          "follow": "이동 중엔 음악 들으세요, 영상 보세요?",
+          "caution": "회사 불만 늘어놓지 않기"
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Seoul_Metro_1001_with_Seoullo.jpg/1280px-Seoul_Metro_1001_with_Seoullo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    }
+  ]
+}
