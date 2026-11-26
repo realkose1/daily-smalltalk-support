@@ -1,0 +1,311 @@
+{
+  "date": "2026-11-27",
+  "dateLabel": "11월 27일 금요일",
+  "generatedAt": "2026-11-26T19:50:11.244Z",
+  "topics": [
+    {
+      "id": "t1",
+      "cat": "취미",
+      "subtopic": "스포츠",
+      "label": "권순우",
+      "color": "#1B5E20",
+      "title": "권순우가 세계 7위를 꺾고 곧바로 복식까지 뛰었대요",
+      "desc": "139위인데 3시간 가까운 혈투 끝에 이긴 거래요.",
+      "reason": "금요일 아침, 어젯밤 스포츠 소식을 나누기 좋아요.",
+      "questions": [
+        "테니스 직접 쳐 보신 적 있으세요?",
+        "요즘 챙겨 보는 스포츠 경기 있어요?",
+        "3시간짜리 경기를 끝까지 볼 수 있으세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "권순우 선수가 세계 7위를 꺾었대요. 3시간 가까이 뛰었다던데요.",
+          "follow": "그러고 바로 복식도 나갔대요. 체력이 신기하더라고요.",
+          "caution": "선수 개인 평가나 랭킹 품평은 피하세요."
+        },
+        "friend": {
+          "opener": "권순우 7위 이겼대, 봤어? 그러고 복식까지 뛰었다더라.",
+          "follow": "139위가 7위 잡은 거래. 대단하지 않아?",
+          "caution": "결과 스포일러 없이 물어보세요."
+        },
+        "date": {
+          "opener": "혹시 테니스 좋아하세요? 권순우 선수가 세계 7위를 꺾었다던데요.",
+          "follow": "직접 쳐 보신 적 있는지 물어보세요.",
+          "caution": "스포츠 지식 자랑은 피하세요."
+        }
+      },
+      "imageAttributed": "https://upload.wikimedia.org/wikipedia/commons/6/6a/2019_Roland_Garros_Qualifying_Tournament_-_12_%28cropped%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageCredit": {
+        "author": "DarDarCH",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2019_Roland_Garros_Qualifying_Tournament_-_12_(cropped)_(cropped).jpg"
+      }
+    },
+    {
+      "id": "t5",
+      "cat": "경제",
+      "subtopic": "주식·투자",
+      "label": "반도체",
+      "color": "#B71C1C",
+      "title": "삼성전자가 수요일에 9.9% 내렸다던데, 주식 하세요?",
+      "desc": "종가 17만 700원이고 하이닉스는 11.1% 내렸대요.",
+      "reason": "금요일, 이번 주 장이 끝나기 전에 꺼내볼 만해요.",
+      "questions": [
+        "주식은 얼마나 자주 확인하세요?",
+        "처음 산 주식 기억나세요?",
+        "주가 떨어진 날엔 앱을 열어 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "삼성전자가 수요일에 9.9% 내렸다던데요. 코스피도 6.2% 내렸대요.",
+          "follow": "하이닉스는 11.1% 내렸더라고요.",
+          "caution": "매수·매도 의견은 피하세요."
+        },
+        "friend": {
+          "opener": "삼성전자 수요일에 9.9% 내렸더라. 너 주식 해?",
+          "follow": "하이닉스는 11.1%나 빠졌대.",
+          "caution": "손익 캐묻지 마세요."
+        },
+        "date": {
+          "opener": "요즘 주식 얘기 많던데 관심 있으세요?",
+          "follow": "재테크 취향을 가볍게 물어보세요.",
+          "caution": "수익 자랑은 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Brussels_Stock_Exchange_%286%29.jpg/1280px-Brussels_Stock_Exchange_%286%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/New_York_Stock_Exchange_Facade_2015.jpg/1280px-New_York_Stock_Exchange_Facade_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Jeffrey Zeldman from Manhattan, USA",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_Facade_2015.jpg"
+      }
+    },
+    {
+      "id": "t6",
+      "cat": "날씨",
+      "subtopic": "눈",
+      "label": "폭설",
+      "color": "#455A64",
+      "title": "눈 5cm 쌓이면 전국에 재난문자가 간대요",
+      "desc": "한파 영향예보도 이틀 전에 나온대요.",
+      "reason": "오늘 서울은 6°에서 15°까지 오르내려요.",
+      "questions": [
+        "눈 오는 날 출근길 최악의 경험 있어요?",
+        "첫눈 오면 제일 먼저 뭐 하세요?",
+        "겨울 제설 준비 뭐 하세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "1시간에 눈이 5cm 쌓이면 재난문자가 간대요.",
+          "follow": "올겨울 눈이 많이 올 거라던데요.",
+          "caution": "불안 조장은 피하세요."
+        },
+        "friend": {
+          "opener": "눈 5cm 쌓이면 재난문자 온대. 신기하지?",
+          "follow": "눈 오면 뭐 하고 싶어?",
+          "caution": "출근 걱정만 늘어놓지 마세요."
+        },
+        "date": {
+          "opener": "눈 오는 날 좋아하세요?",
+          "follow": "눈 오는 날 가고 싶은 곳을 물어보세요.",
+          "caution": "날씨 불평은 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Snowy_Seoul_Forest.jpg/1280px-Snowy_Seoul_Forest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "CartoonChess",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Snowy_Seoul_Forest.jpg"
+      }
+    },
+    {
+      "id": "t2",
+      "cat": "쇼핑",
+      "subtopic": "신제품·테크",
+      "label": "HBM",
+      "color": "#0D47A1",
+      "title": "화웨이가 삼성·하이닉스 겨냥 새 HBM을 개발했대요",
+      "desc": "내년 2월에 공개한다고 해요.",
+      "reason": "반도체 주가가 크게 출렁인 주라 눈길이 가요.",
+      "questions": [
+        "요즘 쓰는 전자기기 중 제일 오래 쓴 건 뭐예요?",
+        "스마트폰은 몇 년 주기로 바꾸세요?",
+        "반도체 뉴스 챙겨 보세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "화웨이가 새 HBM을 만들었다던데요. 내년 2월에 공개한대요.",
+          "follow": "SK하이닉스는 3D D램을 100층부터 쌓는대요.",
+          "caution": "종목 전망 얘기는 피하세요."
+        },
+        "friend": {
+          "opener": "화웨이가 삼성, 하이닉스 겨냥해서 HBM 만들었대.",
+          "follow": "내년 2월에 공개한다더라.",
+          "caution": "투자 조언처럼 말하지 마세요."
+        },
+        "date": {
+          "opener": "요즘 반도체 뉴스 많던데 혹시 관심 있으세요?",
+          "follow": "쓰시는 폰 얘기로 넘어가 보세요.",
+          "caution": "어려운 용어는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/HuaweiShenzhen.jpg/1280px-HuaweiShenzhen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t3",
+      "cat": "문화",
+      "subtopic": "예능",
+      "label": "김장",
+      "color": "#C62828",
+      "title": "황윤성 아버님이 이찬원에게 배추 400포기를 시키셨대요",
+      "desc": "'편스토랑'에서 김장에 도전했대요.",
+      "reason": "김장철이라 주변에서 김장 얘기가 한창이에요.",
+      "questions": [
+        "김장은 해마다 하세요, 사 드세요?",
+        "김장하는 날 꼭 먹는 음식 있어요?",
+        "배추 몇 포기까지 해 보셨어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "편스토랑에서 배추 400포기 김장을 했대요. 보셨어요?",
+          "follow": "아버님이 안 하면 못 간다고 하셨대요.",
+          "caution": "출연자 평가는 피하세요."
+        },
+        "friend": {
+          "opener": "편스토랑에서 이찬원이 배추 400포기 김장했대.",
+          "follow": "너네 집은 김장 해?",
+          "caution": "방송 내용 스포는 조심하세요."
+        },
+        "date": {
+          "opener": "요즘 김장철인데 집에서 김장 해 보셨어요?",
+          "follow": "김장 때 먹는 수육 얘기로 이어가 보세요.",
+          "caution": "가족 사정 캐묻기는 피하세요."
+        }
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Kimchi-making_memories_%288762989%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "imageAttributed": "https://image.tmdb.org/t/p/original/ujBF2OTTAtacUTPTicpXPL6T4l1.jpg",
+      "imageCredit": {
+        "author": "TMDB",
+        "license": "포스터",
+        "text": "포스터: TMDB",
+        "sourceUrl": "https://www.themoviedb.org/tv/96108"
+      },
+      "imageKind": "poster"
+    },
+    {
+      "id": "t4",
+      "cat": "일상",
+      "subtopic": "해외소식",
+      "label": "킹타이드",
+      "color": "#00695C",
+      "title": "캘리포니아에 킹 타이드가 덮쳐 샌프란시스코가 잠겼대요",
+      "desc": "9m 파도가 밀려왔다고 해요.",
+      "reason": "서울은 맑지만 바다 소식에 눈이 가는 아침이에요.",
+      "questions": [
+        "바다 파도 직접 보면 어떤 느낌이세요?",
+        "겨울 바다는 가 보세요?",
+        "해외 뉴스 중 기억에 남는 장면 있어요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "캘리포니아에 9m 파도가 덮쳤대요. 샌프란시스코 곳곳이 잠겼다더라고요.",
+          "follow": "킹 타이드라고 부른대요.",
+          "caution": "피해 얘기는 길게 하지 마세요."
+        },
+        "friend": {
+          "opener": "캘리포니아에 킹 타이드 왔대. 파도가 9m래.",
+          "follow": "겨울 바다 보러 갈래?",
+          "caution": "사상자 얘기는 피하세요."
+        },
+        "date": {
+          "opener": "겨울 바다 좋아하세요? 캘리포니아에 큰 파도가 왔다던데요.",
+          "follow": "가 보신 바다 얘기를 물어보세요.",
+          "caution": "피해 상황은 꺼내지 마세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Big_ocean_wave_splash_%28Unsplash%29.jpg/1280px-Big_ocean_wave_splash_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "id": "t8",
+      "cat": "관계",
+      "subtopic": "이웃·동료",
+      "label": "한 해",
+      "color": "#6A1B9A",
+      "title": "올해 가장 고마웠던 동료, 한 명 떠오르세요?",
+      "desc": "연말까지 한 달 남짓 남았어요.",
+      "reason": "11월 마지막 금요일이라 올해를 돌아보게 돼요.",
+      "questions": [
+        "올해 도움받은 일 중 기억나는 게 있어요?",
+        "연말에 작게 고마움 전한다면 뭘 하시겠어요?",
+        "올해 회사에서 제일 웃겼던 순간은요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "올해도 한 달 남았네요. 도움 많이 받았어요.",
+          "follow": "올해 제일 바빴던 때가 언제였어요?",
+          "caution": "특정인 험담은 피하세요."
+        },
+        "friend": {
+          "opener": "올해 제일 고마운 사람 누구야?",
+          "follow": "연말에 밥 한번 먹자.",
+          "caution": "서운했던 얘기로 흐르지 않게 하세요."
+        },
+        "date": {
+          "opener": "올해 가장 고마웠던 사람이 있으세요?",
+          "follow": "그분과의 추억을 가볍게 물어보세요.",
+          "caution": "업무 얘기는 피하세요."
+        }
+      },
+      "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Family_eating_meal.jpg/1280px-Family_eating_meal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Sweden_Family_by_dinner_04.jpg/1280px-Sweden_Family_by_dinner_04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "Vitold Muratov",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sweden_Family_by_dinner_04.jpg"
+      }
+    },
+    {
+      "id": "t7",
+      "cat": "음식",
+      "subtopic": "제철음식",
+      "label": "감",
+      "color": "#E65100",
+      "title": "늦가을엔 단감이랑 홍시, 어느 쪽이 더 끌리세요?",
+      "desc": "11월 말까지 감이 제철이에요.",
+      "reason": "낮 최고 15°까지 오르는 오후엔 과일이 생각나요.",
+      "questions": [
+        "어릴 때 먹던 겨울 과일 기억나세요?",
+        "단감 vs 홍시 어느 쪽이세요?",
+        "요즘 과일 뭐 사 드세요?"
+      ],
+      "tips": {
+        "work": {
+          "opener": "요즘 단감 제철이잖아요. 홍시 좋아하세요?",
+          "follow": "점심 후 과일 챙겨 오는 분 계세요?",
+          "caution": "취향 강요는 피하세요."
+        },
+        "friend": {
+          "opener": "요즘 감 맛있던데, 단감파야 홍시파야?",
+          "follow": "어릴 때 할머니 집 감나무 기억나?",
+          "caution": "알레르기 있으면 권하지 마세요."
+        },
+        "date": {
+          "opener": "과일 중에 뭐 좋아하세요? 요즘 감이 제철이래요.",
+          "follow": "좋아하는 디저트로 이어가 보세요.",
+          "caution": "취향 평가는 피하세요."
+        }
+      },
+      "imageAttributed": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/American_Persimmons.png/1280px-American_Persimmons.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "imageCredit": {
+        "author": "KnightWolf8",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:American_Persimmons.png"
+      }
+    }
+  ]
+}

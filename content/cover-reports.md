@@ -2,7 +2,7 @@
 
 Readers' "cover doesn't match the topic" reports from the app (last 180 days), one row per reported cover, newest first (max 50). Rewritten by scripts/generate.mjs on every run — don't edit by hand. Every file listed here is blocklisted: the generator never picks it again.
 
-Updated 2026-11-25T19:50:15.920Z. 17 reported cover(s).
+Updated 2026-11-26T19:50:11.244Z. 17 reported cover(s).
 
 | date | topic | file | reporters | notes |
 |---|---|---|---|---|
